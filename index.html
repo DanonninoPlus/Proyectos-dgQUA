@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Proyectos - DG Cooperación</title>
+
+  <!-- Tailwind CDN (rápido para prototipo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Librerías para export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+
+  <style>
+    /* Pequeñas mejoras */
+    .acordeon-btn { transition: background-color .15s; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800">
+
+  <header class="bg-white shadow p-4 flex items-center justify-between">
+    <h1 class="text-xl font-semibold">Proyectos — Dirección General</h1>
+
+    <div class="flex gap-2">
+      <button id="btnExportPDF" class="px-3 py-1 rounded bg-blue-600 text-white">Exportar PDF</button>
+      <button id="btnExportXLS" class="px-3 py-1 rounded bg-green-600 text-white">Exportar Excel</button>
+      <button id="btnImportJSON" class="px-3 py-1 rounded bg-gray-200">Importar JSON</button>
+      <button id="btnAddProject" class="px-3 py-1 rounded bg-indigo-600 text-white">+ Nuevo</button>
+    </div>
+  </header>
+
+  <main class="p-4 max-w-4xl mx-auto">
+    <!-- Filtros -->
+    <section class="mb-4 grid gap-2 sm:grid-cols-3">
+      <input id="searchInput" type="search" placeholder="Buscar por nombre/objetivo" class="p-2 rounded border"/>
+      <select id="filterResponsible" class="p-2 rounded border">
+        <option value="">Filtrar por responsable</option>
+      </select>
+      <select id="filterStatus" class="p-2 rounded border">
+        <option value="">Filtrar por estado</option>
+        <option value="Planeación">Planeación</option>
+        <option value="Ejecución">Ejecución</option>
+        <option value="Cierre">Cierre</option>
+      </select>
+    </section>
+
+    <!-- Lista de proyectos (acordeones) -->
+    <section id="projectList" class="space-y-3"></section>
+
+    <!-- Contenedor usado para generar PDF (clonado desde projectList) -->
+    <div id="printArea" class="hidden"></div>
+  </main>
+
+  <!-- Modal para agregar/editar -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+    <div class="bg-white rounded p-4 w-full max-w-lg">
+      <h2 id="modalTitle" class="text-lg font-medium mb-2">Nuevo proyecto</h2>
+      <form id="projectForm" class="space-y-2">
+        <input type="hidden" id="projId" />
+        <div>
+          <label class="text-sm">Nombre</label>
+          <input id="projName" required class="w-full p-2 border rounded" />
+        </div>
+        <div>
+          <label class="text-sm">Objetivo</label>
+          <textarea id="projGoal" rows="3" class="w-full p-2 border rounded"></textarea>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-2">
+          <div>
+            <label class="text-sm">Responsable</label>
+            <input id="projResponsible" class="w-full p-2 border rounded" />
+          </div>
+          <div>
+            <label class="text-sm">Avance (%)</label>
+            <input id="projProgress" type="number" min="0" max="100" class="w-full p-2 border rounded" />
+          </div>
+          <div>
+            <label class="text-sm">Estado</label>
+            <select id="projStatus" class="w-full p-2 border rounded">
+              <option>Planeación</option>
+              <option>Ejecución</option>
+              <option>Cierre</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="text-sm">Notas</label>
+          <textarea id="projNotes" rows="2" class="w-full p-2 border rounded"></textarea>
+        </div>
+
+        <div class="flex justify-end gap-2 mt-2">
+          <button type="button" id="btnCancel" class="px-3 py-1 border rounded">Cancelar</button>
+          <button type="submit" class="px-3 py-1 bg-indigo-600 text-white rounded">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
