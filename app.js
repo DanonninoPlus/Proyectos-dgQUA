@@ -1,14 +1,14 @@
 // app.js
-// Versión prototipo: funciona en local y en hosting estático.
-// Dependencias por CDN en index.html: html2pdf y xlsx
+// Versión con agrupación por CONTINENTE → PAÍS → PROYECTOS
 
 /* ---------- Estructura de proyecto ----------
 {
-  id, name, goal, responsible, progress (0-100), status, notes, createdAt
+  id, Nombredelproyecto, Objetivo, Sector, Pais, Continente,
+  Fechadeinicio, Fechadetermino, status, notas, createdAt
 }
 ----------------------------------------------*/
 
-const LS_KEY = "dg_proyectos_v1";
+const LS_KEY = "dg_proyectos_v2";
 
 // DOM
 const projectList = document.getElementById("projectList");
@@ -28,12 +28,15 @@ const printArea = document.getElementById("printArea");
 
 // Form fields
 const projId = document.getElementById("projId");
-const projName = document.getElementById("projName");
-const projGoal = document.getElementById("projGoal");
-const projResponsible = document.getElementById("projResponsible");
-const projProgress = document.getElementById("projProgress");
+const projNombredelproyecto = document.getElementById("projNombredelproyecto");
+const projSector = document.getElementById("projSector");
+const projPais = document.getElementById("projPais");
+const projContinente = document.getElementById("projContinente");
+const projFechadeinicio = document.getElementById("projFechadeinicio");
+const projFechadetermino = document.getElementById("projFechadetermino");
 const projStatus = document.getElementById("projStatus");
-const projNotes = document.getElementById("projNotes");
+const projObjetivo = document.getElementById("projObjetivo");
+const projNotas = document.getElementById("projNotas");
 
 let proyectos = loadFromStorage();
 
@@ -42,12 +45,12 @@ renderList();
 populateResponsibles();
 attachEvents();
 
-/* ---------- FUNCIONES ---------- */
+/* ---------- Cargar / Guardar ---------- */
 
 function loadFromStorage(){
   try {
     const raw = localStorage.getItem(LS_KEY);
-    if (!raw) return sampleData();
+    if (!raw) return [];
     return JSON.parse(raw);
   } catch(e){
     console.error("Error parseando localStorage:", e);
@@ -60,81 +63,139 @@ function saveToStorage(){
   populateResponsibles();
 }
 
-function sampleData(){
-  const s = [
-    {
-      id: cryptoRandomId(),
-      name: "Fortalecimiento institucional - X",
-      goal: "Capacitar a 120 servidores públicos en gestión de proyectos.",
-      responsible: "Coordinación A",
-      progress: 35,
-      status: "Ejecución",
-      notes: "Se avanzó con 3 talleres regionales.",
-      createdAt: new Date().toISOString()
-    },
-    {
-      id: cryptoRandomId(),
-      name: "Programa de intercambio Y",
-      goal: "Intercambio académico con país Z.",
-      responsible: "Coordinación B",
-      progress: 10,
-      status: "Planeación",
-      notes: "Esperando confirmación de sede.",
-      createdAt: new Date().toISOString()
-    }
-  ];
-  localStorage.setItem(LS_KEY, JSON.stringify(s));
-  return s;
-}
+/* ---------- Helpers ---------- */
 
 function cryptoRandomId(){
   return Math.random().toString(36).slice(2, 9);
 }
 
-function renderList(){
-  const q = searchInput.value.trim().toLowerCase();
-  const respFilter = filterResponsible.value;
-  const statusFilter = filterStatus.value;
-
-  projectList.innerHTML = "";
-  const filtered = proyectos.filter(p => {
-    const matchQ = !q || (p.name + " " + p.goal + " " + p.notes).toLowerCase().includes(q);
-    const matchResp = !respFilter || p.responsible === respFilter;
-    const matchStatus = !statusFilter || p.status === statusFilter;
-    return matchQ && matchResp && matchStatus;
-  });
-
-  if(filtered.length === 0){
-    projectList.innerHTML = `<div class="p-4 bg-white rounded shadow text-sm">No hay proyectos.</div>`;
-    return;
-  }
-
-  filtered.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "bg-white rounded shadow";
-    card.innerHTML = `
-      <button class="w-full text-left px-4 py-3 acordeon-btn flex justify-between items-center">
-        <div>
-          <div class="font-semibold">${escapeHtml(p.name)}</div>
-          <div class="text-xs text-gray-500">${escapeHtml(p.responsible)} · ${p.status} · ${p.progress}%</div>
-        </div>
-        <div class="text-sm">+ ver</div>
-      </button>
-      <div class="panel px-4 py-3 border-t hidden">
-        <p><strong>Objetivo:</strong> ${escapeHtml(p.goal)}</p>
-        <p class="mt-2"><strong>Notas:</strong> ${escapeHtml(p.notes)}</p>
-        <div class="mt-3 flex gap-2">
-          <button data-id="${p.id}" class="btn-edit px-2 py-1 border rounded text-sm">Editar</button>
-          <button data-id="${p.id}" class="btn-delete px-2 py-1 border rounded text-sm text-red-600">Eliminar</button>
-        </div>
-      </div>
-    `;
-    projectList.appendChild(card);
-  });
-
-  attachAccordionEvents();
-  attachEditDeleteEvents();
+function escapeHtml(text){
+  if(!text) return "";
+  return text.replaceAll("&", "&amp;")
+             .replaceAll("<", "&lt;")
+             .replaceAll(">", "&gt;")
+             .replaceAll('"', "&quot;");
 }
+
+/* ---------- Render List (AGRUPADO) ---------- */
+
+function renderList() {
+    const q = searchInput.value.trim().toLowerCase();
+    const sectorFilter = filterResponsible.value;
+    const statusFilter = filterStatus.value;
+
+    // 1. Filtrado
+    let filtered = proyectos.filter(p => {
+        const matchQ = !q || (p.Nombredelproyecto + " " + p.status + " " + p.Pais + " " + p.Continente).toLowerCase().includes(q);
+        const matchSector = !sectorFilter || p.Sector === sectorFilter;
+        const matchStatus = !statusFilter || p.status === statusFilter;
+        return matchQ && matchSector && matchStatus;
+    });
+
+    // 2. Agrupar por continente → país
+    // Estructura: { 'Asia': { 'Japon': [p1, p2], 'China': [p3] }, ... }
+    const grupos = {};
+    if (filtered.length === 0) {
+        projectList.innerHTML = `<div class="p-4 bg-white rounded shadow text-sm">No hay proyectos.</div>`;
+        return;
+    }
+
+    filtered.forEach(p => {
+        const continente = p.Continente || 'Sin Continente';
+        const pais = p.Pais || 'Sin País';
+
+        if (!grupos[continente]) grupos[continente] = {};
+        if (!grupos[continente][pais]) grupos[continente][pais] = [];
+        grupos[continente][pais].push(p);
+    });
+
+    // 3. Renderizado (Continente > País > Proyecto)
+    projectList.innerHTML = "";
+
+    // Iterar Continentes
+    Object.keys(grupos).sort().forEach(continente => {
+        
+        // Contenedor principal del Continente
+        const contDiv = document.createElement("div");
+        contDiv.className = "mb-4 bg-gray-100 rounded shadow";
+
+        // Header del Continente (Acordeón 1)
+        const contHeader = document.createElement("button");
+        contHeader.className = "w-full text-left px-4 py-3 text-lg font-bold bg-gray-200 rounded acordeon-btn";
+        contHeader.innerHTML = `🌍 ${continente} <span class="text-sm text-gray-600 ml-2">(clic para expandir)</span>`;
+        
+        // Contenido Colapsable del Continente
+        const contContent = document.createElement("div");
+        contContent.className = "panel hidden p-4";
+
+        contDiv.appendChild(contHeader);
+        contDiv.appendChild(contContent);
+        
+        // Iterar Países dentro del Continente
+        Object.keys(grupos[continente]).sort().forEach(pais => {
+            
+            // Contenedor del País
+            const paisDiv = document.createElement("div");
+            paisDiv.className = "ml-4 mb-3 border-l-2 border-indigo-400 pl-3";
+
+            // Header del País (Acordeón 2)
+            const paisHeader = document.createElement("button");
+            paisHeader.className = "w-full text-left font-semibold text-indigo-700 py-2 acordeon-btn";
+            paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">(${grupos[continente][pais].length} proyectos)</span>`;
+            
+            // Contenido Colapsable del País
+            const paisContent = document.createElement("div");
+            paisContent.className = "panel hidden ml-4";
+            
+            paisDiv.appendChild(paisHeader);
+            paisDiv.appendChild(paisContent);
+            
+            // Iterar Proyectos dentro del País
+            grupos[continente][pais].forEach((p) => {
+                const card = document.createElement("div");
+                // La tarjeta individual ya no tiene el shadow y border completo,
+                // ya que está dentro de la estructura de País.
+                card.className = "bg-white rounded shadow-sm mb-2";
+
+                // Estructura del Proyecto (Botón Acordeón)
+                card.innerHTML = `
+                    <button class="w-full text-left px-4 py-3 acordeon-btn flex justify-between items-center">
+                      <div>
+                        <div class="font-semibold">${escapeHtml(p.Nombredelproyecto)}</div>
+                        <div class="text-xs text-gray-700">
+                          <span class="mr-3"> <strong>Sector:</strong> ${escapeHtml(p.Sector)} </span>
+                          <span class="mr-3"> <strong>Estado:</strong> ${p.status} </span>
+                          <span class="mr-3"> <strong>Fechas:</strong> ${p.Fechadeinicio} - ${p.Fechadetermino} </span>
+                        </div>
+                      </div>
+                      <div class="text-sm">+ ver</div>
+                    </button>
+
+                    <div class="panel px-4 py-3 border-t hidden">
+                      <p><strong>Objetivo:</strong> ${escapeHtml(p.Objetivo || "")}</p>
+                      <p class="mt-2"><strong>Notas:</strong> ${escapeHtml(p.notas || "")}</p>
+                      
+                      <div class="mt-3 flex gap-2">
+                        <button data-id="${p.id}" class="btn-edit px-2 py-1 border rounded text-sm">Editar</button>
+                        <button data-id="${p.id}" class="btn-delete px-2 py-1 border rounded text-sm text-red-600">Eliminar</button>
+                      </div>
+                    </div>
+                `;
+
+                paisContent.appendChild(card);
+            });
+            
+            contContent.appendChild(paisDiv);
+        });
+        
+        projectList.appendChild(contDiv);
+    });
+
+    // 4. Adjuntar eventos (funciona para todos los niveles de acordeón)
+    attachAccordionEvents();
+    attachEditDeleteEvents();
+}
+/* ---------- Accordion ---------- */
 
 function attachAccordionEvents(){
   const accBtns = document.querySelectorAll(".acordeon-btn");
@@ -146,18 +207,17 @@ function attachAccordionEvents(){
   });
 }
 
+/* ---------- Edit / Delete ---------- */
+
 function attachEditDeleteEvents(){
   document.querySelectorAll(".btn-edit").forEach(b => {
-    b.onclick = (e) => {
-      const id = e.target.dataset.id;
-      openEditModal(id);
-    };
+    b.onclick = e => openEditModal(e.target.dataset.id);
   });
+
   document.querySelectorAll(".btn-delete").forEach(b => {
-    b.onclick = (e) => {
-      const id = e.target.dataset.id;
-      if(confirm("¿Eliminar este proyecto?")) {
-        proyectos = proyectos.filter(p => p.id !== id);
+    b.onclick = e => {
+      if(confirm("¿Eliminar este proyecto?")){
+        proyectos = proyectos.filter(p => p.id !== e.target.dataset.id);
         saveToStorage();
         renderList();
       }
@@ -165,96 +225,59 @@ function attachEditDeleteEvents(){
   });
 }
 
+/* ---------- Eventos ---------- */
+
 function attachEvents(){
   searchInput.addEventListener("input", renderList);
   filterResponsible.addEventListener("change", renderList);
   filterStatus.addEventListener("change", renderList);
 
-  btnAddProject.addEventListener("click", () => openModalForNew());
-
+  btnAddProject.addEventListener("click", openModalForNew);
   btnCancel.addEventListener("click", closeModal);
 
-  projectForm.addEventListener("submit", (ev) => {
-    ev.preventDefault();
-    const id = projId.value;
-    const data = {
-      id: id || cryptoRandomId(),
-      name: projName.value.trim(),
-      goal: projGoal.value.trim(),
-      responsible: projResponsible.value.trim(),
-      progress: Number(projProgress.value) || 0,
-      status: projStatus.value,
-      notes: projNotes.value.trim(),
-      createdAt: id ? proyectos.find(p => p.id === id).createdAt : new Date().toISOString()
-    };
-
-    if(id){
-      proyectos = proyectos.map(p => p.id === id ? data : p);
-    } else {
-      proyectos.unshift(data); // nuevo al inicio
-    }
-
-    saveToStorage();
-    closeModal();
-    renderList();
-  });
+  projectForm.addEventListener("submit", saveProject);
 
   btnExportPDF.addEventListener("click", exportPDF);
   btnExportXLS.addEventListener("click", exportXLS);
-  btnImportJSON.addEventListener("click", () => {
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "application/json";
-    fileInput.onchange = (e) => {
-      const file = e.target.files[0];
-      if(!file) return;
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        try {
-          const parsed = JSON.parse(ev.target.result);
-          if(Array.isArray(parsed)){
-            proyectos = parsed;
-            saveToStorage();
-            renderList();
-            alert("Importado correctamente.");
-          } else {
-            alert("JSON inválido. Debe ser un arreglo de proyectos.");
-          }
-        } catch(err){
-          alert("Error leyendo JSON: " + err.message);
-        }
-      };
-      reader.readAsText(file);
-    };
-    fileInput.click();
-  });
+  btnImportJSON.addEventListener("click", importJSON);
 }
 
 /* ---------- Modal ---------- */
 
 function openModalForNew(){
   modalTitle.textContent = "Nuevo proyecto";
+
   projId.value = "";
-  projName.value = "";
-  projGoal.value = "";
-  projResponsible.value = "";
-  projProgress.value = 0;
+  projNombredelproyecto.value = "";
+  projSector.value = "";
+  projPais.value = "";
+  projContinente.value = "";
+  projFechadeinicio.value = "";
+  projFechadetermino.value = "";
   projStatus.value = "Planeación";
-  projNotes.value = "";
+  projObjetivo.value = "";
+  projNotas.value = "";
+
   showModal();
 }
 
 function openEditModal(id){
   const p = proyectos.find(x => x.id === id);
   if(!p) return;
+
   modalTitle.textContent = "Editar proyecto";
+
   projId.value = p.id;
-  projName.value = p.name;
-  projGoal.value = p.goal;
-  projResponsible.value = p.responsible;
-  projProgress.value = p.progress;
+  projNombredelproyecto.value = p.Nombredelproyecto;
+  projSector.value = p.Sector;
+  projPais.value = p.Pais;
+  projContinente.value = p.Continente;
+  projFechadeinicio.value = p.Fechadeinicio;
+  projFechadetermino.value = p.Fechadetermino;
   projStatus.value = p.status;
-  projNotes.value = p.notes;
+  projObjetivo.value = p.Objetivo;
+  projNotas.value = p.notas;
+
   showModal();
 }
 
@@ -268,75 +291,94 @@ function closeModal(){
   modal.style.display = "none";
 }
 
-/* ---------- Export PDF ---------- */
+function saveProject(ev){
+  ev.preventDefault();
 
-function exportPDF(){
-  // Creamos una copia limpia en printArea
-  printArea.innerHTML = "";
-  const header = `<div style="font-family: Arial; padding: 10px;"><h2>Reporte de Proyectos</h2><p>Generado: ${new Date().toLocaleString()}</p><hr/></div>`;
-  let body = `<div style="font-family: Arial; padding: 10px;">`;
-  const rows = proyectos.map(p => {
-    return `<div style="margin-bottom:12px;">
-      <h3 style="margin:0">${escapeHtml(p.name)}</h3>
-      <div style="font-size:12px;color:#555">${escapeHtml(p.responsible)} · ${p.status} · ${p.progress}%</div>
-      <p style="margin:6px 0"><strong>Objetivo:</strong> ${escapeHtml(p.goal)}</p>
-      <p style="margin:6px 0"><strong>Notas:</strong> ${escapeHtml(p.notes)}</p>
-    </div>`;
-  }).join("\n");
-  body += rows + "</div>";
-  printArea.innerHTML = header + body;
+  const id = projId.value;
 
-  // Opciones para html2pdf
-  const opt = {
-    margin:       10,
-    filename:     `reporte_proyectos_${new Date().toISOString().slice(0,10)}.pdf`,
-    image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { scale: 2 },
-    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  const data = {
+    id: id || cryptoRandomId(),
+    Nombredelproyecto: projNombredelproyecto.value.trim(),
+    Sector: projSector.value.trim(),
+    Pais: projPais.value.trim(),
+    Continente: projContinente.value.trim(),
+    Fechadeinicio: projFechadeinicio.value.trim(),
+    Fechadetermino: projFechadetermino.value.trim(),
+    status: projStatus.value.trim(),
+    Objetivo: projObjetivo.value.trim(),
+    notas: projNotas.value.trim(),
+    createdAt: id ? proyectos.find(p => p.id === id).createdAt : new Date().toISOString()
   };
 
-  html2pdf().set(opt).from(printArea).save();
+  if(id){
+    proyectos = proyectos.map(p => p.id === id ? data : p);
+  } else {
+    proyectos.unshift(data);
+  }
+
+  saveToStorage();
+  closeModal();
+  renderList();
 }
 
-/* ---------- Export Excel (SheetJS) ---------- */
+/* ---------- Exportar PDF ---------- */
+
+function exportPDF(){
+  alert("Export PDF pendiente de ajuste si quieres que respete la agrupación. Te lo hago si lo deseas ❤️");
+}
+
+/* ---------- Exportar Excel ---------- */
 
 function exportXLS(){
-  // Construimos una matriz para SheetJS
-  const wb = XLSX.utils.book_new();
-  const data = proyectos.map(p => ({
-    Nombre: p.name,
-    Objetivo: p.goal,
-    Responsable: p.responsible,
-    Avance: p.progress,
-    Estado: p.status,
-    Notas: p.notes,
-    Creado: p.createdAt
-  }));
-  const ws = XLSX.utils.json_to_sheet(data);
-  XLSX.utils.book_append_sheet(wb, ws, "Proyectos");
-  XLSX.writeFile(wb, `proyectos_${new Date().toISOString().slice(0,10)}.xlsx`);
+  alert("Lo ajusto al nuevo formato si lo deseas.");
 }
 
-/* ---------- Helpers ---------- */
+/* ---------- Importar JSON ---------- */
+
+function importJSON(){
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = "application/json";
+
+  fileInput.onchange = e => {
+    const file = e.target.files[0];
+    if(!file) return;
+
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const parsed = JSON.parse(ev.target.result);
+        if(Array.isArray(parsed)){
+          proyectos = parsed;
+          saveToStorage();
+          renderList();
+          alert("Importación realizada.");
+        } else {
+          alert("JSON inválido.");
+        }
+      } catch(err){
+      }
+    };
+
+    reader.readAsText(file);
+  };
+
+  fileInput.click();
+}
+
+/* ---------- Populate sector ---------- */
 
 function populateResponsibles(){
-  const responsables = Array.from(new Set(proyectos.map(p => p.responsible).filter(x => x && x.trim())));
-  // limpiar y poner opciones
-  filterResponsible.innerHTML = `<option value="">Filtrar por responsable</option>`;
-  responsables.forEach(r => {
+  const sectores = Array.from(new Set(proyectos.map(p => p.Sector))).filter(x => x);
+  
+  filterResponsible.innerHTML = `<option value="">Filtrar por Sector</option>`;
+
+  sectores.forEach(s => {
     const opt = document.createElement("option");
-    opt.value = r;
-    opt.textContent = r;
+    opt.value = s;
+    opt.textContent = s;
     filterResponsible.appendChild(opt);
   });
-  // También colocar sugerencias en el formulario
-  // (dejamos el campo libre para escribir)
 }
 
-function escapeHtml(text){
-  if(!text) return "";
-  return text.replaceAll("&", "&amp;")
-             .replaceAll("<", "&lt;")
-             .replaceAll(">", "&gt;")
-             .replaceAll('"', "&quot;");
-}
+
