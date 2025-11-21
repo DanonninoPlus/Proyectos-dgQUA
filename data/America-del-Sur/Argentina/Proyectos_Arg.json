@@ -1,0 +1,15 @@
+[
+  {
+    "id": "abc123",
+    "Nombredelproyecto": "Proyecto 1",
+    "Sector": "Educación",
+    "Pais": "México",
+    "Continente": "América",
+    "Fechadeinicio": "2025-01-01",
+    "Fechadetermino": "2025-12-31",
+    "status": "Planeación",
+    "Objetivo": "Mejorar algo",
+    "notas": "",
+    "createdAt": "2025-01-05T12:00:00Z"
+  }
+]
