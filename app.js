@@ -1,5 +1,6 @@
 // app.js
-// Versión con agrupación por CONTINENTE → PAÍS → PROYECTOS
+// Versión con carga desde JSON externo + fallback a localStorage
+// Agrupación por CONTINENTE → PAÍS → PROYECTOS
 
 /* ---------- Estructura de proyecto ----------
 {
@@ -38,166 +39,194 @@ const projStatus = document.getElementById("projStatus");
 const projObjetivo = document.getElementById("projObjetivo");
 const projNotas = document.getElementById("projNotas");
 
-let proyectos = loadFromStorage();
+let proyectos = [];
 
-// Inicialización
-renderList();
-populateResponsibles();
-attachEvents();
+/* ============================================================
+   🔵 1. FUNCIÓN PARA CARGAR JSON EXTERNO DESDE GITHUB
+   ============================================================*/
+async function loadFromJsonUrl() {
+  try {
 
-/* ---------- Cargar / Guardar ---------- */
+    const url = ;
 
-function loadFromStorage(){
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("No se pudo cargar el JSON externo");
+
+    const data = await res.json();
+
+    if (!Array.isArray(data)) throw new Error("El JSON debe ser un arreglo");
+
+    console.log("JSON externo cargado correctamente");
+    return data;
+
+  } catch (err) {
+    console.warn("No se pudo cargar el JSON externo:", err);
+    return [];
+  }
+}
+
+/* ============================================================
+   🔵 2. LOCALSTORAGE
+   ============================================================*/
+function loadFromStorage() {
   try {
     const raw = localStorage.getItem(LS_KEY);
     if (!raw) return [];
     return JSON.parse(raw);
-  } catch(e){
+  } catch (e) {
     console.error("Error parseando localStorage:", e);
     return [];
   }
 }
 
-function saveToStorage(){
+function saveToStorage() {
   localStorage.setItem(LS_KEY, JSON.stringify(proyectos));
   populateResponsibles();
 }
 
-/* ---------- Helpers ---------- */
+/* ============================================================
+   🔵 3. INICIALIZACIÓN (JSON EXTERNO → LOCALSTORAGE → RENDER)
+   ============================================================*/
+init();
 
-function cryptoRandomId(){
+async function init() {
+  // 1. Intentar cargar JSON externo
+  const external = await loadFromJsonUrl();
+
+  if (external.length > 0) {
+    proyectos = external;
+    saveToStorage(); // opcional
+  } else {
+    // 2. Si no, usar localStorage
+    proyectos = loadFromStorage();
+  }
+
+  // 3. Renderizar la app
+  renderList();
+  populateResponsibles();
+  attachEvents();
+}
+
+/* ============================================================
+   🔵 4. HELPERS
+   ============================================================*/
+function cryptoRandomId() {
   return Math.random().toString(36).slice(2, 9);
 }
 
-function escapeHtml(text){
-  if(!text) return "";
+function escapeHtml(text) {
+  if (!text) return "";
   return text.replaceAll("&", "&amp;")
              .replaceAll("<", "&lt;")
              .replaceAll(">", "&gt;")
              .replaceAll('"', "&quot;");
 }
 
-/* ---------- Render List (AGRUPADO) ---------- */
-
+/* ============================================================
+   🔵 5. RENDER LISTA AGRUPADA
+   ============================================================*/
 function renderList() {
-    const q = searchInput.value.trim().toLowerCase();
-    const sectorFilter = filterResponsible.value;
-    const statusFilter = filterStatus.value;
+  const q = searchInput.value.trim().toLowerCase();
+  const sectorFilter = filterResponsible.value;
+  const statusFilter = filterStatus.value;
 
-    // 1. Filtrado
-    let filtered = proyectos.filter(p => {
-        const matchQ = !q || (p.Nombredelproyecto + " " + p.status + " " + p.Pais + " " + p.Continente).toLowerCase().includes(q);
-        const matchSector = !sectorFilter || p.Sector === sectorFilter;
-        const matchStatus = !statusFilter || p.status === statusFilter;
-        return matchQ && matchSector && matchStatus;
+  let filtered = proyectos.filter(p => {
+    const matchQ = !q || (p.Nombredelproyecto + " " + p.status + " " + p.Pais + " " + p.Continente)
+                      .toLowerCase().includes(q);
+    const matchSector = !sectorFilter || p.Sector === sectorFilter;
+    const matchStatus = !statusFilter || p.status === statusFilter;
+    return matchQ && matchSector && matchStatus;
+  });
+
+  const grupos = {};
+  if (filtered.length === 0) {
+    projectList.innerHTML = `<div class="p-4 bg-white rounded shadow text-sm">No hay proyectos.</div>`;
+    return;
+  }
+
+  filtered.forEach(p => {
+    const c = p.Continente || 'Sin Continente';
+    const pais = p.Pais || 'Sin País';
+    if (!grupos[c]) grupos[c] = {};
+    if (!grupos[c][pais]) grupos[c][pais] = [];
+    grupos[c][pais].push(p);
+  });
+
+  projectList.innerHTML = "";
+
+  Object.keys(grupos).sort().forEach(continente => {
+    const contDiv = document.createElement("div");
+    contDiv.className = "mb-4 bg-gray-100 rounded shadow";
+
+    const contHeader = document.createElement("button");
+    contHeader.className = "w-full text-left px-4 py-3 text-lg font-bold bg-gray-200 rounded acordeon-btn";
+    contHeader.innerHTML = `🌍 ${continente} <span class="text-sm text-gray-600 ml-2">(clic para expandir)</span>`;
+
+    const contContent = document.createElement("div");
+    contContent.className = "panel hidden p-4";
+
+    contDiv.appendChild(contHeader);
+    contDiv.appendChild(contContent);
+
+    Object.keys(grupos[continente]).sort().forEach(pais => {
+      const paisDiv = document.createElement("div");
+      paisDiv.className = "ml-4 mb-3 border-l-2 border-indigo-400 pl-3";
+
+      const paisHeader = document.createElement("button");
+      paisHeader.className = "w-full text-left font-semibold text-indigo-700 py-2 acordeon-btn";
+      paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">(${grupos[continente][pais].length} proyectos)</span>`;
+
+      const paisContent = document.createElement("div");
+      paisContent.className = "panel hidden ml-4";
+
+      paisDiv.appendChild(paisHeader);
+      paisDiv.appendChild(paisContent);
+
+      grupos[continente][pais].forEach(p => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded shadow-sm mb-2";
+
+        card.innerHTML = `
+          <button class="w-full text-left px-4 py-3 acordeon-btn flex justify-between items-center">
+            <div>
+              <div class="font-semibold">${escapeHtml(p.Nombredelproyecto)}</div>
+              <div class="text-xs text-gray-700">
+                <span class="mr-3"><strong>Sector:</strong> ${escapeHtml(p.Sector)}</span>
+                <span class="mr-3"><strong>Estado:</strong> ${p.status}</span>
+                <span class="mr-3"><strong>Fechas:</strong> ${p.Fechadeinicio} - ${p.Fechadetermino}</span>
+              </div>
+            </div>
+            <div class="text-sm">+ ver</div>
+          </button>
+
+          <div class="panel px-4 py-3 border-t hidden">
+            <p><strong>Objetivo:</strong> ${escapeHtml(p.Objetivo || "")}</p>
+            <p class="mt-2"><strong>Notas:</strong> ${escapeHtml(p.notas || "")}</p>
+            
+            <div class="mt-3 flex gap-2">
+              <button data-id="${p.id}" class="btn-edit px-2 py-1 border rounded text-sm">Editar</button>
+              <button data-id="${p.id}" class="btn-delete px-2 py-1 border rounded text-sm text-red-600">Eliminar</button>
+            </div>
+          </div>
+        `;
+
+        paisContent.appendChild(card);
+      });
+
+      contContent.appendChild(paisDiv);
     });
 
-    // 2. Agrupar por continente → país
-    // Estructura: { 'Asia': { 'Japon': [p1, p2], 'China': [p3] }, ... }
-    const grupos = {};
-    if (filtered.length === 0) {
-        projectList.innerHTML = `<div class="p-4 bg-white rounded shadow text-sm">No hay proyectos.</div>`;
-        return;
-    }
+    projectList.appendChild(contDiv);
+  });
 
-    filtered.forEach(p => {
-        const continente = p.Continente || 'Sin Continente';
-        const pais = p.Pais || 'Sin País';
-
-        if (!grupos[continente]) grupos[continente] = {};
-        if (!grupos[continente][pais]) grupos[continente][pais] = [];
-        grupos[continente][pais].push(p);
-    });
-
-    // 3. Renderizado (Continente > País > Proyecto)
-    projectList.innerHTML = "";
-
-    // Iterar Continentes
-    Object.keys(grupos).sort().forEach(continente => {
-        
-        // Contenedor principal del Continente
-        const contDiv = document.createElement("div");
-        contDiv.className = "mb-4 bg-gray-100 rounded shadow";
-
-        // Header del Continente (Acordeón 1)
-        const contHeader = document.createElement("button");
-        contHeader.className = "w-full text-left px-4 py-3 text-lg font-bold bg-gray-200 rounded acordeon-btn";
-        contHeader.innerHTML = `🌍 ${continente} <span class="text-sm text-gray-600 ml-2">(clic para expandir)</span>`;
-        
-        // Contenido Colapsable del Continente
-        const contContent = document.createElement("div");
-        contContent.className = "panel hidden p-4";
-
-        contDiv.appendChild(contHeader);
-        contDiv.appendChild(contContent);
-        
-        // Iterar Países dentro del Continente
-        Object.keys(grupos[continente]).sort().forEach(pais => {
-            
-            // Contenedor del País
-            const paisDiv = document.createElement("div");
-            paisDiv.className = "ml-4 mb-3 border-l-2 border-indigo-400 pl-3";
-
-            // Header del País (Acordeón 2)
-            const paisHeader = document.createElement("button");
-            paisHeader.className = "w-full text-left font-semibold text-indigo-700 py-2 acordeon-btn";
-            paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">(${grupos[continente][pais].length} proyectos)</span>`;
-            
-            // Contenido Colapsable del País
-            const paisContent = document.createElement("div");
-            paisContent.className = "panel hidden ml-4";
-            
-            paisDiv.appendChild(paisHeader);
-            paisDiv.appendChild(paisContent);
-            
-            // Iterar Proyectos dentro del País
-            grupos[continente][pais].forEach((p) => {
-                const card = document.createElement("div");
-                // La tarjeta individual ya no tiene el shadow y border completo,
-                // ya que está dentro de la estructura de País.
-                card.className = "bg-white rounded shadow-sm mb-2";
-
-                // Estructura del Proyecto (Botón Acordeón)
-                card.innerHTML = `
-                    <button class="w-full text-left px-4 py-3 acordeon-btn flex justify-between items-center">
-                      <div>
-                        <div class="font-semibold">${escapeHtml(p.Nombredelproyecto)}</div>
-                        <div class="text-xs text-gray-700">
-                          <span class="mr-3"> <strong>Sector:</strong> ${escapeHtml(p.Sector)} </span>
-                          <span class="mr-3"> <strong>Estado:</strong> ${p.status} </span>
-                          <span class="mr-3"> <strong>Fechas:</strong> ${p.Fechadeinicio} - ${p.Fechadetermino} </span>
-                        </div>
-                      </div>
-                      <div class="text-sm">+ ver</div>
-                    </button>
-
-                    <div class="panel px-4 py-3 border-t hidden">
-                      <p><strong>Objetivo:</strong> ${escapeHtml(p.Objetivo || "")}</p>
-                      <p class="mt-2"><strong>Notas:</strong> ${escapeHtml(p.notas || "")}</p>
-                      
-                      <div class="mt-3 flex gap-2">
-                        <button data-id="${p.id}" class="btn-edit px-2 py-1 border rounded text-sm">Editar</button>
-                        <button data-id="${p.id}" class="btn-delete px-2 py-1 border rounded text-sm text-red-600">Eliminar</button>
-                      </div>
-                    </div>
-                `;
-
-                paisContent.appendChild(card);
-            });
-            
-            contContent.appendChild(paisDiv);
-        });
-        
-        projectList.appendChild(contDiv);
-    });
-
-    // 4. Adjuntar eventos (funciona para todos los niveles de acordeón)
-    attachAccordionEvents();
-    attachEditDeleteEvents();
+  attachAccordionEvents();
+  attachEditDeleteEvents();
 }
-/* ---------- Accordion ---------- */
 
-function attachAccordionEvents(){
+/* ============================================================
+   🔵 6. ACCORDION
+   ============================================================*/
+function attachAccordionEvents() {
   const accBtns = document.querySelectorAll(".acordeon-btn");
   accBtns.forEach(btn => {
     btn.onclick = () => {
@@ -207,16 +236,17 @@ function attachAccordionEvents(){
   });
 }
 
-/* ---------- Edit / Delete ---------- */
-
-function attachEditDeleteEvents(){
+/* ============================================================
+   🔵 7. EDITAR / ELIMINAR
+   ============================================================*/
+function attachEditDeleteEvents() {
   document.querySelectorAll(".btn-edit").forEach(b => {
     b.onclick = e => openEditModal(e.target.dataset.id);
   });
 
   document.querySelectorAll(".btn-delete").forEach(b => {
     b.onclick = e => {
-      if(confirm("¿Eliminar este proyecto?")){
+      if (confirm("¿Eliminar este proyecto?")) {
         proyectos = proyectos.filter(p => p.id !== e.target.dataset.id);
         saveToStorage();
         renderList();
@@ -225,9 +255,10 @@ function attachEditDeleteEvents(){
   });
 }
 
-/* ---------- Eventos ---------- */
-
-function attachEvents(){
+/* ============================================================
+   🔵 8. EVENTOS
+   ============================================================*/
+function attachEvents() {
   searchInput.addEventListener("input", renderList);
   filterResponsible.addEventListener("change", renderList);
   filterStatus.addEventListener("change", renderList);
@@ -242,9 +273,10 @@ function attachEvents(){
   btnImportJSON.addEventListener("click", importJSON);
 }
 
-/* ---------- Modal ---------- */
-
-function openModalForNew(){
+/* ============================================================
+   🔵 9. MODAL
+   ============================================================*/
+function openModalForNew() {
   modalTitle.textContent = "Nuevo proyecto";
 
   projId.value = "";
@@ -261,9 +293,9 @@ function openModalForNew(){
   showModal();
 }
 
-function openEditModal(id){
+function openEditModal(id) {
   const p = proyectos.find(x => x.id === id);
-  if(!p) return;
+  if (!p) return;
 
   modalTitle.textContent = "Editar proyecto";
 
@@ -281,17 +313,17 @@ function openEditModal(id){
   showModal();
 }
 
-function showModal(){
+function showModal() {
   modal.classList.remove("hidden");
   modal.style.display = "flex";
 }
 
-function closeModal(){
+function closeModal() {
   modal.classList.add("hidden");
   modal.style.display = "none";
 }
 
-function saveProject(ev){
+function saveProject(ev) {
   ev.preventDefault();
 
   const id = projId.value;
@@ -310,7 +342,7 @@ function saveProject(ev){
     createdAt: id ? proyectos.find(p => p.id === id).createdAt : new Date().toISOString()
   };
 
-  if(id){
+  if (id) {
     proyectos = proyectos.map(p => p.id === id ? data : p);
   } else {
     proyectos.unshift(data);
@@ -321,34 +353,34 @@ function saveProject(ev){
   renderList();
 }
 
-/* ---------- Exportar PDF ---------- */
-
-function exportPDF(){
-  alert("Export PDF pendiente de ajuste si quieres que respete la agrupación. Te lo hago si lo deseas ❤️");
+/* ============================================================
+   🔵 10. EXPORTACIONES
+   ============================================================*/
+function exportPDF() {
+  alert("Export PDF pendiente de ajuste si quieres que respete la agrupación ❤️");
 }
 
-/* ---------- Exportar Excel ---------- */
-
-function exportXLS(){
+function exportXLS() {
   alert("Lo ajusto al nuevo formato si lo deseas.");
 }
 
-/* ---------- Importar JSON ---------- */
-
-function importJSON(){
+/* ============================================================
+   🔵 11. IMPORTAR JSON
+   ============================================================*/
+function importJSON() {
   const fileInput = document.createElement("input");
   fileInput.type = "file";
   fileInput.accept = "application/json";
 
   fileInput.onchange = e => {
     const file = e.target.files[0];
-    if(!file) return;
+    if (!file) return;
 
     const reader = new FileReader();
     reader.onload = ev => {
       try {
         const parsed = JSON.parse(ev.target.result);
-        if(Array.isArray(parsed)){
+        if (Array.isArray(parsed)) {
           proyectos = parsed;
           saveToStorage();
           renderList();
@@ -356,8 +388,7 @@ function importJSON(){
         } else {
           alert("JSON inválido.");
         }
-      } catch(err){
-      }
+      } catch (err) {}
     };
 
     reader.readAsText(file);
@@ -366,11 +397,12 @@ function importJSON(){
   fileInput.click();
 }
 
-/* ---------- Populate sector ---------- */
-
-function populateResponsibles(){
+/* ============================================================
+   🔵 12. POPULAR SECTOR
+   ============================================================*/
+function populateResponsibles() {
   const sectores = Array.from(new Set(proyectos.map(p => p.Sector))).filter(x => x);
-  
+
   filterResponsible.innerHTML = `<option value="">Filtrar por Sector</option>`;
 
   sectores.forEach(s => {
@@ -380,5 +412,6 @@ function populateResponsibles(){
     filterResponsible.appendChild(opt);
   });
 }
+
 
 
