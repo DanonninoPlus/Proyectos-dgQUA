@@ -10,7 +10,35 @@
     "status": "Finalizado",
     "Objetivo": "Fortalecer capacidades educativas.",
     "Notas": "Reunión mensual pendiente."
+  },
+
+    {
+    "id": "p2",
+    "Nombredelproyecto": "Programa México-EUA",
+    "Sector": "Educación",
+    "Pais": "EUA",
+    "Continente": "América del Norte",
+    "Fechadeinicio": "2024-01-01",
+    "Fechadetermino": "2024-12-31",
+    "status": "Ejecución",
+    "Objetivo": "Cooperación educativa.",
+    "notas": "Revisión en curso",
+    "createdAt": "2024-02-03T10:15:00Z"
+  },
+    {
+    "id": "p3",
+    "Nombredelproyecto": "Programa México-Asia",
+    "Sector": "Clima",
+    "Pais": "Japón",
+    "Continente": "Asia",
+    "Fechadeinicio": "2024-01-01",
+    "Fechadetermino": "2024-12-31",
+    "status": "Ejecución",
+    "Objetivo": "Cooperación educativa.",
+    "notas": "Revisión en curso",
+    "createdAt": "2024-02-03T10:15:00Z"
   }
 ]
+
 
 
