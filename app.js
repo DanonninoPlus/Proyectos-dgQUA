@@ -356,9 +356,59 @@ function saveProject(ev) {
 /* ============================================================
    🔵 10. EXPORTACIONES
    ============================================================*/
+
+                            /* EXPORTACIÓN EN PDF */
 function exportPDF() {
-  alert("Export PDF pendiente de ajuste si quieres que respete la agrupación ❤️");
+  // 1. Generar HTML agrupado (lo mismo que en tu pantalla)
+  let html = `<h1 style="font-family:Arial; margin-bottom:20px;">Listado de Proyectos</h1>`;
+
+  const grupos = {};
+  proyectos.forEach(p => {
+    const c = p.Continente || "Sin Continente";
+    const pais = p.Pais || "Sin País";
+
+    if (!grupos[c]) grupos[c] = {};
+    if (!grupos[c][pais]) grupos[c][pais] = [];
+    grupos[c][pais].push(p);
+  });
+
+  Object.keys(grupos).sort().forEach(cont => {
+    html += `<h2 style="background:#eee;padding:8px;">🌍 ${cont}</h2>`;
+
+    Object.keys(grupos[cont]).sort().forEach(pais => {
+      html += `<h3 style="margin-left:10px;color:#333;">📍 ${pais}</h3>`;
+
+      grupos[cont][pais].forEach(p => {
+        html += `
+          <div style="margin-left:20px;margin-bottom:10px;padding:8px;border:1px solid #ccc;border-radius:6px;">
+            <strong>${p.Nombredelproyecto}</strong><br>
+            <small><b>Sector:</b> ${p.Sector}</small><br>
+            <small><b>Estatus:</b> ${p.status}</small><br>
+            <small><b>Fechas:</b> ${p.Fechadeinicio} - ${p.Fechadetermino}</small><br>
+            <small><b>Objetivo:</b> ${p.Objetivo || ""}</small><br>
+            <small><b>Notas:</b> ${p.notas || ""}</small>
+          </div>
+        `;
+      });
+    });
+  });
+
+  // Ponemos el HTML en printArea temporalmente
+  printArea.innerHTML = html;
+
+  // Configuración PDF
+  const opt = {
+    margin: 0.5,
+    filename: "Proyectos_DG.pdf",
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+  };
+
+  // Descargar PDF
+  html2pdf().set(opt).from(printArea).save();
 }
+
+                           /* EXPORTACIÓN EN EXCEL */
 
 function exportXLS() {
   // Crear una copia limpia
@@ -436,6 +486,7 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
 
 
 
