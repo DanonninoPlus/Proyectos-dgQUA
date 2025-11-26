@@ -47,7 +47,7 @@ let proyectos = [];
 async function loadFromJsonUrl() {
   try {
 
-    const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dg/refs/heads/main/Proyectos.json?_sm_au_=i3NZWVsWVZVMDFnsMqfLjK3V7p36F";
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dg/main/Proyectos.json";
 
     const res = await fetch(url);
     if (!res.ok) throw new Error("No se pudo cargar el JSON externo");
