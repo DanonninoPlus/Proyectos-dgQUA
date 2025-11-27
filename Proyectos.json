@@ -67,7 +67,7 @@
 {
     "id": "p6",
     "Nombredelproyecto": "Intercambio de habilidades biotecnológicas para la conservación a mediano y largo plazo de papa y ajo",
-    "Sector": "Agropecuaria, Silvicultura, Pesca y Caza",
+    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
     "Pais": "Argentina",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2001",
@@ -79,7 +79,7 @@
 {
     "id": "p7",
     "Nombredelproyecto": "Fortalecimiento de capacidades técnicas en los análisis y procesos de tratamiento de aguas residuales y lodos generados",
-    "Sector": "Protección ambiental",
+    "Sector": "Protección Ambiental",
     "Pais": "Bolivia",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2024",
@@ -181,6 +181,7 @@
   }
   
 ]
+
 
 
 
