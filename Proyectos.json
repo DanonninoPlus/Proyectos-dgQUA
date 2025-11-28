@@ -321,9 +321,310 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
+  },
+
+    {
+    "id": "p1_Chile",
+    "Nombredelproyecto": "Restauración y Conservación del Mural Tupahue",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Recreación, Cultura y Otras Manifestaciones",
+    "Fechadeinicio": "2018",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p2_Chile",
+    "Nombredelproyecto": "Estrategia para promover e incentivar la compra y consumo de frutas y verduras en población vulnerable de Chile y México: Estudio piloto",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Salud, Protección social",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p3_Chile",
+    "Nombredelproyecto": "Valorización de los ecosistemas estuarinos de Chile y México a través de infraestructura habilitante y recursos educativos: una vía para el desarrollo local sostenible y resiliente al cambio climático.",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Protección Ambiental",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p4_Chile",
+    "Nombredelproyecto": "Impulso de los derechos y participación de las mujeres, con especial énfasis en una perspectiva feminista de la cooperación",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Protección social, Género, Política de Gobierno",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p5_Chile",
+    "Nombredelproyecto": "25 aniversario de la suscripción del TDLC Chile - México",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Asuntos Económicos, Comerciales y Laborales, Política de Gobierno, Género",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p6_Chile",
+    "Nombredelproyecto": "Manejo integrado de mosquitos vectores de arbovirosis a través de la vigilancia entomo-virológica en México y Chile, un abordaje comunitario, con perspectiva de género y pertinencia cultural",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Salud, Protección social",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p7_Chile",
+    "Nombredelproyecto": "Fortalecimiento de la vigilancia genómica de Acinetobacter baumannii en Latinoamérica a través del establecimiento de un eje de colaboración Chile-México",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Salud, Protección social",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p8_Chile",
+    "Nombredelproyecto": "Modelamiento matemático de procesos epidémicos incorporando estructura poblacional, regional y grupos de riesgo",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Salud, Protección social",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p9_Chile",
+    "Nombredelproyecto": "Liderazgo y participación política de mujeres, jóvenes y niñas indígenas para la construcción de paz",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Protección social, Género",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p10_Chile",
+    "Nombredelproyecto": "Desarrollo de una plataforma tecnológica de código abierto orientada a la integración de diversas fuentes de información para mejorar el aprovechamiento de los productos de las oficinas de estadística",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Ciencia Tecnología e Innovación, Política de Gobierno, Otros Servicios Generales de Gobierno",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p11_Chile",
+    "Nombredelproyecto": "Estrategia de formación de recursos humanos en migración y salud, México - Chile: del diseño a la implementación de políticas y prácticas de salud en migración",
+    "Pais": "Chile",
+    "Sector": "Protección social, Migración",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p12_Chile",
+    "Nombredelproyecto": "Plan de acción y colaboración Chile-México, para abordar el decenio internacional de las Lenguas Indígenas 2022-2032. Sistematización de experiencias territoriales de presentación y revitalización de lenguas indígenas",
+    "Pais": "Chile",
+    "Sector": "Educación",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p13_Chile",
+    "Nombredelproyecto": "Fortalecimiento e innovación de los sistemas de compra pública de Nuevo León, Puebla y Chile",
+    "Pais": "Chile",
+    "Sector": "Asuntos Económicos, Comerciales y Laborales",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p14_Chile",
+    "Nombredelproyecto": "Modelo de desarrollo para fortalecer las capacidades sociales y políticas de las mujeres en zonas rurales y semiurbanas en Chile y México",
+    "Pais": "Chile",
+    "Sector": "Política de Gobierno",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p15_Chile",
+    "Nombredelproyecto": "Alianza estratégica para el fortalecimiento de las capacidades de vigilancia de micotoxinas en Chile y México: Una mirada hacia la salud pública y seguridad alimentaria",
+    "Pais": "Chile",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p16_Chile",
+    "Nombredelproyecto": "Tecnologías nucleares y biotecnológicas para mejorar la sustentabilidad de ecosistemas forestales afectados por el cambio climático en México y Chile",
+    "Pais": "Chile",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p17_Chile",
+    "Nombredelproyecto": "Intercambio de tecnología para el control de vectores y nematodos gastrointestinales",
+    "Pais": "Chile",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p18_Chile",
+    "Nombredelproyecto": "Salud, embarazo y género. Avanzando hacia servicios de salud amigables para adolescentes en el marco de la implementación del Plan Estratégico para la Prevención del Embarazo en Adolescentes de Centroamérica y República Dominicana",
+    "Pais": "Chile",
+    "Sector": "Salud, Protección social",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p19_Chile",
+    "Nombredelproyecto": "El Fondo que Queremos: Fortalecimiento Fondo México - Chile",
+    "Pais": "Chile",
+    "Sector": "Política de Gobierno",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p20_Chile",
+    "Nombredelproyecto": "Preparación, Respuestas y Aprendizajes Frente a la Pandemia: Una Mirada Comparada Chile-México a Través de las Experiencias Territoriales",
+    "Pais": "Chile",
+    "Sector": "Salud, Protección social",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p21_Chile",
+    "Nombredelproyecto": "Optimizando la atención, protección y reintegración de poblaciones en movilidad humana en El Salvador, Guatemala y Honduras",
+    "Pais": "Chile",
+    "Sector": "Protección social",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p22_Chile",
+    "Nombredelproyecto": "Fortalecimiento de capacidades para el co-manejo pesquero y acuícola en pesquerías de pequeña escala como un aporte a las políticas públicas de México y Chile",
+    "Pais": "Chile",
+    "Sector": "Protección Ambiental, Agropecuario, Silvicultura, Pesca",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p23_Chile",
+    "Nombredelproyecto": "Apoyar al empoderamiento de grupos de mujeres de la Agricultura Familiar Campesina (AFC), apicultura, pesca artesanal y procesamiento primario de alimentos en la implementación de estándares de inocuidad alimentaria como un factor en su desarrollo económico y social",
+    "Pais": "Chile",
+    "Sector": "Protección Ambiental, Agropecuario, Silvicultura, Pesca",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p24_Chile",
+    "Nombredelproyecto": "Efectos del Cambio Climático en los caudales de ríos y su impacto en los ecosistemas costeros y en la socioeconomía de las comunidades de pescadores de la costa de Nayarit-México y la región del Bío Bío-Chile",
+    "Pais": "Chile",
+    "Sector": "Protección Ambiental, Agropecuario, Silvicultura, Pesca",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
   }
+
+
   
 ]
+
 
 
 
