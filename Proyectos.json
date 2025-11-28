@@ -1,6 +1,6 @@
 [
   {
-    "id": "p1",
+    "id": "p1_Argentina",
     "Nombredelproyecto": "Fortalecimiento de las capacidades para la implementación del Acuerdo de Escazú en ambos países",
     "Continente": "Sudamérica",
     "Pais": "Argentina",
@@ -13,7 +13,7 @@
   },
 
     {
-    "id": "p2",
+    "id": "p2_Argentina",
     "Nombredelproyecto": "Desarrollo de un Sistema Solar Fotovoltaico-Hidrógeno",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
     "Pais": "Argentina",
@@ -26,7 +26,7 @@
   },
 
     {
-    "id": "p3",
+    "id": "p3_Argentina",
     "Nombredelproyecto": "Desarrollo de Capacidades de Argentina y México en el manejo del riesgo de sequías en la gestión integral de los recursos hídricos",
     "Sector": "Protección Ambiental",
     "Pais": "Argentina",
@@ -39,7 +39,7 @@
   },
 
 {
-    "id": "p4",
+    "id": "p4_Argentina",
     "Nombredelproyecto": "Fortalecimiento de capacidades en mediciones industriales y metrología legal",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
     "Pais": "Argentina",
@@ -52,7 +52,7 @@
   },
 
 {
-    "id": "p5",
+    "id": "p5_Argentina",
     "Nombredelproyecto": "Economía circular: Biocombustibles Sólidos para aplicaciones industriales y residenciales",
     "Sector": "Combustibles y Energía, Ciencia, Tecnología e Innovación",
     "Pais": "Argentina",
@@ -65,7 +65,7 @@
   },
 
 {
-    "id": "p6",
+    "id": "p6_Argentina",
     "Nombredelproyecto": "Intercambio de habilidades biotecnológicas para la conservación a mediano y largo plazo de papa y ajo",
     "Sector": "Agropecuaria, Silvicultura, Pesca y Caza",
     "Pais": "Argentina",
@@ -77,7 +77,7 @@
     "notas": "Pendiente"
   },
 {
-    "id": "p7",
+    "id": "p1_Bolivia",
     "Nombredelproyecto": "Fortalecimiento de capacidades técnicas en los análisis y procesos de tratamiento de aguas residuales y lodos generados",
     "Sector": "Protección ambiental",
     "Pais": "Bolivia",
@@ -90,7 +90,7 @@
   },
 
 {
-    "id": "p8",
+    "id": "p2_Bolivia",
     "Nombredelproyecto": "Fortalecimiento de capacidades técnicas para el manejo de estrategias que promueven la inocuidad en la protección primaria de agroalimentos en productores comunitarios de Bolivia",
     "Sector": "Agropecuario",
     "Pais": "Bolivia",
@@ -103,7 +103,7 @@
   },
 
 {
-    "id": "p9",
+    "id": "p3_Bolivia",
     "Nombredelproyecto": "Intercambio de experiencias y buenas prácticas para la producción y exportación de banano, café y piña en Bolivia",
     "Sector": "Agropecuario",
     "Pais": "Bolivia",
@@ -116,7 +116,7 @@
   },
 
 {
-    "id": "p10",
+    "id": "p4_Bolivia",
     "Nombredelproyecto": "Transferencia de tecnología para el desarrollo de capacidades y alternativas en arroz",
     "Sector": "Agropecuario",
     "Pais": "Bolivia",
@@ -129,7 +129,7 @@
   },
 
 {
-    "id": "p11",
+    "id": "p5_Bolivia",
     "Nombredelproyecto": "Intercambio técnico y operativo sobre Medicina Tradicional y complementaria, interculturalidad y atención a la salud de los pueblos indígenas con Bolivia",
     "Sector": "Salud",
     "Pais": "Bolivia",
@@ -142,7 +142,7 @@
   },
 
 {
-    "id": "p12",
+    "id": "p6_Bolivia",
     "Nombredelproyecto": "Transferencia de tecnología para el desarrollo de capacidades y alternativas de producción de maíz",
     "Sector": "Agropecuario",
     "Pais": "Bolivia",
@@ -155,7 +155,7 @@
   },
 
 {
-    "id": "p13",
+    "id": "p7_Bolivia",
     "Nombredelproyecto": "Aprovechamiento sostenible del Litio: Fortalecimiento de la competitividad y el desarrollo energético",
     "Sector": "Ciencia Tecnología e Innovación",
     "Pais": "Bolivia",
@@ -168,7 +168,7 @@
   },
 
 {
-    "id": "p14",
+    "id": "p8_Bolivia",
     "Nombredelproyecto": "Implementación de Horizonte de Vida de Vivir Bien en Bolivia y México desde las políticas públicas",
     "Sector": "Protección social/ Pueblos Indígenas",
     "Pais": "Bolivia",
@@ -181,7 +181,7 @@
   },
 
 {
-    "id": "p15",
+    "id": "p1_Brasil",
     "Nombredelproyecto": "Gestión del Programa de Mosaca de la Fruta en el Estado de Río Grande del Norte y Vale de San Francisco",
     "Sector": "Agropecuario",
     "Pais": "Brasil",
@@ -194,7 +194,7 @@
   },
 
 {
-    "id": "p16",
+    "id": "p2_Brasil",
     "Nombredelproyecto": "Investigación y transferencia de tecnología para la producción sostenible de Higuerilla (Ricinus communis L.)",
     "Sector": "Agropecuario",
     "Pais": "Brasil",
@@ -207,7 +207,7 @@
   },
 
 {
-    "id": "p17",
+    "id": "p3_Brasil",
     "Nombredelproyecto": "Inclusión digital en poblaciones vulnerables",
     "Sector": "Ciencia Tecnología e Innovación",
     "Pais": "Brasil",
@@ -220,7 +220,7 @@
   },
 
 {
-    "id": "p18",
+    "id": "p4_Brasil",
     "Nombredelproyecto": "Promoción de igualdad de género desde los cuidados y combate a la violencia",
     "Sector": "Género",
     "Pais": "Brasil",
@@ -233,7 +233,7 @@
   },
 
 {
-    "id": "p19",
+    "id": "p5_Brasil",
     "Nombredelproyecto": "Emergencias en productos peligrosos y búsqueda y rescate en estructuras colapsadas",
     "Sector": "Otros Servicios Generales de Gobierno",
     "Pais": "Brasil",
@@ -246,7 +246,7 @@
   },
 
 {
-    "id": "p20",
+    "id": "p6_Brasil",
     "Nombredelproyecto": "Intercambio de experiencia en el ámbito del programa Artemis",
     "Sector": "Ciencia Tecnología e Innovación",
     "Pais": "Brasil",
@@ -259,6 +259,7 @@
   }
   
 ]
+
 
 
 
