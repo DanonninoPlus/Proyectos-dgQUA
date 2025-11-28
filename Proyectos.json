@@ -712,8 +712,152 @@
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   }
+
+  {
+    "id": "p1_Uruguay",
+    "Nombredelproyecto": "Cooperación bilateral para el desarrollo de modelos de toma de decisiones para el área agrícola",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2025",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p2_Uruguay",
+    "Nombredelproyecto": "Desarrollo de inoculantes microbianos basado en microorganismos promotores del crecimiento vegetal, como alternativa sustentable al uso de agroquimicos",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p3_Uruguay",
+    "Nombredelproyecto": "Fortalecimiento e intercambio de capaciudades para avanzar en la protección de enfermedades neurodegenerativas (COLABORACIÓN TRIANGULAR CON CHILE)",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2025",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p4_Uruguay",
+    "Nombredelproyecto": "Desarrollo sostenible del Enoturismo y cedanas de valor complementarias, mediantes sinergias e intercambios, conocieminto y buenas practicas entre Uruguay y México",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p5_Uruguay",
+    "Nombredelproyecto": "Sexualidad sin fakes, en accion por los derechos sexuales y reproductivos (SSyR)",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Protección social, Género",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p6_Uruguay",
+    "Nombredelproyecto": "Fortalecimiento de capacidades cientificas y tecnologicas en el sector espacial de Uruguay y México para el desarrollo de plataformas satelitales de Observación de la Tierra para el monitoreo de los efectos del cambio climatico en zonas forestales y agrícolas",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p7_Uruguay",
+    "Nombredelproyecto": "Intercambio de capacidades cientifico-tecnologicas para la mitigación del cambio climatico y el desarrollo de sistemas híbridos energéticos",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p8_Uruguay",
+    "Nombredelproyecto": "Generación de dinámicas ecosistémicas entre México y Uruguay para I+D+i y agregado de valor en cadenas productivas locales con énfasis en la problemática ambiental, economía circular y desarrollo sustentable",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p9_Uruguay",
+    "Nombredelproyecto": "Programa de atención a personas adultas mayores víctimas de violencia en América Latina",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Protección social, Género",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2025",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p10_Uruguay",
+    "Nombredelproyecto": "Bases para una gestión integrada de la seguridad vial",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Política de Gobierno",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2025",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p11_Uruguay",
+    "Nombredelproyecto": "Determinación de las concentraciones de flúor sistémico con el uso de biomarcadores de exposición a fluoruros (orina, uñas y cabello) en población mexicana y uruguaya en zonas geográficas de riesgo",
+    "Continente": "Sudamérica",
+    "Pais": "Uruguay",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2022",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  }
   
 ]
+
 
 
 
