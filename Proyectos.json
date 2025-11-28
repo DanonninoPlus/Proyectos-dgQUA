@@ -15,7 +15,7 @@
     {
     "id": "p2",
     "Nombredelproyecto": "Desarrollo de un Sistema Solar Fotovoltaico-Hidrógeno",
-    "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
+    "Sector": "Combustibles Y Energía, Ciencia, Tecnología E Innovación",
     "Pais": "Argentina",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2021",
@@ -41,7 +41,7 @@
 {
     "id": "p4",
     "Nombredelproyecto": "Fortalecimiento de capacidades en mediciones industriales y metrología legal",
-    "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
+    "Sector": "Combustibles Y Energía, Ciencia, Tecnología E Innovación",
     "Pais": "Argentina",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2021",
@@ -54,7 +54,7 @@
 {
     "id": "p5",
     "Nombredelproyecto": "Economía circular: Biocombustibles Sólidos para aplicaciones industriales y residenciales",
-    "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
+    "Sector": "Combustibles Y Energía, Ciencia, Tecnología E Innovación",
     "Pais": "Argentina",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2021",
@@ -67,7 +67,7 @@
 {
     "id": "p6",
     "Nombredelproyecto": "Intercambio de habilidades biotecnológicas para la conservación a mediano y largo plazo de papa y ajo",
-    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
+    "Sector": "Agropecuaria, Silvicultura, Pesca Y Caza",
     "Pais": "Argentina",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2001",
@@ -79,7 +79,7 @@
 {
     "id": "p7",
     "Nombredelproyecto": "Fortalecimiento de capacidades técnicas en los análisis y procesos de tratamiento de aguas residuales y lodos generados",
-    "Sector": "Protección Ambiental",
+    "Sector": "Protección ambiental",
     "Pais": "Bolivia",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2024",
@@ -157,7 +157,7 @@
 {
     "id": "p13",
     "Nombredelproyecto": "Aprovechamiento sostenible del Litio: Fortalecimiento de la competitividad y el desarrollo energético",
-    "Sector": "Ciencia, Tecnología e Innovación",
+    "Sector": "Ciencia Tecnología e Innovación",
     "Pais": "Bolivia",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2024",
@@ -170,7 +170,7 @@
 {
     "id": "p14",
     "Nombredelproyecto": "Implementación de Horizonte de Vida de Vivir Bien en Bolivia y México desde las políticas públicas",
-    "Sector": "Protección social / Pueblos Indígenas",
+    "Sector": "Protección social/ Pueblos Indígenas",
     "Pais": "Bolivia",
     "Continente": "Sudamérica",
     "Fechadeinicio": "2024",
@@ -178,9 +178,89 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
-  }
+  },
+
+{
+    "id": "p15",
+    "Nombredelproyecto": "Gestión del Programa de Mosaca de la Fruta en el Estado de Río Grande del Norte y Vale de San Francisco",
+    "Sector": "Agropecuario",
+    "Pais": "Brasil",
+    "Continente": "Sudamérica",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+{
+    "id": "p16",
+    "Nombredelproyecto": "Investigación y transferencia de tecnología para la producción sostenible de Higuerilla (Ricinus communis L.)",
+    "Sector": "Agropecuario",
+    "Pais": "Brasil",
+    "Continente": "Sudamérica",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+{
+    "id": "p17",
+    "Nombredelproyecto": "Inclusión digital en poblaciones vulnerables",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Pais": "Brasil",
+    "Continente": "Sudamérica",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+{
+    "id": "p18",
+    "Nombredelproyecto": "Promoción de igualdad de género desde los cuidados y combate a la violencia",
+    "Sector": "Género",
+    "Pais": "Brasil",
+    "Continente": "Sudamérica",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+{
+    "id": "p19",
+    "Nombredelproyecto": "Emergencias en productos peligrosos y búsqueda y rescate en estructuras colapsadas",
+    "Sector": "Otros Servicios Generales de Gobierno",
+    "Pais": "Brasil",
+    "Continente": "Sudamérica",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+{
+    "id": "p20",
+    "Nombredelproyecto": "Intercambio de experiencia en el ámbito del programa Artemis",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Pais": "Brasil",
+    "Continente": "Sudamérica",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
   
 ]
+
+
 
 
 
