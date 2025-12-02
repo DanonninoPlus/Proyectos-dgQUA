@@ -1,6 +1,4 @@
 [
-
-// --------------------------------------------- ARGENTINA
   {
     "id": "p1_Argentina",
     "Nombredelproyecto": "Fortalecimiento de las capacidades para la implementación del Acuerdo de Escazú en ambos países",
@@ -79,7 +77,6 @@
     "notas": "Pendiente"
   },
 
-// --------------------------------------------- BOLIVIA  
 {
     "id": "p1_Bolivia",
     "Nombredelproyecto": "Fortalecimiento de capacidades técnicas en los análisis y procesos de tratamiento de aguas residuales y lodos generados",
@@ -184,7 +181,6 @@
     "notas": "Pendiente"
   },
 
-// --------------------------------------------- BRASIL  
 {
     "id": "p1_Brasil",
     "Nombredelproyecto": "Gestión del Programa de Mosaca de la Fruta en el Estado de Río Grande del Norte y Vale de San Francisco",
@@ -263,7 +259,6 @@
     "notas": "Pendiente"
   },
 
-  // --------------------------------------------- COLOMBIA
   {
     "id": "p1_Colombia",
     "Nombredelproyecto": "Nuevos Enfoques y Estrategias en materia de Acuicultura e Impulso Sociocultural hacia el Turismo Sostenible",
@@ -328,8 +323,7 @@
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
-
-  // --------------------------------------------- CHILE
+  
     {
     "id": "p1_Chile",
     "Nombredelproyecto": "Restauración y Conservación del Mural Tupahue",
@@ -642,7 +636,7 @@
     "notas": "Pendiente"
   },
 
-  // --------------------------------------------- PARAGUAY
+
   
   {
     "id": "p1_Paraguay",
@@ -722,7 +716,6 @@
     "notas": "Pendiente"
   },
 
-  // --------------------------------------------- URUGUAY
   {
     "id": "p1_Uruguay",
     "Nombredelproyecto": "Cooperación bilateral para el desarrollo de modelos de toma de decisiones para el área agrícola",
@@ -864,10 +857,7 @@
     "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
-  }
-
-
-// --------------------------------------------- ALIANZA DEL PACÍFICO
+  },
 
   {
     "id": "p1_Alianza_del_Pacífico",
@@ -1080,6 +1070,7 @@
 
   
 ]
+
 
 
 
