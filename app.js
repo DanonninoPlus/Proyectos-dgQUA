@@ -158,13 +158,27 @@ function renderList() {
     return;
   }
 
-  filtered.forEach(p => {
-    const c = p.Continente || 'Sin Continente';
-    const pais = p.Pais || 'Sin País';
-    if (!grupos[c]) grupos[c] = {};
+filtered.forEach(p => {
+  const c = p.Continente || "Sin Continente";
+  const pais = p.Pais || "Sin País";
+
+  if (!grupos[c]) grupos[c] = {};
+
+  // 📌 SOLO para Asia → Japón habilitamos subgrupos
+  if (c === "Asia" && pais === "Japón") {
+    const subtipo = p["Tipo de proyecto"] || "Sin subtipo";
+
+    if (!grupos[c][pais]) grupos[c][pais] = {};
+    if (!grupos[c][pais][subtipo]) grupos[c][pais][subtipo] = [];
+
+    grupos[c][pais][subtipo].push(p);
+  } else {
+    // países normales
     if (!grupos[c][pais]) grupos[c][pais] = [];
     grupos[c][pais].push(p);
-  });
+  }
+});
+
 
   projectList.innerHTML = "";
 
@@ -188,7 +202,17 @@ function renderList() {
 
       const paisHeader = document.createElement("button");
       paisHeader.className = "w-full text-left font-semibold text-indigo-700 py-2 acordeon-btn";
-      paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">(${grupos[continente][pais].length} proyectos)</span>`;
+      let totalProjects = 0;
+const dataPais = grupos[continente][pais];
+
+if (continente === "Asia" && pais === "Japón" && typeof dataPais === "object" && !Array.isArray(dataPais)) {
+  totalProjects = Object.values(dataPais).reduce((sum, arr) => sum + arr.length, 0);
+} else {
+  totalProjects = dataPais.length;
+}
+
+paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">(${totalProjects} proyectos)</span>`;
+
 
       const paisContent = document.createElement("div");
       paisContent.className = "panel hidden ml-4";
@@ -196,7 +220,61 @@ function renderList() {
       paisDiv.appendChild(paisHeader);
       paisDiv.appendChild(paisContent);
 
-      grupos[continente][pais].forEach(p => {
+
+// 🟣 Caso especial: Japón con subniveles
+if (continente === "Asia" && pais === "Japón" && typeof dataPais === "object" && !Array.isArray(dataPais)) {
+
+    Object.keys(dataPais).sort().forEach(sub => {
+        const subDiv = document.createElement("div");
+        subDiv.className = "ml-6 mb-2 border-l-2 border-green-400 pl-3";
+
+        const subHeader = document.createElement("button");
+        subHeader.className = "w-full text-left font-semibold text-green-700 py-2 acordeon-btn";
+        subHeader.innerHTML = `🟩 ${sub} <span class="text-sm text-gray-500 ml-2">(${dataPais[sub].length} proyectos)</span>`;
+
+        const subContent = document.createElement("div");
+        subContent.className = "panel hidden ml-4";
+
+        subDiv.appendChild(subHeader);
+        subDiv.appendChild(subContent);
+
+        dataPais[sub].forEach(p => {
+            const card = document.createElement("div");
+            card.className = "bg-white rounded shadow-sm mb-2";
+
+            card.innerHTML = `
+              <button class="w-full text-left px-4 py-3 acordeon-btn flex justify-between items-center">
+                <div>
+                  <div class="font-semibold">${escapeHtml(p.Nombredelproyecto)}</div>
+                  <div class="text-xs text-gray-700">
+                    <strong>Sector:</strong> ${escapeHtml(p.Sector)} —
+                    <strong>Estado:</strong> ${p.status}
+                  </div>
+                </div>
+                <div class="text-sm">+ ver</div>
+              </button>
+
+              <div class="panel px-4 py-3 border-t hidden">
+                <p><strong>Objetivo:</strong> ${escapeHtml(p.Objetivo || "")}</p>
+                <p class="mt-2"><strong>Notas:</strong> ${escapeHtml(p.notas || "")}</p>
+
+                <div class="mt-3 flex gap-2">
+                  <button data-id="${p.id}" class="btn-edit px-2 py-1 border rounded text-sm">Editar</button>
+                  <button data-id="${p.id}" class="btn-delete px-2 py-1 border rounded text-sm text-red-600">Eliminar</button>
+                </div>
+              </div>
+            `;
+
+            subContent.appendChild(card);
+        });
+
+        paisContent.appendChild(subDiv);
+    });
+
+} else {
+
+    // 🌍 País normal (como lo tienes actualmente)
+    dataPais.forEach(p => {
         const card = document.createElement("div");
         card.className = "bg-white rounded shadow-sm mb-2";
 
@@ -205,9 +283,8 @@ function renderList() {
             <div>
               <div class="font-semibold">${escapeHtml(p.Nombredelproyecto)}</div>
               <div class="text-xs text-gray-700">
-                <span class="mr-3"><strong>Sector:</strong> ${escapeHtml(p.Sector)}</span>
-                <span class="mr-3"><strong>Estado:</strong> ${p.status}</span>
-                <span class="mr-3"><strong>Fechas:</strong> ${p.Fechadeinicio} - ${p.Fechadetermino}</span>
+                <strong>Sector:</strong> ${escapeHtml(p.Sector)} —
+                <strong>Estado:</strong> ${p.status}
               </div>
             </div>
             <div class="text-sm">+ ver</div>
@@ -216,17 +293,16 @@ function renderList() {
           <div class="panel px-4 py-3 border-t hidden">
             <p><strong>Objetivo:</strong> ${escapeHtml(p.Objetivo || "")}</p>
             <p class="mt-2"><strong>Notas:</strong> ${escapeHtml(p.notas || "")}</p>
-            
+
             <div class="mt-3 flex gap-2">
               <button data-id="${p.id}" class="btn-edit px-2 py-1 border rounded text-sm">Editar</button>
               <button data-id="${p.id}" class="btn-delete px-2 py-1 border rounded text-sm text-red-600">Eliminar</button>
             </div>
           </div>
         `;
-
         paisContent.appendChild(card);
-      });
-
+    });
+}
       contContent.appendChild(paisDiv);
     });
 
@@ -515,6 +591,7 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
 
 
 
