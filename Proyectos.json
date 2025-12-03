@@ -1244,17 +1244,32 @@
      "Nombredelproyecto": "Diplomado internacional en agroecosistemas diversificados sustentables de frutales tropicales asociados con granos y hortalizas para productores a pequeña escala",
     "Continente": "Asia",
     "Pais": "Japón",
-    "Tipo de proyecto": "Trilaterall",
+    "Tipo de proyecto": "Trilateral (JMPP2030)",
     "Sector": "Agricultura",
     "Fechadeinicio": "2024",
     "Fechadetermino": "2025",
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
-  }
+  },
 
-  
+    {
+    "id": "p2_Japón_trilateral",
+     "Nombredelproyecto": "Asesoría técnica en materia de agricultura tropical",
+    "Continente": "Asia",
+    "Pais": "Japón",
+    "Tipo de proyecto": "Trilateral (JMPP2030)",
+    "Sector": "Agricultura",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+    
 ]
+
 
 
 
