@@ -1066,10 +1066,115 @@
     "status": "Planeación",
     "Objetivo": "Plan de Trabajo 2024 del Fondo AP",
     "notas": "Pendiente"
+  },
+
+    {
+    "id": "p1_Canada",
+     "Nombredelproyecto": "Producción de hidrolizados de proteína de frijol común con potencial hipoglucemiante por medio de tecnologías de membrana",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Salud",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p2_Canada",
+     "Nombredelproyecto": "Prevenir los problemas de salud mental asociados al trabajo y al mejoramiento de la productividad",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Salud",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p3_Canada",
+     "Nombredelproyecto": "Materiales Multifuncionales para Aplicación en Energía",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p4_Canada",
+     "Nombredelproyecto": "Investigaciones Raman in situ para mejorar la resistencia a la fatiga de sistemas de almacenamiento de energía de iones de litio",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p5_Canada",
+     "Nombredelproyecto": "Programa de creación de capacidades y transferencia tecnológica para la sostenibilidad",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p6_Canada",
+     "Nombredelproyecto": "Modelado y simulación de un lecho fluidizado calentado por microondas para la síntesis de amoniaco",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p7_Canada",
+     "Nombredelproyecto": "Amplificación de la Fluorescencia de los Puntos Cuánticos de Carbono mediante Resonancia Plasmónica",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p8_Canada",
+     "Nombredelproyecto": "Funcionalización de tintas conductoras para electrónica impresa",
+    "Continente": "América del Norte",
+    "Pais": "Canadá",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2023",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
   }
 
   
 ]
+
 
 
 
