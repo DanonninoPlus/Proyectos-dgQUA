@@ -1223,9 +1223,39 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
+  },
+
+    {
+    "id": "p2_Japón",
+     "Nombredelproyecto": "Proyecto para el Mejoramiento del Nivel de Servicio de Aguas en la Ciudad de México",
+    "Continente": "Asia",
+    "Pais": "Japón",
+    "Tipo de proyecto": "Bilateral",
+    "Sector": "Recursos Hídricos",
+    "Fechadeinicio": "2025",
+    "Fechadetermino": "2028",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p1_Japón_trilateral",
+     "Nombredelproyecto": "Diplomado internacional en agroecosistemas diversificados sustentables de frutales tropicales asociados con granos y hortalizas para productores a pequeña escala",
+    "Continente": "Asia",
+    "Pais": "Japón",
+    "Tipo de proyecto": "Trilaterall",
+    "Sector": "Agricultura",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
   }
+
   
 ]
+
 
 
 
