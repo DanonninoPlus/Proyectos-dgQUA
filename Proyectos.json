@@ -1170,10 +1170,49 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
-  }
+  },
 
+    {
+    "id": "p1_EUA",
+     "Nombredelproyecto": "Integrando educación científica, divulgación y participación comunitaria estudiando el Golfo de California en la embarcación histórica Western Flyer",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2025",
+    "Fechadetermino": "2025",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p2_EUA",
+     "Nombredelproyecto": "ESCUCHE GoMex - Investigaciones a largo plazo sobre las tendencias del paisaje sonoro, la ecología de los cetáceos y el ruido en el Golfo de México",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2025",
+    "Fechadetermino": "2025",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p3_EUA",
+     "Nombredelproyecto": "Salvando el hábitat crítico de hibernación de la mariposa Monarca migratoria en el centro de México",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Sector": "Protección Ambiental",
+    "Fechadeinicio": "2024",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  }
   
 ]
+
 
 
 
