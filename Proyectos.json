@@ -636,6 +636,177 @@
     "notas": "Pendiente"
   },
 
+  {
+    "id": "p25_Chile_1",
+    "Nombredelproyecto": "Entornos Escolares Seguros",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Reducir significativamente las muertes y lesiones graves en entornos escolares de Chile y México mediante la implementación conjunta de soluciones tecnológicas, urbanas, participativas y replicables en seguridad vial.",
+    "notas": "18 meses."
+  },
+
+{
+    "id": "p26_Chile_2",
+    "Nombredelproyecto": "Fortalecimiento de Capacidades y Transferencia de Conocimientos para la Detección y Monitoreo de Toxinas Marinas en México y Chile: Una Alianza entre Investigadores, Instituciones Públicas y Pescadores Artesanales.",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Fortalecer las capacidades técnicas y científicas en detección y monitoreo de toxinas marinas en México y Chile, mediante procesos de mejoramiento técnico y de gestión a personas funcionarias públicas, personas dedicadas a la investigación y personas pescadoras artesanales.",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p27_Chile_3",
+    "Nombredelproyecto": "Fortalecimiento de la gobernanza ambiental local a través de la educación ambiental, con la participación ciudadana, desde un enfoque de derechos humanos, territorial y pertinencia socioambiental, para enfrentar la actual crisis",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Derechos Humanos",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Contribuir al fortalecimiento de una ciudadanía ambiental activa, informada y corresponsable en Chile y México, mediante el impulso de modelos participativos de gobernanza socioambiental y procesos educativos con enfoque de derechos humanos, equidad de género, pertinencia cultural y sostenibilidad, que promuevan la justicia ambiental, la inclusión social y la participación efectiva.",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p28_Chile_4",
+    "Nombredelproyecto": "Plan integrado de protección de derechos de niñas, niños y adolescentes frente a riesgos en ambientes digitales",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Derechos Humanos",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Garantizar el ejercicio pleno de los derechos de las niñas, niños y adolescentes en entornos digitales, fortaleciendo las capacidades de los gobiernos locales para prevenir y responder ante situaciones de ciberviolencias.",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p28_Chile_5",
+    "Nombredelproyecto": "Autonomía y dignidad en la vejez: Cooperación Chile-México por cuidados, participación y acceso a la justicia con enfoque de derechos humanos",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Derechos Humanos",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Favorecer el ejercicio de los derechos humanos de las personas mayores en Chile y México, a través de políticas públicas inclusivas, de cuidados, participación y  acceso a la justicia.",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p29_Chile_6",
+    "Nombredelproyecto": "Educa Social-Mente: avanzando juntos en el cuidado
+y bienestar de nuestras niñas, niños y adolescentes.",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Derechos Humanos",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Contribuir al bienestar y salud mental de niñas, niños y adolescentes, mediante un modelo basado en la alfabetización en salud mental de los agentes educativos, reproducible y escalable",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p29_Chile_7",
+    "Nombredelproyecto": "Robustecimiento de las estadísticas sobre uso del tiempo y el trabajo no remunerado para la visibilización de las mujeres rurales en México y Chile.",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Género",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Robustecimiento de las estadísticas sobre uso del tiempo y el trabajo no remunerado de las mujeres en las zonas rurales de México y Chile.",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p30_Chile_8",
+    "Nombredelproyecto": "ChatBot para la gestión de casos y atención a víctimas con medidas de protección a través del Plan de Atención Victimal con enfoque de género",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Género",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Reforzar los canales de comunicación entre las instituciones, víctimas con medidas de protección, optimizando el proceso de canalización de casos y disminuyendo la revictimización.",
+    "notas": "15 meses."
+  },
+
+{
+    "id": "p31_Chile_9",
+    "Nombredelproyecto": "Tejiendo Economías para la Igualdad. Laboratorio Intercultural de Proyectos de Economía Social Solidaria (ESS).",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Género",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Contribuir al fortalecimiento de la economía social solidaria en contextos interculturales mediante el desarrollo de capacidades comunitarias para la autogestión de iniciativas económicas sostenibles, inclusivas y con perspectiva de género en México y Chile.",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p32_Chile_10",
+    "Nombredelproyecto": "Alianza estratégica para el intercambio de experiencias y buenas prácticas en materia de modernización, digitalización e implementación de inteligencia artificial en procesos internos, que incidan en una mejora de la experiencia usuaria: codiseño de piloto escalable.",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Gobierno Digital",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Diseñar un piloto de implementación en el cual se identifiquen procesos y espacios de oportunidad específica para mejorar la eficiencia, eficacia y efectividad de los procesos internos, mediante lógicas de modernización, digitalización e inteligencia artificial que mejoren la atención a las y los usuarios de los servicios a la ciudadanía.",
+    "notas": "18 meses."
+  },
+
+{
+    "id": "p33_Chile_11",
+    "Nombredelproyecto": "Fortalecimiento de la acuicultura sostenible de moluscos bivalvos mediante la cooperación Chile-México en la Región de Los Lagos y Baja California",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Medio Ambiente",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Contribuir al fortalecimiento sostenible y equitativo de la acuicultura de pequeña escala mediante la mejora tecnológica, organizativa y social del cultivo de Magallana gigas, con enfoque de género, en la Región de Los Lagos (Chile) y San Quintín, Baja California (México).",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p34_Chile_12",
+    "Nombredelproyecto": "Fortalecimiento de capacidades para la cuantificación, mitigación y seguimiento de las emisiones de Carbono Negro, en apoyo al cumplimiento de los compromisos internacionales de reducción de este forzante climático, en el marco de las NDC 2025 de Chile y de México.",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Medio Ambiente",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Contribuir al fortalecimiento de las capacidades institucionales a nivel nacional y regional, incluyendo organismos públicos, instituciones académicas y organizaciones de la sociedad civil, para mejorar la gestión de acciones orientadas al cumplimiento de las metas de mitigación del Carbono Negro establecidas en las metas nacionales de Chile y de México.",
+    "notas": "24 meses."
+  },
+
+{
+    "id": "p35_Chile_13",
+    "Nombredelproyecto": "Estudio y saneamiento de efluentes de agua hospitalarios mediante la transformación de contaminantes emergentes: uso de bio-nanocatalizadores auto-ensamblables.",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Sector": "Medio Ambiente",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Desarrollar un modelo integral para el estudio, tratamiento y saneamiento de efluentes hospitalarios, mediante la identificación y transformación de contaminantes emergentes a través del uso de bio-nanocatalizadores autoensamblables, con el fin de reducir su impacto ambiental.",
+    "notas": "24 meses."
+  },
+
+
 
   
   {
@@ -1296,6 +1467,7 @@
   }
    
 ]
+
 
 
 
