@@ -21,6 +21,13 @@
     </div>
   </header>
 
+<!-- NUEVAS PESTAÑAS -->
+  <div class="w-full bg-white shadow p-4 flex gap-4">
+    <button id="tabProyectos" class="px-3 py-1 rounded bg-indigo-600 text-white">Proyectos</button>
+    <button id="tabPermisos" class="px-3 py-1 rounded bg-gray-200 text-gray-700">Permisos</button>
+  </div>
+<!-- NUEVAS PESTAÑAS -->
+
   <main class="p-4 max-w-4xl mx-auto">
     <section class="mb-4 grid gap-2 sm:grid-cols-3">
       <input id="searchInput" type="search" placeholder="Buscar por nombre de proyecto" class="p-2 rounded border"/>
@@ -35,6 +42,23 @@
 
     <section id="projectList" class="space-y-3"></section>
     <div id="printArea" class="hidden"></div>
+
+<!-- NUEVA SECCIÓN: PERMISOS -->
+<section id="permisosSection" class="hidden mt-6">
+
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-semibold">Permisos de investigación</h2>
+
+    <button id="btnPermisosExcel" class="px-3 py-1 rounded bg-green-600 text-white">
+      Exportar Excel
+    </button>
+  </div>
+
+  <div id="permisosList" class="space-y-3"></div>
+
+</section>
+<!-- NUEVA SECCIÓN: PERMISOS -->
+
   </main>
 
   <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
@@ -103,8 +127,6 @@
   <script src="app.js" defer></script>
 </body>
 </html>
-
-
 
 
 
