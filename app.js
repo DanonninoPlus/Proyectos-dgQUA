@@ -40,6 +40,8 @@ const projObjetivo = document.getElementById("projObjetivo");
 const projNotas = document.getElementById("projNotas");
 
 let proyectos = [];
+let permisos = [];
+
 
 /* ============================================================
    🔵 1. FUNCIÓN PARA CARGAR JSON EXTERNO DESDE GITHUB
@@ -64,6 +66,27 @@ async function loadFromJsonUrl() {
     return [];
   }
 }
+
+/* ============================================================
+   🔵 1.1. CARGA DE PERMISOS DESDE JSON EXTERNO DESDE GITHUB
+   ============================================================*/
+async function loadPermisosFromJsonUrl() {
+  try {
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dg/main/Permisos.json";
+    const res = await fetch(url);
+
+    if (!res.ok) throw new Error("No se pudo cargar Permisos.json");
+
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error("El JSON debe ser un arreglo");
+
+    return data;
+  } catch (err) {
+    console.warn("Error cargando permisos:", err);
+    return [];
+  }
+}
+
 
 /* ============================================================
    🔵 2. LOCALSTORAGE
@@ -105,8 +128,12 @@ async function init() {
     proyectos = loadFromStorage();
   }
 
+    // 🔵 Cargar permisos
+  permisos = await loadPermisosFromJsonUrl();
+
   // Renderizar la app
   renderList();
+  renderPermisos();   // NUEVO
   populateResponsibles();
   attachEvents();
 }
@@ -315,6 +342,87 @@ if (continente === "Asia" && pais === "Japón" && typeof dataPais === "object" &
   attachEditDeleteEvents();
 }
 
+
+/* ============================================================
+   🔵 5.1 RENDER PERMISOS (Sólo lectura)
+   ============================================================*/
+function renderPermisos() {
+
+  const contenedor = document.getElementById("permisosList");
+  if (!permisos || permisos.length === 0) {
+    contenedor.innerHTML = `<div class="p-4 bg-white rounded shadow">No hay permisos registrados.</div>`;
+    return;
+  }
+
+  const grupos = {};
+
+  permisos.forEach(p => {
+    const c = p.Continente || "Sin Continente";
+    const pais = p.Pais || "Sin País";
+
+    if (!grupos[c]) grupos[c] = {};
+    if (!grupos[c][pais]) grupos[c][pais] = [];
+
+    grupos[c][pais].push(p);
+  });
+
+  contenedor.innerHTML = "";
+
+  Object.keys(grupos).sort().forEach(cont => {
+    const contDiv = document.createElement("div");
+    contDiv.className = "mb-4 bg-gray-100 rounded shadow";
+
+    const contHeader = document.createElement("button");
+    contHeader.className = "w-full text-left px-4 py-3 text-lg font-bold bg-gray-200 rounded acordeon-btn";
+    contHeader.innerHTML = `🌍 ${cont}`;
+
+    const contContent = document.createElement("div");
+    contContent.className = "panel hidden p-4";
+
+    contDiv.appendChild(contHeader);
+    contDiv.appendChild(contContent);
+
+    Object.keys(grupos[cont]).sort().forEach(pais => {
+      const paisDiv = document.createElement("div");
+      paisDiv.className = "ml-4 mb-3 border-l-2 border-indigo-400 pl-3";
+
+      const paisHeader = document.createElement("button");
+      paisHeader.className = "w-full text-left font-semibold text-indigo-700 py-2 acordeon-btn";
+      paisHeader.innerHTML = `📍 ${pais}`;
+
+      const paisContent = document.createElement("div");
+      paisContent.className = "panel hidden ml-4";
+
+      paisDiv.appendChild(paisHeader);
+      paisDiv.appendChild(paisContent);
+
+      grupos[cont][pais].forEach(p => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded shadow-sm mb-2 p-3";
+
+        card.innerHTML = `
+          <div class="font-semibold">${escapeHtml(p.Nombredelproyecto)}</div>
+          <div class="text-xs text-gray-700 mt-1">
+            <strong>Instituciones:</strong> ${escapeHtml(p.Instituciones)}<br>
+            <strong>Fecha:</strong> ${p.Fecha}<br>
+            <strong>Notas:</strong> ${escapeHtml(p.notas || "")}
+          </div>
+        `;
+
+        paisContent.appendChild(card);
+      });
+
+      contContent.appendChild(paisDiv);
+    });
+
+    contenedor.appendChild(contDiv);
+  });
+
+  attachAccordionEvents();
+}
+
+
+
 /* ============================================================
    🔵 6. ACCORDION
    ============================================================*/
@@ -363,6 +471,35 @@ function attachEvents() {
   btnExportPDF.addEventListener("click", exportPDF);
   btnExportXLS.addEventListener("click", exportXLS);
   btnImportJSON.addEventListener("click", importJSON);
+
+/* ============================================================
+     🔵 EVENTOS DE PESTAÑAS
+     ============================================================*/
+
+
+  const tabProyectos = document.getElementById("tabProyectos");
+  const tabPermisos = document.getElementById("tabPermisos");
+
+  tabProyectos.addEventListener("click", () => {
+    // mostrar proyectos
+    document.querySelector("main").classList.remove("hidden");
+    document.getElementById("permisosSection").classList.add("hidden");
+
+    // estilos
+    tabProyectos.classList.add("bg-indigo-600","text-white");
+    tabPermisos.classList.remove("bg-indigo-600","text-white");
+  });
+
+  tabPermisos.addEventListener("click", () => {
+    // ocultar proyectos
+    document.querySelector("main").classList.add("hidden");
+    document.getElementById("permisosSection").classList.remove("hidden");
+
+    // estilos
+    tabPermisos.classList.add("bg-indigo-600","text-white");
+    tabProyectos.classList.remove("bg-indigo-600","text-white");
+  });
+
 }
 
 /* ============================================================
@@ -547,7 +684,9 @@ function exportPDF() {
   html2pdf().set(opt).from(printArea).save();
 }
 
-                           /* EXPORTACIÓN EN EXCEL */
+/* ============================================================
+   🔵 EXPORTAR PERMISOS A EXCEL
+   ============================================================*/
 
 function exportXLS() {
   // Crear una copia limpia
@@ -575,6 +714,30 @@ function exportXLS() {
   // Descargar archivo
   XLSX.writeFile(workbook, "Proyectos_DG.xlsx");
 }
+
+
+
+/* ============================================================
+   🔵 EXPORTAR PERMISOS A EXCEL
+   ============================================================*/
+document.getElementById("btnPermisosExcel").addEventListener("click", () => {
+
+  const datos = permisos.map(p => ({
+    ID: p.id,
+    Proyecto: p.Nombredelproyecto,
+    Continente: p.Continente,
+    Pais: p.Pais,
+    Fecha: p.Fecha,
+    Instituciones: p.Instituciones,
+    Notas: p.notas
+  }));
+
+  const hoja = XLSX.utils.json_to_sheet(datos);
+  const libro = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(libro, hoja, "Permisos");
+
+  XLSX.writeFile(libro, "Permisos_investigacion.xlsx");
+});
 
 
 /* ============================================================
