@@ -485,18 +485,19 @@ tabProyectos.addEventListener("click", () => {
   // mostrar lista de proyectos
   document.getElementById("projectList").classList.remove("hidden");
 
-  // mostrar filtros (si quieres mantenerlos)
+  // mostrar filtros
   document.getElementById("searchInput").parentElement.parentElement.classList.remove("hidden");
 
   // ocultar permisos
   document.getElementById("permisosSection").classList.add("hidden");
 
   // estilos
-  tabProyectos.classList.add("bg-indigo-600","text-white");
-  tabPermisos.classList.remove("bg-indigo-600","text-white");
+  tabProyectos.classList.add("bg-indigo-600", "text-white");
+  tabPermisos.classList.remove("bg-indigo-600", "text-white");
 });
 
-tabPermisos.addEventListener("click", () => {
+
+tabPermisos.addEventListener("click", async () => {
 
   // ocultar lista de proyectos
   document.getElementById("projectList").classList.add("hidden");
@@ -507,15 +508,14 @@ tabPermisos.addEventListener("click", () => {
   // mostrar permisos
   document.getElementById("permisosSection").classList.remove("hidden");
 
-  // 🟢 NUEVA LÍNEA CLAVE: Renderiza los datos solo cuando se abre la pestaña renderPermisos();
-  
+  // 🟢 ESTA ES LA LÍNEA QUE TE FALTABA:
+  await renderPermisos();
+
   // estilos
-  tabPermisos.classList.add("bg-indigo-600","text-white");
-  tabProyectos.classList.remove("bg-indigo-600","text-white");
+  tabPermisos.classList.add("bg-indigo-600", "text-white");
+  tabProyectos.classList.remove("bg-indigo-600", "text-white");
 });
-  
-}
-  
+
 
 /* ============================================================
    🔵 9. MODAL
