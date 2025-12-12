@@ -73,11 +73,12 @@ async function loadFromJsonUrl() {
 async function loadPermisosFromJsonUrl() {
   try {
     const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dg/main/Permisos.json";
+    
     const res = await fetch(url);
-
     if (!res.ok) throw new Error("No se pudo cargar Permisos.json");
 
     const data = await res.json();
+   
     if (!Array.isArray(data)) throw new Error("El JSON debe ser un arreglo");
 
     return data;
@@ -817,6 +818,7 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
 
 
 
