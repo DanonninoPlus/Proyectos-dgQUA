@@ -509,7 +509,7 @@ tabPermisos.addEventListener("click", async () => {
   document.getElementById("permisosSection").classList.remove("hidden");
 
   // 🟢 ESTA ES LA LÍNEA QUE MUESTRA LOS PERMISOS:
-  await renderPermisos();
+  renderPermisos();
 
   // estilos
   tabPermisos.classList.add("bg-indigo-600", "text-white");
@@ -818,6 +818,7 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
 
 
 
