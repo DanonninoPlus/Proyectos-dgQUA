@@ -42,6 +42,9 @@ const projNotas = document.getElementById("projNotas");
 let proyectos = [];
 let permisos = [];
 
+const PAISES_CON_SUBTIPO = ["Japón", "Chile"];
+const CAMPO_SUBTIPO = "Tipo de proyecto";
+
 
 /* ============================================================
    🔵 1. FUNCIÓN PARA CARGAR JSON EXTERNO DESDE GITHUB
@@ -192,19 +195,19 @@ filtered.forEach(p => {
 
   if (!grupos[c]) grupos[c] = {};
 
-  // 📌 SOLO para Asia → Japón habilitamos subgrupos
-  if (c === "Asia" && pais === "Japón") {
-    const subtipo = p["Tipo de proyecto"] || "Sin subtipo";
+  // 📌 Países con subgrupos (Japón, Chile, etc.)
+  if (PAISES_CON_SUBTIPO.includes(pais)) {
+  const subtipo = p[CAMPO_SUBTIPO] || "Sin subtipo";
 
-    if (!grupos[c][pais]) grupos[c][pais] = {};
-    if (!grupos[c][pais][subtipo]) grupos[c][pais][subtipo] = [];
+  if (!grupos[c][pais]) grupos[c][pais] = {};
+  if (!grupos[c][pais][subtipo]) grupos[c][pais][subtipo] = [];
 
-    grupos[c][pais][subtipo].push(p);
-  } else {
-    // países normales
-    if (!grupos[c][pais]) grupos[c][pais] = [];
-    grupos[c][pais].push(p);
-  }
+  grupos[c][pais][subtipo].push(p);
+} else {
+  if (!grupos[c][pais]) grupos[c][pais] = [];
+  grupos[c][pais].push(p);
+}
+
 });
 
 
@@ -233,11 +236,12 @@ filtered.forEach(p => {
       let totalProjects = 0;
 const dataPais = grupos[continente][pais];
 
-if (continente === "Asia" && pais === "Japón" && typeof dataPais === "object" && !Array.isArray(dataPais)) {
+if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.isArray(dataPais)) {
   totalProjects = Object.values(dataPais).reduce((sum, arr) => sum + arr.length, 0);
 } else {
   totalProjects = dataPais.length;
 }
+
 
 paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">(${totalProjects} proyectos)</span>`;
 
@@ -249,8 +253,9 @@ paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">($
       paisDiv.appendChild(paisContent);
 
 
-// 🟣 Caso especial: Japón con subniveles
-if (continente === "Asia" && pais === "Japón" && typeof dataPais === "object" && !Array.isArray(dataPais)) {
+// 🟣 Países con subniveles (Japón, Chile)
+if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.isArray(dataPais)) {
+
 
     Object.keys(dataPais).sort().forEach(sub => {
         const subDiv = document.createElement("div");
@@ -618,8 +623,9 @@ function exportPDF() {
 
     if (!grupos[c]) grupos[c] = {};
 
-    // Caso especial: Japón con subtipo
-    if (c === "Asia" && pais === "Japón") {
+ // Países con subtipo (Japón, Chile)
+  if (PAISES_CON_SUBTIPO.includes(pais)) {
+
       const subtipo = p["Tipo de proyecto"] || "Sin subtipo";
       if (!grupos[c][pais]) grupos[c][pais] = {};
       if (!grupos[c][pais][subtipo]) grupos[c][pais][subtipo] = [];
@@ -639,8 +645,9 @@ function exportPDF() {
 
       html += `<h3 style="margin-left:10px;color:#333;font-size:18px;">📍 ${pais}</h3>`;
 
-      // Subniveles solo para Japón
-      if (cont === "Asia" && pais === "Japón" && typeof dataPais === "object" && !Array.isArray(dataPais)) {
+      // Subniveles para países con subtipo
+      if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.isArray(dataPais)) {
+
 
         Object.keys(dataPais).sort().forEach(sub => {
           html += `
@@ -818,34 +825,3 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
