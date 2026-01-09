@@ -1715,9 +1715,24 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
+  },
+
+  {
+    "id": "PI_1_Noruega",
+     "Nombredelproyecto": "Expedición Un Océano II (One Ocean Expedition II)",
+    "Continente": "Europa",
+    "Pais": "Noruega",
+    "Tipo de proyecto": "Permisos de Investigación",
+    "Sector": "-",
+    "Fechadeinicio": "10 de noviembre 2025",
+    "Fechadetermino": "9 de diciembre 2025",
+    "status": "Ejecución",
+    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
+    "notas": "Instituciones: Fundación Statsraad Lehmkuhl y Universidad Autónoma de Baja California Sur."
   }
    
 ]
+
 
 
 
