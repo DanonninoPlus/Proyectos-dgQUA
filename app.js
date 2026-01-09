@@ -42,7 +42,7 @@ const projNotas = document.getElementById("projNotas");
 let proyectos = [];
 let permisos = [];
 
-const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos"];
+const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
 
 
@@ -253,7 +253,7 @@ paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">($
       paisDiv.appendChild(paisContent);
 
 
-// 🟣 Países con subniveles (Japón, Chile, Estados Unidos)
+// 🟣 Países con subniveles (Japón, Chile, Estados Unidos, Noruega)
 if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.isArray(dataPais)) {
 
 
@@ -825,4 +825,5 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
 
