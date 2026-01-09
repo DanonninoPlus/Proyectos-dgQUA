@@ -42,7 +42,7 @@ const projNotas = document.getElementById("projNotas");
 let proyectos = [];
 let permisos = [];
 
-const PAISES_CON_SUBTIPO = ["Japón", "Chile"];
+const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Canadá"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
 
 
@@ -253,7 +253,7 @@ paisHeader.innerHTML = `📍 ${pais} <span class="text-sm text-gray-500 ml-2">($
       paisDiv.appendChild(paisContent);
 
 
-// 🟣 Países con subniveles (Japón, Chile)
+// 🟣 Países con subniveles (Japón, Chile, Canadá)
 if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.isArray(dataPais)) {
 
 
@@ -307,7 +307,7 @@ if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.
 
 } else {
 
-    // 🌍 País normal (como lo tienes actualmente)
+    // 🌍 País normal (como actualmente)
     dataPais.forEach(p => {
         const card = document.createElement("div");
         card.className = "bg-white rounded shadow-sm mb-2";
