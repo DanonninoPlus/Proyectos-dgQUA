@@ -1555,12 +1555,82 @@
     "Continente": "América del Norte",
     "Pais": "Estados Unidos",
     "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "Protección Ambiental",
+    "Sector": "-",
     "Fechadeinicio": "27 de marzo 2025",
     "Fechadetermino": "10 de junio 2025",
     "status": "Ejecución",
     "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
     "notas": "Instituciones: Western Flyer Foundation y Universidad Autónoma de Baja California Sur"
+  },
+
+      {
+    "id": "PI_2_EUA",
+     "Nombredelproyecto": "ESCUCHE GoMex - Investigaciones a largo plazo sobre las tendencias del paisaje sonoro, la ecología de los cetáceos y el ruido en el golfo de México.",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Tipo de proyecto": "Permisos de Investigación",
+    "Sector": "-",
+    "Fechadeinicio": "10 de junio 2025",
+    "Fechadetermino": "15 de julio 2025",
+    "status": "Ejecución",
+    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
+    "notas": "Instituciones: Universidad de California en San Diego, Universidad Nacional Autónoma de México y Universidad de Veracruz."
+  },
+
+  {
+    "id": "PI_3_EUA",
+     "Nombredelproyecto": "Campaña de Carbono y Ecosistemas en el Golfo de México (Gulf of Mexico Ecosystems and Carbon Cruise, GOMECC-5) de 2025.",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Tipo de proyecto": "Permisos de Investigación",
+    "Sector": "-",
+    "Fechadeinicio": "cancelada debido a un incendio en la sala de máquinas del buque - 10 de octubre 2025",
+    "Fechadetermino": "30 de noviembre 2025",
+    "status": "Ejecución",
+    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
+    "notas": "Instituciones: Laboratorio Oceanográfico y Meteorológico del Atlántico (AOML, por sus siglas en inglés) de la Administración Nacional Oceánica y Atmosférica (NOAA, por sus siglas en inglés) y la Universidad Autónoma de Baja California."
+  },
+
+  {
+    "id": "PI_4_EUA",
+     "Nombredelproyecto": "Cuantificación de los efectos térmicos de la circulación de fluidos en la corteza oceánica sobre las temperaturas en la zona de subducción del sur de México.",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Tipo de proyecto": "Permisos de Investigación",
+    "Sector": "-",
+    "Fechadeinicio": "5 de noviembre 2025",
+    "Fechadetermino": "26 de diciembre 2025",
+    "status": "Ejecución",
+    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
+    "notas": "Instituciones: Instituto de Minería y Tecnología de Nuevo México y el Centro de Investigación Científica y de Educación Superior de Ensenada (CICESE)."
+  },
+
+  {
+    "id": "PI_5_EUA",
+     "Nombredelproyecto": "Evaluación del impacto humano del turismo en el mapache pigmeo (Procyon pygmaeus), especie en peligro crítico de extinción.",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Tipo de proyecto": "Permisos de Investigación",
+    "Sector": "-",
+    "Fechadeinicio": "11 de enero 2026",
+    "Fechadetermino": "27 de febrero 2026",
+    "status": "Ejecución",
+    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
+    "notas": "Instituciones: Universidad de Miami y Fundación de Parques y Museos de Cozumel."
+  },
+
+    {
+    "id": "PI_6_EUA",
+     "Nombredelproyecto": "Investigación colaborativa: Barreras metabólicas del hábitat impuesta a los migrantes verticales diurnos tropicales.",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Tipo de proyecto": "Permisos de Investigación",
+    "Sector": "-",
+    "Fechadeinicio": "13 de diciembre 2025",
+    "Fechadetermino": "31 de enero 2026",
+    "status": "Ejecución",
+    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
+    "notas": "Instituciones: Universidad del Sur de Florida, Universidad Estatal de Arizona, Universidad Rhode Island, Centro de Investigaciones Biológicas del Noroeste (CIBNOR) y Centro Interdisciplinario de Ciencias Marinas (CICIMAR)."
   },
   
     {
@@ -1648,6 +1718,7 @@
   }
    
 ]
+
 
 
 
