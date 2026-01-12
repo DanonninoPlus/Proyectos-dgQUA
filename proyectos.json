@@ -856,7 +856,33 @@
     "notas": "Instituciones: la Universidad de Chile (U Chile) y la Universidad Nacional Autónoma de México (UNAM)"
   },
 
+    {
+    "id": "p38_Chile_AD_2",
+    "Nombredelproyecto": "Intercambio de buenas prácticas para prevenir y combatir la explotación sexual de niñas, niños y adolescentes de Chile y México",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Tipo de proyecto": "Asignación Directa",
+    "Sector": "Derechos Humanos",
+    "Fechadeinicio": "2025",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "Fortalecer las capacidades institucionales y de protección de derechos de niñas, niños y adolescentes, al evaluar el Programa Estatal para la Prevención, Combate y Sanción de los Delitos en Materia de Trata de Personas y el Plan de Acción en contra de la Explotación Sexual y Comercial de Niñas, Niños y Adolescentes desarrollados en el Estado de Quintana Roo, así como las acciones y programas implementados en el Estado de Tlaxcala para la restitución de derechos y la atención especializada de niñas, niños y adolescentes, en coordinación con la Procuraduría Estatal y las 60 Procuradurías Municipales de Protección.",
+    "notas": "Instituciones: Sistema Nacional de Protección Integral de los Derechos de Niñas, Niños y Adolescentes (SIPINNA), Gobierno del Estado de Quintana Roo y DIF Tlaxcala "
+  },
 
+      {
+    "id": "p38_Chile_AD_3",
+    "Nombredelproyecto": "Fortalecimiento de Capacidades en Maricultura de peces y bivalvos en la costa Pacífica de Costa Rica para un Desarrollo Sostenible con base a Economía Circular y con Equidad de Género",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Tipo de proyecto": "Asignación Directa - Triangular",
+    "Sector": "Desarrollo productivo, Medio Ambiente, Género",
+    "Fechadeinicio": "2025",
+    "Fechadetermino": "2027",
+    "status": "Planeación",
+    "Objetivo": "México en alianza con Chile, apoyará a Costa Rica en sus esquemas de fortalecimiento de capacidades técnicas, productivas y organizativas en el ámbito de la maricultura artesanal sostenible (siembra de peces y moluscos marinos), con énfasis en cinco comunidades de su costa del Pacífico.",
+    "notas": "Instituciones: Universidad Autónoma de Baja California (UABC) por México, la Universidad Católica del Norte de Chile y con la coordinación nacional del Parque Marino del Pacífico (PMP), de la Universidad Nacional (UNA) y del Ministerio de Medio Ambiente y Energía (MINAE) de Costa Rica."
+  },
   
   {
     "id": "p1_Paraguay",
@@ -1745,6 +1771,7 @@
   }
    
 ]
+
 
 
 
