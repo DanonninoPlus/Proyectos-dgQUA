@@ -717,7 +717,7 @@
   },
 
 {
-    "id": "p28_Chile_5",
+    "id": "p29_Chile_5",
     "Nombredelproyecto": "Autonomía y dignidad en la vejez: Cooperación Chile-México por cuidados, participación y acceso a la justicia con enfoque de derechos humanos",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -731,7 +731,7 @@
   },
 
 {
-    "id": "p29_Chile_6",
+    "id": "p30_Chile_6",
     "Nombredelproyecto": "Educa Social-Mente: avanzando juntos en el cuidado y bienestar de nuestras niñas, niños y adolescentes.",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -745,7 +745,7 @@
   },
 
 {
-    "id": "p29_Chile_7",
+    "id": "p31_Chile_7",
     "Nombredelproyecto": "Robustecimiento de las estadísticas sobre uso del tiempo y el trabajo no remunerado para la visibilización de las mujeres rurales en México y Chile.",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -759,7 +759,7 @@
   },
 
 {
-    "id": "p30_Chile_8",
+    "id": "p32_Chile_8",
     "Nombredelproyecto": "ChatBot para la gestión de casos y atención a víctimas con medidas de protección a través del Plan de Atención Victimal con enfoque de género",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -773,7 +773,7 @@
   },
 
 {
-    "id": "p31_Chile_9",
+    "id": "p33_Chile_9",
     "Nombredelproyecto": "Tejiendo Economías para la Igualdad. Laboratorio Intercultural de Proyectos de Economía Social Solidaria (ESS).",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -787,7 +787,7 @@
   },
 
 {
-    "id": "p32_Chile_10",
+    "id": "p34_Chile_10",
     "Nombredelproyecto": "Alianza estratégica para el intercambio de experiencias y buenas prácticas en materia de modernización, digitalización e implementación de inteligencia artificial en procesos internos, que incidan en una mejora de la experiencia usuaria: codiseño de piloto escalable.",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -801,7 +801,7 @@
   },
 
 {
-    "id": "p33_Chile_11",
+    "id": "p35_Chile_11",
     "Nombredelproyecto": "Fortalecimiento de la acuicultura sostenible de moluscos bivalvos mediante la cooperación Chile-México en la Región de Los Lagos y Baja California",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -815,7 +815,7 @@
   },
 
 {
-    "id": "p34_Chile_12",
+    "id": "p36_Chile_12",
     "Nombredelproyecto": "Fortalecimiento de capacidades para la cuantificación, mitigación y seguimiento de las emisiones de Carbono Negro, en apoyo al cumplimiento de los compromisos internacionales de reducción de este forzante climático, en el marco de las NDC 2025 de Chile y de México.",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -829,7 +829,7 @@
   },
 
 {
-    "id": "p35_Chile_13",
+    "id": "p37_Chile_13",
     "Nombredelproyecto": "Estudio y saneamiento de efluentes de agua hospitalarios mediante la transformación de contaminantes emergentes: uso de bio-nanocatalizadores auto-ensamblables.",
     "Continente": "Sudamérica",
     "Pais": "Chile",
@@ -842,6 +842,19 @@
     "notas": "24 meses."
   },
 
+  {
+    "id": "p38_Chile_AD_1",
+    "Nombredelproyecto": "Cooperación técnica para la transferencia de conocimientos en edición universitaria con enfoque de género y los derechos humanos",
+    "Continente": "Sudamérica",
+    "Pais": "Chile",
+    "Tipo de proyecto": "Asignación Directa",
+    "Sector": "Educación, Derechos Humanos",
+    "Fechadeinicio": "2025",
+    "Fechadetermino": "2027",
+    "status": "Ejecución",
+    "Objetivo": "Promover el intercambio de conocimientos, buenas prácticas y acciones entre la Universidad de Chile (U Chile) y la Universidad Nacional Autónoma de México (UNAM) que permitan fortalecer el acceso abierto y democrático a los derechos humanos, la cultura de paz, el enfoque de género y la publicación de textos que aborden estas temáticas.",
+    "notas": "Instituciones: la Universidad de Chile (U Chile) y la Universidad Nacional Autónoma de México (UNAM)"
+  },
 
 
   
@@ -1732,6 +1745,7 @@
   }
    
 ]
+
 
 
 
