@@ -392,6 +392,7 @@ function renderNormateca() {
     contenedor.appendChild(card);
   });
 }
+
 /* ============================================================
    🔵 6. ACCORDION
    ============================================================*/
@@ -749,5 +750,4 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
-
 
