@@ -463,7 +463,7 @@ tabProyectos.addEventListener("click", () => {
 });
 
 
-tabPermisos.addEventListener("click", async () => {
+tabPermisos.addEventListener("click", () => {
 
   // ocultar lista de proyectos
   document.getElementById("projectList").classList.add("hidden");
@@ -474,7 +474,7 @@ tabPermisos.addEventListener("click", async () => {
   // mostrar permisos
   document.getElementById("permisosSection").classList.remove("hidden");
 
-  // 🟢 ESTA ES LA LÍNEA QUE MUESTRA LOS PERMISOS:
+  // 🟢 ESTA ES LA LÍNEA QUE MUESTRA LA NORMATECA:
   renderNormateca();
 
   // estilos
@@ -762,4 +762,3 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
-
