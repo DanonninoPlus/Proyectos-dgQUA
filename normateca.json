@@ -1,0 +1,22 @@
+[
+  {
+    "id": "NORM_001",
+    "titulo": "Acuerdo de Escazú",
+    "tipo": "Tratado Internacional",
+    "categoria": "Medio Ambiente",
+    "pais": "México",
+    "anio": "2018",
+    "descripcion": "Tratado regional sobre acceso a la información, participación pública y justicia ambiental.",
+    "archivo": "https://raw.githubusercontent.com/usuario/repositorio/normateca/escazu.pdf"
+  },
+  {
+    "id": "NORM_002",
+    "titulo": "Ley General de Cambio Climático",
+    "tipo": "Ley",
+    "categoria": "Cambio Climático",
+    "pais": "México",
+    "anio": "2012",
+    "descripcion": "Marco jurídico nacional en materia de cambio climático.",
+    "archivo": "https://raw.githubusercontent.com/usuario/repositorio/normateca/lgcc.pdf"
+  }
+]
