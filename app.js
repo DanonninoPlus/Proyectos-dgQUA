@@ -74,7 +74,7 @@ async function loadFromJsonUrl() {
    🔵 1.1. CARGA DE NORMATECA DESDE JSON EXTERNO DESDE GITHUB
    ============================================================*/
 
-async function loadNormatecaFromJsonUrl() {
+async function loadnormatecaFromJsonUrl() {
   try {
     const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dg/main/normateca.json";
 
@@ -133,7 +133,7 @@ async function init() {
   }
 
     // 🔵 Cargar NORMATECA
-  normatecaDocs = await loadNormatecaFromJsonUrl();
+  normatecaDocs = await loadnormatecaFromJsonUrl();
 
 
   // Renderizar la app
@@ -353,7 +353,7 @@ if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.
    ============================================================*/
 function renderNormateca() {
 
-  const contenedor = document.getElementById("permisosList");
+  const contenedor = document.getElementById("normatecaList");
 
   if (!normatecaDocs || normatecaDocs.length === 0) {
     contenedor.innerHTML = `
@@ -444,45 +444,30 @@ function attachEvents() {
      ============================================================*/
 
 const tabProyectos = document.getElementById("tabProyectos");
-const tabPermisos = document.getElementById("tabPermisos");
+const tabnormateca = document.getElementById("tabnormateca");
 
 tabProyectos.addEventListener("click", () => {
 
-  // mostrar lista de proyectos
   document.getElementById("projectList").classList.remove("hidden");
-
-  // mostrar filtros
   document.getElementById("searchInput").parentElement.parentElement.classList.remove("hidden");
+  document.getElementById("normatecaSection").classList.add("hidden");
 
-  // ocultar permisos
-  document.getElementById("permisosSection").classList.add("hidden");
-
-  // estilos
   tabProyectos.classList.add("bg-indigo-600", "text-white");
-  tabPermisos.classList.remove("bg-indigo-600", "text-white");
+  tabnormateca.classList.remove("bg-indigo-600", "text-white");
 });
 
+tabnormateca.addEventListener("click", () => {
 
-tabPermisos.addEventListener("click", () => {
-
-  // ocultar lista de proyectos
   document.getElementById("projectList").classList.add("hidden");
-
-  // ocultar filtros
   document.getElementById("searchInput").parentElement.parentElement.classList.add("hidden");
+  document.getElementById("normatecaSection").classList.remove("hidden");
 
-  // mostrar permisos
-  document.getElementById("permisosSection").classList.remove("hidden");
+  renderNormateca(); // 👈 AQUÍ se pinta la Normateca
 
-  // 🟢 ESTA ES LA LÍNEA QUE MUESTRA LA NORMATECA:
-  renderNormateca();
-
-  // estilos
-  tabPermisos.classList.add("bg-indigo-600", "text-white");
+  tabnormateca.classList.add("bg-indigo-600", "text-white");
   tabProyectos.classList.remove("bg-indigo-600", "text-white");
 });
 }
-
 /* ============================================================
    🔵 9. MODAL
    ============================================================*/
