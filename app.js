@@ -138,7 +138,6 @@ async function init() {
 
   // Renderizar la app
   renderList();
-  renderNormateca(); 
   populateResponsibles();
   attachEvents();
 }
@@ -476,7 +475,7 @@ tabPermisos.addEventListener("click", async () => {
   document.getElementById("permisosSection").classList.remove("hidden");
 
   // 🟢 ESTA ES LA LÍNEA QUE MUESTRA LOS PERMISOS:
-  renderPermisos();
+  renderNormateca();
 
   // estilos
   tabPermisos.classList.add("bg-indigo-600", "text-white");
@@ -669,7 +668,7 @@ function exportPDF() {
 }
 
 /* ============================================================
-   🔵 EXPORTAR PERMISOS A EXCEL
+   🔵 EXPORTAR PROYECTOS A EXCEL
    ============================================================*/
 
 function exportXLS() {
@@ -698,30 +697,6 @@ function exportXLS() {
   // Descargar archivo
   XLSX.writeFile(workbook, "Proyectos_DG.xlsx");
 }
-
-
-
-/* ============================================================
-   🔵 EXPORTAR PERMISOS A EXCEL
-   ============================================================*/
-document.getElementById("btnPermisosExcel").addEventListener("click", () => {
-
-  const datos = permisos.map(p => ({
-    ID: p.id,
-    Proyecto: p.Nombredelproyecto,
-    Continente: p.Continente,
-    Pais: p.Pais,
-    Fecha: p.Fecha,
-    Instituciones: p.Instituciones,
-    Notas: p.notas
-  }));
-
-  const hoja = XLSX.utils.json_to_sheet(datos);
-  const libro = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(libro, hoja, "Permisos");
-
-  XLSX.writeFile(libro, "Permisos_investigacion.xlsx");
-});
 
 
 /* ============================================================
@@ -787,3 +762,4 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
