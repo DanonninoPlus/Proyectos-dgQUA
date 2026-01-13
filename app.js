@@ -349,12 +349,11 @@ if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.
 }
 
 /* ============================================================
-   🔵 5.1 RENDER NORMATECA (DOCUMENTOS)
+   🔵 5.1 RENDER NORMATECA (DOCUMENTOS) - CORREGIDO
    ============================================================*/
 function renderNormateca() {
   const contenedor = document.getElementById("normatecaList");
   
-  // Limpiamos el contenedor antes de verificar
   contenedor.innerHTML = "";
 
   if (!normatecaDocs || normatecaDocs.length === 0) {
@@ -366,15 +365,33 @@ function renderNormateca() {
     return;
   }
 
-  // Si hay datos, procedemos al bucle (tu código actual está bien aquí)
   normatecaDocs.forEach(doc => {
     const card = document.createElement("div");
+    // Añadimos clases de estilo para que se vea bien
     card.className = "bg-white rounded shadow-sm p-4 mb-3 border-l-4 border-indigo-500";
-    // ... resto de tu lógica de cards
+
+    // ESENCIAL: Agregar el contenido HTML a la tarjeta
+    card.innerHTML = `
+      <div class="flex justify-between items-start">
+        <div>
+          <div class="font-semibold text-lg text-indigo-900">${escapeHtml(doc.titulo)}</div>
+          <div class="text-xs text-gray-600 mt-1">
+            <strong>Tipo:</strong> ${escapeHtml(doc.tipo)} | 
+            <strong>Año:</strong> ${doc.anio} | 
+            <strong>País:</strong> ${escapeHtml(doc.pais)}
+          </div>
+          <p class="text-sm text-gray-700 mt-2">${escapeHtml(doc.descripcion || "Sin descripción")}</p>
+        </div>
+        <a href="${doc.archivo}" target="_blank" 
+           class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded border border-indigo-200 text-xs font-medium hover:bg-indigo-600 hover:text-white transition-colors">
+          Ver PDF
+        </a>
+      </div>
+    `;
+
     contenedor.appendChild(card);
   });
 }
-
 /* ============================================================
    🔵 6. ACCORDION
    ============================================================*/
@@ -732,4 +749,5 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
 
