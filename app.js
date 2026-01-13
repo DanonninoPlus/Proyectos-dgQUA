@@ -40,7 +40,7 @@ const projObjetivo = document.getElementById("projObjetivo");
 const projNotas = document.getElementById("projNotas");
 
 let proyectos = [];
-let permisos = [];
+let normatecaDocs = [];
 
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
@@ -71,22 +71,22 @@ async function loadFromJsonUrl() {
 }
 
 /* ============================================================
-   🔵 1.1. CARGA DE PERMISOS DESDE JSON EXTERNO DESDE GITHUB
+   🔵 1.1. CARGA DE NORMATECA DESDE JSON EXTERNO DESDE GITHUB
    ============================================================*/
-async function loadPermisosFromJsonUrl() {
+
+async function loadNormatecaFromJsonUrl() {
   try {
-    const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dg/main/permisos.json";
-    
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dg/main/normateca.json";
+
     const res = await fetch(url);
-    if (!res.ok) throw new Error("No se pudo cargar permisos.json");
+    if (!res.ok) throw new Error("No se pudo cargar normateca.json");
 
     const data = await res.json();
-   
     if (!Array.isArray(data)) throw new Error("El JSON debe ser un arreglo");
 
     return data;
   } catch (err) {
-    console.warn("Error cargando permisos:", err);
+    console.warn("Error cargando Normateca:", err);
     return [];
   }
 }
@@ -132,12 +132,13 @@ async function init() {
     proyectos = loadFromStorage();
   }
 
-    // 🔵 Cargar permisos
-  permisos = await loadPermisosFromJsonUrl();
+    // 🔵 Cargar NORMATECA
+  normatecaDocs = await loadNormatecaFromJsonUrl();
+
 
   // Renderizar la app
   renderList();
-  renderPermisos();  // NUEVO  
+  renderNormateca(); 
   populateResponsibles();
   attachEvents();
 }
@@ -348,86 +349,47 @@ if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.
   attachEditDeleteEvents();
 }
 
-
 /* ============================================================
-   🔵 5.1 RENDER PERMISOS (Sólo lectura)
+   🔵 5.1 RENDER NORMATECA (DOCUMENTOS)
    ============================================================*/
-function renderPermisos() {
+function renderNormateca() {
 
   const contenedor = document.getElementById("permisosList");
-  if (!permisos || permisos.length === 0) {
-    contenedor.innerHTML = `<div class="p-4 bg-white rounded shadow">No hay permisos registrados.</div>`;
+
+  if (!normatecaDocs || normatecaDocs.length === 0) {
+    contenedor.innerHTML = `
+      <div class="p-4 bg-white rounded shadow">
+        No hay documentos disponibles.
+      </div>`;
     return;
   }
 
-  const grupos = {};
-
-  permisos.forEach(p => {
-    const c = p.Continente || "Sin Continente";
-    const pais = p.Pais || "Sin País";
-
-    if (!grupos[c]) grupos[c] = {};
-    if (!grupos[c][pais]) grupos[c][pais] = [];
-
-    grupos[c][pais].push(p);
-  });
-
   contenedor.innerHTML = "";
 
-  Object.keys(grupos).sort().forEach(cont => {
-    const contDiv = document.createElement("div");
-    contDiv.className = "mb-4 bg-gray-100 rounded shadow";
+  normatecaDocs.forEach(doc => {
+    const card = document.createElement("div");
+    card.className = "bg-white rounded shadow-sm p-4 mb-3";
 
-    const contHeader = document.createElement("button");
-    contHeader.className = "w-full text-left px-4 py-3 text-lg font-bold bg-gray-200 rounded acordeon-btn";
-    contHeader.innerHTML = `🌍 ${cont}`;
+    card.innerHTML = `
+      <div class="font-semibold text-lg">${escapeHtml(doc.titulo)}</div>
 
-    const contContent = document.createElement("div");
-    contContent.className = "panel hidden p-4";
+      <div class="text-sm text-gray-600 mt-1">
+        <strong>Tipo:</strong> ${escapeHtml(doc.tipo)} ·
+        <strong>Año:</strong> ${doc.anio} ·
+        <strong>País:</strong> ${escapeHtml(doc.pais)}
+      </div>
 
-    contDiv.appendChild(contHeader);
-    contDiv.appendChild(contContent);
+      <p class="text-sm mt-2">${escapeHtml(doc.descripcion || "")}</p>
 
-    Object.keys(grupos[cont]).sort().forEach(pais => {
-      const paisDiv = document.createElement("div");
-      paisDiv.className = "ml-4 mb-3 border-l-2 border-indigo-400 pl-3";
+      <a href="${doc.archivo}" target="_blank"
+         class="inline-block mt-3 px-3 py-1 bg-indigo-600 text-white rounded text-sm">
+        Descargar documento
+      </a>
+    `;
 
-      const paisHeader = document.createElement("button");
-      paisHeader.className = "w-full text-left font-semibold text-indigo-700 py-2 acordeon-btn";
-      paisHeader.innerHTML = `📍 ${pais}`;
-
-      const paisContent = document.createElement("div");
-      paisContent.className = "panel hidden ml-4";
-
-      paisDiv.appendChild(paisHeader);
-      paisDiv.appendChild(paisContent);
-
-      grupos[cont][pais].forEach(p => {
-        const card = document.createElement("div");
-        card.className = "bg-white rounded shadow-sm mb-2 p-3";
-
-        card.innerHTML = `
-          <div class="font-semibold">${escapeHtml(p.Nombredelproyecto)}</div>
-          <div class="text-xs text-gray-700 mt-1">
-            <strong>Instituciones:</strong> ${escapeHtml(p.Instituciones)}<br>
-            <strong>Fecha:</strong> ${p.Fecha}<br>
-            <strong>Notas:</strong> ${escapeHtml(p.notas || "")}
-          </div>
-        `;
-
-        paisContent.appendChild(card);
-      });
-
-      contContent.appendChild(paisDiv);
-    });
-
-    contenedor.appendChild(contDiv);
+    contenedor.appendChild(card);
   });
-
-  attachAccordionEvents();
 }
-
-
 
 /* ============================================================
    🔵 6. ACCORDION
@@ -825,5 +787,3 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
-
-
