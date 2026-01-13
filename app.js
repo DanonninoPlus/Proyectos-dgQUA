@@ -352,40 +352,25 @@ if (PAISES_CON_SUBTIPO.includes(pais) && typeof dataPais === "object" && !Array.
    🔵 5.1 RENDER NORMATECA (DOCUMENTOS)
    ============================================================*/
 function renderNormateca() {
-
   const contenedor = document.getElementById("normatecaList");
+  
+  // Limpiamos el contenedor antes de verificar
+  contenedor.innerHTML = "";
 
   if (!normatecaDocs || normatecaDocs.length === 0) {
     contenedor.innerHTML = `
-      <div class="p-4 bg-white rounded shadow">
-        No hay documentos disponibles.
+      <div class="p-8 text-center bg-white rounded shadow border-2 border-dashed">
+        <p class="text-gray-500 italic">No se encontraron documentos en la Normateca.</p>
+        <p class="text-xs text-red-400 mt-2">Verifica la conexión con el repositorio de GitHub.</p>
       </div>`;
     return;
   }
 
-  contenedor.innerHTML = "";
-
+  // Si hay datos, procedemos al bucle (tu código actual está bien aquí)
   normatecaDocs.forEach(doc => {
     const card = document.createElement("div");
-    card.className = "bg-white rounded shadow-sm p-4 mb-3";
-
-    card.innerHTML = `
-      <div class="font-semibold text-lg">${escapeHtml(doc.titulo)}</div>
-
-      <div class="text-sm text-gray-600 mt-1">
-        <strong>Tipo:</strong> ${escapeHtml(doc.tipo)} ·
-        <strong>Año:</strong> ${doc.anio} ·
-        <strong>País:</strong> ${escapeHtml(doc.pais)}
-      </div>
-
-      <p class="text-sm mt-2">${escapeHtml(doc.descripcion || "")}</p>
-
-      <a href="${doc.archivo}" target="_blank"
-         class="inline-block mt-3 px-3 py-1 bg-indigo-600 text-white rounded text-sm">
-        Descargar documento
-      </a>
-    `;
-
+    card.className = "bg-white rounded shadow-sm p-4 mb-3 border-l-4 border-indigo-500";
+    // ... resto de tu lógica de cards
     contenedor.appendChild(card);
   });
 }
@@ -747,3 +732,4 @@ function populateResponsibles() {
     filterResponsible.appendChild(opt);
   });
 }
+
