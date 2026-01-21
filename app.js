@@ -504,11 +504,12 @@ function populateResponsibles() {
 ================================ */
 
 const sections = {
-  proyectos: document.getElementById("projectList"),
+  proyectos: document.getElementById("projectsSection"),
   normateca: document.getElementById("normatecaSection"),
   gestion: document.getElementById("gestionSection"),
   reportes: document.getElementById("reportsSection")
 };
+
 
 const tabs = {
   proyectos: document.getElementById("tabProyectos"),
@@ -561,6 +562,7 @@ btnInvestigacion.addEventListener("click", () => {
   btnFormacion.classList.remove("bg-indigo-600", "text-white");
   btnFormacion.classList.add("bg-slate-200", "text-slate-600");
 });
+
 
 
 
