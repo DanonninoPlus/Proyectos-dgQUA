@@ -499,6 +499,71 @@ function populateResponsibles() {
 }
 
 
+/* ===============================
+   9. NAVEGACIÓN INFERIOR (TABS)
+================================ */
+
+const sections = {
+  proyectos: document.getElementById("projectList"),
+  normateca: document.getElementById("normatecaSection"),
+  gestion: document.getElementById("gestionSection"),
+  reportes: document.getElementById("reportsSection")
+};
+
+const tabs = {
+  proyectos: document.getElementById("tabProyectos"),
+  normateca: document.getElementById("tabnormateca"),
+  gestion: document.getElementById("tabGestion"),
+  reportes: document.getElementById("tabReportes")
+};
+
+function showSection(sectionName) {
+  Object.values(sections).forEach(sec => sec.classList.add("hidden"));
+  Object.values(tabs).forEach(tab => tab.classList.remove("active-tab"));
+
+  sections[sectionName].classList.remove("hidden");
+  tabs[sectionName].classList.add("active-tab");
+}
+
+tabs.proyectos.addEventListener("click", () => showSection("proyectos"));
+tabs.normateca.addEventListener("click", () => showSection("normateca"));
+tabs.gestion.addEventListener("click", () => showSection("gestion"));
+tabs.reportes.addEventListener("click", () => showSection("reportes"));
+
+/* ===============================
+   10. GESTIÓN INSTITUCIONAL
+   Formación / Investigación
+================================ */
+
+const btnFormacion = document.getElementById("btnFormacion");
+const btnInvestigacion = document.getElementById("btnInvestigacion");
+const formacionContent = document.getElementById("formacionContent");
+const investigacionContent = document.getElementById("investigacionContent");
+
+btnFormacion.addEventListener("click", () => {
+  formacionContent.classList.remove("hidden");
+  investigacionContent.classList.add("hidden");
+
+  btnFormacion.classList.add("bg-indigo-600", "text-white");
+  btnFormacion.classList.remove("bg-slate-200", "text-slate-600");
+
+  btnInvestigacion.classList.remove("bg-indigo-600", "text-white");
+  btnInvestigacion.classList.add("bg-slate-200", "text-slate-600");
+});
+
+btnInvestigacion.addEventListener("click", () => {
+  investigacionContent.classList.remove("hidden");
+  formacionContent.classList.add("hidden");
+
+  btnInvestigacion.classList.add("bg-indigo-600", "text-white");
+  btnInvestigacion.classList.remove("bg-slate-200", "text-slate-600");
+
+  btnFormacion.classList.remove("bg-indigo-600", "text-white");
+  btnFormacion.classList.add("bg-slate-200", "text-slate-600");
+});
+
+
+
 
 
 
