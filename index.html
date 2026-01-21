@@ -1,39 +1,35 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DG Cooperación - Gestión de Proyectos</title>
   
-  <!-- Tailwind CSS -->
+  <!-- Usamos Tailwind CSS para los estilos modernos -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Librerías Externas -->
+  <!-- Librerías para exportación que ya usabas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-  
   <style>
     .active-tab { border-bottom: 3px solid #4f46e5; color: #4f46e5; font-weight: 700; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .chevron-icon { transition: transform 0.3s ease; }
-    details[open] > summary .chevron-icon { transform: rotate(180deg); }
+    .accordion-content { transition: max-height 0.3s ease-out; }
   </style>
+  
 </head>
-
-<body class="bg-slate-50 min-h-screen text-slate-900 pb-24">
+<body class="bg-slate-50 min-h-screen text-slate-900 pb-20">
 
   <!-- HEADER INSTITUCIONAL -->
   <header class="bg-white border-b sticky top-0 z-40 px-4 py-3 flex items-center justify-between shadow-sm">
     <div class="flex items-center gap-3">
+      <!-- Espacio para tu Logo -->
       <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
         <i class="fas fa-globe-americas text-xl"></i>
       </div>
       <div>
-        <h1 class="text-sm font-bold leading-tight uppercase">DGCIDCIENCIA</h1>
-        <p class="text-[8px] text-slate-500 uppercase tracking-tighter">Gestión de Cooperación, Ciencia y Tecnología</p>
+        <h1 class="text-lg font-bold leading-tight">DGCIDCIENCIA</h1>
+        <p class="text-[10px] text-slate-500 uppercase tracking-widest">DG de Proyectos de Cooperación Internacional para el Desarrollo, Ciencia, Tecnología y Entidades Federativas </p>
       </div>
     </div>
     <button id="btnAddProject" class="bg-indigo-600 hover:bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform active:scale-95">
@@ -41,8 +37,8 @@
     </button>
   </header>
 
-  <!-- BUSCADOR Y FILTROS -->
-  <div id="filterSection" class="bg-white p-4 border-b shadow-sm space-y-3 sticky top-[61px] z-30">
+  <!-- BUSCADOR Y FILTROS TÁCTILES -->
+  <div id="filterSection" class="bg-white p-4 border-b shadow-sm space-y-3 sticky top-[65px] z-30">
     <div class="relative">
       <i class="fas fa-search absolute left-3 top-3 text-slate-400"></i>
       <input id="searchInput" type="search" placeholder="Buscar proyectos..." 
@@ -50,32 +46,34 @@
     </div>
     
     <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
-      <select id="filterResponsible" class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-medium outline-none">
+      <select id="filterResponsible" class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-medium outline-none focus:border-indigo-500">
         <option value="">Sector</option>
       </select>
-      <select id="filterStatus" class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-medium outline-none">
+      <select id="filterStatus" class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-medium outline-none focus:border-indigo-500">
         <option value="">Estado</option>
         <option value="Planeación">Planeación</option>
         <option value="Ejecución">Ejecución</option>
         <option value="Finalizado">Finalizado</option>
       </select>
+      
+      <!-- El filtro de Región/Continente se llena dinámicamente o puedes agregarlo aquí -->
     </div>
   </div>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="p-4 max-w-2xl mx-auto">
-    
-    <!-- SECCIÓN PROYECTOS -->
-    <section id="projectsSection">
-      <div id="projectCounter" class="mb-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-1">
+  <!-- Contador de proyectos dinámico -->
+<div class="px-4 py-2 max-w-2xl mx-auto">
+    <div id="projectCounter" class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
         Cargando proyectos...
-      </div>
-      <div id="projectList" class="space-y-4"></div>
-    </section>
+    </div>
+</div>
+
+  <main class="p-4 max-w-2xl mx-auto">
+    <!-- LISTADO DE PROYECTOS -->
+    <section id="projectList" class="space-y-4"></section>
 
     <!-- SECCIÓN NORMATECA -->
     <section id="normatecaSection" class="hidden">
-      <div class="flex justify-between items-center mb-6 px-1">
+      <div class="flex justify-between items-center mb-6">
         <h2 class="text-xl font-bold text-slate-800">Normateca Digital</h2>
         <button id="btnnormatecaExcel" class="text-indigo-600 text-sm font-semibold flex items-center gap-1">
           <i class="fas fa-file-excel"></i> Exportar
@@ -84,138 +82,298 @@
       <div id="normatecaList" class="space-y-4"></div>
     </section>
 
+
     <!-- SECCIÓN GESTIÓN INSTITUCIONAL -->
-    <section id="gestionSection" class="hidden">
-      <div class="mb-6 px-1">
-        <h1 class="text-2xl font-extrabold text-slate-900 leading-tight">Gestión Institucional</h1>
-        <p class="text-slate-500 mt-1 text-sm font-medium">Capacitaciones, permisos y documentación.</p>
-      </div>
+<section id="gestionSection" class="hidden">
 
-      <div class="flex gap-2 mb-8">
-        <button id="btnFormacion" class="flex-1 py-3 rounded-xl bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
-          <span class="material-symbols-outlined text-lg">school</span> Formación
-        </button>
-        <button id="btnInvestigacion" class="flex-1 py-3 rounded-xl bg-slate-200 text-slate-600 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
-          <span class="material-symbols-outlined text-lg">biotech</span> Investigación
-        </button>
-      </div>
+  <!-- HEADER INTERNO -->
+  <div class="mb-6 px-1">
+    <h1 class="text-2xl font-extrabold text-slate-900 leading-tight">
+      Gestión Institucional
+    </h1>
+    <p class="text-slate-500 mt-1 text-sm font-medium">
+      Capacitaciones, permisos y documentación.
+    </p>
+  </div>
 
-      <!-- Contenido de Formación -->
-      <div id="formacionContent">
-        <div class="flex items-center justify-between mb-4 px-1">
-          <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Catálogo de Capacitaciones</h3>
-        </div>
-        
-        <details class="mb-4 bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden" open>
-          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="h-12 w-12 rounded-2xl bg-indigo-50 flex items-center justify-center border border-indigo-100 text-xl">📍</div>
-              <div>
-                <h3 class="font-bold text-slate-900 text-lg uppercase">España</h3>
-                <p class="text-[10px] font-bold text-slate-400 uppercase">2 CURSOS ACTIVOS</p>
-              </div>
-            </div>
-            <span class="material-symbols-outlined text-slate-400 chevron-icon">expand_more</span>
-          </summary>
-          <div class="px-5 pb-6 space-y-3">
-            <div class="bg-indigo-600 p-4 rounded-2xl text-white">
-              <h4 class="text-sm font-extrabold uppercase">Gestión de Aguas Rurales</h4>
-              <p class="text-[10px] opacity-80 mt-2">INAP - Instituto Nacional de Administración Pública</p>
-            </div>
-          </div>
-        </details>
-      </div>
+  <!-- AQUÍ VA EL CONTENIDO DEL HTML NUEVO -->
+<div class="flex gap-2 mb-8">
+  <button
+    id="btnFormacion"
+    class="flex-1 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider transition">
+    <span class="material-symbols-outlined text-lg align-middle">school</span>
+    Formación
+  </button>
 
-      <!-- Documentación General -->
-      <div class="mt-8 border-t pt-8">
-        <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Documentación General</h3>
-        <div class="bg-white p-4 rounded-2xl border shadow-sm flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-indigo-500">verified_user</span>
-            <div>
-              <p class="text-sm font-bold text-slate-800">Protocolo Institucional</p>
-              <p class="text-[10px] text-slate-400 uppercase">PDF • 1.8 MB</p>
-            </div>
-          </div>
-          <button class="text-slate-400"><span class="material-symbols-outlined">download</span></button>
-        </div>
-      </div>
-    </section>
+  <button
+    id="btnInvestigacion"
+    class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold uppercase tracking-wider transition">
+    <span class="material-symbols-outlined text-lg align-middle">magnification_small</span>
+    Investigación
+  </button>
+</div>
 
-    <!-- SECCIÓN REPORTES -->
+<div id="formacionContent" class="hidden">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Catálogo de Capacitaciones</h3>
+<span class="material-symbols-outlined text-indigo-500 text-lg">school</span>
+</div>
+<details class="mb-4 group bg-white dark:bg-slate-800 rounded-[2rem] border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden" open="">
+<summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center border border-indigo-100 dark:border-indigo-800">
+<span class="text-xl">📍</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight uppercase">España</h3>
+<div class="flex items-center gap-1.5">
+<span class="flex h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">2 CURSOS ACTIVOS</p>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 transition-transform duration-300 chevron-icon">expand_more</span>
+</summary>
+<div class="px-5 pb-6 space-y-3 pt-2">
+<details class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden shadow-sm">
+<summary class="bg-indigo-600 dark:bg-indigo-700 px-4 py-4 cursor-pointer list-none select-none flex justify-between items-center gap-3">
+<div class="flex-1">
+<h4 class="text-sm font-extrabold text-white leading-tight uppercase tracking-tight">Gestión de Aguas Rurales</h4>
+</div>
+<span class="material-symbols-outlined text-white text-lg transition-transform duration-300 chevron-icon">expand_more</span>
+</summary>
+<div class="p-4 space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-indigo-500 text-xl">school</span>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Título Original</p>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">Sustainable Water Management for Rural Communities</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-indigo-500 text-xl">corporate_fare</span>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Instituto</p>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">INAP - Instituto Nacional de Administración Pública</p>
+</div>
+</div>
+</div>
+</details>
+</div>
+</details>
+</div>
+<div id="investigacionContent">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Permisos de Investigación</h3>
+<span class="material-symbols-outlined text-research-dark dark:text-research text-lg">magnification_small</span>
+</div>
+<details class="mb-4 group bg-white dark:bg-slate-800 rounded-[2rem] border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden" open="">
+<summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center border border-emerald-100 dark:border-emerald-800">
+<span class="text-xl">📍</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight uppercase">España</h3>
+<div class="flex items-center gap-1.5">
+<span class="flex h-1.5 w-1.5 rounded-full bg-research"></span>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">3 PROYECTOS</p>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 transition-transform duration-300 chevron-icon">expand_more</span>
+</summary>
+<div class="px-5 pb-6 space-y-3 pt-2">
+<details class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden shadow-sm" open="">
+<summary class="bg-research-dark px-4 py-4 cursor-pointer list-none select-none flex justify-between items-center gap-3">
+<div class="flex-1">
+<h4 class="text-sm font-extrabold text-white leading-tight uppercase tracking-tight">Estudio Microbioma Mediterráneo</h4>
+</div>
+<span class="material-symbols-outlined text-white text-lg transition-transform duration-300 chevron-icon">expand_more</span>
+</summary>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-research-dark dark:text-research text-xl">calendar_month</span>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Fecha de ejecución</p>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">Junio 2024 - Diciembre 2025</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-research-dark dark:text-research text-xl">account_balance</span>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Instituciones</p>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">CSIC, Univ. Autónoma de Madrid</p>
+</div>
+</div>
+</div>
+</details>
+<details class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden shadow-sm">
+<summary class="bg-research-dark px-4 py-4 cursor-pointer list-none select-none flex justify-between items-center gap-3">
+<div class="flex-1">
+<h4 class="text-sm font-extrabold text-white leading-tight uppercase tracking-tight">Análisis Desalinización Sostenible</h4>
+</div>
+<span class="material-symbols-outlined text-white text-lg transition-transform duration-300 chevron-icon">expand_more</span>
+</summary>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-research-dark dark:text-research text-xl">calendar_month</span>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Fecha de ejecución</p>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">Agosto 2024 - Agosto 2026</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-research-dark dark:text-research text-xl">account_balance</span>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Instituciones</p>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">IMDEA Agua, Universidad de Alcalá</p>
+</div>
+</div>
+</div>
+</details>
+</div>
+</details>
+</div>
+<section class="mt-8 border-t border-slate-100 dark:border-slate-800 pt-8">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Documentación General</h3>
+<span class="material-symbols-outlined text-slate-400 text-lg">description</span>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm flex items-center gap-4">
+<div class="bg-slate-50 dark:bg-slate-700/50 p-2.5 rounded-xl text-primary">
+<span class="material-symbols-outlined fill-icon">verified_user</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-800 dark:text-slate-100">Protocolo Institucional</p>
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">PDF • 1.8 MB</p>
+</div>
+<button class="h-10 w-10 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+
+</section>
+
+    <!-- ÁREA DE REPORTES (NUEVA PARA LOS BOTONES DE EXPORTAR) -->
     <section id="reportsSection" class="hidden space-y-4">
-      <h2 class="text-xl font-bold text-slate-800 mb-4 px-1">Reportes y Datos</h2>
-      <div class="grid grid-cols-1 gap-4">
-        <button id="btnExportPDF" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm active:bg-slate-50 transition-colors">
-          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-pdf"></i></div>
-          <div class="text-left">
-            <div class="font-bold text-slate-800">Exportar PDF</div>
-            <div class="text-xs text-slate-500">Resumen visual de proyectos</div>
-          </div>
-        </button>
-        <button id="btnExportXLS" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm active:bg-slate-50 transition-colors">
-          <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-excel"></i></div>
-          <div class="text-left">
-            <div class="font-bold text-slate-800">Exportar Excel</div>
-            <div class="text-xs text-slate-500">Hoja de cálculo detallada</div>
-          </div>
-        </button>
-      </div>
+        <h2 class="text-xl font-bold text-slate-800 mb-4">Reportes y Datos</h2>
+        <div class="grid grid-cols-1 gap-4">
+            <button id="btnExportPDF" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-red-200 transition-colors">
+                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-pdf"></i></div>
+                <div class="text-left">
+                    <div class="font-bold text-slate-800">Exportar PDF</div>
+                    <div class="text-xs text-slate-500">Genera un documento visual de los proyectos</div>
+                </div>
+            </button>
+            <button id="btnExportXLS" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-green-200 transition-colors">
+                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-excel"></i></div>
+                <div class="text-left">
+                    <div class="font-bold text-slate-800">Exportar Excel</div>
+                    <div class="text-xs text-slate-500">Hoja de cálculo para análisis de datos</div>
+                </div>
+            </button>
+            <button id="btnImportJSON" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-blue-200 transition-colors">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-import"></i></div>
+                <div class="text-left">
+                    <div class="font-bold text-slate-800">Importar JSON</div>
+                    <div class="text-xs text-slate-500">Cargar respaldo de base de datos</div>
+                </div>
+            </button>
+        </div>
     </section>
-
   </main>
 
-  <!-- NAVEGACIÓN INFERIOR -->
-  <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-3 z-50 shadow-lg">
-    <button id="tabProyectos" class="flex flex-col items-center gap-1 active-tab">
+  <div id="printArea" class="hidden"></div>
+
+  <!-- NAVEGACIÓN INFERIOR (TAB BAR) -->
+  <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-3 z-50 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+    <button id="tabProyectos" class="flex flex-col items-center gap-1 active-tab transition-colors px-4">
       <i class="fas fa-folder-open text-lg"></i>
-      <span class="text-[9px] font-bold uppercase">Proyectos</span>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Proyectos</span>
     </button>
-    <button id="tabGestion" class="flex flex-col items-center gap-1 text-slate-400">
+
+    <button id="tabGestion" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
       <i class="fas fa-shield-alt text-lg"></i>
-      <span class="text-[9px] font-bold uppercase">Gestión</span>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Gestión</span>
     </button>
-    <button id="tabnormateca" class="flex flex-col items-center gap-1 text-slate-400">
+
+    <button id="tabnormateca" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
       <i class="fas fa-book text-lg"></i>
-      <span class="text-[9px] font-bold uppercase">Normateca</span>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Normateca</span>
     </button>
-    <button id="tabReportes" class="flex flex-col items-center gap-1 text-slate-400">
+    <button id="tabReportes" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
       <i class="fas fa-chart-bar text-lg"></i>
-      <span class="text-[9px] font-bold uppercase">Reportes</span>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Reportes</span>
     </button>
   </nav>
 
-  <!-- MODAL DE PROYECTO -->
+  <!-- MODAL DE PROYECTO (ADAPTADO A MÓVIL) -->
   <div id="modal" class="fixed inset-0 hidden items-end sm:items-center justify-center bg-slate-900/60 backdrop-blur-sm z-[60]">
-    <div class="bg-white rounded-t-3xl sm:rounded-2xl p-6 w-full max-w-lg shadow-2xl overflow-y-auto max-h-[90vh]">
+    <div class="bg-white rounded-t-3xl sm:rounded-2xl p-6 w-full max-w-lg shadow-2xl animate-slide-up overflow-y-auto max-h-[90vh]">
       <div class="flex justify-between items-center mb-6">
-        <h2 id="modalTitle" class="text-lg font-black text-slate-800 uppercase italic">Nuevo Proyecto</h2>
-        <button onclick="closeModal()" class="text-slate-400"><i class="fas fa-times text-xl"></i></button>
+        <h2 id="modalTitle" class="text-xl font-extrabold text-slate-800 italic">NUEVO PROYECTO</h2>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
       </div>
       
-      <form id="projectForm" class="space-y-4">
+      <form id="projectForm" class="space-y-5">
         <input type="hidden" id="projId" />
+
         <div class="space-y-1">
-          <label class="text-[10px] font-bold text-slate-400 uppercase ml-1">Nombre</label>
-          <input id="projNombredelproyecto" required class="w-full bg-slate-50 p-3 rounded-xl text-sm border-none focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Nombre del proyecto..." />
+          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Nombre del Proyecto</label>
+          <input id="projNombredelproyecto" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all" placeholder="Ej. Cooperación Tecnológica..." />
         </div>
-        <div class="grid grid-cols-2 gap-3">
-          <input id="projContinente" required class="w-full bg-slate-50 p-3 rounded-xl text-sm outline-none" placeholder="Continente" />
-          <input id="projPais" required class="w-full bg-slate-50 p-3 rounded-xl text-sm outline-none" placeholder="País" />
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Continente</label>
+            <input id="projContinente" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" placeholder="Ej. Asia" />
+          </div>
+          <div class="space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">País</label>
+            <input id="projPais" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" placeholder="Ej. Japón" />
+          </div>
         </div>
-        <div class="grid grid-cols-3 gap-2">
-          <select id="projStatus" class="col-span-1 bg-slate-50 p-3 rounded-xl text-xs outline-none">
-            <option>Planeación</option>
-            <option>Ejecución</option>
-            <option>Finalizado</option>
-          </select>
-          <input id="projFechadeinicio" class="col-span-1 bg-slate-50 p-3 rounded-xl text-xs outline-none" placeholder="Inicio" />
-          <input id="projFechadetermino" class="col-span-1 bg-slate-50 p-3 rounded-xl text-xs outline-none" placeholder="Término" />
+
+        <div class="space-y-1">
+          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Sector (Separar por comas)</label>
+          <input id="projSector" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" placeholder="Educación, Salud..." />
         </div>
-        <textarea id="projObjetivo" rows="3" class="w-full bg-slate-50 p-3 rounded-xl text-sm outline-none" placeholder="Objetivo estratégico..."></textarea>
-        <div class="flex gap-3 pt-2">
-          <button type="button" onclick="closeModal()" class="flex-1 py-3 text-slate-500 font-bold uppercase text-xs">Cancelar</button>
-          <button type="submit" class="flex-[2] bg-indigo-600 text-white py-3 rounded-xl font-bold uppercase text-xs shadow-lg shadow-indigo-100">Guardar</button>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div class="col-span-1 space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Estado</label>
+            <select id="projStatus" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
+              <option>Planeación</option>
+              <option>Ejecución</option>
+              <option>Finalizado</option>
+            </select>
+          </div>
+          <div class="col-span-1 space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Inicio</label>
+            <input id="projFechadeinicio" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs" placeholder="Año" />
+          </div>
+          <div class="col-span-1 space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Término</label>
+            <input id="projFechadetermino" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs" placeholder="Año" />
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Objetivo Estratégico</label>
+          <textarea id="projObjetivo" rows="3" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm resize-none"></textarea>
+        </div>
+
+        <div class="space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Notas Adicionales</label>
+            <textarea id="projNotas" rows="2" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm resize-none"></textarea>
+          </div>
+
+        <div class="flex gap-3 pt-4">
+          <button type="button" id="btnCancel" class="flex-1 py-4 text-slate-500 font-bold uppercase tracking-widest text-xs">Cancelar</button>
+          <button type="submit" class="flex-[2] bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold uppercase tracking-widest text-xs shadow-lg shadow-indigo-100 transition-all active:scale-95">Guardar Proyecto</button>
         </div>
       </form>
     </div>
@@ -224,3 +382,4 @@
   <script src="app.js" defer></script>
 </body>
 </html>
+
