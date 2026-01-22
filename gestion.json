@@ -1,0 +1,43 @@
+{
+  "gestion": {
+    "formacion": [
+      {
+        "pais": "España",
+        "items": [
+          {
+            "titulo": "Gestión de Aguas Rurales",
+            "titulo_original": "Sustainable Water Management for Rural Communities",
+            "institucion": "INAP - Instituto Nacional de Administración Pública"
+          }
+        ]
+      }
+    ],
+    "investigacion": [
+      {
+        "pais": "España",
+        "items": [
+          {
+            "titulo": "Estudio Microbioma Mediterráneo",
+            "inicio": "Junio 2024",
+            "fin": "Diciembre 2025",
+            "instituciones": "CSIC, Univ. Autónoma de Madrid"
+          },
+          {
+            "titulo": "Análisis Desalinización Sostenible",
+            "inicio": "Agosto 2024",
+            "fin": "Agosto 2026",
+            "instituciones": "IMDEA Agua, Universidad de Alcalá"
+          }
+        ]
+      }
+    ],
+    "documentos": [
+      {
+        "nombre": "Protocolo Institucional",
+        "tipo": "PDF",
+        "peso": "1.8 MB",
+        "archivo": "protocolo.pdf"
+      }
+    ]
+  }
+}
