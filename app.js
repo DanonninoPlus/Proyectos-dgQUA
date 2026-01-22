@@ -564,6 +564,148 @@ btnInvestigacion.addEventListener("click", () => {
 });
 
 
+/* =========================================
+   CARGA DE GESTIÓN INSTITUCIONAL (JSON)
+========================================= */
+
+let gestionData = null;
+
+async function cargarGestion() {
+  try {
+    const response = await fetch("gestion.json");
+    gestionData = await response.json();
+
+    renderFormacion(gestionData.formacion);
+    renderInvestigacion(gestionData.investigacion);
+    renderDocumentos(gestionData.documentos);
+
+  } catch (error) {
+    console.error("Error cargando gestion.json:", error);
+  }
+}
+
+/* =========================================
+   RENDER FORMACIÓN
+========================================= */
+
+function renderFormacion(formacion) {
+  const container = document.getElementById("formacionContent");
+  container.innerHTML = "";
+
+  formacion.forEach(pais => {
+    const cursosHTML = pais.capacitaciones.map(curso => `
+      <details class="bg-white rounded-2xl border shadow-sm overflow-hidden">
+        <summary class="bg-indigo-600 px-4 py-4 cursor-pointer flex justify-between items-center">
+          <h4 class="text-sm font-extrabold text-white uppercase">
+            ${curso.titulo}
+          </h4>
+          <span class="material-symbols-outlined text-white">expand_more</span>
+        </summary>
+        <div class="p-4 space-y-3 bg-slate-50">
+          <p><strong>Título original:</strong> ${curso.tituloOriginal}</p>
+          <p><strong>Institución:</strong> ${curso.institucion}</p>
+          <p><strong>Modalidad:</strong> ${curso.modalidad}</p>
+          <p><strong>Año:</strong> ${curso.anio}</p>
+          <p><strong>Estado:</strong> ${curso.estado}</p>
+        </div>
+      </details>
+    `).join("");
+
+    container.innerHTML += `
+      <details class="mb-6 bg-white rounded-3xl border shadow-sm" open>
+        <summary class="p-5 flex justify-between items-center cursor-pointer">
+          <h3 class="text-lg font-bold uppercase">${pais.pais}</h3>
+          <span class="text-xs text-slate-400 font-bold">
+            ${pais.capacitaciones.length} cursos
+          </span>
+        </summary>
+        <div class="p-4 space-y-4">
+          ${cursosHTML}
+        </div>
+      </details>
+    `;
+  });
+}
+
+/* =========================================
+   RENDER INVESTIGACIÓN
+========================================= */
+
+function renderInvestigacion(investigacion) {
+  const container = document.getElementById("investigacionContent");
+  container.innerHTML = "";
+
+  investigacion.forEach(pais => {
+    const proyectosHTML = pais.proyectos.map(proyecto => `
+      <details class="bg-white rounded-2xl border shadow-sm overflow-hidden">
+        <summary class="bg-emerald-600 px-4 py-4 cursor-pointer flex justify-between items-center">
+          <h4 class="text-sm font-extrabold text-white uppercase">
+            ${proyecto.titulo}
+          </h4>
+          <span class="material-symbols-outlined text-white">expand_more</span>
+        </summary>
+        <div class="p-4 space-y-3 bg-slate-50">
+          <p><strong>Periodo:</strong> ${proyecto.fechaInicio} – ${proyecto.fechaFin}</p>
+          <p><strong>Instituciones:</strong> ${proyecto.instituciones.join(", ")}</p>
+          <p><strong>Estado:</strong> ${proyecto.estado}</p>
+        </div>
+      </details>
+    `).join("");
+
+    container.innerHTML += `
+      <details class="mb-6 bg-white rounded-3xl border shadow-sm" open>
+        <summary class="p-5 flex justify-between items-center cursor-pointer">
+          <h3 class="text-lg font-bold uppercase">${pais.pais}</h3>
+          <span class="text-xs text-slate-400 font-bold">
+            ${pais.proyectos.length} proyectos
+          </span>
+        </summary>
+        <div class="p-4 space-y-4">
+          ${proyectosHTML}
+        </div>
+      </details>
+    `;
+  });
+}
+
+/* =========================================
+   RENDER DOCUMENTOS
+========================================= */
+
+function renderDocumentos(documentos) {
+  const section = document.querySelector("#gestionSection section");
+  if (!section || !documentos) return;
+
+  const docsHTML = documentos.map(doc => `
+    <div class="bg-white p-4 rounded-2xl border shadow-sm flex justify-between items-center">
+      <div>
+        <p class="font-bold">${doc.titulo}</p>
+        <p class="text-xs text-slate-400">${doc.tipo} • ${doc.tamano}</p>
+      </div>
+      <a href="${doc.archivo}" download class="text-indigo-600">
+        <span class="material-symbols-outlined">download</span>
+      </a>
+    </div>
+  `).join("");
+
+  section.innerHTML += `
+    <div class="mt-10">
+      <h3 class="text-xs font-bold uppercase text-slate-400 mb-4">
+        Documentación General
+      </h3>
+      <div class="space-y-3">${docsHTML}</div>
+    </div>
+  `;
+}
+
+/* =========================================
+   INICIALIZACIÓN
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  cargarGestion();
+});
+
 
 
 
