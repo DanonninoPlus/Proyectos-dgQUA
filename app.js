@@ -48,6 +48,7 @@ let normatecaDocs = [];
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
 
+
 /* ============================================================
    GESTIÓN
    ============================================================ */
@@ -55,37 +56,115 @@ const CAMPO_SUBTIPO = "Tipo de proyecto";
 let gestionData = null;
 let gestionLoaded = false;
 
+const GESTION_URL =
+  "https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/gestion.json";
+
 async function loadGestion() {
   if (gestionLoaded) return;
 
-  const res = await fetch("data/gestion.json");
-  const json = await res.json();
-  gestionData = json.gestion;
+  try {
+    const res = await fetch(GESTION_URL);
+    if (!res.ok) throw new Error("No se pudo cargar gestion.json");
 
-  renderFormacion();
-  renderInvestigacion();
-  renderDocumentos();
-  attachGestionSubtabs();
+    gestionData = await res.json();
 
-  gestionLoaded = true;
+    renderFormacion();
+    renderInvestigacion();
+    renderDocumentos();
+    attachGestionSubtabs();
+
+    gestionLoaded = true;
+  } catch (err) {
+    console.warn("Error cargando Gestión:", err);
+  }
 }
+
+/* ============================================================
+   RENDER GESTIÓN
+   ============================================================ */
+
+function renderFormacion() {
+  const cont = document.getElementById("gestion-formacion");
+  if (!cont || !gestionData?.formacion) return;
+
+  cont.innerHTML = "";
+
+  gestionData.formacion.forEach(item => {
+    cont.innerHTML += `
+      <div class="bg-white p-4 rounded-2xl border shadow-sm mb-4">
+        <h4 class="font-bold text-emerald-600">${escapeHtml(item.titulo)}</h4>
+        <p class="text-sm text-slate-600 mt-1">${escapeHtml(item.descripcion)}</p>
+        <span class="text-[10px] uppercase font-bold text-slate-400">
+          Estado: ${escapeHtml(item.estado)}
+        </span>
+      </div>
+    `;
+  });
+}
+
+function renderInvestigacion() {
+  const cont = document.getElementById("gestion-investigacion");
+  if (!cont || !gestionData?.investigacion) return;
+
+  cont.innerHTML = "";
+
+  gestionData.investigacion.forEach(item => {
+    cont.innerHTML += `
+      <div class="bg-white p-4 rounded-2xl border shadow-sm mb-4">
+        <h4 class="font-bold text-indigo-600">${escapeHtml(item.titulo)}</h4>
+        <p class="text-sm text-slate-600 mt-1">${escapeHtml(item.descripcion)}</p>
+        <span class="text-[10px] uppercase font-bold text-slate-400">
+          Estado: ${escapeHtml(item.estado)}
+        </span>
+      </div>
+    `;
+  });
+}
+
+function renderDocumentos() {
+  const cont = document.getElementById("gestion-documentos");
+  if (!cont || !gestionData?.documentos) return;
+
+  cont.innerHTML = "";
+
+  gestionData.documentos.forEach(doc => {
+    cont.innerHTML += `
+      <a href="${doc.archivo}" target="_blank"
+         class="flex items-center gap-2 text-indigo-600 text-sm mb-3">
+        <i class="fas fa-file-pdf"></i>
+        ${escapeHtml(doc.nombre)}
+      </a>
+    `;
+  });
+}
+
+/* ============================================================
+   SUBTABS GESTIÓN
+   ============================================================ */
 
 function attachGestionSubtabs() {
   const btnFormacion = document.getElementById("btn-formacion");
   const btnInvestigacion = document.getElementById("btn-investigacion");
+  const formacion = document.getElementById("gestion-formacion");
+  const investigacion = document.getElementById("gestion-investigacion");
 
   if (!btnFormacion || !btnInvestigacion) return;
 
   btnFormacion.onclick = () => {
-    document.getElementById("gestion-formacion").classList.remove("hidden");
-    document.getElementById("gestion-investigacion").classList.add("hidden");
+    formacion.classList.remove("hidden");
+    investigacion.classList.add("hidden");
+    btnFormacion.classList.add("bg-white", "text-emerald-600");
+    btnInvestigacion.classList.remove("bg-white", "text-emerald-600");
   };
 
   btnInvestigacion.onclick = () => {
-    document.getElementById("gestion-investigacion").classList.remove("hidden");
-    document.getElementById("gestion-formacion").classList.add("hidden");
+    investigacion.classList.remove("hidden");
+    formacion.classList.add("hidden");
+    btnInvestigacion.classList.add("bg-white", "text-emerald-600");
+    btnFormacion.classList.remove("bg-white", "text-emerald-600");
   };
 }
+
 
 /* ============================================================
    VISTAS PRINCIPALES
