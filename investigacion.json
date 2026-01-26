@@ -1,0 +1,34 @@
+[
+  {
+    "id": "inv1",
+    "pais": "España",
+    "nombre": "Estudio Microbioma Mediterráneo",
+    "fechaInicio": "Junio 2024",
+    "fechaFin": "Diciembre 2025",
+    "instituciones": [
+      "CSIC - Centro Superior de Investigaciones Científicas",
+      "Universidad Autónoma de Madrid"
+    ]
+  },
+  {
+    "id": "inv2",
+    "pais": "España",
+    "nombre": "Análisis Desalinización Sostenible",
+    "fechaInicio": "Enero 2023",
+    "fechaFin": "Junio 2024",
+    "instituciones": [
+      "Universidad de Valencia"
+    ]
+  },
+  {
+    "id": "inv3",
+    "pais": "México",
+    "nombre": "Biodiversidad y Cambio Climático",
+    "fechaInicio": "2024",
+    "fechaFin": "2026",
+    "instituciones": [
+      "UNAM",
+      "CONACYT"
+    ]
+  }
+]
