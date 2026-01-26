@@ -411,6 +411,7 @@ function attachEvents() {
 
         if (tabId === 'tabgestion') {
         mostrarFormacion();
+        renderInvestigacion();   
         }
 
     });
@@ -647,4 +648,5 @@ function mostrarInvestigacion() {
 
   attachAccordionEvents();
 }
+
 
