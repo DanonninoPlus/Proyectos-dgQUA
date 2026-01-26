@@ -525,23 +525,28 @@ function populateResponsibles() {
    🔵 9. GESTIÓN - CAPACITACIONES & PERMISOS DE INVESTIGAIÓN
    ============================================================*/
 
-   function mostrarFormacion() {
+function mostrarFormacion() {
   gestionFormacion.classList.remove("hidden");
   gestionInvestigacion.classList.add("hidden");
 
   tabFormacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
-  tabInvestigacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
+  tabFormacion.classList.remove("text-slate-400");
 
+  tabInvestigacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
   tabInvestigacion.classList.add("text-slate-400");
 }
+
 
 function mostrarInvestigacion() {
   gestionInvestigacion.classList.remove("hidden");
   gestionFormacion.classList.add("hidden");
 
   tabInvestigacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
-  tabFormacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
+  tabInvestigacion.classList.remove("text-slate-400");
 
+  tabFormacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
   tabFormacion.classList.add("text-slate-400");
 }
+
+
 
