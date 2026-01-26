@@ -32,6 +32,8 @@ const projNotas = document.getElementById("projNotas");
 
 let proyectos = [];
 let normatecaDocs = [];
+let investigaciones = [];
+
 
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
@@ -113,6 +115,8 @@ async function init() {
     proyectos = loadFromStorage();
   }
   normatecaDocs = await loadnormatecaFromJsonUrl();
+  investigaciones = await loadInvestigacionFromJsonUrl();
+
 
   renderList();
   populateResponsibles();
@@ -643,8 +647,4 @@ function mostrarInvestigacion() {
 
   attachAccordionEvents();
 }
-
-
-
-
 
