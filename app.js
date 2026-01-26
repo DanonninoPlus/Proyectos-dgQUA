@@ -36,6 +36,15 @@ let normatecaDocs = [];
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
 
+
+// ===== GESTIÓN: TABS =====
+const tabFormacion = document.getElementById("tabFormacion");
+const tabInvestigacion = document.getElementById("tabInvestigacion");
+
+const gestionFormacion = document.getElementById("gestionFormacion");
+const gestionInvestigacion = document.getElementById("gestionInvestigacion");
+
+
 /* ============================================================
    🔵 1. CARGA DE DATOS
    ============================================================*/
@@ -353,6 +362,7 @@ function attachEvents() {
   const tabs = {
     'tabProyectos': { section: 'projectList', filters: 'filterSection' },
     'tabnormateca': { section: 'normatecaSection', filters: null },
+    'tabgestion': { section: 'gestionSection', filters: null }, // 👈 AQUÍ
     'tabReportes': { section: 'reportsSection', filters: null }
   };
 
@@ -377,8 +387,21 @@ function attachEvents() {
         else filters.classList.add("hidden");
 
         if(tabId === 'tabnormateca') renderNormateca();
+
+        if (tabId === 'tabgestion') {
+        mostrarFormacion();
+        }
+
     });
   });
+
+  // ===== GESTIÓN: SUB-TABS =====
+  if (tabFormacion && tabInvestigacion) {
+    tabFormacion.addEventListener("click", mostrarFormacion);
+    tabInvestigacion.addEventListener("click", mostrarInvestigacion);
+  }
+
+
 }
 
 /* ============================================================
@@ -498,4 +521,27 @@ function populateResponsibles() {
   });
 }
 
+/* ============================================================
+   🔵 9. GESTIÓN - CAPACITACIONES & PERMISOS DE INVESTIGAIÓN
+   ============================================================*/
+
+   function mostrarFormacion() {
+  gestionFormacion.classList.remove("hidden");
+  gestionInvestigacion.classList.add("hidden");
+
+  tabFormacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
+  tabInvestigacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
+
+  tabInvestigacion.classList.add("text-slate-400");
+}
+
+function mostrarInvestigacion() {
+  gestionInvestigacion.classList.remove("hidden");
+  gestionFormacion.classList.add("hidden");
+
+  tabInvestigacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
+  tabFormacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
+
+  tabFormacion.classList.add("text-slate-400");
+}
 
