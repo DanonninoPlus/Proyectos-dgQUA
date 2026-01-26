@@ -33,6 +33,43 @@ const projNotas = document.getElementById("projNotas");
 let proyectos = [];
 let normatecaDocs = [];
 
+let investigaciones = [
+  {
+    id: "inv1",
+    pais: "España",
+    nombre: "Estudio Microbioma Mediterráneo",
+    fechaInicio: "Junio 2024",
+    fechaFin: "Diciembre 2025",
+    instituciones: [
+      "CSIC - Centro Superior de Investigaciones Científicas",
+      "Universidad Autónoma de Madrid"
+    ]
+  },
+  {
+    id: "inv2",
+    pais: "España",
+    nombre: "Análisis Desalinización Sostenible",
+    fechaInicio: "Enero 2023",
+    fechaFin: "Junio 2024",
+    instituciones: [
+      "Universidad de Valencia"
+    ]
+  },
+  {
+    id: "inv3",
+    pais: "México",
+    nombre: "Biodiversidad y Cambio Climático",
+    fechaInicio: "2024",
+    fechaFin: "2026",
+    instituciones: [
+      "UNAM",
+      "CONACYT"
+    ]
+  }
+];
+
+
+
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
 
@@ -525,28 +562,102 @@ function populateResponsibles() {
    🔵 9. GESTIÓN - CAPACITACIONES & PERMISOS DE INVESTIGAIÓN
    ============================================================*/
 
-function mostrarFormacion() {
+   function mostrarFormacion() {
   gestionFormacion.classList.remove("hidden");
   gestionInvestigacion.classList.add("hidden");
 
   tabFormacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
-  tabFormacion.classList.remove("text-slate-400");
-
   tabInvestigacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
+
   tabInvestigacion.classList.add("text-slate-400");
 }
-
 
 function mostrarInvestigacion() {
   gestionInvestigacion.classList.remove("hidden");
   gestionFormacion.classList.add("hidden");
 
   tabInvestigacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
-  tabInvestigacion.classList.remove("text-slate-400");
-
   tabFormacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
+
   tabFormacion.classList.add("text-slate-400");
+
+  renderInvestigacion();
+
 }
 
+/* ============================================================
+   🔵 9.1 GESTIÓN - PERMISOS DE INVESTIGAIÓN
+   ============================================================*/
 
+   function renderInvestigacion() {
+  gestionInvestigacion.innerHTML = "";
+
+  // 1️⃣ Agrupar proyectos por país
+  const porPais = {};
+  investigaciones.forEach(inv => {
+    if (!porPais[inv.pais]) porPais[inv.pais] = [];
+    porPais[inv.pais].push(inv);
+  });
+
+  // 2️⃣ Crear acordeón por país
+  Object.keys(porPais).forEach(pais => {
+    const contenedorPais = document.createElement("div");
+    contenedorPais.className = "bg-white rounded-3xl p-4 shadow-sm border border-slate-100";
+
+    contenedorPais.innerHTML = `
+      <button class="w-full flex items-center justify-between acordeon-btn">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center">
+            📍
+          </div>
+          <div class="text-left">
+            <div class="font-bold text-slate-800 uppercase">${pais}</div>
+            <div class="text-[10px] text-slate-400 font-bold uppercase">
+              ${porPais[pais].length} proyecto(s)
+            </div>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down text-slate-300 transition-transform"></i>
+      </button>
+
+      <div class="panel hidden mt-4 space-y-3"></div>
+    `;
+
+    const panelPais = contenedorPais.querySelector(".panel");
+
+    // 3️⃣ Cards de proyectos
+    porPais[pais].forEach(inv => {
+      const card = document.createElement("div");
+      card.className = "bg-indigo-600 rounded-2xl overflow-hidden text-white";
+
+      card.innerHTML = `
+        <button class="w-full text-left px-4 py-4 acordeon-btn">
+          <div class="font-bold text-sm">${inv.nombre}</div>
+        </button>
+
+        <div class="panel hidden bg-white text-slate-700 px-4 py-4 space-y-3">
+          <div class="text-xs">
+            <i class="far fa-calendar-alt mr-1 text-indigo-600"></i>
+            <b>Fecha de ejecución</b><br>
+            ${inv.fechaInicio} – ${inv.fechaFin}
+          </div>
+
+          <div class="text-xs">
+            <i class="fas fa-university mr-1 text-indigo-600"></i>
+            <b>Instituciones</b>
+            <ul class="list-disc pl-4 mt-1">
+              ${inv.instituciones.map(i => `<li>${i}</li>`).join("")}
+            </ul>
+          </div>
+        </div>
+      `;
+
+      panelPais.appendChild(card);
+    });
+
+    gestionInvestigacion.appendChild(contenedorPais);
+  });
+
+  attachAccordionEvents();
+}
 
