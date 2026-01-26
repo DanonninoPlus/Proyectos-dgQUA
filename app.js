@@ -33,43 +33,6 @@ const projNotas = document.getElementById("projNotas");
 let proyectos = [];
 let normatecaDocs = [];
 
-let investigaciones = [
-  {
-    id: "inv1",
-    pais: "España",
-    nombre: "Estudio Microbioma Mediterráneo",
-    fechaInicio: "Junio 2024",
-    fechaFin: "Diciembre 2025",
-    instituciones: [
-      "CSIC - Centro Superior de Investigaciones Científicas",
-      "Universidad Autónoma de Madrid"
-    ]
-  },
-  {
-    id: "inv2",
-    pais: "España",
-    nombre: "Análisis Desalinización Sostenible",
-    fechaInicio: "Enero 2023",
-    fechaFin: "Junio 2024",
-    instituciones: [
-      "Universidad de Valencia"
-    ]
-  },
-  {
-    id: "inv3",
-    pais: "México",
-    nombre: "Biodiversidad y Cambio Climático",
-    fechaInicio: "2024",
-    fechaFin: "2026",
-    instituciones: [
-      "UNAM",
-      "CONACYT"
-    ]
-  }
-];
-
-
-
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
 
@@ -110,6 +73,23 @@ async function loadnormatecaFromJsonUrl() {
     return [];
   }
 }
+
+
+async function loadInvestigacionFromJsonUrl() {
+  try {
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/investigacion.json";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("No se pudo cargar investigacion.json");
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch (err) {
+    console.warn("Error cargando Investigación:", err);
+    return [];
+  }
+}
+
+
+
 
 function loadFromStorage() {
   const raw = localStorage.getItem(LS_KEY);
@@ -663,5 +643,8 @@ function mostrarInvestigacion() {
 
   attachAccordionEvents();
 }
+
+
+
 
 
