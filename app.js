@@ -33,6 +33,8 @@ const projNotas = document.getElementById("projNotas");
 let proyectos = [];
 let normatecaDocs = [];
 let investigaciones = [];
+let capacitaciones = [];
+
 
 
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
@@ -92,6 +94,22 @@ async function loadInvestigacionFromJsonUrl() {
 
 
 
+async function loadCapacitacionesFromJsonUrl() {
+  try {
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/capacitacion.json";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("No se pudo cargar capacitaciones.json");
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch (err) {
+    console.warn("Error cargando Capacitaciones:", err);
+    return [];
+  }
+}
+
+
+
+
 
 function loadFromStorage() {
   const raw = localStorage.getItem(LS_KEY);
@@ -116,6 +134,8 @@ async function init() {
   }
   normatecaDocs = await loadnormatecaFromJsonUrl();
   investigaciones = await loadInvestigacionFromJsonUrl();
+  capacitaciones = await loadCapacitacionesFromJsonUrl();
+
 
 
   renderList();
@@ -574,7 +594,102 @@ function mostrarInvestigacion() {
 }
 
 /* ============================================================
-   🔵 9.1 GESTIÓN - PERMISOS DE INVESTIGAIÓN
+   🔵 9.1 GESTIÓN - CAPACITACIONES
+   ============================================================*/
+
+   function renderFormacion() {
+  gestionFormacion.innerHTML = "";
+
+  // 1️⃣ Agrupar proyectos por país
+  const porPais = {};
+  capacitaciones.forEach(cap => {
+    if (!porPais[cap.pais]) porPais[cap.pais] = [];
+    porPais[cap.pais].push(cap);
+  });
+
+  // 2️⃣ Crear acordeón por país
+   Object.keys(porPais).forEach(pais => {
+  const contenedorPais = document.createElement("div");
+  contenedorPais.className = "bg-white rounded-3xl p-4 shadow-sm border border-slate-100";
+
+  contenedorPais.innerHTML = `
+    <button class="w-full flex items-center justify-between acordeon-btn">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center">📍</div>
+        <div>
+          <div class="font-bold uppercase">${pais}</div>
+          <div class="text-[10px] text-slate-400 font-bold">
+            ${porPais[pais].length} cursos activos
+          </div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-down transition-transform"></i>
+    </button>
+
+    <div class="panel hidden mt-4 space-y-3"></div>
+  `;
+
+
+  // 3️⃣ Cards de proyectos
+const panelPais = contenedorPais.querySelector(".panel");
+
+porPais[pais].forEach(cap => {
+  const card = document.createElement("div");
+  card.className = "rounded-2xl overflow-hidden";
+
+  card.innerHTML = `
+    <button class="w-full bg-indigo-600 text-white px-4 py-4 flex justify-between items-center acordeon-btn">
+      <div class="font-bold text-sm">${cap.titulo}</div>
+      <span class="text-[9px] bg-white/20 px-2 py-1 rounded-full uppercase">${cap.modalidad}</span>
+    </button>
+
+    <div class="panel hidden bg-white p-4 space-y-4">
+      
+      <div class="text-xs">
+        <i class="fas fa-graduation-cap text-indigo-600 mr-1"></i>
+        <b>Título original</b><br>${cap.tituloOriginal}
+      </div>
+
+      <div class="text-xs">
+        <i class="fas fa-university text-indigo-600 mr-1"></i>
+        <b>Instituto</b><br>${cap.instituto}
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-slate-50 p-2 rounded-lg text-center">
+          <div class="text-[9px] font-bold uppercase">Inicio</div>
+          ${cap.fechaInicio}
+        </div>
+        <div class="bg-slate-50 p-2 rounded-lg text-center">
+          <div class="text-[9px] font-bold uppercase">Término</div>
+          ${cap.fechaFin}
+        </div>
+      </div>
+
+      <div class="bg-yellow-50 border border-yellow-200 p-3 rounded-xl text-xs">
+        <b>Código DTE:</b> ${cap.dte}<br>
+        <b>Límite candidaturas:</b> ${cap.limiteCandidaturas}
+      </div>
+
+      ${cap.notas ? `
+      <div class="bg-indigo-50 border border-indigo-100 p-3 rounded-xl text-xs italic">
+        <b>Notas del curso</b><br>${cap.notas}
+      </div>` : ""}
+
+    </div>
+  `;
+
+  panelPais.appendChild(card);
+});
+
+gestionFormacion.appendChild(contenedorPais);
+});
+attachAccordionEvents();
+}
+
+
+/* ============================================================
+   🔵 9.2 GESTIÓN - PERMISOS DE INVESTIGAIÓN
    ============================================================*/
 
    function renderInvestigacion() {
@@ -648,5 +763,3 @@ function mostrarInvestigacion() {
 
   attachAccordionEvents();
 }
-
-
