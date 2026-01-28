@@ -42,10 +42,10 @@ const CAMPO_SUBTIPO = "Tipo de proyecto";
 
 
 // ===== GESTIÓN: TABS =====
-const tabFormacion = document.getElementById("tabFormacion");
+const tabCapacitaciones = document.getElementById("tabCapacitaciones");
 const tabInvestigacion = document.getElementById("tabInvestigacion");
 
-const gestionFormacion = document.getElementById("gestionFormacion");
+const gestionCapacitaciones = document.getElementById("gestionCapacitaciones");
 const gestionInvestigacion = document.getElementById("gestionInvestigacion");
 
 
@@ -96,7 +96,7 @@ async function loadInvestigacionFromJsonUrl() {
 
 async function loadCapacitacionesFromJsonUrl() {
   try {
-    const url = "https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/capacitacion.json";
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/capacitaciones.json";
     const res = await fetch(url);
     if (!res.ok) throw new Error("No se pudo cargar capacitaciones.json");
     const data = await res.json();
@@ -430,7 +430,7 @@ function attachEvents() {
         if(tabId === 'tabnormateca') renderNormateca();
 
         if (tabId === 'tabgestion') {
-        mostrarFormacion();
+        mostrarCapacitaciones()
         renderInvestigacion();   
         }
 
@@ -438,8 +438,8 @@ function attachEvents() {
   });
 
   // ===== GESTIÓN: SUB-TABS =====
-  if (tabFormacion && tabInvestigacion) {
-    tabFormacion.addEventListener("click", mostrarFormacion);
+  if (tabCapacitaciones && tabInvestigacion) {
+    tabCapacitaciones.addEventListener("click", mostrarCapacitaciones);
     tabInvestigacion.addEventListener("click", mostrarInvestigacion);
   }
 
@@ -567,29 +567,30 @@ function populateResponsibles() {
    🔵 9. GESTIÓN - CAPACITACIONES & PERMISOS DE INVESTIGAIÓN
    ============================================================*/
 
-function mostrarFormacion() {
-  gestionFormacion.classList.remove("hidden");
+function mostrarCapacitaciones() {
+  gestionCapacitaciones.classList.remove("hidden");
   gestionInvestigacion.classList.add("hidden");
 
-  tabFormacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
-  tabFormacion.classList.remove("text-slate-400");
+  tabCapacitaciones.classList.add("bg-white", "text-indigo-600", "shadow-sm");
+  tabCapacitaciones.classList.remove("text-slate-400");
 
   tabInvestigacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
   tabInvestigacion.classList.add("text-slate-400");
+
+  renderCapacitaciones();
+
 }
 
 
 function mostrarInvestigacion() {
   gestionInvestigacion.classList.remove("hidden");
-  gestionFormacion.classList.add("hidden");
+  gestionCapacitaciones.classList.add("hidden");
 
   tabInvestigacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
   tabInvestigacion.classList.remove("text-slate-400");
 
-  tabFormacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
-  tabFormacion.classList.add("text-slate-400");
-
-  renderInvestigacion();
+  tabCapacitaciones.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
+  tabCapacitaciones.classList.add("text-slate-400");
 
 }
 
@@ -597,8 +598,8 @@ function mostrarInvestigacion() {
    🔵 9.1 GESTIÓN - CAPACITACIONES
    ============================================================*/
 
-   function renderFormacion() {
-  gestionFormacion.innerHTML = "";
+   function renderCapacitaciones() {
+  gestionCapacitaciones.innerHTML = "";
 
   // 1️⃣ Agrupar proyectos por país
   const porPais = {};
@@ -682,7 +683,7 @@ porPais[pais].forEach(cap => {
   panelPais.appendChild(card);
 });
 
-gestionFormacion.appendChild(contenedorPais);
+gestionCapacitaciones.appendChild(contenedorPais);
 });
 attachAccordionEvents();
 }
