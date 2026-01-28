@@ -1,0 +1,28 @@
+[
+  {
+    "id": "cap1",
+    "pais": "España",
+    "titulo": "Gestión de Aguas Rurales",
+    "modalidad": "Presencial",
+    "tituloOriginal": "Sustainable Water Management for Rural Communities",
+    "instituto": "INAP - Instituto Nacional de Administración Pública",
+    "fechaInicio": "15 Mar 2024",
+    "fechaFin": "20 May 2024",
+    "dte": "ESP-2024-WTR-001",
+    "limiteCandidaturas": "01 Mar 2024",
+    "notas": "Requiere experiencia previa en proyectos de saneamiento ambiental."
+  },
+  {
+    "id": "cap2",
+    "pais": "España",
+    "titulo": "Finanzas Sostenibles",
+    "modalidad": "Virtual",
+    "tituloOriginal": "Sustainable Finance Strategies",
+    "instituto": "Universidad Complutense de Madrid",
+    "fechaInicio": "10 Jun 2024",
+    "fechaFin": "30 Jul 2024",
+    "dte": "ESP-2024-FIN-002",
+    "limiteCandidaturas": "15 May 2024",
+    "notas": ""
+  }
+]
