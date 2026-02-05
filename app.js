@@ -16,6 +16,18 @@ const btnCancel = document.getElementById("btnCancel");
 const btnExportPDF = document.getElementById("btnExportPDF");
 const btnExportXLS = document.getElementById("btnExportXLS");
 const btnImportJSON = document.getElementById("btnImportJSON");
+
+// ===== REPORTES · WORD POR PAÍS =====
+const btnExportWordPais = document.getElementById("btnExportWordPais");
+const bottomSheetPais = document.getElementById("bottomSheetPais");
+const listaPaises = document.getElementById("listaPaises");
+const searchPais = document.getElementById("searchPais");
+const btnCancelarPais = document.getElementById("btnCancelarPais");
+const btnAceptarPais = document.getElementById("btnAceptarPais");
+
+let paisSeleccionado = null;
+
+
 const printArea = document.getElementById("printArea");
 
 // Form fields
@@ -153,6 +165,77 @@ function escapeHtml(text) {
   if (!text) return "";
   return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
+
+
+//BottomSheet País - ABRIR Y CERRAR EL BOTTOM SHEET
+
+function abrirBottomSheetPais() {
+  paisSeleccionado = null;
+  renderListaPaises();
+  bottomSheetPais.classList.remove("hidden");
+}
+
+function cerrarBottomSheetPais() {
+  bottomSheetPais.classList.add("hidden");
+  searchPais.value = "";
+}
+
+//BottomSheet País - Obtener la lista de los países
+
+function obtenerPaisesUnicos() {
+  const set = new Set();
+  proyectos.forEach(p => {
+    if (p.Pais) set.add(p.Pais.trim());
+  });
+  return Array.from(set).sort();
+}
+
+//BottomSheet País - AGREGA EL RENDER DEL BOTTOM SHEET
+
+function renderListaPaises() {
+  const filtro = searchPais.value.toLowerCase();
+  listaPaises.innerHTML = "";
+
+  const paises = obtenerPaisesUnicos().filter(p =>
+    p.toLowerCase().includes(filtro)
+  );
+
+  if (!paises.length) {
+    listaPaises.innerHTML = `
+      <div class="text-center text-slate-400 text-sm italic py-6">
+        No se encontraron países
+      </div>`;
+    return;
+  }
+
+  paises.forEach(pais => {
+    const item = document.createElement("button");
+    item.className = `
+      w-full flex items-center justify-between px-4 py-3 rounded-xl
+      border text-sm font-semibold
+      ${paisSeleccionado === pais
+        ? "border-indigo-600 bg-indigo-50 text-indigo-700"
+        : "border-slate-200 bg-white text-slate-700"}
+    `;
+
+    item.innerHTML = `
+      <span>${pais}</span>
+      <span class="w-5 h-5 rounded-full border-2 flex items-center justify-center
+        ${paisSeleccionado === pais ? "border-indigo-600" : "border-slate-300"}">
+        ${paisSeleccionado === pais ? "●" : ""}
+      </span>
+    `;
+
+    item.onclick = () => {
+      paisSeleccionado = pais;
+      renderListaPaises();
+    };
+
+    listaPaises.appendChild(item);
+  });
+}
+
+
 
 /* ============================================================
    🔵 4. RENDER LISTA (DISEÑO MEJORADO)
@@ -403,7 +486,7 @@ function attachEvents() {
   const tabs = {
     'tabProyectos': { section: 'projectList', filters: 'filterSection' },
     'tabnormateca': { section: 'normatecaSection', filters: null },
-    'tabgestion': { section: 'gestionSection', filters: null }, // 👈 AQUÍ
+    'tabgestion': { section: 'gestionSection', filters: null }, // 👈 AQUÍ VA LA GESTIÓN DE CAPACITACIONES Y PERMISOS DE INVESTIGACIÓN
     'tabReportes': { section: 'reportsSection', filters: null }
   };
 
@@ -431,7 +514,7 @@ function attachEvents() {
 
         if (tabId === 'tabgestion') {
         mostrarCapacitaciones()
-        renderInvestigacion();   
+        //renderInvestigacion();   - Se desactivó por llamar reder de investigación dos veces, se guarda como back up
         }
 
     });
@@ -442,6 +525,31 @@ function attachEvents() {
     tabCapacitaciones.addEventListener("click", mostrarCapacitaciones);
     tabInvestigacion.addEventListener("click", mostrarInvestigacion);
   }
+
+
+
+  // ===== REPORTES · WORD POR PAÍS =====
+  if (btnExportWordPais) {
+    btnExportWordPais.addEventListener("click", abrirBottomSheetPais);
+  }
+
+  searchPais.addEventListener("input", renderListaPaises);
+
+  btnCancelarPais.addEventListener("click", cerrarBottomSheetPais);
+
+  btnAceptarPais.addEventListener("click", () => {
+    if (!paisSeleccionado) {
+      alert("Selecciona un país para exportar");
+      return;
+    }
+
+    cerrarBottomSheetPais();
+
+    // 👉 En el siguiente paso aquí va el exportador Word
+    console.log("País seleccionado:", paisSeleccionado);
+  });
+
+
 
 
 }
@@ -503,20 +611,9 @@ function saveProject(ev) {
    🔵 8. EXPORTACIONES (Mantienen tu lógica original)
    ============================================================*/
 function exportPDF() {
-  let html = `<div style="font-family: Arial; padding: 20px;">
-    <h1 style="text-align:center; color:#1e1b4b;">Listado de Proyectos — DG Cooperación</h1><hr>`;
-  proyectos.forEach(p => {
-    html += `<div style="margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:10px;">
-      <h2 style="color:#4f46e5; margin-bottom:5px;">${escapeHtml(p.Nombredelproyecto)}</h2>
-      <p style="font-size:12px;"><b>Ubicación:</b> ${p.Continente} / ${p.Pais} | <b>Estatus:</b> ${p.status}</p>
-      <p style="font-size:12px;"><b>Objetivo:</b> ${escapeHtml(p.Objetivo)}</p>
-    </div>`;
-  });
-  html += `</div>`;
-  printArea.innerHTML = html;
-  const opt = { margin: 0.5, filename: "Reporte_Proyectos_DG.pdf", html2canvas: { scale: 2 }, jsPDF: { unit: "in", format: "letter" } };
-  html2pdf().set(opt).from(printArea).save();
+  abrirBottomSheetPais();
 }
+
 
 function exportXLS() {
   const worksheet = XLSX.utils.json_to_sheet(proyectos);
@@ -764,3 +861,4 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
