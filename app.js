@@ -610,7 +610,7 @@ function saveProject(ev) {
 /* ============================================================
    🔵 8. EXPORTACIONES (Mantienen tu lógica original)
    ============================================================*/
-function exportPDF() {
+function iniciarExportacionPorPais() {
   abrirBottomSheetPais();
 }
 
@@ -861,4 +861,5 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
