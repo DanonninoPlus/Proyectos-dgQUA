@@ -478,7 +478,7 @@ function attachEvents() {
   btnAddProject.addEventListener("click", openModalForNew);
   btnCancel.addEventListener("click", closeModal);
   projectForm.addEventListener("submit", saveProject);
-  btnExportPDF.addEventListener("click", exportPDF);
+  btnExportPDF.addEventListener("click", iniciarExportacionPorPais);
   btnExportXLS.addEventListener("click", exportXLS);
   btnImportJSON.addEventListener("click", importJSON);
 
@@ -861,5 +861,6 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
 
