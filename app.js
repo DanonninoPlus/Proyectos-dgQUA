@@ -514,7 +514,8 @@ function attachEvents() {
 
         if (tabId === 'tabgestion') {
         mostrarCapacitaciones()
-        //renderInvestigacion();   - Se desactivó por llamar reder de investigación dos veces, se guarda como back up
+        renderInvestigacion();
+        //Se desactivó por llamar reder de investigación dos veces, se guarda como back up
         }
 
     });
@@ -859,5 +860,6 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
 
