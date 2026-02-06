@@ -478,7 +478,7 @@ function attachEvents() {
   btnAddProject.addEventListener("click", openModalForNew);
   btnCancel.addEventListener("click", closeModal);
   projectForm.addEventListener("submit", saveProject);
-  btnExportPDF.addEventListener("click", iniciarExportacionPorPais);
+  btnExportWordPais.addEventListener("click", abrirBottomSheetPais);
   btnExportXLS.addEventListener("click", exportXLS);
   btnImportJSON.addEventListener("click", importJSON);
 
@@ -528,10 +528,8 @@ function attachEvents() {
 
 
 
-  // ===== REPORTES · WORD POR PAÍS =====
-  if (btnExportWordPais) {
-    btnExportWordPais.addEventListener("click", abrirBottomSheetPais);
-  }
+// ===== REPORTES · WORD POR PAÍS =====
+if (searchPais && btnCancelarPais && btnAceptarPais && bottomSheetPais && listaPaises) {
 
   searchPais.addEventListener("input", renderListaPaises);
 
@@ -544,10 +542,10 @@ function attachEvents() {
     }
 
     cerrarBottomSheetPais();
-
-    // 👉 En el siguiente paso aquí va el exportador Word
     console.log("País seleccionado:", paisSeleccionado);
   });
+}
+
 
 
 
@@ -861,6 +859,5 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
-
 
 
