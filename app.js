@@ -514,8 +514,8 @@ function attachEvents() {
 
         if (tabId === 'tabgestion') {
         mostrarCapacitaciones();
-        renderInvestigacion();
-        //Se desactivó por llamar reder de investigación dos veces, se guarda como back up
+        renderInvestigacion();   
+
         }
 
     });
@@ -543,7 +543,7 @@ if (searchPais && btnCancelarPais && btnAceptarPais && bottomSheetPais && listaP
     }
 
     cerrarBottomSheetPais();
-    console.log("País seleccionado:", paisSeleccionado);
+    exportarWordPorPais(paisSeleccionado);
   });
 }
 
@@ -611,6 +611,63 @@ function saveProject(ev) {
    ============================================================*/
 function iniciarExportacionPorPais() {
   abrirBottomSheetPais();
+}
+
+
+async function exportarWordPorPais(paisSeleccionado) {
+  const { Document, Packer, Paragraph, TextRun, PageBreak } = docx;
+
+  const proyectosPais = proyectos.filter(
+    p => p.Pais === paisSeleccionado
+  );
+
+  if (proyectosPais.length === 0) {
+    alert("No hay proyectos para este país");
+    return;
+  }
+
+  const children = [];
+
+  proyectosPais.forEach((p, index) => {
+    children.push(
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: p.Nombredelproyecto,
+            bold: true,
+            size: 28
+          })
+        ]
+      }),
+      new Paragraph(`País: ${p.Pais}`),
+      new Paragraph(`Continente: ${p.Continente}`),
+      new Paragraph(`Estado: ${p.status}`),
+      new Paragraph(`Inicio: ${p.Fechadeinicio || "-"}`),
+      new Paragraph(`Término: ${p.Fechadetermino || "-"}`),
+      new Paragraph({ text: "Objetivo:", spacing: { before: 300 } }),
+      new Paragraph(p.Objetivo || "—"),
+      new Paragraph({ text: "Notas:", spacing: { before: 300 } }),
+      new Paragraph(p.Notas || "—")
+    );
+
+    if (index < proyectosPais.length - 1) {
+      children.push(new Paragraph({ children: [new PageBreak()] }));
+    }
+  });
+
+  const doc = new Document({
+    sections: [{ children }]
+  });
+
+  const blob = await Packer.toBlob(doc);
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `Reporte_${paisSeleccionado}.docx`;
+  a.click();
+
+  URL.revokeObjectURL(url);
 }
 
 
@@ -860,7 +917,6 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
-
 
 
 
