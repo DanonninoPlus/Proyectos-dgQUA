@@ -513,7 +513,7 @@ function attachEvents() {
         if(tabId === 'tabnormateca') renderNormateca();
 
         if (tabId === 'tabgestion') {
-        mostrarCapacitaciones()
+        mostrarCapacitaciones();
         renderInvestigacion();
         //Se desactivó por llamar reder de investigación dos veces, se guarda como back up
         }
@@ -860,6 +860,7 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
 
 
