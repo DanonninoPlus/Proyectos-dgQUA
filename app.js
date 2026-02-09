@@ -548,10 +548,11 @@ if (searchPais && btnCancelarPais && btnAceptarPais && bottomSheetPais && listaP
 }
 
 
-
-
-
 }
+
+
+
+
 
 /* ============================================================
    🔵 7. MODAL LOGIC
@@ -615,60 +616,54 @@ function iniciarExportacionPorPais() {
 
 
 async function exportarWordPorPais(paisSeleccionado) {
-  const { Document, Packer, Paragraph, TextRun, PageBreak } = docx;
+  const proyectosPais = proyectos.filter(p => p.Pais === paisSeleccionado);
 
-  const proyectosPais = proyectos.filter(
-    p => p.Pais === paisSeleccionado
-  );
-
-  if (proyectosPais.length === 0) {
+  if (!proyectosPais.length) {
     alert("No hay proyectos para este país");
     return;
   }
 
-  const children = [];
+  try {
+    // 1️⃣ Cargar la plantilla
+    const response = await fetch("PlantillaReportes.docx");
+    const arrayBuffer = await response.arrayBuffer();
 
-  proyectosPais.forEach((p, index) => {
-    children.push(
-      new Paragraph({
-        children: [
-          new TextRun({
-            text: p.Nombredelproyecto,
-            bold: true,
-            size: 28
-          })
-        ]
-      }),
-      new Paragraph(`País: ${p.Pais}`),
-      new Paragraph(`Continente: ${p.Continente}`),
-      new Paragraph(`Estado: ${p.status}`),
-      new Paragraph(`Inicio: ${p.Fechadeinicio || "-"}`),
-      new Paragraph(`Término: ${p.Fechadetermino || "-"}`),
-      new Paragraph({ text: "Objetivo:", spacing: { before: 300 } }),
-      new Paragraph(p.Objetivo || "—"),
-      new Paragraph({ text: "Notas:", spacing: { before: 300 } }),
-      new Paragraph(p.Notas || "—")
-    );
+    const zip = new PizZip(arrayBuffer);
+    const doc = new window.docxtemplater(zip, {
+      paragraphLoop: true,
+      linebreaks: true
+    });
 
-    if (index < proyectosPais.length - 1) {
-      children.push(new Paragraph({ children: [new PageBreak()] }));
-    }
-  });
+    // 2️⃣ Preparar los datos
+    doc.render({
+      proyectos: proyectosPais.map(p => ({
+        Nombredelproyecto: p.Nombredelproyecto || "",
+        Sector: p.Sector || "",
+        Pais: p.Pais || "",
+        Continente: p.Continente || "",
+        status: p.status || "",
+        Fechadeinicio: p.Fechadeinicio || "",
+        Fechadetermino: p.Fechadetermino || "",
+        Objetivo: p.Objetivo || "",
+        notas: p.notas || ""
+      }))
+    });
 
-  const doc = new Document({
-    sections: [{ children }]
-  });
+    // 3️⃣ Generar y descargar
+    const blob = doc.getZip().generate({
+      type: "blob",
+      mimeType:
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    });
 
-  const blob = await Packer.toBlob(doc);
-  const url = URL.createObjectURL(blob);
+    saveAs(blob, `Reporte_${paisSeleccionado}.docx`);
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `Reporte_${paisSeleccionado}.docx`;
-  a.click();
-
-  URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error(error);
+    alert("Error al generar el Word. Revisa la consola.");
+  }
 }
+
 
 
 function exportXLS() {
