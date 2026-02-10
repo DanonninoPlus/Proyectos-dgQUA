@@ -658,10 +658,14 @@ async function exportarWordPorPais(paisSeleccionado) {
 
     saveAs(blob, `Reporte_${paisSeleccionado}.docx`);
 
-  } catch (error) {
-    console.error(error);
-    alert("Error al generar el Word. Revisa la consola.");
   }
+
+  catch (error) {
+  console.error("ERRORES DETALLADOS:", error.properties.errors);
+  alert("Error al generar el Word. Revisa la consola (errores detallados).");
+}
+
+   
 }
 
 
@@ -912,6 +916,7 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
 
 
