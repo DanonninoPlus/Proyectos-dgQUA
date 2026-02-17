@@ -624,7 +624,7 @@ async function exportarWordPorPais(paisSeleccionado) {
 
   try {
       // 1️⃣ Cargar la plantilla con URL absoluta si es necesario
-      const response = await fetch("https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/PlantillaReportes.docx"); 
+      const response = await fetch("https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/prueba.docx"); 
       if (!response.ok) throw new Error("No se encontró el archivo PlantillaReportes.docx");
       
       const arrayBuffer = await response.arrayBuffer();
@@ -920,6 +920,7 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
 
 
