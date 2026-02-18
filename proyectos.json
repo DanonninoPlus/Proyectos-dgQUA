@@ -1,10 +1,9 @@
 [
-    {
+  {
     "id": "p1_Argentina",
     "Nombredelproyecto": "Fortalecimiento de las capacidades para la implementación del Acuerdo de Escazú en ambos países",
-    "Continente": "Proyectos Entregados",
+    "Continente": "Sudamérica",
     "Pais": "Argentina",
-    "Tipo de proyecto": "Sudamérica",
     "Sector": "Protección Ambiental",
     "Fechadeinicio": "2001",
     "Fechadetermino": "2024",
@@ -17,9 +16,8 @@
     "id": "p2_Argentina",
     "Nombredelproyecto": "Desarrollo de un Sistema Solar Fotovoltaico-Hidrógeno",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
-    "Continente": "Proyectos Entregados",    
     "Pais": "Argentina",
-    "Tipo de proyecto": "Sudamérica",
+    "Continente": "Sudamérica",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -31,9 +29,8 @@
     "id": "p3_Argentina",
     "Nombredelproyecto": "Desarrollo de Capacidades de Argentina y México en el manejo del riesgo de sequías en la gestión integral de los recursos hídricos",
     "Sector": "Protección Ambiental",
-    "Continente": "Proyectos Entregados",    
     "Pais": "Argentina",
-    "Tipo de proyecto": "Sudamérica",
+    "Continente": "Sudamérica",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -45,9 +42,8 @@
     "id": "p4_Argentina",
     "Nombredelproyecto": "Fortalecimiento de capacidades en mediciones industriales y metrología legal",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
-    "Continente": "Proyectos Entregados",    
     "Pais": "Argentina",
-    "Tipo de proyecto": "Sudamérica",
+    "Continente": "Sudamérica",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -59,9 +55,8 @@
     "id": "p5_Argentina",
     "Nombredelproyecto": "Economía circular: Biocombustibles Sólidos para aplicaciones industriales y residenciales",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
-    "Continente": "Proyectos Entregados",    
     "Pais": "Argentina",
-    "Tipo de proyecto": "Sudamérica",
+    "Continente": "Sudamérica",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -73,9 +68,8 @@
     "id": "p6_Argentina",
     "Nombredelproyecto": "Intercambio de habilidades biotecnológicas para la conservación a mediano y largo plazo de papa y ajo",
     "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
-    "Continente": "Proyectos Entregados",    
     "Pais": "Argentina",
-    "Tipo de proyecto": "Sudamérica",
+    "Continente": "Sudamérica",
     "Fechadeinicio": "2001",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -452,8 +446,8 @@
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Esta iniciativa está en cierre y fue parte de los proyectos ganadores de la Convocatoria 2022 del Fondo Conjunto de Cooperación, cuyo objetivo fue construir una estrategia de acción para ampliar la participación política de las mujeres indígenas, desde los propios contextos y prácticas culturales.",
+    "notas": "INSTITUCIONES PARTICIPANTES: Por México: Universidad Autónoma de Chipas (UNACH)  -  Por Chile:  Universidad de la Frontera (UFRO)"
   },
 
   {
@@ -490,12 +484,12 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Educación",
+    "Sector": "Derechos Humanos, Identidad",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Hoja de ruta formulada y acordada para preservar y revitalizar las lenguas indígenas de Chile y México en torno a dos ejes: la participación de los pueblos indígenas y la corresponsabilidad y coordinación interinstitucional.",
+    "notas": "INSTITUCIONES PARTICIPANTES: Por México: Instituto Nacional de Lenguas Indígenas  -  Por Chile: Unidad Cooordinadora de Asuntos Indígenas"
   },
 
   {
@@ -1593,90 +1587,6 @@
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
-
-    {
-    "id": "PI_1_EUA",
-     "Nombredelproyecto": "Integrando educación científica, divulgación y participación comunitaria estudiando el Golfo de California en la embarcación histórica Western Flyer.",
-    "Continente": "América del Norte",
-    "Pais": "Estados Unidos",
-    "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "-",
-    "Fechadeinicio": "27 de marzo 2025",
-    "Fechadetermino": "10 de junio 2025",
-    "status": "Ejecución",
-    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
-    "notas": "Instituciones: Western Flyer Foundation y Universidad Autónoma de Baja California Sur"
-  },
-
-      {
-    "id": "PI_2_EUA",
-     "Nombredelproyecto": "ESCUCHE GoMex - Investigaciones a largo plazo sobre las tendencias del paisaje sonoro, la ecología de los cetáceos y el ruido en el golfo de México.",
-    "Continente": "América del Norte",
-    "Pais": "Estados Unidos",
-    "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "-",
-    "Fechadeinicio": "10 de junio 2025",
-    "Fechadetermino": "15 de julio 2025",
-    "status": "Ejecución",
-    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
-    "notas": "Instituciones: Universidad de California en San Diego, Universidad Nacional Autónoma de México y Universidad de Veracruz."
-  },
-
-  {
-    "id": "PI_3_EUA",
-     "Nombredelproyecto": "Campaña de Carbono y Ecosistemas en el Golfo de México (Gulf of Mexico Ecosystems and Carbon Cruise, GOMECC-5) de 2025.",
-    "Continente": "América del Norte",
-    "Pais": "Estados Unidos",
-    "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "-",
-    "Fechadeinicio": "cancelada debido a un incendio en la sala de máquinas del buque - 10 de octubre 2025",
-    "Fechadetermino": "30 de noviembre 2025",
-    "status": "Ejecución",
-    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
-    "notas": "Instituciones: Laboratorio Oceanográfico y Meteorológico del Atlántico (AOML, por sus siglas en inglés) de la Administración Nacional Oceánica y Atmosférica (NOAA, por sus siglas en inglés) y la Universidad Autónoma de Baja California."
-  },
-
-  {
-    "id": "PI_4_EUA",
-     "Nombredelproyecto": "Cuantificación de los efectos térmicos de la circulación de fluidos en la corteza oceánica sobre las temperaturas en la zona de subducción del sur de México.",
-    "Continente": "América del Norte",
-    "Pais": "Estados Unidos",
-    "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "-",
-    "Fechadeinicio": "5 de noviembre 2025",
-    "Fechadetermino": "26 de diciembre 2025",
-    "status": "Ejecución",
-    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
-    "notas": "Instituciones: Instituto de Minería y Tecnología de Nuevo México y el Centro de Investigación Científica y de Educación Superior de Ensenada (CICESE)."
-  },
-
-  {
-    "id": "PI_5_EUA",
-     "Nombredelproyecto": "Evaluación del impacto humano del turismo en el mapache pigmeo (Procyon pygmaeus), especie en peligro crítico de extinción.",
-    "Continente": "América del Norte",
-    "Pais": "Estados Unidos",
-    "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "-",
-    "Fechadeinicio": "11 de enero 2026",
-    "Fechadetermino": "27 de febrero 2026",
-    "status": "Ejecución",
-    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
-    "notas": "Instituciones: Universidad de Miami y Fundación de Parques y Museos de Cozumel."
-  },
-
-    {
-    "id": "PI_6_EUA",
-     "Nombredelproyecto": "Investigación colaborativa: Barreras metabólicas del hábitat impuesta a los migrantes verticales diurnos tropicales.",
-    "Continente": "América del Norte",
-    "Pais": "Estados Unidos",
-    "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "-",
-    "Fechadeinicio": "13 de diciembre 2025",
-    "Fechadetermino": "31 de enero 2026",
-    "status": "Ejecución",
-    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
-    "notas": "Instituciones: Universidad del Sur de Florida, Universidad Estatal de Arizona, Universidad Rhode Island, Centro de Investigaciones Biológicas del Noroeste (CIBNOR) y Centro Interdisciplinario de Ciencias Marinas (CICIMAR)."
-  },
   
     {
     "id": "p1_Japón",
@@ -1760,73 +1670,8 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
-  },
-
-  {
-    "id": "PI_1_Noruega",
-     "Nombredelproyecto": "Expedición Un Océano II (One Ocean Expedition II)",
-    "Continente": "Europa",
-    "Pais": "Noruega",
-    "Tipo de proyecto": "Permisos de Investigación",
-    "Sector": "-",
-    "Fechadeinicio": "10 de noviembre 2025",
-    "Fechadetermino": "9 de diciembre 2025",
-    "status": "Ejecución",
-    "Objetivo": "Autorizaciones gestionadas en 2025 para investigaciones extranjeras en México",
-    "notas": "Instituciones: Fundación Statsraad Lehmkuhl y Universidad Autónoma de Baja California Sur."
   }
-   
+  
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
