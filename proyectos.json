@@ -1597,9 +1597,8 @@
   {
     "id": "p1_Argentina",
     "Nombredelproyecto": "Fortalecimiento de las capacidades para la implementación del Acuerdo de Escazú en ambos países",
-    "Continente": "- Proyectos Entregados",
+    "Continente": "ZZ Proyectos Entregados",
     "Pais": "Argentina",
-    "Tipo de proyecto": "-Sudamérica",
     "Sector": "Protección Ambiental",
     "Fechadeinicio": "2001",
     "Fechadetermino": "2024",
@@ -1613,7 +1612,7 @@
     "Nombredelproyecto": "Desarrollo de un Sistema Solar Fotovoltaico-Hidrógeno",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
     "Pais": "Argentina",
-    "Continente": "Sudamérica",
+    "Continente": "ZZ Proyectos Entregados",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -1626,7 +1625,7 @@
     "Nombredelproyecto": "Desarrollo de Capacidades de Argentina y México en el manejo del riesgo de sequías en la gestión integral de los recursos hídricos",
     "Sector": "Protección Ambiental",
     "Pais": "Argentina",
-    "Continente": "Sudamérica",
+    "Continente": "ZZ Proyectos Entregados",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -1639,7 +1638,7 @@
     "Nombredelproyecto": "Fortalecimiento de capacidades en mediciones industriales y metrología legal",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
     "Pais": "Argentina",
-    "Continente": "Sudamérica",
+    "Continente": "ZZ Proyectos Entregados",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -1652,7 +1651,7 @@
     "Nombredelproyecto": "Economía circular: Biocombustibles Sólidos para aplicaciones industriales y residenciales",
     "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
     "Pais": "Argentina",
-    "Continente": "Sudamérica",
+    "Continente": "ZZ Proyectos Entregados",
     "Fechadeinicio": "2021",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -1665,7 +1664,7 @@
     "Nombredelproyecto": "Intercambio de habilidades biotecnológicas para la conservación a mediano y largo plazo de papa y ajo",
     "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
     "Pais": "Argentina",
-    "Continente": "Sudamérica",
+    "Continente": "ZZ Proyectos Entregados",
     "Fechadeinicio": "2001",
     "Fechadetermino": "2024",
     "status": "Finalizado",
@@ -1674,6 +1673,7 @@
   }
   
 ]
+
 
 
 
