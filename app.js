@@ -514,8 +514,8 @@ function attachEvents() {
 
         if (tabId === 'tabgestion') {
         mostrarCapacitaciones();
-        renderInvestigacion();   
-
+        renderInvestigacion();
+        //Se desactivó por llamar reder de investigación dos veces, se guarda como back up
         }
 
     });
@@ -543,16 +543,15 @@ if (searchPais && btnCancelarPais && btnAceptarPais && bottomSheetPais && listaP
     }
 
     cerrarBottomSheetPais();
-    exportarWordPorPais(paisSeleccionado);
+    console.log("País seleccionado:", paisSeleccionado);
   });
 }
 
 
+
+
+
 }
-
-
-
-
 
 /* ============================================================
    🔵 7. MODAL LOGIC
@@ -613,65 +612,6 @@ function saveProject(ev) {
 function iniciarExportacionPorPais() {
   abrirBottomSheetPais();
 }
-
-async function exportarWordPorPais(paisSeleccionado) {
-  const proyectosPais = proyectos.filter(p => p.Pais === paisSeleccionado);
-
-  if (!proyectosPais.length) {
-      alert("No hay proyectos para este país");
-      return;
-  }
-
-  try {
-      // 1️⃣ Cargar la plantilla con URL absoluta si es necesario
-      const response = await fetch("https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/prueba.docx"); 
-      if (!response.ok) throw new Error("No se encontró el archivo PlantillaReportes.docx");
-      
-      const arrayBuffer = await response.arrayBuffer();
-      const zip = new PizZip(arrayBuffer);
-      
-      const doc = new window.docxtemplater(zip, {
-          paragraphLoop: true,
-          linebreaks: true,
-      });
-
-      // 2️⃣ Mapeo de datos (Asegúrate de que coincidan con las {{etiquetas}} de Word)
-      const data = {
-          proyectos: proyectosPais.map(p => ({
-              Nombredelproyecto: p.Nombredelproyecto || "S/N",
-              Sector: p.Sector || "S/S",
-              Pais: p.Pais || "",
-              status: p.status || "",
-              Fechadeinicio: p.Fechadeinicio || "",
-              Fechadetermino: p.Fechadetermino || "",
-              Objetivo: p.Objetivo || "",
-              notas: p.notas || ""
-          }))
-      };
-
-      doc.render(data);
-
-      // 3️⃣ Generar y descargar
-      const out = doc.getZip().generate({
-          type: "blob",
-          mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      });
-
-      saveAs(out, `Reporte_Proyectos_${paisSeleccionado}.docx`);
-
-  } catch (error) {
-      // Esto te dirá exactamente qué etiqueta está mal en el Word
-      if (error.properties && error.properties.errors) {
-          const errorMessages = error.properties.errors.map(e => e.properties.explanation).join("\n");
-          console.error("Errores de la plantilla:", errorMessages);
-          alert("Error en la plantilla Word:\n" + errorMessages);
-      } else {
-          console.error(error);
-          alert("Error de conexión o de archivo. Revisa la consola.");
-      }
-  }
-}
-
 
 
 function exportXLS() {
@@ -920,6 +860,8 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
+
 
 
 
