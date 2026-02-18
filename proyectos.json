@@ -1597,9 +1597,9 @@
   {
     "id": "p1_Argentina",
     "Nombredelproyecto": "Fortalecimiento de las capacidades para la implementación del Acuerdo de Escazú en ambos países",
-    "Continente": "Proyectos Entregados",
+    "Continente": "- Proyectos Entregados",
     "Pais": "Argentina",
-    "Tipo de proyecto": "Sudamérica",
+    "Tipo de proyecto": "-Sudamérica",
     "Sector": "Protección Ambiental",
     "Fechadeinicio": "2001",
     "Fechadetermino": "2024",
@@ -1674,6 +1674,7 @@
   }
   
 ]
+
 
 
 
