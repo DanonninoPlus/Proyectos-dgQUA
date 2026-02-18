@@ -54,7 +54,7 @@ const gestionInvestigacion = document.getElementById("gestionInvestigacion");
    ============================================================*/
 async function loadFromJsonUrl() {
   try {
-    const url = "https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/proyectos.json";
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dgQUA/main/proyectos.json";
     const res = await fetch(url);
     if (!res.ok) throw new Error("No se pudo cargar el JSON externo");
     const data = await res.json();
@@ -764,3 +764,4 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
