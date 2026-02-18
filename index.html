@@ -11,13 +11,6 @@
   <!-- Librerías para exportación que ya usabas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
-  <script src="https://unpkg.com/docx@8.0.4/build/index.umd.js"></script>
-  
-  <!-- Para trabajar con plantillas DOCX -->
-  <script src="https://unpkg.com/pizzip@3.1.5/dist/pizzip.min.js"></script>
-  <script src="https://unpkg.com/docxtemplater@3.37.0/build/docxtemplater.js"></script>
-  <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
-
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     .active-tab { border-bottom: 3px solid #4f46e5; color: #4f46e5; font-weight: 700; }
@@ -134,13 +127,11 @@
     <section id="reportsSection" class="hidden space-y-4">
         <h2 class="text-xl font-bold text-slate-800 mb-4">Reportes y Datos</h2>
         <div class="grid grid-cols-1 gap-4">
-            <button id="btnExportWordPais" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-indigo-200 transition-colors">
-                <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-xl">
-                    <i class="fas fa-file-word"></i>
-                </div>
+            <button id="btnExportPDF" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-red-200 transition-colors">
+                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-pdf"></i></div>
                 <div class="text-left">
-                    <div class="font-bold text-slate-800">Exportar en Word por país</div>
-                    <div class="text-xs text-slate-500">Genera un informe detallado filtrado por país</div>
+                    <div class="font-bold text-slate-800">Exportar PDF</div>
+                    <div class="text-xs text-slate-500">Genera un documento visual de los proyectos</div>
                 </div>
             </button>
             <button id="btnExportXLS" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-green-200 transition-colors">
@@ -251,57 +242,6 @@
       </form>
     </div>
   </div>
-
-
-
-<!-- BOTTOM SHEET · SELECCIONAR PAÍS -->
-<div id="bottomSheetPais" class="fixed inset-0 hidden z-[70]">
-  
-  <!-- Fondo oscuro -->
-  <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"></div>
-
-  <!-- Contenedor -->
-  <div class="absolute bottom-0 w-full bg-white rounded-t-3xl shadow-2xl p-5 max-h-[85vh] flex flex-col animate-slide-up">
-
-    <!-- Header -->
-    <div class="text-center mb-4">
-      <h3 class="text-lg font-extrabold text-slate-800">Seleccionar País</h3>
-      <p class="text-xs text-slate-500">Exportar reporte Word filtrado por ubicación</p>
-    </div>
-
-    <!-- Buscador -->
-    <div class="relative mb-3">
-      <i class="fas fa-search absolute left-3 top-3 text-slate-400 text-sm"></i>
-      <input
-        id="searchPais"
-        type="search"
-        placeholder="Buscar país..."
-        class="w-full pl-9 pr-4 py-2 bg-slate-100 rounded-xl border-none outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-      />
-    </div>
-
-    <!-- Lista de países -->
-    <div id="listaPaises" class="flex-1 overflow-y-auto space-y-2 pb-4">
-      <!-- JS inserta países aquí -->
-    </div>
-
-    <!-- Acciones -->
-    <div class="flex gap-3 border-t pt-4">
-      <button
-        id="btnCancelarPais"
-        class="w-full py-4 px-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold rounded-2xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors active:scale-95">
-        Cancelar
-      </button>
-
-      <button
-        id="btnAceptarPais"
-        class="w-full py-4 px-4 bg-indigo-600 text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg active:scale-95">
-        Aceptar
-      </button>
-    </div>
-
-  </div>
-</div>
 
   <script src="app.js" defer></script>
 </body>
