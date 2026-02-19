@@ -559,84 +559,6 @@
     "Objetivo": "México en alianza con Chile, apoyará a Costa Rica en sus esquemas de fortalecimiento de capacidades técnicas, productivas y organizativas en el ámbito de la maricultura artesanal sostenible (siembra de peces y moluscos marinos), con énfasis en cinco comunidades de su costa del Pacífico.",
     "notas": "Instituciones: Universidad Autónoma de Baja California (UABC) por México, la Universidad Católica del Norte de Chile y con la coordinación nacional del Parque Marino del Pacífico (PMP), de la Universidad Nacional (UNA) y del Ministerio de Medio Ambiente y Energía (MINAE) de Costa Rica."
   },
-  
-  {
-    "id": "p1_Paraguay",
-    "Nombredelproyecto": "Cultivo de Nopal para la integración de los pueblos y alternativa para el desarrollo socio cultural y económico de la comunidad Ñu Guasu",
-    "Continente": "Sudamérica",
-    "Pais": "Paraguay",
-    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2025",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p2_Paraguay",
-    "Nombredelproyecto": "Fortalecimiento de capacidades del INIFAP para mejorar la producción sostenible de soya en el trópico de México",
-    "Continente": "Sudamérica",
-    "Pais": "Paraguay",
-    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2025",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p3_Paraguay",
-    "Nombredelproyecto": "Fortalecimiento de capacidades en Ingeniería de Sistemas Espaciales orientadas al diseño, construcción, prueba, lanzamiento y operación de un futuro Satélite Experimental, con la participación de la academia y sector privado del Paraguay y México",
-    "Continente": "Sudamérica",
-    "Pais": "Paraguay",
-    "Sector": "Ciencia Tecnología e Innovación",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p4_Paraguay",
-    "Nombredelproyecto": "Cooperación en materia de acceso a la información y protección de datos personales entre México y Paraguay",
-    "Continente": "Sudamérica",
-    "Pais": "Paraguay",
-    "Sector": "Política de Gobierno",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p5_Paraguay",
-    "Nombredelproyecto": "Instalar y fortalecer capacidades institucionales, así como intercambiar conocimiento y experiencia para la identificación, construcción de compromisos ante los Planes de Acción Nacionales en el marco de la Alianza para el Gobierno Abierto (AGA) y su vinculación con los Objetivos de Desarrollo Sostenible",
-    "Continente": "Sudamérica",
-    "Pais": "Paraguay",
-    "Sector": "Política de Gobierno",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p6_Paraguay",
-    "Nombredelproyecto": "Desarrollo del Producto Turismo de Incentivos en Paraguay",
-    "Continente": "Sudamérica",
-    "Pais": "Paraguay",
-    "Sector": "Turismo",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
 
   {
     "id": "p1_Uruguay",
@@ -1670,9 +1592,88 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
+  },
+    
+  {
+    "id": "p1_Paraguay",
+    "Nombredelproyecto": "Cultivo de Nopal para la integración de los pueblos y alternativa para el desarrollo socio cultural y económico de la comunidad Ñu Guasu",
+    "Continente": "== Proyectos Entregados",
+    "Pais": "Paraguay",
+    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
+    "Fechadeinicio": "2021",
+    "Fechadetermino": "2025",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p2_Paraguay",
+    "Nombredelproyecto": "Fortalecimiento de capacidades del INIFAP para mejorar la producción sostenible de soya en el trópico de México",
+    "Continente": "== Proyectos Entregados",
+    "Pais": "Paraguay",
+    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
+    "Fechadeinicio": "2021",
+    "Fechadetermino": "2025",
+    "status": "Ejecución",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p3_Paraguay",
+    "Nombredelproyecto": "Fortalecimiento de capacidades en Ingeniería de Sistemas Espaciales orientadas al diseño, construcción, prueba, lanzamiento y operación de un futuro Satélite Experimental, con la participación de la academia y sector privado del Paraguay y México",
+    "Continente": "== Proyectos Entregados",
+    "Pais": "Paraguay",
+    "Sector": "Ciencia Tecnología e Innovación",
+    "Fechadeinicio": "2021",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p4_Paraguay",
+    "Nombredelproyecto": "Cooperación en materia de acceso a la información y protección de datos personales entre México y Paraguay",
+    "Continente": "== Proyectos Entregados",
+    "Pais": "Paraguay",
+    "Sector": "Política de Gobierno",
+    "Fechadeinicio": "2021",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p5_Paraguay",
+    "Nombredelproyecto": "Instalar y fortalecer capacidades institucionales, así como intercambiar conocimiento y experiencia para la identificación, construcción de compromisos ante los Planes de Acción Nacionales en el marco de la Alianza para el Gobierno Abierto (AGA) y su vinculación con los Objetivos de Desarrollo Sostenible",
+    "Continente": "== Proyectos Entregados",
+    "Pais": "Paraguay",
+    "Sector": "Política de Gobierno",
+    "Fechadeinicio": "2021",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
+  },
+
+  {
+    "id": "p6_Paraguay",
+    "Nombredelproyecto": "Desarrollo del Producto Turismo de Incentivos en Paraguay",
+    "Continente": "== Proyectos Entregados",
+    "Pais": "Paraguay",
+    "Sector": "Turismo",
+    "Fechadeinicio": "2021",
+    "Fechadetermino": "2024",
+    "status": "Finalizado",
+    "Objetivo": "Pendiente",
+    "notas": "Pendiente"
   }
   
 ]
+
 
 
 
