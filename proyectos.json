@@ -1076,7 +1076,7 @@
     "Sector": "Salud",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1089,7 +1089,7 @@
     "Sector": "Salud",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1102,7 +1102,7 @@
     "Sector": "Ciencia Tecnología e Innovación",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1115,7 +1115,7 @@
     "Sector": "Ciencia Tecnología e Innovación",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1128,7 +1128,7 @@
     "Sector": "Ciencia Tecnología e Innovación",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1141,7 +1141,7 @@
     "Sector": "Ciencia Tecnología e Innovación",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1154,7 +1154,7 @@
     "Sector": "Ciencia Tecnología e Innovación",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1167,7 +1167,7 @@
     "Sector": "Ciencia Tecnología e Innovación",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1181,7 +1181,7 @@
     "Sector": "Protección Ambiental",
     "Fechadeinicio": "2024",
     "Fechadetermino": "2025",
-    "status": "Ejecución",
+    "status": "Finalizado",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
@@ -1673,6 +1673,7 @@
   }
   
 ]
+
 
 
 
