@@ -290,6 +290,25 @@ conteoPais[clavePais] = (conteoPais[clavePais] || 0) + 1;
                     <h4 class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Objetivo Estratégico</h4>
                     <p class="text-xs text-slate-600 leading-relaxed">${escapeHtml(p.Objetivo || "Sin objetivo definido.")}</p>
                 </div>
+
+                ${p.Estados && p.Estados.length ? `
+                <div>
+                  <h4 class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">
+                    Estados de la República
+                  </h4>
+
+                  <div class="flex flex-wrap gap-1">
+                    ${p.Estados.map(e => `
+                      <span class="px-2 py-1 bg-slate-200 text-slate-700 text-[10px] rounded-full font-semibold">
+                        ${e}
+                      </span>
+                    `).join("")}
+                  </div>
+                </div>
+                ` : ""}
+
+
+                
                 ${p.notas ? `
                 <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100 italic">
                     <h4 class="text-[9px] font-bold text-amber-600 uppercase tracking-widest mb-1">Observaciones</h4>
@@ -764,4 +783,5 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
