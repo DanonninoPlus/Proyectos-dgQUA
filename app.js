@@ -537,12 +537,34 @@ function exportPDF() {
   html2pdf().set(opt).from(printArea).save();
 }
 
+
+
+function exportXLS() {
+
+  const data = proyectos.map(p => ({
+    ...p,
+    Estados: (p.Estados || []).join(", ")
+  }));
+
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Proyectos");
+
+  XLSX.writeFile(workbook, "Proyectos_DG.xlsx");
+}
+
+/* FUNCIÓN ANTERIOR PARA EXPORTAR EN EXCEL
+
 function exportXLS() {
   const worksheet = XLSX.utils.json_to_sheet(proyectos);
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, "Proyectos");
   XLSX.writeFile(workbook, "Proyectos_DG.xlsx");
 }
+*/
+
+
 
 function importJSON() {
   const fileInput = document.createElement("input");
@@ -783,5 +805,6 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
 
 
