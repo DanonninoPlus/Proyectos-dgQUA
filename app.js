@@ -665,14 +665,14 @@ function renderCapacitaciones(){
   <div class="text-lg font-bold">${pais}</div>
 
   <div class="text-sm text-slate-500">
-  Total de Recepción de capacitaciones:
+  Total de Recepción de Capacitaciones:
   <span class="text-indigo-600 font-bold">
   ${datos.totalRecepcion}
   </span>
   </div>
 
   <div class="text-sm text-slate-500">
-  Total de capacitaciones Difundidas:
+  Total de Capacitaciones Difundidas:
   <span class="text-indigo-600 font-bold">
   ${datos.totalDifusion}
   </span>
