@@ -1,4 +1,4 @@
-// app.js - Versión UI Mejorada (DG Cooperación)
+// app.js - Versión UI Mejorada (DG Cooperación) v9.0 marzo 2026
 
 const LS_KEY = "dg_proyectos_v2";
 
@@ -47,6 +47,9 @@ const tabInvestigacion = document.getElementById("tabInvestigacion");
 
 const gestionCapacitaciones = document.getElementById("gestionCapacitaciones");
 const gestionInvestigacion = document.getElementById("gestionInvestigacion");
+
+const capContainer = document.getElementById("capacitacionesList");
+
 
 
 /* ============================================================
@@ -639,94 +642,76 @@ function mostrarInvestigacion() {
    🔵 9.1 GESTIÓN - CAPACITACIONES
    ============================================================*/
 
-   function renderCapacitaciones() {
-  gestionCapacitaciones.innerHTML = "";
+function renderCapacitaciones(){
 
-  // 1️⃣ Agrupar proyectos por país
-  const porPais = {};
-  capacitaciones.forEach(cap => {
-    if (!porPais[cap.pais]) porPais[cap.pais] = [];
-    porPais[cap.pais].push(cap);
-  });
+  capContainer.innerHTML = "";
 
-  // 2️⃣ Crear acordeón por país
-   Object.keys(porPais).forEach(pais => {
-  const contenedorPais = document.createElement("div");
-  contenedorPais.className = "bg-white rounded-3xl p-4 shadow-sm border border-slate-100";
+  Object.entries(capacitaciones).forEach(([pais, datos]) => {
 
-  contenedorPais.innerHTML = `
-    <button class="w-full flex items-center justify-between acordeon-btn">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center">📍</div>
-        <div>
-          <div class="font-bold uppercase">${pais}</div>
-          <div class="text-[10px] text-slate-400 font-bold">
-            ${porPais[pais].length} cursos activos
-          </div>
-        </div>
-      </div>
-      <i class="fas fa-chevron-down transition-transform"></i>
-    </button>
-
-    <div class="panel hidden mt-4 space-y-3"></div>
-  `;
-
-
-  // 3️⃣ Cards de proyectos
-const panelPais = contenedorPais.querySelector(".panel");
-
-porPais[pais].forEach(cap => {
   const card = document.createElement("div");
-  card.className = "rounded-2xl overflow-hidden";
+  card.className = "bg-white rounded-2xl shadow p-4";
 
   card.innerHTML = `
-    <button class="w-full bg-indigo-600 text-white px-4 py-4 flex justify-between items-center acordeon-btn">
-      <div class="font-bold text-sm">${cap.titulo}</div>
-      <span class="text-[9px] bg-white/20 px-2 py-1 rounded-full uppercase">${cap.modalidad}</span>
-    </button>
+  <button class="w-full flex justify-between items-center acordeon-btn">
 
-    <div class="panel hidden bg-white p-4 space-y-4">
-      
-      <div class="text-xs">
-        <i class="fas fa-graduation-cap text-indigo-600 mr-1"></i>
-        <b>Título original</b><br>${cap.tituloOriginal}
-      </div>
+  <div class="flex items-center gap-3">
 
-      <div class="text-xs">
-        <i class="fas fa-university text-indigo-600 mr-1"></i>
-        <b>Instituto</b><br>${cap.instituto}
-      </div>
+  <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600">
+  <i class="fas fa-map-marker-alt"></i>
+  </div>
 
-      <div class="grid grid-cols-2 gap-3">
-        <div class="bg-slate-50 p-2 rounded-lg text-center">
-          <div class="text-[9px] font-bold uppercase">Inicio</div>
-          ${cap.fechaInicio}
-        </div>
-        <div class="bg-slate-50 p-2 rounded-lg text-center">
-          <div class="text-[9px] font-bold uppercase">Término</div>
-          ${cap.fechaFin}
-        </div>
-      </div>
+  <div class="text-left">
 
-      <div class="bg-yellow-50 border border-yellow-200 p-3 rounded-xl text-xs">
-        <b>Código DTE:</b> ${cap.dte}<br>
-        <b>Límite candidaturas:</b> ${cap.limiteCandidaturas}
-      </div>
+  <div class="text-lg font-bold">${pais}</div>
 
-      ${cap.notas ? `
-      <div class="bg-indigo-50 border border-indigo-100 p-3 rounded-xl text-xs italic">
-        <b>Notas del curso</b><br>${cap.notas}
-      </div>` : ""}
+  <div class="text-sm text-slate-500">
+  Total de Recepción de capacitaciones:
+  <span class="text-indigo-600 font-bold">
+  ${datos.totalRecepcion}
+  </span>
+  </div>
 
-    </div>
+  <div class="text-sm text-slate-500">
+  Total de capacitaciones Difundidas:
+  <span class="text-indigo-600 font-bold">
+  ${datos.totalDifusion}
+  </span>
+  </div>
+
+  </div>
+  </div>
+
+  <i class="fas fa-chevron-down"></i>
+
+  </button>
+
+  <div class="panel hidden mt-4 space-y-2"></div>
   `;
 
-  panelPais.appendChild(card);
-});
+  const panel = card.querySelector(".panel");
 
-gestionCapacitaciones.appendChild(contenedorPais);
-});
-attachAccordionEvents();
+  (datos.capacitaciones || []).forEach(cap => {
+
+  const item = document.createElement("button");
+
+  item.className = "w-full flex justify-between items-center p-3 rounded-lg hover:bg-slate-100";
+
+  item.innerHTML = `
+  <span>${cap.titulo}</span>
+  <i class="fas fa-chevron-right text-indigo-600"></i>
+  `;
+
+  item.onclick = () => abrirDetalleCapacitacion(cap.id);
+
+  panel.appendChild(item);
+
+  });
+
+  capContainer.appendChild(card);
+
+  });
+
+  attachAccordionEvents();
 }
 
 
@@ -805,6 +790,8 @@ attachAccordionEvents();
 
   attachAccordionEvents();
 }
+
+
 
 
 
