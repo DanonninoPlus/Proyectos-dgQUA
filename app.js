@@ -455,7 +455,7 @@ function attachEvents() {
         if(tabId === 'tabnormateca') renderNormateca();
 
         if (tabId === 'tabgestion') {
-        mostrarCapacitaciones()
+        renderCapacitaciones()
         renderInvestigacion();   
         }
 
@@ -464,8 +464,8 @@ function attachEvents() {
 
   // ===== GESTIÓN: SUB-TABS =====
   if (tabCapacitaciones && tabInvestigacion) {
-    tabCapacitaciones.addEventListener("click", mostrarCapacitaciones);
-    tabInvestigacion.addEventListener("click", mostrarInvestigacion);
+    tabCapacitaciones.addEventListener("click", renderCapacitaciones);
+    tabInvestigacion.addEventListener("click", renderInvestigacion);
   }
 
 
