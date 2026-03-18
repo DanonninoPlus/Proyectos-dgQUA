@@ -463,10 +463,27 @@ function attachEvents() {
   });
 
   // ===== GESTIÓN: SUB-TABS =====
-  if (tabCapacitaciones && tabInvestigacion) {
-    tabCapacitaciones.addEventListener("click", renderCapacitaciones);
-    tabInvestigacion.addEventListener("click", renderInvestigacion);
-  }
+if (tabCapacitaciones && tabInvestigacion) {
+
+  tabCapacitaciones.addEventListener("click", () => {
+
+    document.getElementById("capacitacionesList").style.display = "block";
+    document.getElementById("investigacionList").style.display = "none";
+
+    renderCapacitaciones();
+
+  });
+
+  tabInvestigacion.addEventListener("click", () => {
+
+    document.getElementById("capacitacionesList").style.display = "none";
+    document.getElementById("investigacionList").style.display = "block";
+
+    renderInvestigacion();
+
+  });
+
+}
 
 
 }
