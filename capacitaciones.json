@@ -1,28 +1,12 @@
-[
-  {
-    "id": "cap1_NICHIBOKU",
-    "pais": "Nichiboku",
-    "titulo": "Promoción de la agricultura orientada al mercado para los países de América Latina (Planificación y gestión) (A)",
-    "modalidad": "",
-    "tituloOriginal": "Promoción de la agricultura orientada al mercado para los países de América Latina (Planificación y gestión) (A), organizado por la Agencia de Cooperación Internacional del Japón (JICA).",
-    "instituto": "Agencia de Cooperación Internacional del Japón (JICA)",
-    "fechaInicio": "21 de enero 2026",
-    "fechaFin": "7 de febrero 2026",
-    "dte": "OPM 01370/2025",
-    "limiteCandidaturas": "23 de octubre 2025",
-    "notas": "ALEJANDRA VALDEZ IZQIERDO DTE 00180/2025  Y HECTOR ARRONTE CALDERON DTE/00181/2025"
-  },
-  {
-    "id": "cap2_NICHIBOKU",
-    "pais": "Nichiboku",
-    "titulo": "Curso del Programa de Cooperación para la Formación de Recursos Humanos en la Asociación Estratégica Global México-Japón (Nichiboku).",
-    "modalidad": "",
-    "tituloOriginal": "Energy Efficiency System and Technology in Japanese Process Industry",
-    "instituto": "No se especifica",
-    "fechaInicio": "25 de enero 2026",
-    "fechaFin": "7 de febrero 2026",
-    "dte": "OPM 01394/2025",
-    "limiteCandidaturas": "3 de diciembre 2025",
-    "notas": "Hugo Enrique Hernandez Silva ,Fabiola Jazmin Sanchez Rangel,Luis Miguel  Valdivieso CATAS  DTE 00291 2025"
+{
+  "Japón": {
+    "totalRecepcion": 12,
+    "totalDifusion": 8,
+    "capacitaciones": [
+      {
+        "id": "cap1",
+        "titulo": "Curso de Gestión Agrícola Nichiboku"
+      }
+    ]
   }
-]
+}
