@@ -102,11 +102,14 @@ async function loadCapacitacionesFromJsonUrl() {
     const url = "https://raw.githubusercontent.com/DanonninoPlus/Proyectos-dgQUA/main/capacitaciones.json";
     const res = await fetch(url);
     if (!res.ok) throw new Error("No se pudo cargar capacitaciones.json");
+
     const data = await res.json();
-    return Array.isArray(data) ? data : [];
+
+    return data || {};
+
   } catch (err) {
     console.warn("Error cargando Capacitaciones:", err);
-    return [];
+    return {};
   }
 }
 
@@ -611,103 +614,46 @@ function populateResponsibles() {
    🔵 9. GESTIÓN - CAPACITACIONES & PERMISOS DE INVESTIGAIÓN
    ============================================================*/
 
-function mostrarCapacitaciones() {
-  gestionCapacitaciones.classList.remove("hidden");
-  gestionInvestigacion.classList.add("hidden");
+function renderCapacitaciones() {
 
-  tabCapacitaciones.classList.add("bg-white", "text-indigo-600", "shadow-sm");
-  tabCapacitaciones.classList.remove("text-slate-400");
-
-  tabInvestigacion.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
-  tabInvestigacion.classList.add("text-slate-400");
-
-  renderCapacitaciones();
-
-}
-
-
-function mostrarInvestigacion() {
-  gestionInvestigacion.classList.remove("hidden");
-  gestionCapacitaciones.classList.add("hidden");
-
-  tabInvestigacion.classList.add("bg-white", "text-indigo-600", "shadow-sm");
-  tabInvestigacion.classList.remove("text-slate-400");
-
-  tabCapacitaciones.classList.remove("bg-white", "text-indigo-600", "shadow-sm");
-  tabCapacitaciones.classList.add("text-slate-400");
-
-}
-
-/* ============================================================
-   🔵 9.1 GESTIÓN - CAPACITACIONES
-   ============================================================*/
-
-function renderCapacitaciones(){
-
+  const capContainer = document.getElementById("capacitacionesList");
   capContainer.innerHTML = "";
 
   Object.entries(capacitaciones).forEach(([pais, datos]) => {
 
-  const card = document.createElement("div");
-  card.className = "bg-white rounded-2xl shadow p-4";
+    const card = document.createElement("div");
 
-  card.innerHTML = `
-  <button class="w-full flex justify-between items-center acordeon-btn">
+    card.className = "bg-white rounded-xl shadow p-4 mb-4";
 
-  <div class="flex items-center gap-3">
+    card.innerHTML = `
+      <div class="flex justify-between items-center">
 
-  <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600">
-  <i class="fas fa-map-marker-alt"></i>
-  </div>
+        <div class="flex items-center gap-3">
 
-  <div class="text-left">
+          <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-map-marker-alt text-indigo-500"></i>
+          </div>
 
-  <div class="text-lg font-bold">${pais}</div>
+          <div>
+            <div class="font-bold text-lg">${pais}</div>
+            <div class="text-sm text-slate-500">
+              Total de Recepción de capacitaciones:
+              <span class="text-indigo-600 font-semibold">${datos.totalRecepcion}</span>
+            </div>
 
-  <div class="text-sm text-slate-500">
-  Total de Recepción de Capacitaciones:
-  <span class="text-indigo-600 font-bold">
-  ${datos.totalRecepcion}
-  </span>
-  </div>
+            <div class="text-sm text-slate-500">
+              Total de capacitaciones Difundidas:
+              <span class="text-indigo-600 font-semibold">${datos.totalDifusion}</span>
+            </div>
 
-  <div class="text-sm text-slate-500">
-  Total de Capacitaciones Difundidas:
-  <span class="text-indigo-600 font-bold">
-  ${datos.totalDifusion}
-  </span>
-  </div>
+          </div>
 
-  </div>
-  </div>
+        </div>
 
-  <i class="fas fa-chevron-down"></i>
+      </div>
+    `;
 
-  </button>
-
-  <div class="panel hidden mt-4 space-y-2"></div>
-  `;
-
-  const panel = card.querySelector(".panel");
-
-  (datos.capacitaciones || []).forEach(cap => {
-
-  const item = document.createElement("button");
-
-  item.className = "w-full flex justify-between items-center p-3 rounded-lg hover:bg-slate-100";
-
-  item.innerHTML = `
-  <span>${cap.titulo}</span>
-  <i class="fas fa-chevron-right text-indigo-600"></i>
-  `;
-
-  item.onclick = () => abrirDetalleCapacitacion(cap.id);
-
-  panel.appendChild(item);
-
-  });
-
-  capContainer.appendChild(card);
+    capContainer.appendChild(card);
 
   });
 
@@ -790,8 +736,5 @@ function renderCapacitaciones(){
 
   attachAccordionEvents();
 }
-
-
-
 
 
