@@ -463,7 +463,8 @@ function attachEvents() {
   });
 
 
-       // ===== GESTIÓN: SUB-TABS =====
+  
+    // ===== GESTIÓN: SUB-TABS =====
     if (tabCapacitaciones && tabInvestigacion) {
 
       tabCapacitaciones.addEventListener("click", () => {
@@ -650,48 +651,79 @@ function populateResponsibles() {
 
 function renderCapacitaciones() {
 
-  const capContainer = document.getElementById("capacitacionesList");
-  capContainer.innerHTML = "";
+  const data = capacitaciones; // ← usamos el JSON que ya cargaste
 
-  Object.entries(capacitaciones).forEach(([pais, datos]) => {
+  const contenedor = document.getElementById("capacitacionesList");
+  contenedor.innerHTML = "";
+
+  Object.entries(data).forEach(([pais, info]) => {
 
     const card = document.createElement("div");
-
-    card.className = "bg-white rounded-xl shadow p-4 mb-4";
+    card.className = "bg-white rounded-xl shadow-sm p-4 mb-4";
 
     card.innerHTML = `
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center cursor-pointer pais-header">
+        <div>
+          <div class="font-semibold text-slate-700">${pais}</div>
 
-        <div class="flex items-center gap-3">
-
-          <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-            <i class="fas fa-map-marker-alt text-indigo-500"></i>
+          <div class="text-sm text-slate-500">
+            Total de Recepción de capacitaciones:
+            <span class="text-purple-600 font-semibold">${info.totalRecepcion}</span>
           </div>
 
-          <div>
-            <div class="font-bold text-lg">${pais}</div>
-            <div class="text-sm text-slate-500">
-              Total de Recepción de capacitaciones:
-              <span class="text-indigo-600 font-semibold">${datos.totalRecepcion}</span>
-            </div>
-
-            <div class="text-sm text-slate-500">
-              Total de capacitaciones Difundidas:
-              <span class="text-indigo-600 font-semibold">${datos.totalDifusion}</span>
-            </div>
-
+          <div class="text-sm text-slate-500">
+            Total de capacitaciones Difundidas:
+            <span class="text-purple-600 font-semibold">${info.totalDifusion}</span>
           </div>
-
         </div>
 
+        <div class="text-slate-400">▼</div>
+      </div>
+
+      <div class="capacitaciones hidden mt-3 pl-4 border-l">
+        ${
+          info.capacitaciones.map(cap => `
+            <div class="py-2 cursor-pointer text-slate-600 hover:text-purple-600"
+                 onclick="abrirCapacitacion('${cap.id}')">
+              • ${cap.titulo}
+            </div>
+          `).join("")
+        }
       </div>
     `;
 
-    capContainer.appendChild(card);
+    contenedor.appendChild(card);
+  });
+
+  activarAcordeon();
+}
+
+// ===== Activar el acordeón =====
+
+function activarAcordeon() {
+
+  const headers = document.querySelectorAll(".pais-header");
+
+  headers.forEach(header => {
+
+    header.addEventListener("click", () => {
+
+      const contenido = header.parentElement.querySelector(".capacitaciones");
+
+      contenido.classList.toggle("hidden");
+
+    });
 
   });
 
-  attachAccordionEvents();
+}
+
+// ===== Abrir la página de la capacitación =====
+
+function abrirCapacitacion(id){
+
+  window.location.href = `capacitacion.html?id=${id}`;
+
 }
 
 
@@ -770,6 +802,7 @@ function renderCapacitaciones() {
 
   attachAccordionEvents();
 }
+
 
 
 
