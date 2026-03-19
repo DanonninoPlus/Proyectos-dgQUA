@@ -462,28 +462,38 @@ function attachEvents() {
     });
   });
 
-        // ===== GESTIÓN: SUB-TABS =====
-      if (tabCapacitaciones && tabInvestigacion) {
+    // ===== GESTIÓN: SUB-TABS =====
+    if (tabCapacitaciones && tabInvestigacion) {
 
-        tabCapacitaciones.addEventListener("click", () => {
+      tabCapacitaciones.addEventListener("click", () => {
 
-          document.getElementById("gestionCapacitaciones").classList.remove("hidden");
-          document.getElementById("gestionInvestigacion").classList.add("hidden");
+        // estilos activos
+        tabCapacitaciones.classList.add("bg-white","text-indigo-600","shadow");
+        tabInvestigacion.classList.remove("bg-white","text-indigo-600","shadow");
 
-          renderCapacitaciones();
+        // mostrar contenido
+        document.getElementById("gestionCapacitaciones").classList.remove("hidden");
+        document.getElementById("gestionInvestigacion").classList.add("hidden");
 
-        });
+        renderCapacitaciones();
 
-        tabInvestigacion.addEventListener("click", () => {
+      });
 
-          document.getElementById("gestionCapacitaciones").classList.add("hidden");
-          document.getElementById("gestionInvestigacion").classList.remove("hidden");
+      tabInvestigacion.addEventListener("click", () => {
 
-          renderInvestigacion();
+        // estilos activos
+        tabInvestigacion.classList.add("bg-white","text-indigo-600","shadow");
+        tabCapacitaciones.classList.remove("bg-white","text-indigo-600","shadow");
 
-        });
+        // mostrar contenido
+        document.getElementById("gestionCapacitaciones").classList.add("hidden");
+        document.getElementById("gestionInvestigacion").classList.remove("hidden");
 
-      }
+        renderInvestigacion();
+
+      });
+
+    }
 
 
 }
@@ -753,5 +763,7 @@ function renderCapacitaciones() {
 
   attachAccordionEvents();
 }
+
+
 
 
