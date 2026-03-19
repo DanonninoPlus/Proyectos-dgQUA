@@ -9,6 +9,76 @@
         "institucion": "JICA / Nichiboku",
         "fecha": "2024",
         "descripcion": "Capacitación sobre gestión agrícola y cooperación técnica."
+      },
+      {
+        "id": "cap2",
+        "titulo": "Programa de Innovación Tecnológica",
+        "institucion": "JICA",
+        "fecha": "2025",
+        "descripcion": "Programa enfocado en innovación tecnológica aplicada a la agricultura."
+      },
+      {
+        "id": "cap3",
+        "titulo": "Seminario de Agricultura Inteligente",
+        "institucion": "Universidad de Tokio",
+        "fecha": "2025",
+        "descripcion": "Seminario sobre uso de sensores, datos y automatización en agricultura."
+      }
+    ]
+  },
+
+  "China": {
+    "totalRecepcion": 20,
+    "totalDifusion": 14,
+    "capacitaciones": [
+      {
+        "id": "cap4",
+        "titulo": "Curso de Desarrollo Industrial",
+        "institucion": "Ministerio de Comercio de China",
+        "fecha": "2024",
+        "descripcion": "Capacitación sobre desarrollo industrial y cooperación internacional."
+      },
+      {
+        "id": "cap5",
+        "titulo": "Seminario de Comercio Internacional",
+        "institucion": "Universidad de Pekín",
+        "fecha": "2025",
+        "descripcion": "Seminario sobre estrategias de comercio internacional en Asia."
+      },
+      {
+        "id": "cap6",
+        "titulo": "Programa de Tecnología Aplicada",
+        "institucion": "Academia China de Ciencias",
+        "fecha": "2025",
+        "descripcion": "Programa enfocado en la aplicación de tecnologías emergentes."
+      }
+    ]
+  },
+
+  "Corea del Sur": {
+    "totalRecepcion": 15,
+    "totalDifusion": 10,
+    "capacitaciones": [
+      {
+        "id": "cap7",
+        "titulo": "Curso de Transformación Digital",
+        "institucion": "KOICA",
+        "fecha": "2024",
+        "descripcion": "Capacitación sobre transformación digital en instituciones públicas."
+      },
+      {
+        "id": "cap8",
+        "titulo": "Seminario de Innovación Tecnológica",
+        "institucion": "KAIST",
+        "fecha": "2025",
+        "descripcion": "Seminario enfocado en innovación tecnológica y emprendimiento."
+      },
+      {
+        "id": "cap9",
+        "titulo": "Programa de Desarrollo Urbano Inteligente",
+        "institucion": "Seoul National University",
+        "fecha": "2025",
+        "descripcion": "Capacitación sobre planificación de ciudades inteligentes."
       }
     ]
   }
