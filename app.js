@@ -651,7 +651,7 @@ function populateResponsibles() {
 
 function renderCapacitaciones() {
 
-  const data = capacitaciones; // ← usamos el JSON que ya cargaste
+  const data = capacitaciones; // ← usamos el JSON para especificar las capacitaciones de cada país
 
   const contenedor = document.getElementById("capacitacionesList");
   contenedor.innerHTML = "";
