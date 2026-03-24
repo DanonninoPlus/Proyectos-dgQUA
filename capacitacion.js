@@ -29,9 +29,20 @@ async function cargarCapacitacion() {
   document.getElementById("tituloCapacitacion").textContent = capacitacionEncontrada.titulo;
   document.getElementById("paisCapacitacion").textContent = paisEncontrado;
 
-  document.getElementById("institucionCapacitacion").textContent = capacitacionEncontrada.institucion || "---";
-  document.getElementById("fechaCapacitacion").textContent = capacitacionEncontrada.fecha || "---";
+  document.getElementById("etapaCapacitacion").textContent = capacitacionEncontrada.etapa || "---";
   document.getElementById("descripcionCapacitacion").textContent = capacitacionEncontrada.descripcion || "---";
+  
+  document.getElementById("iniciodifusionCapacitacion").textContent = capacitacionEncontrada.iniciodifusion || "---";
+  document.getElementById("findifusionCapacitacion").textContent = capacitacionEncontrada.findifusion || "---";
+  document.getElementById("dtedifusionCapacitacion").textContent = capacitacionEncontrada.dtedifusion || "---";
+  document.getElementById("vigenciaCapacitacion").textContent = capacitacionEncontrada.vigencia || "---";
+  document.getElementById("institucionesdifCapacitacion").textContent = capacitacionEncontrada.institucionesdif || "---";
+  document.getElementById("dtepromoCapacitacion").textContent = capacitacionEncontrada.dtepromo || "---";
+  document.getElementById("institucionespartCapacitacion").textContent = capacitacionEncontrada.institucionespart || "---";
+  document.getElementById("dteresultadosCapacitacion").textContent = capacitacionEncontrada.dteresultados || "---";
+  document.getElementById("aceptadosCapacitacion").textContent = capacitacionEncontrada.aceptados || "---";
+  document.getElementById("rechazdosCapacitacion").textContent = capacitacionEncontrada.rechazdos || "---";
+
 
 }
 
