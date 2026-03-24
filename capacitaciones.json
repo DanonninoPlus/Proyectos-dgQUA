@@ -6,8 +6,17 @@
       {
         "id": "cap1",
         "titulo": "Curso de Gestión Agrícola Nichiboku",
-        "institucion": "JICA / Nichiboku",
-        "fecha": "2024",
+        "etapa": "Promoción",
+        "iniciodifusion": "24 de marzo 2026",
+        "findifusion": "30 de abril 2026",
+        "dtedifusion" :"DTE-10256",
+        "vigencia" :"2 de mayo 2026",
+        "institucionesdif": "JICA / Nichiboku",
+        "dtepromo" : "DTE-10260",
+        "institucionespart" :"JICA",
+        "dteresultados" :"DTE-100200",
+        "aceptados" :"Juan Ramón",
+        "rechazdos" :"Carmela González, Ana Laura López Ozuna",
         "descripcion": "Capacitación sobre gestión agrícola y cooperación técnica."
       },
       {
