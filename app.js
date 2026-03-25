@@ -667,19 +667,17 @@ function renderCapacitaciones() {
           <div class="font-semibold text-slate-700">${pais}</div>
 
           <div class="text-sm text-slate-500">
-            Total de Recepción de capacitaciones:
+            Total de recepción de capacitaciones:
             <span class="text-purple-600 font-semibold">${info.totalRecepcion}</span>
           </div>
 
           <div class="text-sm text-slate-500">
-            Total de capacitaciones Difundidas:
+            Total de capacitaciones difundidas:
             <span class="text-purple-600 font-semibold">${info.totalDifusion}</span>
           </div>
         </div>
 
-        <div class="material-symbols-outlined text-slate-400 transition-transform">
-        expand_more
-        </div>
+        <div class="material-symbols-outlined text-slate-400 transition-transform">expand_more</div>
       </div>
 
       <div class="capacitaciones hidden mt-3 bg-slate-50 rounded-xl p-3">
