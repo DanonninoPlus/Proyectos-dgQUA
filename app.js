@@ -677,16 +677,29 @@ function renderCapacitaciones() {
           </div>
         </div>
 
-        <div class="text-slate-400">▼</div>
+        <div class="material-symbols-outlined text-slate-400 transition-transform">
+        expand_more
+        </div>
       </div>
 
       <div class="capacitaciones hidden mt-3 pl-4 border-l">
         ${
           info.capacitaciones.map(cap => `
-            <div class="py-2 cursor-pointer text-slate-600 hover:text-purple-600"
-                 onclick="abrirCapacitacion('${cap.id}')">
-              • ${cap.titulo}
-            </div>
+
+          <div class="flex items-center justify-between py-2 text-sm cursor-pointer text-slate-600 hover:text-purple-600"
+              onclick="abrirCapacitacion('${cap.id}')">
+
+            <span class="truncate">
+              ${cap.titulo}
+            </span>
+
+            <span class="material-symbols-outlined text-slate-400 text-base">
+              chevron_right
+            </span>
+
+          </div>
+
+            
           `).join("")
         }
       </div>
