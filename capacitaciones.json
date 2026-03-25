@@ -27,12 +27,29 @@
         "notascap" :"Notas de la capacitación",
         "descripcion": "Capacitación sobre gestión agrícola y cooperación técnica."
       },
-      {
+            {
         "id": "cap2",
         "titulo": "Programa de Innovación Tecnológica",
-        "institucion": "JICA",
-        "fecha": "2025",
-        "descripcion": "Programa enfocado en innovación tecnológica aplicada a la agricultura."
+        "etapa": "Etapa: Difusión",
+        "iniciodifusion": "05 de abril 2026",
+        "findifusion": "06 de junio 2026",
+        "dtedifusion" :"DTE-12345",
+        "vigencia" :"10 de junio 2026", 
+        "institucionesdif": [
+                            "JICA",
+                            "Instituto de Tecnología Veracruzana",
+                            "IPN"
+                            ],
+        "dtepromo" : "DTE-1564",
+        "institucionespart" :[
+                            "Universidad Tecnológica de México",
+                            "Instituto de Tecnología Avanzada"
+                            ],
+        "dteresultados" :"DTE-100200",
+        "aceptados" :"Carlos Alberto, Denisse Urzua",
+        "rechazdos" :"Efraín Gómez",
+        "notascap" :"Presupuesto de AMEXCID ",
+        "descripcion": "Capacitación sobre tecnología e innovación para proyectos digitales y ejoramiento de estructura básica"
       },
       {
         "id": "cap3",
