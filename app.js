@@ -682,7 +682,7 @@ function renderCapacitaciones() {
         </div>
       </div>
 
-      <div class="capacitaciones hidden mt-3 pl-4 border-l">
+      <div class="capacitaciones hidden mt-3 bg-slate-50 rounded-xl p-3">
         ${
           info.capacitaciones.map(cap => `
 
