@@ -10,10 +10,17 @@
         "iniciodifusion": "24 de marzo 2026",
         "findifusion": "30 de abril 2026",
         "dtedifusion" :"DTE-10256",
-        "vigencia" :"2 de mayo 2026",
-        "institucionesdif": "JICA / Nichiboku",
+        "vigencia" :"2 de mayo 2026", 
+        "institucionesdif": [
+                            "Universidad Tecnológica de México",
+                            "Instituto de Tecnología Avanzada",
+                            "Politécnico Nacional de Investigación"
+                            ],
         "dtepromo" : "DTE-10260",
-        "institucionespart" :"JICA",
+        "institucionespart" :[
+                            "Universidad Tecnológica de México",
+                            "Instituto de Tecnología Avanzada"
+                            ],
         "dteresultados" :"DTE-100200",
         "aceptados" :"Juan Ramón",
         "rechazdos" :"Carmela González, Ana Laura López Ozuna",
