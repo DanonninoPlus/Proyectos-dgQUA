@@ -69,6 +69,14 @@ async function cargarCapacitacion() {
   document.getElementById("rechazdosCapacitacion").textContent = capacitacionEncontrada.rechazdos || "---";
   document.getElementById("notascapCapacitacion").textContent = capacitacionEncontrada.notascap || "---";
 
+
+    // No puedo repetir el ID en el mismo HTML; por lo que asignaré un nuevo id a la información que necesito repetir
+
+  
+document.getElementById("tituloGeneralCapacitacion").textContent = capacitacionEncontrada.titulo;
+document.getElementById("descripcionGeneralCapacitacion").textContent = capacitacionEncontrada.descripcion || "---";
+document.getElementById("etapaGeneralCapacitacion").textContent = capacitacionEncontrada.etapa || "---";
+
 //Solo para Institutiones por generar un arreglo en el .json
 
     // document.getElementById("institucionesdifCapacitacion").textContent = capacitacionEncontrada.institucionesdif || "---";
