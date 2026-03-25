@@ -67,6 +67,7 @@ async function cargarCapacitacion() {
   document.getElementById("dteresultadosCapacitacion").textContent = capacitacionEncontrada.dteresultados || "---";
   document.getElementById("aceptadosCapacitacion").textContent = capacitacionEncontrada.aceptados || "---";
   document.getElementById("rechazdosCapacitacion").textContent = capacitacionEncontrada.rechazdos || "---";
+  document.getElementById("notascapCapacitacion").textContent = capacitacionEncontrada.notascap || "---";
 
 //Solo para Institutiones por generar un arreglo en el .json
 
