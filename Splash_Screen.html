@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DGCIDCIENCIA - Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f2f3f8",
+              "primary-fixed": "#e2dfff",
+              "on-surface": "#191c1f",
+              "on-tertiary-container": "#6cdece",
+              "on-secondary-fixed": "#0a016a",
+              "on-primary-fixed-variant": "#3b399c",
+              "surface-container-highest": "#e1e2e7",
+              "secondary-container": "#9e9fff",
+              "surface-bright": "#f8f9fe",
+              "primary-fixed-dim": "#c2c1ff",
+              "surface": "#f8f9fe",
+              "on-background": "#191c1f",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed": "#0d006a",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#00201c",
+              "outline": "#777583",
+              "on-tertiary-fixed-variant": "#005048",
+              "surface-dim": "#d8dadf",
+              "background": "#f8f9fe",
+              "tertiary-fixed": "#85f6e5",
+              "outline-variant": "#c7c5d4",
+              "primary-container": "#4b49ac",
+              "surface-container-high": "#e7e8ed",
+              "primary": "#333093",
+              "tertiary": "#004740",
+              "on-secondary-container": "#32318b",
+              "secondary": "#5454ae",
+              "inverse-surface": "#2e3134",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#c8c6ff",
+              "on-secondary-fixed-variant": "#3b3b94",
+              "secondary-fixed": "#e2dfff",
+              "surface-variant": "#e1e2e7",
+              "tertiary-fixed-dim": "#67d9c9",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#c2c1ff",
+              "surface-container-lowest": "#ffffff",
+              "on-surface-variant": "#464552",
+              "secondary-fixed-dim": "#c1c1ff",
+              "on-error": "#ffffff",
+              "on-error-container": "#93000a",
+              "surface-container": "#eceef3",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#eff0f5",
+              "tertiary-container": "#006157",
+              "surface-tint": "#5452b5"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-splash-gradient {
+        background: linear-gradient(
+          to bottom,
+          #eceef3 0%,
+          #f8f9fe 35%,
+          #ffffff 50%,
+          #f8f9fe 65%,
+          #eceef3 100%
+        );
+      }
+    </style>
+<style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- SPLASH SCREEN CONTAINER -->
+<main class="relative h-screen w-full flex flex-col items-center justify-center bg-splash-gradient">
+<!-- Interactive Canvas -->
+<a aria-label="Entrar al Portal Institucional" class="absolute inset-0 flex flex-col items-center justify-center group focus:outline-none" href="https://danonninoplus.github.io/Proyectos-dgQUA/">
+<!-- Central Visual Identity Cluster -->
+<div class="flex flex-col items-center space-y-8 p-12 transition-transform duration-500 group-active:scale-95 z-10">
+<!-- Company Logo Placeholder -->
+<div class="w-24 h-24 bg-surface-container-highest rounded-xl flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant/40" data-icon="corporate_fare">corporate_fare</span>
+</div>
+<!-- Brand Headline -->
+<div class="text-center space-y-2">
+<h1 class="font-headline font-extrabold text-5xl md:text-6xl text-primary tracking-tighter">
+                        DGCIDCIENCIA
+                    </h1>
+<p class="font-label text-on-surface-variant tracking-[0.2em] text-xs font-medium uppercase">
+                        Portal de Gestión AMEXCID
+                    </p>
+</div>
+<!-- Interaction Indicator -->
+<div class="flex items-center gap-2 text-primary/60 font-medium text-sm pt-4">
+<span>Toque para continuar</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Subtle background texture -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
+<div class="w-full h-full" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDAhrauBcZCHGxup5cJfUJcmxMpCGvSZkwBiP6oOunzmNJLuyxsehk58IP4otxgh1GQv0mSzWmVfp05pqPDwHX5fHsvQ20LWrdLPLVrcyKLXp_Z25xlcjEABDV1mG4rXx4MbNM2q7vfphrvy1fSKqEpevypyiCensizhvU-ZMoKO3qGjFmaeGcTBOKx0DmCwT4Sihz0B4HOEcc8GIik_m7VQDWcU2UIKiKR9QyQqt_qzf9ZQR5jnxq43AQG7RAeIbpjR-O_-S1FRo9s');"></div>
+</div>
+</a>
+<!-- Versioning Footer -->
+<footer class="absolute bottom-12 w-full px-8 flex flex-col items-center justify-center gap-1">
+<div class="h-px w-8 bg-outline-variant/30 mb-4"></div>
+<p class="font-label text-[11px] text-on-surface-variant/60 tracking-wider">
+                Versión 9.0.0
+            </p>
+<p class="font-label text-[11px] text-on-surface-variant/40 tracking-tight">
+                Actualización: 15 de Mayo, 2024
+            </p>
+</footer>
+</main>
+</body></html>
