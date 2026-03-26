@@ -6,7 +6,7 @@
       {
         "id": "cap1",
         "titulo": "Curso de Gestión Agrícola Nichiboku",
-        "etapa": "Promoción",
+        "etapa": "CONFIRMACIÓN",
         "iniciodifusion": "24 de marzo 2026",
         "findifusion": "30 de abril 2026",
         "dtedifusion" :"DTE-10256",
@@ -30,7 +30,7 @@
             {
         "id": "cap2",
         "titulo": "Programa de Innovación Tecnológica",
-        "etapa": "Difusión",
+        "etapa": "PROMOCIÓN",
         "iniciodifusion": "05 de abril 2026",
         "findifusion": "06 de junio 2026",
         "dtedifusion" :"DTE-12345",
@@ -45,10 +45,10 @@
                             "Universidad Tecnológica de México",
                             "Instituto de Tecnología Avanzada"
                             ],
-        "dteresultados" :"DTE-100200",
-        "aceptados" :"Carlos Alberto, Denisse Urzua",
-        "rechazados" :"Efraín Gómez",
-        "notascap" :"Presupuesto de AMEXCID ",
+        "dteresultados" :"",
+        "aceptados" :"",
+        "rechazados" :"",
+        "notascap" :"Presupuesto de AMEXCID",
         "descripcion": "Capacitación sobre tecnología e innovación para proyectos digitales y ejoramiento de estructura básica"
       },
       {
