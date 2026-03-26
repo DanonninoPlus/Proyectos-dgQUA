@@ -6,7 +6,7 @@
       {
         "id": "cap1",
         "titulo": "Curso de Gestión Agrícola Nichiboku",
-        "etapa": "Etapa: Promoción",
+        "etapa": "Promoción",
         "iniciodifusion": "24 de marzo 2026",
         "findifusion": "30 de abril 2026",
         "dtedifusion" :"DTE-10256",
@@ -23,14 +23,14 @@
                             ],
         "dteresultados" :"DTE-100200",
         "aceptados" :"Juan Ramón",
-        "rechazdos" :"Carmela González, Ana Laura López Ozuna",
+        "rechazados" :"Carmela González, Ana Laura López Ozuna",
         "notascap" :"Notas de la capacitación",
         "descripcion": "Capacitación sobre gestión agrícola y cooperación técnica."
       },
             {
         "id": "cap2",
         "titulo": "Programa de Innovación Tecnológica",
-        "etapa": "Etapa: Difusión",
+        "etapa": "Difusión",
         "iniciodifusion": "05 de abril 2026",
         "findifusion": "06 de junio 2026",
         "dtedifusion" :"DTE-12345",
@@ -47,7 +47,7 @@
                             ],
         "dteresultados" :"DTE-100200",
         "aceptados" :"Carlos Alberto, Denisse Urzua",
-        "rechazdos" :"Efraín Gómez",
+        "rechazados" :"Efraín Gómez",
         "notascap" :"Presupuesto de AMEXCID ",
         "descripcion": "Capacitación sobre tecnología e innovación para proyectos digitales y ejoramiento de estructura básica"
       },
