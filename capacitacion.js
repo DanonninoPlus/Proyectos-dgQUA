@@ -66,11 +66,11 @@ async function cargarCapacitacion() {
   document.getElementById("dtepromoCapacitacion").textContent = capacitacionEncontrada.dtepromo || "---";
   document.getElementById("dteresultadosCapacitacion").textContent = capacitacionEncontrada.dteresultados || "---";
   document.getElementById("aceptadosCapacitacion").textContent = capacitacionEncontrada.aceptados || "---";
-  document.getElementById("rechazdosCapacitacion").textContent = capacitacionEncontrada.rechazdos || "---";
+  document.getElementById("rechazadosCapacitacion").textContent = capacitacionEncontrada.rechazados || "---";
   document.getElementById("notascapCapacitacion").textContent = capacitacionEncontrada.notascap || "---";
 
 
-    // No puedo repetir el ID en el mismo HTML; por lo que asignaré un nuevo id a la información que necesito repetir
+  // No puedo repetir el ID en el mismo HTML; por lo que asignaré un nuevo id a la información que necesito repetir
 
   
 document.getElementById("tituloGeneralCapacitacion").textContent = capacitacionEncontrada.titulo;
@@ -92,6 +92,61 @@ capacitacionEncontrada.institucionespart,
 "institucionespartCapacitacion"
 );
 
+
+
+// CONTROL DE ETAPAS Y PROGRESO
+
+const etapaActual = capacitacionEncontrada.etapa;
+
+const estados = {
+  "RECEPCIÓN": 1,
+  "DIFUSIÓN": 2,
+  "PROMOCIÓN": 3,
+  "CONFIRMACIÓN": 4
+};
+
+const etapaNumero = estados[etapaActual] || 1;
+
+for (let i = 1; i <= 4; i++) {
+
+  const elemento = document.getElementById("estadoEtapa" + i);
+
+  if (!elemento) continue;
+
+  if (i < etapaNumero) {
+
+    elemento.textContent = "COMPLETADO";
+    elemento.classList.add(
+      "bg-emerald-100",
+      "dark:bg-emerald-900/30",
+      "text-emerald-600",
+      "dark:text-emerald-400"
+    );
+
+  } else if (i === etapaNumero) {
+
+    elemento.textContent = "EN CURSO";
+    elemento.classList.add(
+      "bg-primary",
+      "text-white"
+    );
+
+  } else {
+
+    elemento.textContent = "PENDIENTE";
+    elemento.classList.add(
+      "bg-slate-200",
+      "dark:bg-slate-700",
+      "text-slate-500"
+    );
+
+  }
+
+}
+
+// PROGRESO
+const progreso = Math.round((etapaNumero / 4) * 100);
+document.getElementById("progresoCapacitacion").textContent = progreso + "%";
 
 }
 
