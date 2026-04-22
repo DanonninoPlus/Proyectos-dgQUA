@@ -8,15 +8,43 @@
   <!-- Usamos Tailwind CSS para los estilos modernos -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Librerías para exportación que ya usabas -->
+  <!-- Librerías para exportación -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     .active-tab { border-bottom: 3px solid #4f46e5; color: #4f46e5; font-weight: 700; }
     .accordion-content { transition: max-height 0.3s ease-out; }
   </style>
+ 
+ <style>
+/* Estilos para el nuevo diseño de proyectos // NUEVO PARA EL REDISEÑO */ 
+.diplomatic-shadow {
+  box-shadow: 0 8px 24px rgba(22, 40, 57, 0.06);
+}
+
+.bg-surface { background-color: #f8f9fa; }
+.bg-surface-container-low { background-color: #edeeef; }
+.bg-surface-container-high { background-color: #e7e8e9; }
+.bg-surface-container-lowest { background-color: #ffffff; }
+.text-primary { color: #162839; }
+.text-secondary { color: #4646d8; }
+.text-outline { color: #74777d; }
+.text-on-surface-variant { color: #43474c; }
+.border-secondary\/10 { border-color: rgba(70, 70, 216, 0.1); }
+.bg-secondary-fixed { background-color: #e1e0ff; }
+.bg-secondary-fixed\/30 { background-color: rgba(225, 224, 255, 0.3); }
+.bg-tertiary-fixed { background-color: #6dfad2; }
+.text-on-tertiary-fixed-variant { color: #005140; }
+
+.rotate-180 { transform: rotate(180deg); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  </style>
+  
 </head>
 <body class="bg-slate-50 min-h-screen text-slate-900 pb-20">
 
@@ -67,103 +95,133 @@
     </div>
 </div>
 
+
+
+
+
+  <!-- (REDISEÑADOS) BUSCADOR Y FILTROS TÁCTILES
+  <div id="filterSection" class="bg-surface px-4 pt-4 pb-2 sticky top-[65px] z-30">
+    <div class="relative group mb-4">
+      <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline">
+        <span class="material-symbols-outlined">search</span>
+      </div>
+      <input id="searchInput" type="search" placeholder="Buscar proyectos, países o acciones..." 
+        class="w-full h-14 pl-14 pr-6 bg-surface-container-lowest border-none rounded-2xl diplomatic-shadow text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary transition-all">
+    </div>
+    
+    // Filtros inline mejorados 
+    <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+      <select id="filterResponsible" class="bg-surface-container-lowest border-none rounded-xl px-4 py-2 text-sm font-medium outline-none focus:ring-2 focus:ring-secondary text-on-surface">
+        <option value="">Todos los sectores</option>
+      </select>
+      <select id="filterStatus" class="bg-surface-container-lowest border-none rounded-xl px-4 py-2 text-sm font-medium outline-none focus:ring-2 focus:ring-secondary text-on-surface">
+        <option value="">Todos los estados</option>
+        <option value="Planeación">Planeación</option>
+        <option value="Ejecución">Ejecución</option>
+        <option value="Finalizado">Finalizado</option>
+      </select>
+    </div> 
+
+     // TAB SWITCHER: PROYECTOS / ACCIONES (NUEVO)
+    <div class="mt-4 flex p-1.5 bg-surface-container-high rounded-2xl w-full md:w-max">
+      <button id="subtabProyectos" class="flex-1 md:w-40 py-2.5 px-6 rounded-xl text-sm font-bold tracking-wide transition-all bg-surface-container-lowest text-secondary diplomatic-shadow">
+        Proyectos
+      </button>
+      <button id="subtabAcciones" class="flex-1 md:w-40 py-2.5 px-6 rounded-xl text-sm font-bold tracking-wide transition-all text-on-surface-variant hover:bg-surface-container">
+        Acciones
+      </button>
+    </div>
+  </div>
+
+  <!-- Contador de proyectos dinámico (rediseñado) -->
+  <div class="px-4 pt-2 max-w-2xl mx-auto">
+    <div id="projectCounter" class="text-[10px] font-black text-outline uppercase tracking-[0.2em]">
+      Cargando proyectos...
+    </div>
+  </div> -->
+
   <main class="p-4 max-w-2xl mx-auto">
-    <!-- LISTADO DE PROYECTOS -->
+    <!-- LISTADO DE PROYECTOS (NUEVO DISEÑO) -->
     <section id="projectList" class="space-y-4"></section>
 
-    <!-- SECCIÓN NORMATECA -->
+    <!-- SECCIÓN DE ACCIONES (NUEVO PLACEHOLDER) -->
+    <section id="accionesSection" class="hidden">
+      <div class="bg-surface-container-low rounded-2xl p-8 text-center">
+        <span class="material-symbols-outlined text-6xl text-outline mb-3">construction</span>
+        <h3 class="font-headline font-bold text-xl text-primary mb-2">Próximamente</h3>
+        <p class="text-on-surface-variant text-sm">La visualización de Acciones está en desarrollo.<br>¡Vuelve pronto!</p>
+      </div>
+    </section>
+
+    <!-- NORMATECA, GESTIÓN Y REPORTES (SE MANTIENEN IGUAL) -->
     <section id="normatecaSection" class="hidden">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-slate-800">Normateca Digital</h2>
-        <button id="btnnormatecaExcel" class="text-indigo-600 text-sm font-semibold flex items-center gap-1">
+        <h2 class="text-xl font-bold text-primary">Normateca Digital</h2>
+        <button id="btnnormatecaExcel" class="text-secondary text-sm font-semibold flex items-center gap-1">
           <i class="fas fa-file-excel"></i> Exportar
         </button>
       </div>
       <div id="normatecaList" class="space-y-4"></div>
     </section>
 
-    <!-- SECCIÓN GESTIÓN -->
     <section id="gestionSection" class="hidden">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-slate-800">Gestión</h2>
-        <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm font-medium">Panel de control por categoría.</p>
+        <h2 class="text-xl font-bold text-primary">Gestión</h2>
+        <p class="text-on-surface-variant text-sm font-medium">Panel de control por categoría.</p>
       </div>
-
-            <!-- CONTENIDO INTERNO DE GESTIÓN -->
-            <div id="gestionContent" class="space-y-6">
-            
-                <!-- SUB-TABS DE GESTIÓN -->
-                <div id="gestionTabs" class="flex gap-2 bg-slate-200/50 rounded-xl p-1">
-      
-                    <button
-                      id="tabCapacitaciones"
-                      class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-white text-indigo-600 shadow-sm">
-                      Capacitaciones
-                    </button>
-
-                    <button
-                      id="tabInvestigacion"
-                      class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-slate-400">
-                      Permisos de Investigación
-                    </button>
-
-                 </div>
-
-                <!-- CONTENIDO: CAPACITACIONES -->
-                <div id="gestionCapacitaciones" class="space-y-4">
-
-                  <div class="text-xs tracking-widest text-slate-400 uppercase font-bold">
-                    CAPACITACIONES
-                  </div>
-
-                  <div id="capacitacionesList"></div>
-
-                </div>
-
-                <!-- CONTENIDO: INVESTIGACIÓN -->
-                <div id="gestionInvestigacion" class="hidden">
-
-                  <div class="text-xs tracking-widest text-slate-400 uppercase font-bold">
-                    PERMISOS DE INVESTIGACIÓN
-                  </div>
-
-                  <div id="investigacionList"></div>
-
-                </div>
- 
-  
-
-
+      <div id="gestionContent" class="space-y-6">
+        <div id="gestionTabs" class="flex gap-2 bg-surface-container-high rounded-xl p-1">
+          <button id="tabCapacitaciones" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-surface-container-lowest text-secondary shadow-sm">
+            Capacitaciones
+          </button>
+          <button id="tabInvestigacion" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-on-surface-variant">
+            Permisos de Investigación
+          </button>
+        </div>
+        <div id="gestionCapacitaciones" class="space-y-4">
+          <div class="text-xs tracking-widest text-outline uppercase font-bold">CAPACITACIONES</div>
+          <div id="capacitacionesList"></div>
+        </div>
+        <div id="gestionInvestigacion" class="hidden">
+          <div class="text-xs tracking-widest text-outline uppercase font-bold">PERMISOS DE INVESTIGACIÓN</div>
+          <div id="investigacionList"></div>
+        </div>
+      </div>
     </section>
 
-    <!-- ÁREA DE REPORTES (NUEVA PARA LOS BOTONES DE EXPORTAR) -->
     <section id="reportsSection" class="hidden space-y-4">
-        <h2 class="text-xl font-bold text-slate-800 mb-4">Reportes y Datos</h2>
-        <div class="grid grid-cols-1 gap-4">
-            <button id="btnExportPDF" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-red-200 transition-colors">
-                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-pdf"></i></div>
-                <div class="text-left">
-                    <div class="font-bold text-slate-800">Exportar PDF</div>
-                    <div class="text-xs text-slate-500">Genera un documento visual de los proyectos</div>
-                </div>
-            </button>
-            <button id="btnExportXLS" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-green-200 transition-colors">
-                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-excel"></i></div>
-                <div class="text-left">
-                    <div class="font-bold text-slate-800">Exportar Excel</div>
-                    <div class="text-xs text-slate-500">Hoja de cálculo para análisis de datos</div>
-                </div>
-            </button>
-            <button id="btnImportJSON" class="flex items-center gap-4 bg-white p-4 rounded-xl border shadow-sm hover:border-blue-200 transition-colors">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-import"></i></div>
-                <div class="text-left">
-                    <div class="font-bold text-slate-800">Importar JSON</div>
-                    <div class="text-xs text-slate-500">Cargar respaldo de base de datos</div>
-                </div>
-            </button>
-        </div>
+      <h2 class="text-xl font-bold text-primary mb-4">Reportes y Datos</h2>
+      <div class="grid grid-cols-1 gap-4">
+        <button id="btnExportPDF" class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container shadow-sm hover:border-secondary/20 transition-colors">
+          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-pdf"></i></div>
+          <div class="text-left">
+            <div class="font-bold text-primary">Exportar PDF</div>
+            <div class="text-xs text-outline">Genera un documento visual de los proyectos</div>
+          </div>
+        </button>
+        <button id="btnExportXLS" class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container shadow-sm hover:border-secondary/20 transition-colors">
+          <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-excel"></i></div>
+          <div class="text-left">
+            <div class="font-bold text-primary">Exportar Excel</div>
+            <div class="text-xs text-outline">Hoja de cálculo para análisis de datos</div>
+          </div>
+        </button>
+        <button id="btnImportJSON" class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container shadow-sm hover:border-secondary/20 transition-colors">
+          <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-import"></i></div>
+          <div class="text-left">
+            <div class="font-bold text-primary">Importar JSON</div>
+            <div class="text-xs text-outline">Cargar respaldo de base de datos</div>
+          </div>
+        </button>
+      </div>
     </section>
   </main>
+
+
+
+
+
+
 
   <div id="printArea" class="hidden"></div>
 
@@ -259,7 +317,6 @@
   <script src="app.js" defer></script>
 </body>
 </html>
-
 
 
 
