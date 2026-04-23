@@ -608,6 +608,96 @@ function attachEvents() {
   });
 
 
+function attachEvents() {
+  searchInput.addEventListener("input", renderList);
+  filterResponsible.addEventListener("change", renderList);
+  filterStatus.addEventListener("change", renderList);
+  btnAddProject.addEventListener("click", openModalForNew);
+  btnCancel.addEventListener("click", closeModal);
+  projectForm.addEventListener("submit", saveProject);
+  btnExportPDF.addEventListener("click", exportPDF);
+  btnExportXLS.addEventListener("click", exportXLS);
+  btnImportJSON.addEventListener("click", importJSON);
+
+  // Tabs Logic
+  const tabs = {
+    'tabProyectos': { section: 'projectList', filters: 'filterSection' },
+    'tabnormateca': { section: 'normatecaSection', filters: null },
+    'tabgestion': { section: 'gestionSection', filters: null }, // 👈 AQUÍ
+    'tabReportes': { section: 'reportsSection', filters: null }
+  };
+
+  Object.keys(tabs).forEach(tabId => {
+    document.getElementById(tabId).addEventListener("click", () => {
+        // Reset tabs
+        Object.keys(tabs).forEach(id => {
+            document.getElementById(id).classList.remove("active-tab", "text-indigo-600");
+            document.getElementById(id).classList.add("text-slate-400");
+            document.getElementById(tabs[id].section).classList.add("hidden");
+        });
+        
+        // Active clicked tab
+        const current = tabs[tabId];
+        document.getElementById(tabId).classList.add("active-tab", "text-indigo-600");
+        document.getElementById(tabId).classList.remove("text-slate-400");
+        document.getElementById(current.section).classList.remove("hidden");
+        
+        // Toggle filters visibility
+        const filters = document.getElementById("filterSection");
+        if (current.filters) filters.classList.remove("hidden");
+        else filters.classList.add("hidden");
+
+        if(tabId === 'tabnormateca') renderNormateca();
+
+        if (tabId === 'tabgestion') {
+        renderCapacitaciones()
+        renderInvestigacion();   
+        }
+
+    });
+  });
+
+
+    // ===== NUEVOS SUBTABS: PROYECTOS / ACCIONES =====
+  const subtabProyectos = document.getElementById("subtabProyectos");
+  const subtabAcciones = document.getElementById("subtabAcciones");
+  const projectListSection = document.getElementById("projectList");
+  const accionesSection = document.getElementById("accionesSection");
+
+  if (subtabProyectos && subtabAcciones) {
+    // Estado inicial: Proyectos visible, Acciones oculto
+    if (accionesSection) accionesSection.classList.add("hidden");
+    
+    subtabProyectos.addEventListener("click", () => {
+      // Estilos del tab activo
+      subtabProyectos.classList.add("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+      subtabProyectos.classList.remove("text-on-surface-variant");
+      subtabAcciones.classList.remove("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+      subtabAcciones.classList.add("text-on-surface-variant");
+      
+      // Mostrar/ocultar secciones
+      if (projectListSection) projectListSection.classList.remove("hidden");
+      if (accionesSection) accionesSection.classList.add("hidden");
+      
+      // Refrescar lista por si acaso
+      renderList();
+    });
+    
+    subtabAcciones.addEventListener("click", () => {
+      // Estilos del tab activo
+      subtabAcciones.classList.add("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+      subtabAcciones.classList.remove("text-on-surface-variant");
+      subtabProyectos.classList.remove("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+      subtabProyectos.classList.add("text-on-surface-variant");
+      
+      // Mostrar/ocultar secciones
+      if (projectListSection) projectListSection.classList.add("hidden");
+      if (accionesSection) accionesSection.classList.remove("hidden");
+    });
+  }
+  
+
+
   
     // ===== GESTIÓN: SUB-TABS =====
     if (tabCapacitaciones && tabInvestigacion) {
