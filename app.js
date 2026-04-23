@@ -647,45 +647,41 @@ function attachEvents() {
   }
 
   
-    // ===== GESTIÓN: SUB-TABS =====
+// ===== GESTIÓN: SUB-TABS (con el mismo estilo que Proyectos/Acciones) =====
+if (tabCapacitaciones && tabInvestigacion) {
 
-    if (tabCapacitaciones && tabInvestigacion) {
+  // Estado inicial
+  tabCapacitaciones.classList.add("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+  tabCapacitaciones.classList.remove("text-on-surface-variant");
+  tabInvestigacion.classList.remove("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+  tabInvestigacion.classList.add("text-on-surface-variant");
 
-      tabCapacitaciones.addEventListener("click", () => {
+  tabCapacitaciones.addEventListener("click", () => {
+    // Activar Capacitaciones, desactivar Investigación
+    tabCapacitaciones.classList.add("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+    tabCapacitaciones.classList.remove("text-on-surface-variant");
+    tabInvestigacion.classList.remove("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+    tabInvestigacion.classList.add("text-on-surface-variant");
+    
+    document.getElementById("gestionCapacitaciones").classList.remove("hidden");
+    document.getElementById("gestionInvestigacion").classList.add("hidden");
+    renderCapacitaciones();
+  });
 
-        // activar estilos
-        tabCapacitaciones.classList.add("bg-white","text-indigo-600");
-        tabCapacitaciones.classList.remove("text-slate-400");
+  tabInvestigacion.addEventListener("click", () => {
+    // Activar Investigación, desactivar Capacitaciones
+    tabInvestigacion.classList.add("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+    tabInvestigacion.classList.remove("text-on-surface-variant");
+    tabCapacitaciones.classList.remove("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+    tabCapacitaciones.classList.add("text-on-surface-variant");
+    
+    document.getElementById("gestionCapacitaciones").classList.add("hidden");
+    document.getElementById("gestionInvestigacion").classList.remove("hidden");
+    renderInvestigacion();
+  });
 
-        tabInvestigacion.classList.remove("bg-white","text-indigo-600");
-        tabInvestigacion.classList.add("text-slate-400");
+}
 
-        // contenido
-        document.getElementById("gestionCapacitaciones").classList.remove("hidden");
-        document.getElementById("gestionInvestigacion").classList.add("hidden");
-
-        renderCapacitaciones();
-
-      });
-
-      tabInvestigacion.addEventListener("click", () => {
-
-        // activar estilos
-        tabInvestigacion.classList.add("bg-white","text-indigo-600");
-        tabInvestigacion.classList.remove("text-slate-400");
-
-        tabCapacitaciones.classList.remove("bg-white","text-indigo-600");
-        tabCapacitaciones.classList.add("text-slate-400");
-
-        // contenido
-        document.getElementById("gestionCapacitaciones").classList.add("hidden");
-        document.getElementById("gestionInvestigacion").classList.remove("hidden");
-
-        renderInvestigacion();
-
-      });
-
-    }
 
 }
 
