@@ -1,4 +1,4 @@
-// app.js - Versión UI Mejorada (DG Cooperación) v10.0 abril 2026
+// app.js - Versión UI Mejorada (DG Cooperación) v11.0 abril 2026
 
 const LS_KEY = "dg_proyectos_v2";
 
@@ -648,37 +648,43 @@ function attachEvents() {
 
   
     // ===== GESTIÓN: SUB-TABS =====
-if (tabCapacitaciones && tabInvestigacion) {
+    if (tabCapacitaciones && tabInvestigacion) {
 
-  // Estado inicial
-  tabCapacitaciones.classList.add("bg-white", "text-indigo-600");
-  tabCapacitaciones.classList.remove("text-gray-400");
-  tabInvestigacion.classList.remove("bg-white", "text-indigo-600");
-  tabInvestigacion.classList.add("text-gray-400");
+      tabCapacitaciones.addEventListener("click", () => {
 
-  tabCapacitaciones.addEventListener("click", () => {
-    tabCapacitaciones.classList.add("bg-white", "text-indigo-600");
-    tabCapacitaciones.classList.remove("text-gray-400");
-    tabInvestigacion.classList.remove("bg-white", "text-indigo-600");
-    tabInvestigacion.classList.add("text-gray-400");
-    
-    document.getElementById("gestionCapacitaciones").classList.remove("hidden");
-    document.getElementById("gestionInvestigacion").classList.add("hidden");
-    renderCapacitaciones();
-  });
+        // activar estilos
+        tabCapacitaciones.classList.add("bg-white","text-indigo-600");
+        tabCapacitaciones.classList.remove("text-slate-400");
 
-  tabInvestigacion.addEventListener("click", () => {
-    tabInvestigacion.classList.add("bg-white", "text-indigo-600");
-    tabInvestigacion.classList.remove("text-gray-400");
-    tabCapacitaciones.classList.remove("bg-white", "text-indigo-600");
-    tabCapacitaciones.classList.add("text-gray-400");
-    
-    document.getElementById("gestionCapacitaciones").classList.add("hidden");
-    document.getElementById("gestionInvestigacion").classList.remove("hidden");
-    renderInvestigacion();
-  });
+        tabInvestigacion.classList.remove("bg-white","text-indigo-600");
+        tabInvestigacion.classList.add("text-slate-400");
 
-}
+        // contenido
+        document.getElementById("gestionCapacitaciones").classList.remove("hidden");
+        document.getElementById("gestionInvestigacion").classList.add("hidden");
+
+        renderCapacitaciones();
+
+      });
+
+      tabInvestigacion.addEventListener("click", () => {
+
+        // activar estilos
+        tabInvestigacion.classList.add("bg-white","text-indigo-600");
+        tabInvestigacion.classList.remove("text-slate-400");
+
+        tabCapacitaciones.classList.remove("bg-white","text-indigo-600");
+        tabCapacitaciones.classList.add("text-slate-400");
+
+        // contenido
+        document.getElementById("gestionCapacitaciones").classList.add("hidden");
+        document.getElementById("gestionInvestigacion").classList.remove("hidden");
+
+        renderInvestigacion();
+
+      });
+
+    }
 
 
 }
