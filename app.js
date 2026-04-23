@@ -648,6 +648,7 @@ function attachEvents() {
 
   
     // ===== GESTIÓN: SUB-TABS =====
+
     if (tabCapacitaciones && tabInvestigacion) {
 
       tabCapacitaciones.addEventListener("click", () => {
@@ -685,7 +686,6 @@ function attachEvents() {
       });
 
     }
-
 
 }
 
