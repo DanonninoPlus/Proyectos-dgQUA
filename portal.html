@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DG Cooperación - Gestión de Proyectos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DGCIDCIENCIA - Gestión de Proyectos</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   
   <style>
     .active-tab { border-bottom: 3px solid #4f46e5; color: #4f46e5; font-weight: 700; }
-    .accordion-content { transition: max-height 0.3s ease-out; }
-    
-    /* Estilos para el nuevo diseño */
-    .diplomatic-shadow { box-shadow: 0 8px 24px rgba(22, 40, 57, 0.06); }
+    .diplomatic-shadow { box-shadow: 0 8px 24px rgba(22,40,57,0.06); }
     .bg-surface { background-color: #f8f9fa; }
     .bg-surface-container-low { background-color: #edeeef; }
     .bg-surface-container-high { background-color: #e7e8e9; }
@@ -26,19 +23,16 @@
     .text-secondary { color: #4646d8; }
     .text-outline { color: #74777d; }
     .text-on-surface-variant { color: #43474c; }
-    .border-secondary\/10 { border-color: rgba(70, 70, 216, 0.1); }
+    .border-secondary\/10 { border-color: rgba(70,70,216,0.1); }
     .bg-secondary-fixed { background-color: #e1e0ff; }
-    .bg-secondary-fixed\/30 { background-color: rgba(225, 224, 255, 0.3); }
     .bg-tertiary-fixed { background-color: #6dfad2; }
-    .text-on-tertiary-fixed-variant { color: #005140; }
     .rotate-180 { transform: rotate(180deg); }
     .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-900 pb-20">
+<body class="bg-slate-50 min-h-screen pb-20">
 
-  <!-- HEADER INSTITUCIONAL -->
+  <!-- HEADER -->
   <header class="bg-white border-b sticky top-0 z-40 px-4 py-3 flex items-center justify-between shadow-sm">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
@@ -46,15 +40,15 @@
       </div>
       <div>
         <h1 class="text-lg font-bold leading-tight">DGCIDCIENCIA</h1>
-        <p class="text-[10px] text-slate-500 uppercase tracking-widest">DG de Proyectos de Cooperación Internacional para el Desarrollo, Ciencia, Tecnología y Entidades Federativas</p>
+        <p class="text-[10px] text-slate-500 uppercase tracking-widest">DG de Proyectos de Cooperación Internacional</p>
       </div>
     </div>
-    <button id="btnAddProject" class="bg-indigo-600 hover:bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform active:scale-95">
+    <button id="btnAddProject" class="bg-indigo-600 hover:bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg">
       <i class="fas fa-plus"></i>
     </button>
   </header>
 
-  <!-- FILTRO REDISEÑADO (UNO SOLO) -->
+  <!-- FILTROS (REDISEÑADO) -->
   <div id="filterSection" class="bg-surface px-4 pt-4 pb-2 sticky top-[65px] z-30">
     <div class="relative group mb-4">
       <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline">
@@ -95,8 +89,10 @@
   </div>
 
   <main class="p-4 max-w-2xl mx-auto">
+    <!-- LISTA DE PROYECTOS -->
     <section id="projectList" class="space-y-4"></section>
 
+    <!-- SECCIÓN ACCIONES (PLACEHOLDER) -->
     <section id="accionesSection" class="hidden">
       <div class="bg-surface-container-low rounded-2xl p-8 text-center">
         <span class="material-symbols-outlined text-6xl text-outline mb-3">construction</span>
@@ -105,6 +101,7 @@
       </div>
     </section>
 
+    <!-- NORMATECA -->
     <section id="normatecaSection" class="hidden">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-xl font-bold text-primary">Normateca Digital</h2>
@@ -115,6 +112,7 @@
       <div id="normatecaList" class="space-y-4"></div>
     </section>
 
+    <!-- GESTIÓN -->
     <section id="gestionSection" class="hidden">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-xl font-bold text-primary">Gestión</h2>
@@ -122,8 +120,12 @@
       </div>
       <div id="gestionContent" class="space-y-6">
         <div id="gestionTabs" class="flex gap-2 bg-surface-container-high rounded-xl p-1">
-          <button id="tabCapacitaciones" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-surface-container-lowest text-secondary shadow-sm">Capacitaciones</button>
-          <button id="tabInvestigacion" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-on-surface-variant">Permisos de Investigación</button>
+          <button id="tabCapacitaciones" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-surface-container-lowest text-secondary shadow-sm">
+            Capacitaciones
+          </button>
+          <button id="tabInvestigacion" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-on-surface-variant">
+            Permisos de Investigación
+          </button>
         </div>
         <div id="gestionCapacitaciones" class="space-y-4">
           <div class="text-xs tracking-widest text-outline uppercase font-bold">CAPACITACIONES</div>
@@ -136,6 +138,7 @@
       </div>
     </section>
 
+    <!-- REPORTES -->
     <section id="reportsSection" class="hidden space-y-4">
       <h2 class="text-xl font-bold text-primary mb-4">Reportes y Datos</h2>
       <div class="grid grid-cols-1 gap-4">
@@ -166,6 +169,7 @@
 
   <div id="printArea" class="hidden"></div>
 
+  <!-- NAVEGACIÓN INFERIOR -->
   <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-3 z-50 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
     <button id="tabProyectos" class="flex flex-col items-center gap-1 active-tab transition-colors px-4">
       <i class="fas fa-folder-open text-lg"></i>
@@ -185,8 +189,9 @@
     </button>
   </nav>
 
+  <!-- MODAL DE PROYECTO -->
   <div id="modal" class="fixed inset-0 hidden items-end sm:items-center justify-center bg-slate-900/60 backdrop-blur-sm z-[60]">
-    <div class="bg-white rounded-t-3xl sm:rounded-2xl p-6 w-full max-w-lg shadow-2xl animate-slide-up overflow-y-auto max-h-[90vh]">
+    <div class="bg-white rounded-t-3xl sm:rounded-2xl p-6 w-full max-w-lg shadow-2xl overflow-y-auto max-h-[90vh]">
       <div class="flex justify-between items-center mb-6">
         <h2 id="modalTitle" class="text-xl font-extrabold text-slate-800 italic">NUEVO PROYECTO</h2>
         <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
@@ -196,21 +201,21 @@
         <input type="hidden" id="projId" />
         <div class="space-y-1">
           <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Nombre del Proyecto</label>
-          <input id="projNombredelproyecto" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all" />
+          <input id="projNombredelproyecto" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div class="space-y-1">
             <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Continente</label>
-            <input id="projContinente" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" />
+            <input id="projContinente" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
           </div>
           <div class="space-y-1">
             <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">País</label>
-            <input id="projPais" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" />
+            <input id="projPais" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
           </div>
         </div>
         <div class="space-y-1">
           <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Sector</label>
-          <input id="projSector" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" />
+          <input id="projSector" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
         </div>
         <div class="grid grid-cols-3 gap-3">
           <div class="col-span-1 space-y-1">
@@ -223,11 +228,11 @@
           </div>
           <div class="col-span-1 space-y-1">
             <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Inicio</label>
-            <input id="projFechadeinicio" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs" />
+            <input id="projFechadeinicio" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
           </div>
           <div class="col-span-1 space-y-1">
             <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Término</label>
-            <input id="projFechadetermino" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs" />
+            <input id="projFechadetermino" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
           </div>
         </div>
         <div class="space-y-1">
@@ -240,18 +245,12 @@
         </div>
         <div class="flex gap-3 pt-4">
           <button type="button" id="btnCancel" class="flex-1 py-4 text-slate-500 font-bold uppercase tracking-widest text-xs">Cancelar</button>
-          <button type="submit" class="flex-[2] bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold uppercase tracking-widest text-xs shadow-lg shadow-indigo-100 transition-all active:scale-95">Guardar Proyecto</button>
+          <button type="submit" class="flex-[2] bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold uppercase tracking-widest text-xs">Guardar Proyecto</button>
         </div>
       </form>
     </div>
   </div>
 
-  <script src="app.js" defer></script>
+  <script src="app.js"></script>
 </body>
 </html>
-
-
-
-
-
-
