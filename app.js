@@ -380,13 +380,30 @@ function loadFlags() {
   });
 }
 
-// Helper para códigos de país
+// Helper para códigos de país (versión ampliada)
 function getCountryCode(pais) {
   const codes = {
-    'Chile': 'cl', 'Brasil': 'br', 'Argentina': 'ar', 'Perú': 'pe', 'Colombia': 'co',
-    'México': 'mx', 'España': 'es', 'Japón': 'jp', 'Estados Unidos': 'us', 'Noruega': 'no',
-    'Francia': 'fr', 'Alemania': 'de', 'Italia': 'it', 'Reino Unido': 'gb', 'China': 'cn',
-    'India': 'in', 'Rusia': 'ru', 'Canadá': 'ca', 'Australia': 'au', 'Corea del Sur': 'kr'
+    // Latinoamérica
+    'Argentina': 'ar', 'Bolivia': 'bo', 'Brasil': 'br', 'Chile': 'cl', 'Colombia': 'co',
+    'Costa Rica': 'cr', 'Cuba': 'cu', 'Ecuador': 'ec', 'El Salvador': 'sv', 'Guatemala': 'gt',
+    'Haití': 'ht', 'Honduras': 'hn', 'México': 'mx', 'Nicaragua': 'ni', 'Panamá': 'pa',
+    'Paraguay': 'py', 'Perú': 'pe', 'República Dominicana': 'do', 'Uruguay': 'uy', 'Venezuela': 've',
+    // Europa
+    'Alemania': 'de', 'Austria': 'at', 'Bélgica': 'be', 'Dinamarca': 'dk', 'España': 'es',
+    'Finlandia': 'fi', 'Francia': 'fr', 'Grecia': 'gr', 'Hungría': 'hu', 'Irlanda': 'ie',
+    'Italia': 'it', 'Noruega': 'no', 'Países Bajos': 'nl', 'Polonia': 'pl', 'Portugal': 'pt',
+    'Reino Unido': 'gb', 'República Checa': 'cz', 'Rumania': 'ro', 'Rusia': 'ru', 'Suecia': 'se',
+    'Suiza': 'ch', 'Ucrania': 'ua',
+    // Asia
+    'China': 'cn', 'Corea del Sur': 'kr', 'Filipinas': 'ph', 'India': 'in', 'Indonesia': 'id',
+    'Japón': 'jp', 'Malasia': 'my', 'Tailandia': 'th', 'Vietnam': 'vn',
+    // África
+    'Angola': 'ao', 'Argelia': 'dz', 'Egipto': 'eg', 'Kenia': 'ke', 'Marruecos': 'ma',
+    'Nigeria': 'ng', 'Sudáfrica': 'za',
+    // Norteamérica
+    'Canadá': 'ca', 'Estados Unidos': 'us',
+    // Oceanía
+    'Australia': 'au', 'Nueva Zelanda': 'nz'
   };
   return codes[pais] || 'un';
 }
