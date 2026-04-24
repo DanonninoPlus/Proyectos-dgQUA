@@ -408,17 +408,18 @@ function getCountryCode(pais) {
   return codes[pais] || 'un';
 }
 
-// Función para renderizar cada tarjeta de proyecto (NUEVO DISEÑO)
+// Función para renderizar cada tarjeta de proyecto (NUEVO DISEÑO CON CAMBIOS SOLICITADOS)
 function renderProjectCard(p) {
+  // Mapeo de estados a colores: Verde para Ejecución, Naranja para Planeación, Gris para Finalizado
   const statusColors = {
-    'Planeación': 'bg-tertiary-fixed text-on-tertiary-fixed-variant',
-    'Ejecución': 'bg-secondary-fixed text-on-secondary-fixed-variant',
-    'Finalizado': 'bg-surface-container-high text-outline'
+    'Planeación': 'bg-orange-500 text-white',
+    'Ejecución': 'bg-green-600 text-white',
+    'Finalizado': 'bg-gray-400 text-white'
   };
-  const colorClass = statusColors[p.status] || 'bg-surface-container-high text-outline';
+  const colorClass = statusColors[p.status] || 'bg-gray-400 text-white';
   
   const card = document.createElement("div");
-  card.className = "bg-surface-container-lowest rounded-xl border border-secondary/10 overflow-hidden";
+  card.className = "bg-surface-container-lowest rounded-xl border border-secondary/10 overflow-hidden mb-3";
   card.innerHTML = `
     <div class="p-4 flex items-center justify-between cursor-pointer project-btn hover:bg-surface-container/50 transition-colors">
       <h3 class="font-headline font-bold text-sm text-primary">${escapeHtml(p.Nombredelproyecto)}</h3>
@@ -452,12 +453,12 @@ function renderProjectCard(p) {
       
       ${p.Estados && p.Estados.length ? `
       <div>
-        <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Estados Afiliados</h4>
+        <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">ESTADOS DE LA REPÚBLICA</h4>
         <div class="flex flex-wrap gap-2">
           ${p.Estados.map(e => `<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[10px] font-medium rounded-full">${escapeHtml(e)}</span>`).join("")}
         </div>
       </div>
-      ` : ""}
+      ` : '<div class="hidden"></div>'}
       
       ${p.notas ? `
       <div class="bg-surface-container-high/50 p-4 rounded-xl border-l-4 border-outline-variant">
@@ -471,16 +472,10 @@ function renderProjectCard(p) {
       
       <div class="flex items-center justify-between pt-2 border-t border-surface-container">
         <span class="px-3 py-1 ${colorClass} text-[10px] font-black rounded-full uppercase tracking-widest">${p.status}</span>
-        <div class="flex gap-2">
-          <button data-id="${p.id}" class="btn-edit text-secondary text-xs font-bold flex items-center gap-1">
-            Editar
-            <span class="material-symbols-outlined text-sm">edit</span>
-          </button>
-          <button data-id="${p.id}" class="btn-delete text-outline text-xs font-bold flex items-center gap-1">
-            Eliminar
-            <span class="material-symbols-outlined text-sm">delete</span>
-          </button>
-        </div>
+        <button data-id="${p.id}" class="btn-download text-secondary text-xs font-bold flex items-center gap-1">
+          Descargar Ficha
+          <span class="material-symbols-outlined text-sm">download</span>
+        </button>
       </div>
     </div>
   `;
@@ -495,11 +490,18 @@ function renderProjectCard(p) {
     projectIcon.classList.toggle("rotate-180");
   });
   
+  // Evento para el botón de descarga (por ahora solo alerta)
+  const downloadBtn = card.querySelector(".btn-download");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      // Por ahora mostramos un mensaje. Después implementaremos la descarga real
+      alert(`📄 Preparando ficha del proyecto: ${p.Nombredelproyecto}\n\nPróximamente podrás descargar la ficha completa en PDF.`);
+    });
+  }
+  
   return card;
 }
-
-
-
 
 /* ============================================================
    🔵 5. NORMATECA & REPORTES
