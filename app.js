@@ -569,11 +569,12 @@ function attachEvents() {
   btnExportXLS.addEventListener("click", exportXLS);
   btnImportJSON.addEventListener("click", importJSON);
 
+  
   // Tabs Logic
   const tabs = {
     'tabProyectos': { section: 'projectList', filters: 'filterSection' },
     'tabnormateca': { section: 'normatecaSection', filters: null },
-    'tabgestion': { section: 'gestionSection', filters: null }, // 👈 AQUÍ
+    'tabgestion': { section: 'gestionSection', filters: null },
     'tabReportes': { section: 'reportsSection', filters: null }
   };
 
@@ -597,16 +598,28 @@ function attachEvents() {
         if (current.filters) filters.classList.remove("hidden");
         else filters.classList.add("hidden");
 
+        // 👇 NUEVA LÍNEA: Al cambiar de sección, ocultar Acciones si está visible
+        const accionesSection = document.getElementById("accionesSection");
+        if (accionesSection && !accionesSection.classList.contains("hidden")) {
+          accionesSection.classList.add("hidden");
+        }
+
         if(tabId === 'tabnormateca') renderNormateca();
 
         if (tabId === 'tabgestion') {
-        renderCapacitaciones()
-        renderInvestigacion();   
+          renderCapacitaciones();
+          renderInvestigacion();   
         }
 
+        // 👇 También asegurar que la lista de proyectos se vea si estamos en Proyectos
+        if (tabId === 'tabProyectos') {
+          const projectListSection = document.getElementById("projectList");
+          if (projectListSection && projectListSection.classList.contains("hidden")) {
+            projectListSection.classList.remove("hidden");
+          }
+        }
     });
   });
-
 
     // ===== NUEVOS SUBTABS: PROYECTOS / ACCIONES =====
   const subtabProyectos = document.getElementById("subtabProyectos");
