@@ -570,7 +570,9 @@ function attachEvents() {
   btnImportJSON.addEventListener("click", importJSON);
 
   
-  // Tabs Logic
+ 
+
+    // Tabs Logic
   const tabs = {
     'tabProyectos': { section: 'projectList', filters: 'filterSection' },
     'tabnormateca': { section: 'normatecaSection', filters: null },
@@ -580,7 +582,7 @@ function attachEvents() {
 
   Object.keys(tabs).forEach(tabId => {
     document.getElementById(tabId).addEventListener("click", () => {
-        // Reset tabs
+        // Reset tabs principales
         Object.keys(tabs).forEach(id => {
             document.getElementById(id).classList.remove("active-tab", "text-indigo-600");
             document.getElementById(id).classList.add("text-slate-400");
@@ -598,10 +600,36 @@ function attachEvents() {
         if (current.filters) filters.classList.remove("hidden");
         else filters.classList.add("hidden");
 
-        // 👇 NUEVA LÍNEA: Al cambiar de sección, ocultar Acciones si está visible
+        // Ocultar Acciones si está visible al cambiar de sección
         const accionesSection = document.getElementById("accionesSection");
         if (accionesSection && !accionesSection.classList.contains("hidden")) {
           accionesSection.classList.add("hidden");
+        }
+
+        // 👇 NUEVO: Al volver a la sección Proyectos, restaurar el subtab "Proyectos"
+        if (tabId === 'tabProyectos') {
+          const projectListSection = document.getElementById("projectList");
+          if (projectListSection && projectListSection.classList.contains("hidden")) {
+            projectListSection.classList.remove("hidden");
+          }
+          
+          // Restaurar el estado visual de los subtabs
+          const subtabProyectos = document.getElementById("subtabProyectos");
+          const subtabAcciones = document.getElementById("subtabAcciones");
+          const projectListSectionEl = document.getElementById("projectList");
+          const accionesSectionEl = document.getElementById("accionesSection");
+          
+          if (subtabProyectos && subtabAcciones) {
+            // Activar visualmente "Proyectos"
+            subtabProyectos.classList.add("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+            subtabProyectos.classList.remove("text-on-surface-variant");
+            subtabAcciones.classList.remove("bg-surface-container-lowest", "text-secondary", "diplomatic-shadow");
+            subtabAcciones.classList.add("text-on-surface-variant");
+            
+            // Asegurar contenido correcto
+            if (projectListSectionEl) projectListSectionEl.classList.remove("hidden");
+            if (accionesSectionEl) accionesSectionEl.classList.add("hidden");
+          }
         }
 
         if(tabId === 'tabnormateca') renderNormateca();
@@ -609,14 +637,6 @@ function attachEvents() {
         if (tabId === 'tabgestion') {
           renderCapacitaciones();
           renderInvestigacion();   
-        }
-
-        // 👇 También asegurar que la lista de proyectos se vea si estamos en Proyectos
-        if (tabId === 'tabProyectos') {
-          const projectListSection = document.getElementById("projectList");
-          if (projectListSection && projectListSection.classList.contains("hidden")) {
-            projectListSection.classList.remove("hidden");
-          }
         }
     });
   });
