@@ -455,11 +455,11 @@ function renderProjectCard(p) {
       ${p.Estados && p.Estados.length ? `
       <div>
         <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">ESTADOS DE LA REPÚBLICA</h4>
-        <div class="grid grid-cols-2 gap-x-4 gap-y-2">
+        <div class="space-y-1.5">
           ${p.Estados.map(e => `
             <div class="flex items-center gap-2">
-              <span class="text-secondary text-base">•</span>
-              <span class="text-xs text-on-surface-variant">${escapeHtml(e)}</span>
+              <span class="text-secondary text-sm">•</span>
+              <span class="text-sm text-on-surface-variant font-medium">${escapeHtml(e)}</span>
             </div>
           `).join("")}
         </div>
