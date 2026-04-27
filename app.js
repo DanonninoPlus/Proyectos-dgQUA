@@ -145,6 +145,7 @@ async function init() {
 
 
   renderList();
+  updateStats();
   populateResponsibles();
   populateStates();
   attachEvents();
@@ -865,6 +866,36 @@ function populateStates() {
     opt.textContent = estado;
     filterState.appendChild(opt);
   });
+}
+
+
+
+/* ============================================================
+   🔵 ACTUALIZAR ESTADÍSTICAS (En ejecución, Planeación, Total)
+   ============================================================*/
+function updateStats() {
+  const total = proyectos.length;
+  const ejecucion = proyectos.filter(p => p.status === "Ejecución").length;
+  const planeacion = proyectos.filter(p => p.status === "Planeación").length;
+  const finalizado = proyectos.filter(p => p.status === "Finalizado").length;
+  
+  // Actualizar números en las tarjetas
+  const countEjecucion = document.getElementById("countEjecucion");
+  const countPlaneacion = document.getElementById("countPlaneacion");
+  const countFinalizado = document.getElementById("countFinalizado");
+  const countTotal = document.getElementById("countTotal");
+  const progressBar = document.getElementById("progressBar");
+  
+  if (countEjecucion) countEjecucion.textContent = ejecucion;
+  if (countPlaneacion) countPlaneacion.textContent = planeacion;
+  if (countFinalizado) countFinalizado.textContent = finalizado;
+  if (countTotal) countTotal.textContent = total;
+  
+  // Calcular porcentaje para la barra (basado en ejecución + finalizados)
+  if (progressBar && total > 0) {
+    const porcentaje = ((ejecucion + finalizado) / total) * 100;
+    progressBar.style.width = `${porcentaje}%`;
+  }
 }
 
 /* ============================================================
