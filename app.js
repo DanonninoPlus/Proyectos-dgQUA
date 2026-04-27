@@ -8,7 +8,6 @@ const searchInput = document.getElementById("searchInput");
 const filterResponsible = document.getElementById("filterResponsible");
 const filterStatus = document.getElementById("filterStatus");
 const filterState = document.getElementById("filterState");
-const btnAddProject = document.getElementById("btnAddProject");
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modalTitle");
 const projectForm = document.getElementById("projectForm");
@@ -355,7 +354,7 @@ function renderList() {
   
   // Cargar banderas después de renderizar
   loadFlags();
-  attachEditDeleteEvents();
+
 }
 
 
@@ -561,30 +560,54 @@ function attachAccordionEvents() {
   });
 }
 
-function attachEditDeleteEvents() {
-  document.querySelectorAll(".btn-edit").forEach(b => b.onclick = e => openEditModal(e.target.dataset.id));
-  document.querySelectorAll(".btn-delete").forEach(b => b.onclick = e => {
-    if (confirm("¿Eliminar este proyecto?")) {
-      proyectos = proyectos.filter(p => p.id !== e.target.dataset.id);
-      saveToStorage();
-      renderList();
-    }
-  });
-}
-
 function attachEvents() {
   searchInput.addEventListener("input", renderList);
   filterResponsible.addEventListener("change", renderList);
   filterStatus.addEventListener("change", renderList);
   if (filterState) filterState.addEventListener("change", renderList);
-  btnAddProject.addEventListener("click", openModalForNew);
-  btnCancel.addEventListener("click", closeModal);
-  projectForm.addEventListener("submit", saveProject);
   btnExportPDF.addEventListener("click", exportPDF);
   btnExportXLS.addEventListener("click", exportXLS);
   btnImportJSON.addEventListener("click", importJSON);
 
-  
+
+    // ===== MENÚ DESPLEGABLE =====
+  const btnMenu = document.getElementById("btnMenu");
+  const menuPanel = document.getElementById("menuPanel");
+
+  if (btnMenu && menuPanel) {
+    // Abrir/cerrar menú al hacer clic en el botón
+    btnMenu.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menuPanel.classList.toggle("hidden");
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener("click", (e) => {
+      if (!menuPanel.contains(e.target) && !btnMenu.contains(e.target)) {
+        menuPanel.classList.add("hidden");
+      }
+    });
+
+    // Opción: Proyectos entregados
+    const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
+    if (menuProyectosEntregados) {
+      menuProyectosEntregados.addEventListener("click", () => {
+        menuPanel.classList.add("hidden");
+        alert("🔍 Mostrando proyectos entregados\n\nPróximamente: Filtro de proyectos finalizados.");
+        // Aquí después puedes implementar el filtro de proyectos con status "Finalizado"
+      });
+    }
+
+    // Opción: Fichas Técnicas
+    const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
+    if (menuFichasTecnicas) {
+      menuFichasTecnicas.addEventListener("click", () => {
+        menuPanel.classList.add("hidden");
+        alert("📄 Fichas Técnicas\n\nPróximamente: Generación de fichas técnicas de proyectos.");
+        // Aquí después puedes implementar la generación de fichas
+      });
+    }
+  }
  
 
     // Tabs Logic
@@ -733,61 +756,9 @@ if (tabCapacitaciones && tabInvestigacion) {
 
 }
 
-/* ============================================================
-   🔵 7. MODAL LOGIC
-   ============================================================*/
-function openModalForNew() {
-  modalTitle.textContent = "NUEVO PROYECTO";
-  projectForm.reset();
-  projId.value = "";
-  showModal();
-}
-
-function openEditModal(id) {
-  const p = proyectos.find(x => x.id === id);
-  if (!p) return;
-  modalTitle.textContent = "EDITAR PROYECTO";
-  projId.value = p.id;
-  projNombredelproyecto.value = p.Nombredelproyecto;
-  projSector.value = p.Sector;
-  projPais.value = p.Pais;
-  projContinente.value = p.Continente;
-  projFechadeinicio.value = p.Fechadeinicio;
-  projFechadetermino.value = p.Fechadetermino;
-  projStatus.value = p.status;
-  projObjetivo.value = p.Objetivo;
-  projNotas.value = p.notas;
-  showModal();
-}
-
-function showModal() { modal.classList.remove("hidden"); modal.style.display = "flex"; }
-function closeModal() { modal.classList.add("hidden"); modal.style.display = "none"; }
-
-function saveProject(ev) {
-  ev.preventDefault();
-  const id = projId.value;
-  const data = {
-    id: id || cryptoRandomId(),
-    Nombredelproyecto: projNombredelproyecto.value.trim(),
-    Sector: projSector.value.trim(),
-    Pais: projPais.value.trim(),
-    Continente: projContinente.value.trim().toUpperCase(),
-    Fechadeinicio: projFechadeinicio.value.trim(),
-    Fechadetermino: projFechadetermino.value.trim(),
-    status: projStatus.value.trim(),
-    Objetivo: projObjetivo.value.trim(),
-    notas: projNotas.value.trim(),
-    createdAt: id ? proyectos.find(p => p.id === id).createdAt : new Date().toISOString()
-  };
-  if (id) proyectos = proyectos.map(p => p.id === id ? data : p);
-  else proyectos.unshift(data);
-  saveToStorage();
-  closeModal();
-  renderList();
-}
 
 /* ============================================================
-   🔵 8. EXPORTACIONES (Mantienen tu lógica original)
+   🔵 7. EXPORTACIONES (Mantienen tu lógica original)
    ============================================================*/
 function exportPDF() {
   let html = `<div style="font-family: Arial; padding: 20px;">
@@ -897,7 +868,7 @@ function populateStates() {
 }
 
 /* ============================================================
-   🔵 9. GESTIÓN - CAPACITACIONES & PERMISOS DE INVESTIGAIÓN
+   🔵 8. GESTIÓN - CAPACITACIONES & PERMISOS DE INVESTIGAIÓN
    ============================================================*/
 
 function renderCapacitaciones() {
@@ -990,7 +961,7 @@ function abrirCapacitacion(id){
 
 
 /* ============================================================
-   🔵 9.2 GESTIÓN - PERMISOS DE INVESTIGAIÓN
+   🔵 8.2 GESTIÓN - PERMISOS DE INVESTIGAIÓN
    ============================================================*/
 
    function renderInvestigacion() {
