@@ -7,6 +7,7 @@ const projectList = document.getElementById("projectList");
 const searchInput = document.getElementById("searchInput");
 const filterResponsible = document.getElementById("filterResponsible");
 const filterStatus = document.getElementById("filterStatus");
+const filterState = document.getElementById("filterState");
 const btnAddProject = document.getElementById("btnAddProject");
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modalTitle");
@@ -146,6 +147,7 @@ async function init() {
 
   renderList();
   populateResponsibles();
+  populateStates();
   attachEvents();
 }
 
@@ -167,12 +169,14 @@ function renderList() {
   const q = searchInput.value.trim().toLowerCase();
   const sectorFilter = filterResponsible.value;
   const statusFilter = filterStatus.value;
+  const stateFilter = filterState ? filterState.value : "";
 
   let filtered = proyectos.filter(p => {
     const matchQ = !q || (p.Nombredelproyecto + " " + p.status + " " + p.Pais + " " + p.Continente).toLowerCase().includes(q);
     const matchSector = !sectorFilter || (p.Sector && p.Sector.toUpperCase().includes(sectorFilter.toUpperCase()));
     const matchStatus = !statusFilter || p.status === statusFilter;
-    return matchQ && matchStatus && matchSector;
+    const matchState = !stateFilter || (p.Estados && p.Estados.includes(stateFilter));
+    return matchQ && matchStatus && matchSector && matchState;
   });
 
   const counterEl = document.getElementById("projectCounter");
@@ -572,6 +576,7 @@ function attachEvents() {
   searchInput.addEventListener("input", renderList);
   filterResponsible.addEventListener("change", renderList);
   filterStatus.addEventListener("change", renderList);
+  if (filterState) filterState.addEventListener("change", renderList);
   btnAddProject.addEventListener("click", openModalForNew);
   btnCancel.addEventListener("click", closeModal);
   projectForm.addEventListener("submit", saveProject);
@@ -864,6 +869,30 @@ function populateResponsibles() {
     const opt = document.createElement("option");
     opt.value = s; opt.textContent = s;
     filterResponsible.appendChild(opt);
+  });
+}
+
+function populateStates() {
+  if (!filterState) return;
+  
+  // Recolectar todos los estados únicos de todos los proyectos
+  const allStates = new Set();
+  proyectos.forEach(p => {
+    if (p.Estados && Array.isArray(p.Estados)) {
+      p.Estados.forEach(estado => allStates.add(estado));
+    }
+  });
+  
+  // Ordenar alfabéticamente
+  const sortedStates = Array.from(allStates).sort();
+  
+  // Llenar el select
+  filterState.innerHTML = `<option value="">Estados</option>`;
+  sortedStates.forEach(estado => {
+    const opt = document.createElement("option");
+    opt.value = estado;
+    opt.textContent = estado;
+    filterState.appendChild(opt);
   });
 }
 
