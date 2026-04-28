@@ -178,9 +178,6 @@ function renderList() {
     return matchQ && matchStatus && matchSector && matchState;
   });
 
-  const counterEl = document.getElementById("projectCounter");
-  if (counterEl) counterEl.innerHTML = `${filtered.length} Proyectos Activos`;
-
   if (filtered.length === 0) {
     projectList.innerHTML = `<div class="p-8 text-center bg-surface-container-low rounded-2xl text-outline">No se encontraron proyectos</div>`;
     return;
