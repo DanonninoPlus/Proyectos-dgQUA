@@ -178,6 +178,7 @@ function renderList() {
     return matchQ && matchStatus && matchSector && matchState;
   });
 
+
   if (filtered.length === 0) {
     projectList.innerHTML = `<div class="p-8 text-center bg-surface-container-low rounded-2xl text-outline">No se encontraron proyectos</div>`;
     return;
@@ -635,6 +636,18 @@ function attachEvents() {
         if (current.filters) filters.classList.remove("hidden");
         else filters.classList.add("hidden");
 
+
+        // Ocultar estadísticas si no estamos en Proyectos
+        const statsSection = document.getElementById("statsSection");
+        if (statsSection) {
+          if (tabId === 'tabProyectos') {
+            statsSection.classList.remove("hidden");
+          } else {
+            statsSection.classList.add("hidden");
+          }
+        }
+
+
         // Ocultar Acciones si está visible al cambiar de sección
         const accionesSection = document.getElementById("accionesSection");
         if (accionesSection && !accionesSection.classList.contains("hidden")) {
@@ -676,15 +689,18 @@ function attachEvents() {
     });
   });
 
+    
     // ===== NUEVOS SUBTABS: PROYECTOS / ACCIONES =====
   const subtabProyectos = document.getElementById("subtabProyectos");
   const subtabAcciones = document.getElementById("subtabAcciones");
   const projectListSection = document.getElementById("projectList");
   const accionesSection = document.getElementById("accionesSection");
+  const statsSection = document.getElementById("statsSection");  // <-- AGREGADO
 
   if (subtabProyectos && subtabAcciones) {
-    // Estado inicial: Proyectos visible, Acciones oculto
+    // Estado inicial: Proyectos visible, Acciones oculto, estadísticas visibles
     if (accionesSection) accionesSection.classList.add("hidden");
+    if (statsSection) statsSection.classList.remove("hidden");  // <-- Mostrar estadísticas al inicio
     
     subtabProyectos.addEventListener("click", () => {
       // Estilos del tab activo
@@ -696,6 +712,7 @@ function attachEvents() {
       // Mostrar/ocultar secciones
       if (projectListSection) projectListSection.classList.remove("hidden");
       if (accionesSection) accionesSection.classList.add("hidden");
+      if (statsSection) statsSection.classList.remove("hidden");  // <-- Mostrar estadísticas en Proyectos
       
       // Refrescar lista por si acaso
       renderList();
@@ -711,8 +728,13 @@ function attachEvents() {
       // Mostrar/ocultar secciones
       if (projectListSection) projectListSection.classList.add("hidden");
       if (accionesSection) accionesSection.classList.remove("hidden");
+      if (statsSection) statsSection.classList.add("hidden");  // <-- Ocultar estadísticas en Acciones
     });
   }
+
+
+
+
 
   
 // ===== GESTIÓN: SUB-TABS (con el mismo estilo que Proyectos/Acciones) =====
