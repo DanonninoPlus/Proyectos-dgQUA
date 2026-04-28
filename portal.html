@@ -100,7 +100,7 @@
     </div>
   </div>
 
-  <!-- SECCIÓN DE ESTADÍSTICAS (VERSIÓN ESTABLE) -->
+  <!-- SECCIÓN DE ESTADÍSTICAS -->
   <div id="statsSection" class="px-4 pt-4 max-w-2xl mx-auto">
     <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-700 to-indigo-900 p-6 text-white mb-4">
       <div class="relative z-10">
@@ -112,7 +112,7 @@
       <div class="absolute right-10 bottom-[-30%] w-36 h-36 bg-indigo-500/20 rounded-full blur-2xl"></div>
     </div>
 
-    <!-- TARJETAS DE ESTADÍSTICAS (ALINEADAS CORRECTAMENTE) -->
+    <!-- TARJETAS DE ESTADÍSTICAS -->
     <div id="statsContainer" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
       <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-4 rounded-xl shadow-sm border border-indigo-100 text-center">
         <div class="text-3xl font-black text-indigo-700" id="countTotal">0</div>
@@ -137,7 +137,10 @@
   </div>
 
   <main class="p-4 max-w-2xl mx-auto">
+    <!-- LISTA DE PROYECTOS -->
     <section id="projectList" class="space-y-4"></section>
+
+    <!-- SECCIÓN ACCIONES (PLACEHOLDER) -->
     <section id="accionesSection" class="hidden">
       <div class="bg-surface-container-low rounded-2xl p-8 text-center">
         <span class="material-symbols-outlined text-6xl text-outline mb-3">construction</span>
@@ -145,10 +148,156 @@
         <p class="text-on-surface-variant text-sm">La visualización de Acciones está en desarrollo.<br>¡Vuelve pronto!</p>
       </div>
     </section>
-    <section id="normatecaSection" class="hidden">...</section>
-    <section id="gestionSection" class="hidden">...</section>
-    <section id="reportsSection" class="hidden">...</section>
+
+    <!-- NORMATECA -->
+    <section id="normatecaSection" class="hidden">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold text-primary">Normateca Digital</h2>
+        <button id="btnnormatecaExcel" class="text-secondary text-sm font-semibold flex items-center gap-1">
+          <i class="fas fa-file-excel"></i> Exportar
+        </button>
+      </div>
+      <div id="normatecaList" class="space-y-4"></div>
+    </section>
+
+    <!-- GESTIÓN -->
+    <section id="gestionSection" class="hidden">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold text-primary">Gestión</h2>
+        <p class="text-on-surface-variant text-sm font-medium">Panel de control por categoría.</p>
+      </div>
+      <div id="gestionContent" class="space-y-6">
+        <div id="gestionTabs" class="flex gap-2 bg-surface-container-high rounded-xl p-1">
+          <button id="tabCapacitaciones" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-surface-container-lowest text-secondary shadow-sm">
+            Capacitaciones
+          </button>
+          <button id="tabInvestigacion" class="flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-on-surface-variant">
+            Permisos de Investigación
+          </button>
+        </div>
+        <div id="gestionCapacitaciones" class="space-y-4">
+          <div class="text-xs tracking-widest text-outline uppercase font-bold">CAPACITACIONES</div>
+          <div id="capacitacionesList"></div>
+        </div>
+        <div id="gestionInvestigacion" class="hidden">
+          <div class="text-xs tracking-widest text-outline uppercase font-bold">PERMISOS DE INVESTIGACIÓN</div>
+          <div id="investigacionList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORTES -->
+    <section id="reportsSection" class="hidden space-y-4">
+      <h2 class="text-xl font-bold text-primary mb-4">Reportes y Datos</h2>
+      <div class="grid grid-cols-1 gap-4">
+        <button id="btnExportPDF" class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container shadow-sm hover:border-secondary/20 transition-colors">
+          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-pdf"></i></div>
+          <div class="text-left">
+            <div class="font-bold text-primary">Exportar PDF</div>
+            <div class="text-xs text-outline">Genera un documento visual de los proyectos</div>
+          </div>
+        </button>
+        <button id="btnExportXLS" class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container shadow-sm hover:border-secondary/20 transition-colors">
+          <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-excel"></i></div>
+          <div class="text-left">
+            <div class="font-bold text-primary">Exportar Excel</div>
+            <div class="text-xs text-outline">Hoja de cálculo para análisis de datos</div>
+          </div>
+        </button>
+        <button id="btnImportJSON" class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container shadow-sm hover:border-secondary/20 transition-colors">
+          <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl"><i class="fas fa-file-import"></i></div>
+          <div class="text-left">
+            <div class="font-bold text-primary">Importar JSON</div>
+            <div class="text-xs text-outline">Cargar respaldo de base de datos</div>
+          </div>
+        </button>
+      </div>
+    </section>
   </main>
+
+  <div id="printArea" class="hidden"></div>
+
+  <!-- NAVEGACIÓN INFERIOR (FOOTER) -->
+  <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-3 z-50 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+    <button id="tabProyectos" class="flex flex-col items-center gap-1 active-tab transition-colors px-4">
+      <i class="fas fa-folder-open text-lg"></i>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Proyectos</span>
+    </button>
+    <button id="tabnormateca" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
+      <i class="fas fa-book text-lg"></i>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Normateca</span>
+    </button>
+    <button id="tabgestion" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
+      <i class="fas fa-layer-group text-lg"></i>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Gestión</span>
+    </button>
+    <button id="tabReportes" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
+      <i class="fas fa-chart-bar text-lg"></i>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Reportes</span>
+    </button>
+  </nav>
+
+  <!-- MODAL DE PROYECTO -->
+  <div id="modal" class="fixed inset-0 hidden items-end sm:items-center justify-center bg-slate-900/60 backdrop-blur-sm z-[60]">
+    <div class="bg-white rounded-t-3xl sm:rounded-2xl p-6 w-full max-w-lg shadow-2xl overflow-y-auto max-h-[90vh]">
+      <div class="flex justify-between items-center mb-6">
+        <h2 id="modalTitle" class="text-xl font-extrabold text-slate-800 italic">NUEVO PROYECTO</h2>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      
+      <form id="projectForm" class="space-y-5">
+        <input type="hidden" id="projId" />
+        <div class="space-y-1">
+          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Nombre del Proyecto</label>
+          <input id="projNombredelproyecto" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Continente</label>
+            <input id="projContinente" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+          </div>
+          <div class="space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">País</label>
+            <input id="projPais" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+          </div>
+        </div>
+        <div class="space-y-1">
+          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Sector</label>
+          <input id="projSector" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div class="col-span-1 space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Estado</label>
+            <select id="projStatus" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
+              <option>Planeación</option>
+              <option>Ejecución</option>
+              <option>Finalizado</option>
+            </select>
+          </div>
+          <div class="col-span-1 space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Inicio</label>
+            <input id="projFechadeinicio" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
+          </div>
+          <div class="col-span-1 space-y-1">
+            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Término</label>
+            <input id="projFechadetermino" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
+          </div>
+        </div>
+        <div class="space-y-1">
+          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Objetivo Estratégico</label>
+          <textarea id="projObjetivo" rows="3" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm resize-none"></textarea>
+        </div>
+        <div class="space-y-1">
+          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Notas Adicionales</label>
+          <textarea id="projNotas" rows="2" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm resize-none"></textarea>
+        </div>
+        <div class="flex gap-3 pt-4">
+          <button type="button" id="btnCancel" class="flex-1 py-4 text-slate-500 font-bold uppercase tracking-widest text-xs">Cancelar</button>
+          <button type="submit" class="flex-[2] bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold uppercase tracking-widest text-xs">Guardar Proyecto</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
