@@ -645,15 +645,6 @@ function attachEvents() {
           accionesSection.classList.add("hidden");
         }
         
-        // Ocultar estadísticas si no estamos en la sección Proyectos
-        const statsSection = document.getElementById("statsSection");
-        if (statsSection) {
-          if (tabId === 'tabProyectos') {
-            statsSection.classList.remove("hidden");
-          } else {
-            statsSection.classList.add("hidden");
-          }
-        }
 
         
 
@@ -773,6 +764,36 @@ if (tabCapacitaciones && tabInvestigacion) {
   });
 
 }
+
+
+
+
+
+  // ==========================================================
+  // 👑 CONTROL DE ESTADÍSTICAS EN TABS PRINCIPALES
+  // ==========================================================
+  const statsSectionGlobal = document.getElementById("statsSection");
+  const tabProyectosBtn = document.getElementById("tabProyectos");
+  const tabNormatecaBtn = document.getElementById("tabnormateca");
+  const tabGestionBtn = document.getElementById("tabgestion");
+  const tabReportesBtn = document.getElementById("tabReportes");
+
+  function actualizarStatsPorTab() {
+    if (!statsSectionGlobal) return;
+    const esTabProyectos = document.getElementById("tabProyectos")?.classList.contains("active-tab");
+    statsSectionGlobal.classList.toggle("hidden", !esTabProyectos);
+  }
+
+  if (tabProyectosBtn) tabProyectosBtn.addEventListener("click", actualizarStatsPorTab);
+  if (tabNormatecaBtn) tabNormatecaBtn.addEventListener("click", actualizarStatsPorTab);
+  if (tabGestionBtn) tabGestionBtn.addEventListener("click", actualizarStatsPorTab);
+  if (tabReportesBtn) tabReportesBtn.addEventListener("click", actualizarStatsPorTab);
+
+  // Ejecutar al inicio para dejar todo coherente
+  actualizarStatsPorTab();
+
+
+
 
 
 }
