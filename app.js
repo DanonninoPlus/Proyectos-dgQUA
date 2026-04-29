@@ -437,27 +437,34 @@ function attachEvents() {
   btnExportXLS.addEventListener("click", exportXLS);
   btnImportJSON.addEventListener("click", importJSON);
 
-    // MENÚ DESPLEGABLE
+
+
+
+// ===== MENÚ DESPLEGABLE =====
   const btnMenu = document.getElementById("btnMenu");
   const menuPanel = document.getElementById("menuPanel");
 
   if (btnMenu && menuPanel) {
+    // Abrir/cerrar menú al hacer clic en el botón
     btnMenu.addEventListener("click", (e) => {
       e.stopPropagation();
       menuPanel.classList.toggle("hidden");
     });
+
+    // Cerrar menú al hacer clic fuera
     document.addEventListener("click", (e) => {
       if (!menuPanel.contains(e.target) && !btnMenu.contains(e.target)) {
         menuPanel.classList.add("hidden");
       }
     });
-    
+
     // Opción: Proyectos entregados
     const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
     if (menuProyectosEntregados) {
       menuProyectosEntregados.addEventListener("click", () => {
         menuPanel.classList.add("hidden");
         alert("🔍 Mostrando proyectos entregados\n\nPróximamente: Filtro de proyectos finalizados.");
+        // Aquí después puedes implementar el filtro de proyectos con status "Finalizado"
       });
     }
 
@@ -467,9 +474,13 @@ function attachEvents() {
       menuFichasTecnicas.addEventListener("click", () => {
         menuPanel.classList.add("hidden");
         alert("📄 Fichas Técnicas\n\nPróximamente: Generación de fichas técnicas de proyectos.");
+        // Aquí después puedes implementar la generación de fichas
       });
     }
   }
+
+
+   
 
   // TABS PRINCIPALES
   const tabs = {
