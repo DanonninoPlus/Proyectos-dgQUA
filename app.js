@@ -137,7 +137,6 @@ async function init() {
   console.log("✅ Inicialización completada.");
 }
 
-init();
 
 /* ============================================================
    🔵 3. HELPERS
