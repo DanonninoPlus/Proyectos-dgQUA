@@ -112,67 +112,56 @@
 
 
 
-  <!-- SECCIÓN DE ESTADÍSTICAS (BENTO GRID) - Solo visible en Proyectos → subsección Proyectos -->
-  <div id="statsSection" class="px-4 pt-4 max-w-2xl mx-auto">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-      
-      <!-- Tarjeta: Proyectos en total (ocupa 2 columnas en PC) -->
-      <div class="md:col-span-2 bg-gradient-to-br from-indigo-50 to-indigo-100 p-4 rounded-xl shadow-sm border border-indigo-100">
+
+    <!-- Tarjetas de estadísticas (compactas) -->
+    <div id="statsContainer" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <!-- Total -->
+      <div class="md:col-span-1 bg-gradient-to-br from-indigo-50 to-indigo-100 p-3 rounded-xl shadow-sm border border-indigo-100">
         <div class="flex items-center justify-between">
-          <div>
-            <p class="text-[11px] font-bold text-indigo-600 uppercase tracking-wider">Proyectos en total</p>
-            <span id="countTotal" class="text-4xl font-black text-indigo-700">0</span>
+          <div class="p-1.5 bg-indigo-600 text-white rounded-lg">
+            <span class="material-symbols-outlined text-sm">analytics</span>
           </div>
-          <div class="p-3 bg-indigo-600 text-white rounded-full">
-            <span class="material-symbols-outlined">analytics</span>
-          </div>
+          <span id="countTotal" class="font-bold text-2xl text-indigo-700">0</span>
         </div>
-        <div class="mt-3 w-full bg-indigo-200 h-2 rounded-full overflow-hidden">
+        <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider mt-1">Proyectos en total</p>
+        <div class="mt-2 w-full bg-indigo-200 h-1 rounded-full overflow-hidden">
           <div id="progressBar" class="bg-indigo-600 h-full w-0 rounded-full transition-all duration-500"></div>
         </div>
       </div>
 
-      <!-- Tarjeta: En ejecución -->
-      <div class="bg-white p-4 rounded-xl shadow-sm border border-emerald-100">
+      <!-- En ejecución -->
+      <div class="bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
         <div class="flex items-center justify-between">
-          <div>
-            <p class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">En ejecución</p>
-            <span id="countEjecucion" class="text-4xl font-black text-emerald-600">0</span>
+          <div class="p-1.5 bg-emerald-100 text-emerald-700 rounded-lg">
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
           </div>
-          <div class="p-3 bg-emerald-100 text-emerald-700 rounded-full">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-          </div>
+          <span id="countEjecucion" class="font-bold text-2xl text-emerald-600">0</span>
         </div>
+        <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider mt-1">En ejecución</p>
       </div>
 
-      <!-- Tarjeta: En planeación -->
-      <div class="bg-white p-4 rounded-xl shadow-sm border border-amber-100">
+      <!-- En planeación -->
+      <div class="bg-white p-3 rounded-xl shadow-sm border border-amber-100">
         <div class="flex items-center justify-between">
-          <div>
-            <p class="text-[11px] font-bold text-amber-600 uppercase tracking-wider">En planeación</p>
-            <span id="countPlaneacion" class="text-4xl font-black text-amber-600">0</span>
+          <div class="p-1.5 bg-amber-100 text-amber-700 rounded-lg">
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pending</span>
           </div>
-          <div class="p-3 bg-amber-100 text-amber-700 rounded-full">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pending</span>
-          </div>
+          <span id="countPlaneacion" class="font-bold text-2xl text-amber-600">0</span>
         </div>
+        <p class="text-[10px] font-bold text-amber-600 uppercase tracking-wider mt-1">En planeación</p>
       </div>
 
-      <!-- Tarjeta: Entregados (Finalizados) -->
-      <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+      <!-- Entregados -->
+      <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
-          <div>
-            <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Entregados</p>
-            <span id="countFinalizado" class="text-4xl font-black text-gray-600">0</span>
+          <div class="p-1.5 bg-gray-100 text-gray-600 rounded-lg">
+            <span class="material-symbols-outlined text-sm">checklist</span>
           </div>
-          <div class="p-3 bg-gray-100 text-gray-600 rounded-full">
-            <span class="material-symbols-outlined">checklist</span>
-          </div>
+          <span id="countFinalizado" class="font-bold text-2xl text-gray-600">0</span>
         </div>
+        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mt-1">Entregados</p>
       </div>
-
     </div>
-  </div>
   
 
 
