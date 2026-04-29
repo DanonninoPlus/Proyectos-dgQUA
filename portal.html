@@ -48,11 +48,7 @@
     </button>
   </header>
 
-
-
-
-
-<!-- MENÚ DESPLEGABLE -->
+  <!-- MENÚ DESPLEGABLE -->
   <div id="menuPanel" class="hidden absolute top-[70px] right-4 bg-white rounded-xl shadow-lg border border-slate-100 z-50 w-56 overflow-hidden">
     <div class="py-2">
       <button id="menuProyectosEntregados" class="w-full text-left px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-3">
@@ -66,12 +62,7 @@
     </div>
   </div>
 
-
-
-
-  
-
-  <!-- FILTROS (REDISEÑADO) -->
+  <!-- FILTROS -->
   <div id="filterSection" class="bg-surface px-4 pt-4 pb-2 sticky top-[65px] z-30">
     <div class="relative group mb-4">
       <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline">
@@ -96,7 +87,7 @@
       </select>
     </div>
 
-    <!-- TAB SWITCHER: PROYECTOS / ACCIONES (CENTRADO COMO GESTIÓN) -->
+    <!-- TAB SWITCHER: PROYECTOS / ACCIONES -->
     <div class="mt-4 flex justify-center">
       <div class="flex p-1.5 bg-surface-container-high rounded-2xl w-auto">
         <button id="subtabProyectos" class="px-6 md:px-8 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all bg-surface-container-lowest text-secondary shadow-sm">
@@ -109,13 +100,9 @@
     </div>
   </div>
 
-
-
-
-      <!-- SECCIÓN DE ESTADÍSTICAS (contenedor centrado) -->
-  <div class="px-4 pt-4 max-w-2xl mx-auto">
-    <!-- Tarjetas de estadísticas (compactas) -->
-    <div id="statsSection" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+  <!-- SECCIÓN DE ESTADÍSTICAS -->
+  <div id="statsSection" class="px-4 pt-4 max-w-2xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
       <!-- Total -->
       <div class="md:col-span-1 bg-gradient-to-br from-indigo-50 to-indigo-100 p-3 rounded-xl shadow-sm border border-indigo-100">
         <div class="flex items-center justify-between">
@@ -164,15 +151,12 @@
       </div>
     </div>
   </div>
-  
 
-
-  
   <main class="p-4 max-w-2xl mx-auto">
     <!-- LISTA DE PROYECTOS -->
     <section id="projectList" class="space-y-4"></section>
 
-    <!-- SECCIÓN ACCIONES (PLACEHOLDER) -->
+    <!-- SECCIÓN ACCIONES -->
     <section id="accionesSection" class="hidden">
       <div class="bg-surface-container-low rounded-2xl p-8 text-center">
         <span class="material-symbols-outlined text-6xl text-outline mb-3">construction</span>
@@ -268,68 +252,6 @@
       <span class="text-[10px] font-medium uppercase tracking-tighter">Reportes</span>
     </button>
   </nav>
-
-  <!-- MODAL DE PROYECTO -->
-  <div id="modal" class="fixed inset-0 hidden items-end sm:items-center justify-center bg-slate-900/60 backdrop-blur-sm z-[60]">
-    <div class="bg-white rounded-t-3xl sm:rounded-2xl p-6 w-full max-w-lg shadow-2xl overflow-y-auto max-h-[90vh]">
-      <div class="flex justify-between items-center mb-6">
-        <h2 id="modalTitle" class="text-xl font-extrabold text-slate-800 italic">NUEVO PROYECTO</h2>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
-      </div>
-      
-      <form id="projectForm" class="space-y-5">
-        <input type="hidden" id="projId" />
-        <div class="space-y-1">
-          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Nombre del Proyecto</label>
-          <input id="projNombredelproyecto" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="space-y-1">
-            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Continente</label>
-            <input id="projContinente" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
-          </div>
-          <div class="space-y-1">
-            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">País</label>
-            <input id="projPais" required class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
-          </div>
-        </div>
-        <div class="space-y-1">
-          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Sector</label>
-          <input id="projSector" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
-        </div>
-        <div class="grid grid-cols-3 gap-3">
-          <div class="col-span-1 space-y-1">
-            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Estado</label>
-            <select id="projStatus" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
-              <option>Planeación</option>
-              <option>Ejecución</option>
-              <option>Finalizado</option>
-            </select>
-          </div>
-          <div class="col-span-1 space-y-1">
-            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Inicio</label>
-            <input id="projFechadeinicio" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
-          </div>
-          <div class="col-span-1 space-y-1">
-            <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Término</label>
-            <input id="projFechadetermino" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xs">
-          </div>
-        </div>
-        <div class="space-y-1">
-          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Objetivo Estratégico</label>
-          <textarea id="projObjetivo" rows="3" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm resize-none"></textarea>
-        </div>
-        <div class="space-y-1">
-          <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Notas Adicionales</label>
-          <textarea id="projNotas" rows="2" class="w-full bg-slate-50 p-3 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm resize-none"></textarea>
-        </div>
-        <div class="flex gap-3 pt-4">
-          <button type="button" id="btnCancel" class="flex-1 py-4 text-slate-500 font-bold uppercase tracking-widest text-xs">Cancelar</button>
-          <button type="submit" class="flex-[2] bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold uppercase tracking-widest text-xs">Guardar Proyecto</button>
-        </div>
-      </form>
-    </div>
-  </div>
 
   <script src="app.js"></script>
 </body>
