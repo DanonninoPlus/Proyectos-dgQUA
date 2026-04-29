@@ -480,6 +480,50 @@ function attachEvents() {
   }
 
 
+
+  // DIAGNÓSTICO DEL MENÚ (elimina después de que funcione)
+  console.log("btnMenu existe?", btnMenu);
+  console.log("menuPanel existe?", menuPanel);
+  
+  if (btnMenu && menuPanel) {
+    console.log("✅ Event listeners del menú activados");
+    btnMenu.addEventListener("click", (e) => {
+      e.stopPropagation();
+      console.log("🔘 Clic en menú, clases actuales:", menuPanel.classList);
+      menuPanel.classList.toggle("hidden");
+      console.log("Clases después del toggle:", menuPanel.classList);
+    });
+    document.addEventListener("click", (e) => {
+      if (!menuPanel.contains(e.target) && !btnMenu.contains(e.target)) {
+        if (!menuPanel.classList.contains("hidden")) {
+          console.log("👆 Clic fuera, cerrando menú");
+          menuPanel.classList.add("hidden");
+        }
+      }
+    });
+    
+    // Opción: Proyectos entregados
+    const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
+    if (menuProyectosEntregados) {
+      menuProyectosEntregados.addEventListener("click", () => {
+        menuPanel.classList.add("hidden");
+        alert("🔍 Mostrando proyectos entregados\n\nPróximamente: Filtro de proyectos finalizados.");
+      });
+    }
+
+    // Opción: Fichas Técnicas
+    const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
+    if (menuFichasTecnicas) {
+      menuFichasTecnicas.addEventListener("click", () => {
+        menuPanel.classList.add("hidden");
+        alert("📄 Fichas Técnicas\n\nPróximamente: Generación de fichas técnicas de proyectos.");
+      });
+    }
+  } else {
+    console.log("❌ No se encontraron btnMenu o menuPanel");
+  }
+
+   
    
 
   // TABS PRINCIPALES
