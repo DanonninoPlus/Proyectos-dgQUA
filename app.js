@@ -457,14 +457,14 @@ if (btnMenu && menuPanel) {
     }
   });
     
-  // Opción: Proyectos entregados
-  const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
-  if (menuProyectosEntregados) {
-    menuProyectosEntregados.addEventListener("click", () => {
-      menuPanel.style.display = "none";
-      alert("🔍 Mostrando proyectos entregados\n\nPróximamente.");
-    });
-  }
+    // Opción: Proyectos entregados
+    const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
+    if (menuProyectosEntregados) {
+      menuProyectosEntregados.addEventListener("click", () => {
+        menuPanel.classList.add("hidden");
+        window.location.href = "entregados.html";
+      });
+    }
 
 
   // Opción: Fichas Técnicas
