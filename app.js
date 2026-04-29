@@ -441,43 +441,39 @@ function attachEvents() {
 
 
 // ===== MENÚ DESPLEGABLE =====
-  const btnMenu = document.getElementById("btnMenu");
-  const menuPanel = document.getElementById("menuPanel");
+const btnMenu = document.getElementById("btnMenu");
+const menuPanel = document.getElementById("menuPanel");
 
-  if (btnMenu && menuPanel) {
-    // Abrir/cerrar menú al hacer clic en el botón
-    btnMenu.addEventListener("click", (e) => {
-      e.stopPropagation();
-      menuPanel.classList.toggle("hidden");
-    });
+if (btnMenu && menuPanel) {
 
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener("click", (e) => {
-      if (!menuPanel.contains(e.target) && !btnMenu.contains(e.target)) {
-        menuPanel.classList.add("hidden");
-      }
-    });
+  btnMenu.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isHidden = menuPanel.style.display === "none" || menuPanel.style.display === "";
+    menuPanel.style.display = isHidden ? "block" : "none";
+  });
 
-    // Opción: Proyectos entregados
-    const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
-    if (menuProyectosEntregados) {
-      menuProyectosEntregados.addEventListener("click", () => {
-        menuPanel.classList.add("hidden");
-        alert("🔍 Mostrando proyectos entregados\n\nPróximamente: Filtro de proyectos finalizados.");
-        // Aquí después puedes implementar el filtro de proyectos con status "Finalizado"
-      });
+  document.addEventListener("click", (e) => {
+    if (!menuPanel.contains(e.target) && !btnMenu.contains(e.target)) {
+      menuPanel.style.display = "none";
     }
+  });
 
-    // Opción: Fichas Técnicas
-    const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
-    if (menuFichasTecnicas) {
-      menuFichasTecnicas.addEventListener("click", () => {
-        menuPanel.classList.add("hidden");
-        alert("📄 Fichas Técnicas\n\nPróximamente: Generación de fichas técnicas de proyectos.");
-        // Aquí después puedes implementar la generación de fichas
-      });
-    }
+  const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
+  if (menuProyectosEntregados) {
+    menuProyectosEntregados.addEventListener("click", () => {
+      menuPanel.style.display = "none";
+      alert("🔍 Mostrando proyectos entregados\n\nPróximamente.");
+    });
   }
+
+  const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
+  if (menuFichasTecnicas) {
+    menuFichasTecnicas.addEventListener("click", () => {
+      menuPanel.style.display = "none";
+      alert("📄 Fichas Técnicas\n\nPróximamente.");
+    });
+  }
+}
 
 
 
