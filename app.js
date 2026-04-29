@@ -437,7 +437,7 @@ function attachEvents() {
   btnExportXLS.addEventListener("click", exportXLS);
   btnImportJSON.addEventListener("click", importJSON);
 
-  // MENÚ DESPLEGABLE
+    // MENÚ DESPLEGABLE
   const btnMenu = document.getElementById("btnMenu");
   const menuPanel = document.getElementById("menuPanel");
 
@@ -451,6 +451,8 @@ function attachEvents() {
         menuPanel.classList.add("hidden");
       }
     });
+    
+    // Opción: Proyectos entregados
     const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
     if (menuProyectosEntregados) {
       menuProyectosEntregados.addEventListener("click", () => {
@@ -458,6 +460,8 @@ function attachEvents() {
         alert("🔍 Mostrando proyectos entregados\n\nPróximamente: Filtro de proyectos finalizados.");
       });
     }
+
+    // Opción: Fichas Técnicas
     const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
     if (menuFichasTecnicas) {
       menuFichasTecnicas.addEventListener("click", () => {
