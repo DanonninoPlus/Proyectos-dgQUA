@@ -457,7 +457,8 @@ if (btnMenu && menuPanel) {
       menuPanel.style.display = "none";
     }
   });
-
+    
+  // Opción: Proyectos entregados
   const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
   if (menuProyectosEntregados) {
     menuProyectosEntregados.addEventListener("click", () => {
@@ -466,6 +467,8 @@ if (btnMenu && menuPanel) {
     });
   }
 
+
+  // Opción: Fichas Técnicas
   const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
   if (menuFichasTecnicas) {
     menuFichasTecnicas.addEventListener("click", () => {
@@ -475,29 +478,6 @@ if (btnMenu && menuPanel) {
   }
 }
 
-    
-    // Opción: Proyectos entregados
-    const menuProyectosEntregados = document.getElementById("menuProyectosEntregados");
-    if (menuProyectosEntregados) {
-      menuProyectosEntregados.addEventListener("click", () => {
-        menuPanel.classList.add("hidden");
-        alert("🔍 Mostrando proyectos entregados\n\nPróximamente: Filtro de proyectos finalizados.");
-      });
-    }
-
-    // Opción: Fichas Técnicas
-    const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
-    if (menuFichasTecnicas) {
-      menuFichasTecnicas.addEventListener("click", () => {
-        menuPanel.classList.add("hidden");
-        alert("📄 Fichas Técnicas\n\nPróximamente: Generación de fichas técnicas de proyectos.");
-      });
-    }
-  } else {
-    console.log("❌ No se encontraron btnMenu o menuPanel");
-  }
-
-   
    
 
   // TABS PRINCIPALES
