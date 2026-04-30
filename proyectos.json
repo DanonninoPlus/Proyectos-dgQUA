@@ -6,13 +6,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Recreación, Cultura, Otras Manifestaciones",
+    "Sector": "Recreación, Cultura, Patrimonio Histórico",
     "Fechadeinicio": "2018",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "Estados": ["Aguascalientes","Baja California"],
-    "notas": "Pendiente"
+    "Objetivo": "Restaurar integralmente una obra patrimonio histórico cultural chileno de origen mexicano. Una aportación del arquitecto y muralista Juan O´Gorman.",
+    "Estados": [""],
+    "notas": "México: Instituo Nacional de Bellas Artes y Lietratura (INBAL) - Chile: Parque Metropolitano de Santiago"
   },
 
   {
@@ -21,12 +21,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Salud, Protección social",
+    "Sector": "Salud, Protección social, Salud",
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Contribuir a mejorar la calidad de la dieta de los hogares en situación de vulnerabilidad, a través del conocimiento, actitudes, compra y consumo de frutas y verduras en hogares en situación de vulnerabilidad incrementado",
+    "Estados": ["Morelos"],
+    "notas": "México: Instituto Nacional de Salud Pública de México - Chile: Programa Elige Vivir Sano del Ministerio de Desarrollo Social y Familia de Chile" 
   },
 
   {
@@ -39,8 +40,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Contribuir a la valorización de los ecosistemas estuarinos de la macrozona sur de Chile y la región del Delta del río Colorado de Baja California, México, para avanzar en el desarrollo local sostenible, y en la resiliencia al cambio climático de las comunidades costeras que lo habitan",
+    "Estados": ["Baja California"],
+    "notas": "Chile: Ministerio del Medio Ambiente y Secretaría Regional Ministerial del Medio Ambiente Región La Araucanía - México: Secretaría de Medio Ambiente y Desarrollo  Sustentable  de Baja California"
   },
 
   {
@@ -49,12 +51,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Protección social, Género, Política de Gobierno",
+    "Sector": "Protección social, Género, Política de Gobierno,Feminista",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Impulsar los derechos y la participación de las mujeres con especial énfasis en una perspectiva feminista de la Cooperación Internacional para el Desarrollo (CID), que incluya a América Latina y el Caribe.",
+    "Estados": [""],
+    "notas": "México: Agencia Mexicana de Cooperación Internacional para el Desarrollo, AMEXCID - Chile: Agencia Chilena de Cooperación Internacional para el Desarrollo, AGCID"
   },
 
   {
@@ -63,12 +66,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Asuntos Económicos, Comerciales y Laborales, Política de Gobierno, Género",
+    "Sector": "Asuntos Económicos, Comerciales, Laborales, Política de Gobierno, Género",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Contribuir a la eventual modernización del Tratado bilateral entre ambos países, con un foco particular en Comercio Inclusivo.",
+    "Estados": [""],
+    "notas": "México: Secretaría de Economía - Chile: Subsecretaría de Relaciones Económicas Internacionales SUBREI"
   },
 
   {
@@ -81,8 +85,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Fortalecer capacidades técnico, científico y comunitario con influencia en política pública para la vigilancia, prevención y control del dengue y otras arbovirosis en comunidades vulnerables de México y Chile",
+    "Estados": ["Morelos"],
+    "notas": "México: Instituto Nacional de Salud Pública - Chile: Instituto de Salud Pública"
   },
 
   {
@@ -95,8 +100,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Fortalecer las capacidades de análisis de secuencias de A. baumannii y otras bacterias multirresistentes de importancia clínica en Chile y México.",
+    "Estados": [""],
+    "notas": "México: Instituto Nacional de Medicina Genómica - Chile: Universidad de Santiago,USACH"
   },
 
   {
@@ -105,12 +111,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Salud, Protección social",
+    "Sector": "Ciencia, Tecnología, Inovacción, Salud, Protección social",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Contribuir al mejoramiento de predicción de escenarios epidemiológicos que aporten a la eficiencia y calidad de la salud pública en la toma de decisiones y creación de políticas públicas en los países participantes del proyecto.",
+    "Estados": ["Querétaro"],
+    "notas": "México: Instituto de Matemáticas de la UNAM - Chile: Universidad de Chile"
   },
 
   {
@@ -124,7 +131,8 @@
     "Fechadetermino": "2025",
     "status": "Ejecución",
     "Objetivo": "Esta iniciativa está en cierre y fue parte de los proyectos ganadores de la Convocatoria 2022 del Fondo Conjunto de Cooperación, cuyo objetivo fue construir una estrategia de acción para ampliar la participación política de las mujeres indígenas, desde los propios contextos y prácticas culturales.",
-    "notas": "INSTITUCIONES PARTICIPANTES: Por México: Universidad Autónoma de Chipas (UNACH)  -  Por Chile:  Universidad de la Frontera (UFRO)"
+    "Estados": ["Chiapas"],
+    "notas": "México: Universidad Autónoma de Chipas (UNACH)  -  Chile:  Universidad de la Frontera (UFRO)"
   },
 
   {
@@ -137,8 +145,9 @@
     "Fechadeinicio": "2023",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Mejorar el aprovechamiento de los productos de las oficinas de estadística de México y Chile, de manera integrada,estandarizada y eficiente, a partir de la colaboración bilateral entre INEGI, e INE.",
+    "Estados": [""],
+    "notas": "México: Instituto Nacional de Estadística y Geografía, INEGI - Chile: Instituto Nacional de Estadísticas, INE"
   },
 
   {
@@ -147,12 +156,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Protección social, Migración",
+    "Sector": "Protección social, Migración, Movilidad Humana",
     "Fechadeinicio": "2023",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Desarrollar una estrategia binacional de formación de recursos humanos en migración y salud tomando como referencia los enfoques (derechos humanos, determinantes sociales de la salud, género, interculturalidad, curso de vida y territorial) y lineamiento de desarrollo de un sistema sensible a las personas migrantes establecidos en la Política de Salud de Migrantes Internacionales para Chile y México.",
+    "Estados": [""],
+    "notas": "México: Instituto Nacional de Salud Pública - Chile: Ministerio de Salud"
   },
 
   {
@@ -166,7 +176,8 @@
     "Fechadetermino": "2025",
     "status": "Ejecución",
     "Objetivo": "Hoja de ruta formulada y acordada para preservar y revitalizar las lenguas indígenas de Chile y México en torno a dos ejes: la participación de los pueblos indígenas y la corresponsabilidad y coordinación interinstitucional.",
-    "notas": "INSTITUCIONES PARTICIPANTES: Por México: Instituto Nacional de Lenguas Indígenas  -  Por Chile: Unidad Cooordinadora de Asuntos Indígenas"
+    "Estados": ["Baja California","Sonora"],
+    "notas": "INSTITUCIONES PARTICIPANTES: Por México: Instituto Nacional de Lenguas Indígenas  -  Chile: Unidad Cooordinadora de Asuntos Indígenas"
   },
 
   {
@@ -175,12 +186,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Asuntos Económicos, Comerciales y Laborales",
+    "Sector": "Asuntos Económicos, Comerciales, Laborales",
     "Fechadeinicio": "2024",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Implementar herramientas innovadoras en los sistemas de compra pública que ayuden a fortalecer la transparencia y eficiencia de los procesos, así como contribuir a una mayor inclusión, en los sistemas y procesos de compras de Chile y México (Nuevo León y Puebla).",
+    "Estados": ["Nuevo León", "Puebla"],
+    "notas": "México: Secretaría General de Administración del Estado de Puebla Dirección General de Compras Públicas del Estado de Nuevo León - Chile: Chile Compras"
   },
 
   {
@@ -189,12 +201,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Política de Gobierno",
+    "Sector": "Política de Gobierno, Género",
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Atender las barreras de capacidades que limitan y las barreras estructurales que excluyen a las mujeres de los espacios públicos, en especial aquellos de toma de decisión",
+    "Estados": ["Puebla"],
+    "notas": "México: Ayuntamiento de Calpan - Chile: Municipalidad de Santa Juana"
   },
 
   {
@@ -207,8 +220,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Fortalecer y promover las capacidades instrumentales, humanas y el alcance de programas de monitoreo de micotoxinas en productos de alto consumo en Chile y México",
+    "Estados": ["Sinaloa"],
+    "notas": "México: Centro de Investigación en Alimentación y Desarrollo A.C. (CIAD) - Chile: Secretaría Regional Ministerial de Salud, Región Metropolitana "
   },
 
   {
@@ -221,8 +235,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Promover la conservación de los bosques y el desarrollo sustentable de las comunidades rurales y la actividad forestal para afrontar los desafíos del cambio climático",
+    "Estados": ["Estado de México"],
+    "notas": "México: Instituto Nacional de Investigaciones Nucleares - Chile: Comisión Chilena de Energía Nuclear"
   },
 
   {
@@ -235,8 +250,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Transferir tecnologías de México a Chile e implementarlas en ambos países para:El control de parásitos de pequeños rumiantes y  el control de chinches (vinchucas) que transmiten el protozoo causante de la enfermedad de Chagas",
+    "Estados": ["Morelos"],
+    "notas": "México: Universidad Nacional Autónoma de México - Chile: Universidad de O’Higgins (UOH), Instituto de Ciencias Agroalimentarias, Animales y Ambientales (ICA3) "
   },
 
   {
@@ -249,8 +265,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2025",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Contribuir a la prevención del embarazo en adolescentes por medio de implementación de acciones intersectoriales en la región SICA, en el marco del Plan Estratégico de Prevención de Embarazo en Adolescentes en Centroamérica y República Dominicana",
+    "Estados": [""],
+    "notas": "Chile: AGCID - México: AMEXCID, SICA: Secretaría Ejecutiva del Consejo de Ministros de Salud de Centroamérica y República Dominicana (SE- COMISCA)"
   },
 
   {
@@ -259,12 +276,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Política de Gobierno",
+    "Sector": "Política de Gobierno, Género",
     "Fechadeinicio": "2022",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Mejorar el funcionamiento del Fondo Conjunto de Cooperación Chile - México de acuerdo a las prioridades político-técnicas establecidas por ambos países, a partir de la revisión de las fortalezas y debilidades detectadas en el estudio externo de evaluación 2007-2017.",
+    "Estados": [""],
+    "notas": "México: Agencia Mexicana de Cooperación Internacional para el Desarrollo, AMEXCID - Chile: Agencia Chilena de Cooperación Internacional para el Desarrollo, AGCID"
   },
 
   {
@@ -278,6 +296,7 @@
     "Fechadetermino": "2026",
     "status": "Ejecución",
     "Objetivo": "Pendiente",
+    "Estados": [""],
     "notas": "Pendiente"
   },
 
@@ -287,12 +306,13 @@
     "Continente": "Sudamérica",
     "Pais": "Chile",
     "Tipo de proyecto": "En ejecución",
-    "Sector": "Protección social",
+    "Sector": "Migración, Movilidad Humana",
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Optimizar mecanismos institucionales para la gestión, protección y reintegración, de poblaciones en movilidad en El Salvador, Guatemala y Honduras, a fin de contribuir a una movilidad humana segura, ordenada y regular con perspectiva de Derechos Humanos, a través de la asistencia técnica de instituciones públicas de Chile y México.",
+    "Estados": [""],
+    "notas": "Chile: MINREL-División de Migraciones - México: AMEXCID, INM, COMAR, CONOCER - El Salvador: Viceministerio de Diáspora y Movilidad Humana y la Agencia de El Salvador para la Cooperación Internacional - Guatemala: Secretaría de Planificación y Programación de la Presidencia, el Instituto Guatemalteco de Migración y el Ministerio del Trabajo - Honduras: Subsecretaría de Asuntos Consulares y Migratorios de la Secretaría de Relaciones Exteriores y Cooperación internacional."
   },
 
   {
@@ -305,8 +325,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Fortalecer capacidades y transferencia tecnológica, articulada a través del co-manejo, con la participación de la academia, los pescadores (as), gobiernos locales y regionales, con la finalidad de contribuir bajo los principios de igualdad de género e inclusión a promover el manejo pesquero y acuícola de los recursos marinos explotados por los usuarios en México y Chile.",
+    "Estados": ["Yucatán"],
+    "notas": "México: Instituto Mexinaco de Investogación en Pesca y Acuacultura (IMIPAS) - Chile: Instituto de Fomento Pesquero (IFOP)"
   },
 
   {
@@ -319,8 +340,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Fortalecer modelos sustentables de Agricultura Familiar Campesina (AFC), de actividades conexas a la pesca artesanal, apicultura y procesamiento primario de alimentos para lograr estándares de inocuidad alimentaria a través de la gestión de sus riesgos en la producción agroalimentaria",
+    "Estados": ["Jalisco"],
+    "notas": "México: Agencia de Sanidad Inocuidad y Calidad Agroalimentaria de Jalisco (ASICA) - Chile: la Agencia Chilena para la Inocuidad y la Calidad Alimentaria (ACHIPIA)"
   },
 
   {
@@ -333,8 +355,9 @@
     "Fechadeinicio": "2024",
     "Fechadetermino": "2026",
     "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
+    "Objetivo": "Promover un desarrollo sostenible de la actividad pesquera en ambos países ante los desafíos del cambio climático, diseñando estrategias de participación, comunicación e incidencia para las comunidades pesqueras.",
+    "Estados": ["Nayarit"],
+    "notas": "México: Universidad Autónoma de Nayarit - Chile: Universidad del Bío Bío"
   },
 
   {
@@ -348,6 +371,7 @@
     "Fechadetermino": "2027",
     "status": "Planeación",
     "Objetivo": "Reducir significativamente las muertes y lesiones graves en entornos escolares de Chile y México mediante la implementación conjunta de soluciones tecnológicas, urbanas, participativas y replicables en seguridad vial.",
+    "Estados": [""],
     "notas": "18 meses."
   },
 
@@ -362,6 +386,7 @@
     "Fechadetermino": "2027",
     "status": "Planeación",
     "Objetivo": "Fortalecer las capacidades técnicas y científicas en detección y monitoreo de toxinas marinas en México y Chile, mediante procesos de mejoramiento técnico y de gestión a personas funcionarias públicas, personas dedicadas a la investigación y personas pescadoras artesanales.",
+    "Estados": [""],
     "notas": "24 meses."
   },
 
@@ -376,6 +401,7 @@
     "Fechadetermino": "2027",
     "status": "Planeación",
     "Objetivo": "Contribuir al fortalecimiento de una ciudadanía ambiental activa, informada y corresponsable en Chile y México, mediante el impulso de modelos participativos de gobernanza socioambiental y procesos educativos con enfoque de derechos humanos, equidad de género, pertinencia cultural y sostenibilidad, que promuevan la justicia ambiental, la inclusión social y la participación efectiva.",
+    "Estados": [""],
     "notas": "24 meses."
   },
 
@@ -390,6 +416,7 @@
     "Fechadetermino": "2027",
     "status": "Planeación",
     "Objetivo": "Garantizar el ejercicio pleno de los derechos de las niñas, niños y adolescentes en entornos digitales, fortaleciendo las capacidades de los gobiernos locales para prevenir y responder ante situaciones de ciberviolencias.",
+    "Estados": [""],
     "notas": "24 meses."
   },
 
@@ -404,6 +431,7 @@
     "Fechadetermino": "2027",
     "status": "Planeación",
     "Objetivo": "Favorecer el ejercicio de los derechos humanos de las personas mayores en Chile y México, a través de políticas públicas inclusivas, de cuidados, participación y  acceso a la justicia.",
+    "Estados": [""],
     "notas": "24 meses."
   },
 
@@ -418,6 +446,7 @@
     "Fechadetermino": "2027",
     "status": "Planeación",
     "Objetivo": "Contribuir al bienestar y salud mental de niñas, niños y adolescentes, mediante un modelo basado en la alfabetización en salud mental de los agentes educativos, reproducible y escalable",
+    "Estados": [""],
     "notas": "24 meses."
   },
 
@@ -1186,6 +1215,19 @@
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
   },
+    {
+    "id": "p2_EUA",
+     "Nombredelproyecto": "Secundaria Técnica No. 68 (Ciudad Renacimiento, Acapulco, Guerrero)",
+    "Continente": "América del Norte",
+    "Pais": "Estados Unidos",
+    "Tipo de proyecto": "Proyecto",
+    "Sector": "Asistencia Humanitaria",
+    "Fechadeinicio": "2026",
+    "Fechadetermino": "2026",
+    "status": "Ejecución",
+    "Objetivo": "Proyecto en colaboración con la Secretaría de Gobernación, bajo la estrategia “Guerrero por la Paz”, para el Programa de Asistencia Humanitaria del Comando Norte.",
+    "notas": "El proyecto ya fue aprobado dentro de un Proyecto Mayor en el que también se incluyen escuelas del norte y sureste de México propuestas por el Instituto Nacional de la Infraestructura Física Educativa (INIFED)."
+  },
   
     {
     "id": "p1_Japón",
@@ -1269,415 +1311,9 @@
     "status": "Ejecución",
     "Objetivo": "Pendiente",
     "notas": "Pendiente"
-  },
-
-  {
-    "id": "p1_Argentina",
-    "Nombredelproyecto": "Fortalecimiento de las capacidades para la implementación del Acuerdo de Escazú en ambos países",
-    "Continente": "== Proyectos Entregados",
-    "Pais": "Argentina",
-    "Sector": "Protección Ambiental",
-    "Fechadeinicio": "2001",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-    {
-    "id": "p2_Argentina",
-    "Nombredelproyecto": "Desarrollo de un Sistema Solar Fotovoltaico-Hidrógeno",
-    "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
-    "Pais": "Argentina",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-    {
-    "id": "p3_Argentina",
-    "Nombredelproyecto": "Desarrollo de Capacidades de Argentina y México en el manejo del riesgo de sequías en la gestión integral de los recursos hídricos",
-    "Sector": "Protección Ambiental",
-    "Pais": "Argentina",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p4_Argentina",
-    "Nombredelproyecto": "Fortalecimiento de capacidades en mediciones industriales y metrología legal",
-    "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
-    "Pais": "Argentina",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p5_Argentina",
-    "Nombredelproyecto": "Economía circular: Biocombustibles Sólidos para aplicaciones industriales y residenciales",
-    "Sector": "Combustibles y Energía, Ciencia Tecnología e Innovación",
-    "Pais": "Argentina",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p6_Argentina",
-    "Nombredelproyecto": "Intercambio de habilidades biotecnológicas para la conservación a mediano y largo plazo de papa y ajo",
-    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
-    "Pais": "Argentina",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2001",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-    {
-    "id": "p1_Bolivia",
-    "Nombredelproyecto": "Fortalecimiento de capacidades técnicas en los análisis y procesos de tratamiento de aguas residuales y lodos generados",
-    "Sector": "Protección Ambiental",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p2_Bolivia",
-    "Nombredelproyecto": "Fortalecimiento de capacidades técnicas para el manejo de estrategias que promueven la inocuidad en la protección primaria de agroalimentos en productores comunitarios de Bolivia",
-    "Sector": "Agropecuario",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p3_Bolivia",
-    "Nombredelproyecto": "Intercambio de experiencias y buenas prácticas para la producción y exportación de banano, café y piña en Bolivia",
-    "Sector": "Agropecuario",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p4_Bolivia",
-    "Nombredelproyecto": "Transferencia de tecnología para el desarrollo de capacidades y alternativas en arroz",
-    "Sector": "Agropecuario",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p5_Bolivia",
-    "Nombredelproyecto": "Intercambio técnico y operativo sobre Medicina Tradicional y complementaria, interculturalidad y atención a la salud de los pueblos indígenas con Bolivia",
-    "Sector": "Salud",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p6_Bolivia",
-    "Nombredelproyecto": "Transferencia de tecnología para el desarrollo de capacidades y alternativas de producción de maíz",
-    "Sector": "Agropecuario",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p7_Bolivia",
-    "Nombredelproyecto": "Aprovechamiento sostenible del Litio: Fortalecimiento de la competitividad y el desarrollo energético",
-    "Sector": "Ciencia Tecnología e Innovación",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p8_Bolivia",
-    "Nombredelproyecto": "Implementación de Horizonte de Vida de Vivir Bien en Bolivia y México desde las políticas públicas",
-    "Sector": "Protección social, Pueblos Indígenas",
-    "Pais": "Bolivia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p1_Brasil",
-    "Nombredelproyecto": "Gestión del Programa de Mosaca de la Fruta en el Estado de Río Grande del Norte y Vale de San Francisco",
-    "Sector": "Agropecuario",
-    "Pais": "Brasil",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p2_Brasil",
-    "Nombredelproyecto": "Investigación y transferencia de tecnología para la producción sostenible de Higuerilla (Ricinus communis L.)",
-    "Sector": "Agropecuario",
-    "Pais": "Brasil",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p3_Brasil",
-    "Nombredelproyecto": "Inclusión digital en poblaciones vulnerables",
-    "Sector": "Ciencia Tecnología e Innovación",
-    "Pais": "Brasil",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p4_Brasil",
-    "Nombredelproyecto": "Promoción de igualdad de género desde los cuidados y combate a la violencia",
-    "Sector": "Género",
-    "Pais": "Brasil",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p5_Brasil",
-    "Nombredelproyecto": "Emergencias en productos peligrosos y búsqueda y rescate en estructuras colapsadas",
-    "Sector": "Otros Servicios Generales de Gobierno",
-    "Pais": "Brasil",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-{
-    "id": "p6_Brasil",
-    "Nombredelproyecto": "Intercambio de experiencia en el ámbito del programa Artemis",
-    "Sector": "Ciencia Tecnología e Innovación",
-    "Pais": "Brasil",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p1_Colombia",
-    "Nombredelproyecto": "Nuevos Enfoques y Estrategias en materia de Acuicultura e Impulso Sociocultural hacia el Turismo Sostenible",
-    "Sector": "Acuacultura, Turismo",
-    "Pais": "Colombia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-    {
-    "id": "p2_Colombia",
-    "Nombredelproyecto": "Fortalecimiento técnico e institucional para el acceso a agua potable y saneamiento básico entre el Ministerio de Vivienda, Ciudad y Territorio y el Instituto Mexicano de Tecnología del Agua",
-    "Sector": "Protección Ambiental",
-    "Pais": "Colombia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-      {
-    "id": "p3_Colombia",
-    "Nombredelproyecto": "Uso de secuenciación de genoma completo y análisis bioinformático como herramientas para la vigilancia de Campylobacter SPP en la cadena de producción de animales de abasto, impacto en la Salud Pública y el comercio en América Latina",
-    "Sector": "Agropecuario, Sanidad",
-    "Pais": "Colombia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p4_Colombia",
-    "Nombredelproyecto": "Desarrollo de un sistema binacional para el cálculo de valores genómicos en Ganado Holstein Colombiano y Mexicano",
-    "Sector": "Agropecuario",
-    "Pais": "Colombia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2024",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-    {
-    "id": "p5_Colombia",
-    "Nombredelproyecto": "Fortalecimiento de capacidades en implementación de procesos de rematriación para comunidades diferenciales en Colombia: Lecciones Lideradas por CIMMYT e INIFAP",
-    "Sector": "Agropecuario",
-    "Pais": "Colombia",
-    "Continente": "== Proyectos Entregados",
-    "Fechadeinicio": "2025",
-    "Fechadetermino": "2026",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-    
-  {
-    "id": "p1_Paraguay",
-    "Nombredelproyecto": "Cultivo de Nopal para la integración de los pueblos y alternativa para el desarrollo socio cultural y económico de la comunidad Ñu Guasu",
-    "Continente": "== Proyectos Entregados",
-    "Pais": "Paraguay",
-    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2025",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p2_Paraguay",
-    "Nombredelproyecto": "Fortalecimiento de capacidades del INIFAP para mejorar la producción sostenible de soya en el trópico de México",
-    "Continente": "== Proyectos Entregados",
-    "Pais": "Paraguay",
-    "Sector": "Agropecuario, Silvicultura, Pesca y Caza",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2025",
-    "status": "Ejecución",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p3_Paraguay",
-    "Nombredelproyecto": "Fortalecimiento de capacidades en Ingeniería de Sistemas Espaciales orientadas al diseño, construcción, prueba, lanzamiento y operación de un futuro Satélite Experimental, con la participación de la academia y sector privado del Paraguay y México",
-    "Continente": "== Proyectos Entregados",
-    "Pais": "Paraguay",
-    "Sector": "Ciencia Tecnología e Innovación",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p4_Paraguay",
-    "Nombredelproyecto": "Cooperación en materia de acceso a la información y protección de datos personales entre México y Paraguay",
-    "Continente": "== Proyectos Entregados",
-    "Pais": "Paraguay",
-    "Sector": "Política de Gobierno",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p5_Paraguay",
-    "Nombredelproyecto": "Instalar y fortalecer capacidades institucionales, así como intercambiar conocimiento y experiencia para la identificación, construcción de compromisos ante los Planes de Acción Nacionales en el marco de la Alianza para el Gobierno Abierto (AGA) y su vinculación con los Objetivos de Desarrollo Sostenible",
-    "Continente": "== Proyectos Entregados",
-    "Pais": "Paraguay",
-    "Sector": "Política de Gobierno",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
-  },
-
-  {
-    "id": "p6_Paraguay",
-    "Nombredelproyecto": "Desarrollo del Producto Turismo de Incentivos en Paraguay",
-    "Continente": "== Proyectos Entregados",
-    "Pais": "Paraguay",
-    "Sector": "Turismo",
-    "Fechadeinicio": "2021",
-    "Fechadetermino": "2024",
-    "status": "Finalizado",
-    "Objetivo": "Pendiente",
-    "notas": "Pendiente"
   }
-  
+
 ]
-
-
-
-
 
 
 
