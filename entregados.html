@@ -102,23 +102,13 @@
     <div class="space-y-6" id="entregadosList"></div>
   </main>
 
-  <!-- FOOTER (NAVEGACIÓN INFERIOR) -->
-  <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-3 z-50 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
-    <button id="tabProyectos" class="flex flex-col items-center gap-1 transition-colors px-4 text-slate-400 hover:text-indigo-600">
-      <i class="fas fa-folder-open text-lg"></i>
-      <span class="text-[10px] font-medium uppercase tracking-tighter">Proyectos</span>
-    </button>
-    <button id="tabnormateca" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
-      <i class="fas fa-book text-lg"></i>
-      <span class="text-[10px] font-medium uppercase tracking-tighter">Normateca</span>
-    </button>
-    <button id="tabgestion" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
-      <i class="fas fa-layer-group text-lg"></i>
-      <span class="text-[10px] font-medium uppercase tracking-tighter">Gestión</span>
-    </button>
-    <button id="tabReportes" class="flex flex-col items-center gap-1 text-slate-400 transition-colors px-4">
-      <i class="fas fa-chart-bar text-lg"></i>
-      <span class="text-[10px] font-medium uppercase tracking-tighter">Reportes</span>
+
+
+    <!-- FOOTER SIMPLIFICADO (solo INICIO) -->
+  <nav class="fixed bottom-0 w-full bg-white border-t flex justify-center items-center py-3 z-50 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+    <button id="btnInicio" class="flex flex-col items-center gap-1 transition-colors px-6 text-indigo-600 hover:text-indigo-800">
+      <i class="fas fa-home text-lg"></i>
+      <span class="text-[10px] font-medium uppercase tracking-tighter">Inicio</span>
     </button>
   </nav>
 
@@ -306,19 +296,14 @@
       });
     }
 
-    // Navegación entre páginas
+    // Navegación - Botón de Inicio
     function setupNavigation() {
-      const btnProyectos = document.getElementById("tabProyectos");
-      if (btnProyectos) btnProyectos.addEventListener("click", () => window.location.href = "portal.html");
-      
-      const btnNormateca = document.getElementById("tabnormateca");
-      if (btnNormateca) btnNormateca.addEventListener("click", () => window.location.href = "portal.html?tab=normateca");
-      
-      const btnGestion = document.getElementById("tabgestion");
-      if (btnGestion) btnGestion.addEventListener("click", () => window.location.href = "portal.html?tab=gestion");
-      
-      const btnReportes = document.getElementById("tabReportes");
-      if (btnReportes) btnReportes.addEventListener("click", () => window.location.href = "portal.html?tab=reportes");
+      const btnInicio = document.getElementById("btnInicio");
+      if (btnInicio) {
+        btnInicio.addEventListener("click", () => {
+          window.location.href = "portal.html";
+        });
+      }
     }
 
     // Configurar menú desplegable
