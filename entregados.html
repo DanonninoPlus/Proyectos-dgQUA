@@ -125,59 +125,54 @@
   
 
   <script>
-    // Cargar datos del JSON
-    let proyectos = [];
+    // Cargar datos del JSON de entregados
+    let entregados = [];
 
-    async function loadProyectos() {
+    async function loadEntregados() {
       try {
-        console.log("🔄 Cargando proyectos...");
-        const res = await fetch("https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/proyectos.json");
+        console.log("🔄 Cargando proyectos entregados...");
+        const res = await fetch("https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/entregados.json");
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
-        proyectos = Array.isArray(data) ? data : [];
-        console.log(`✅ ${proyectos.length} proyectos cargados`);
+        entregados = Array.isArray(data) ? data : [];
+        console.log(`✅ ${entregados.length} proyectos entregados cargados`);
         renderEntregados();
       } catch (err) {
-        console.error("❌ Error cargando proyectos:", err);
-        // Mostrar mensaje de error en la interfaz
+        console.error("❌ Error cargando entregados:", err);
         document.getElementById("totalEntregados").textContent = "Error";
+        document.getElementById("entregadosList").innerHTML = `<div class="text-center py-8 text-red-500">Error al cargar los datos. Verifica que el archivo entregados.json exista.</div>`;
       }
     }
 
     function renderEntregados() {
       console.log("🎨 Renderizando proyectos entregados...");
       
-      // Filtrar solo proyectos con status "Finalizado"
-      const entregados = proyectos.filter(p => p.status === "Finalizado");
-      console.log(`📊 Entregados: ${entregados.length} de ${proyectos.length} total`);
-      
-      // Actualizar contadores
+      // Actualizar contador total
       const totalEntregadosSpan = document.getElementById("totalEntregados");
-      const porcentajeSpan = document.getElementById("porcentajeCertificacion");
-      const ultimoAnioSpan = document.getElementById("ultimoAnio");
-      
       if (totalEntregadosSpan) totalEntregadosSpan.textContent = entregados.length;
       
-      const porcentaje = proyectos.length > 0 ? Math.round((entregados.length / proyectos.length) * 100) : 0;
-      if (porcentajeSpan) porcentajeSpan.textContent = `${porcentaje}%`;
+      // Calcular porcentaje de certificación (puedes ajustar la fórmula si quieres)
+      const porcentajeSpan = document.getElementById("porcentajeCertificacion");
+      if (porcentajeSpan) porcentajeSpan.textContent = `100%`;
       
-      // Obtener año más reciente de los proyectos entregados
+      // Obtener año más reciente de los proyectos
       const años = entregados.map(p => parseInt(p.Fechadetermino)).filter(a => !isNaN(a));
       const ultimoAño = años.length > 0 ? Math.max(...años) : 2024;
+      const ultimoAnioSpan = document.getElementById("ultimoAnio");
       if (ultimoAnioSpan) ultimoAnioSpan.textContent = ultimoAño;
 
-      // Recolectar países únicos de los proyectos entregados para mostrar en la descripción
+      // Recolectar países únicos para la descripción
       const paisesSet = new Set();
       entregados.forEach(p => {
         if (p.Pais) paisesSet.add(p.Pais);
       });
       const paisesLista = Array.from(paisesSet).sort().join(', ');
-      const descripcionSpan = document.querySelector('#totalEntregados').closest('.glass-card')?.querySelector('.text-on-surface-variant');
+      const descripcionSpan = document.querySelector('#totalEntregados')?.closest('.glass-card')?.querySelector('.text-on-surface-variant');
       if (descripcionSpan && paisesLista) {
         descripcionSpan.textContent = `Proyectos: ${paisesLista}`;
       }
 
-      // Si no hay entregados, mostrar mensaje
+      // Si no hay entregados
       if (entregados.length === 0) {
         const container = document.getElementById("entregadosList");
         if (container) {
@@ -247,18 +242,23 @@
     }
 
     function renderProjectCard(p) {
-      const statusColors = {
-        'Planeación': 'bg-orange-500 text-white',
-        'Ejecución': 'bg-green-600 text-white',
-        'Finalizado': 'bg-gray-400 text-white'
-      };
-      const colorClass = statusColors[p.status] || 'bg-gray-400 text-white';
+      // Determinar color según status
+      let statusColor = 'bg-gray-100 text-gray-700';
+      let statusText = p.status || 'Entregado';
+      
+      if (p.status === 'Finalizado') {
+        statusColor = 'bg-green-100 text-green-700';
+      } else if (p.status === 'Ejecución') {
+        statusColor = 'bg-blue-100 text-blue-700';
+      } else if (p.status === 'Planeación') {
+        statusColor = 'bg-orange-100 text-orange-700';
+      }
       
       return `
         <div class="bg-surface-container-lowest p-4 rounded-xl border border-indigo-100 shadow-sm hover:shadow-md transition-shadow mb-3">
           <div class="flex justify-between items-start">
             <h4 class="font-bold text-lg text-primary mb-2">${escapeHtml(p.Nombredelproyecto)}</h4>
-            <span class="px-2 py-1 ${colorClass} text-[10px] font-black rounded-full uppercase tracking-widest">${p.status}</span>
+            <span class="px-2 py-1 ${statusColor} text-[10px] font-black rounded-full uppercase tracking-widest">${escapeHtml(statusText)}</span>
           </div>
           <div class="bg-primary-fixed/30 p-3 rounded-lg flex items-center gap-4 mb-4">
             <div class="flex flex-col">
@@ -271,11 +271,19 @@
               <span class="text-sm font-semibold text-primary">${p.Fechadetermino || '---'}</span>
             </div>
           </div>
+          ${p.Sector ? `
+          <div class="mb-4">
+            <span class="text-xs font-semibold text-secondary block mb-1">Sector</span>
+            <p class="text-sm text-on-surface-variant">${escapeHtml(p.Sector)}</p>
+          </div>
+          ` : ''}
+          ${p.Objetivo && p.Objetivo !== 'Pendiente' ? `
           <div class="mb-4">
             <span class="text-xs font-semibold text-secondary block mb-1">Objetivo Estratégico</span>
-            <p class="text-sm text-on-surface-variant">${escapeHtml(p.Objetivo || 'Sin objetivo definido.')}</p>
+            <p class="text-sm text-on-surface-variant">${escapeHtml(p.Objetivo)}</p>
           </div>
-          ${p.notas ? `
+          ` : ''}
+          ${p.notas && p.notas !== 'Pendiente' ? `
           <div class="bg-surface-container-low p-3 rounded-lg border-l-4 border-tertiary">
             <div class="flex items-center gap-2 mb-1">
               <span class="material-symbols-outlined text-amber-600 text-sm">sticky_note_2</span>
@@ -301,32 +309,16 @@
     // Navegación entre páginas
     function setupNavigation() {
       const btnProyectos = document.getElementById("tabProyectos");
-      if (btnProyectos) {
-        btnProyectos.addEventListener("click", () => {
-          window.location.href = "portal.html";
-        });
-      }
+      if (btnProyectos) btnProyectos.addEventListener("click", () => window.location.href = "portal.html");
       
       const btnNormateca = document.getElementById("tabnormateca");
-      if (btnNormateca) {
-        btnNormateca.addEventListener("click", () => {
-          window.location.href = "portal.html?tab=normateca";
-        });
-      }
+      if (btnNormateca) btnNormateca.addEventListener("click", () => window.location.href = "portal.html?tab=normateca");
       
       const btnGestion = document.getElementById("tabgestion");
-      if (btnGestion) {
-        btnGestion.addEventListener("click", () => {
-          window.location.href = "portal.html?tab=gestion";
-        });
-      }
+      if (btnGestion) btnGestion.addEventListener("click", () => window.location.href = "portal.html?tab=gestion");
       
       const btnReportes = document.getElementById("tabReportes");
-      if (btnReportes) {
-        btnReportes.addEventListener("click", () => {
-          window.location.href = "portal.html?tab=reportes";
-        });
-      }
+      if (btnReportes) btnReportes.addEventListener("click", () => window.location.href = "portal.html?tab=reportes");
     }
 
     // Configurar menú desplegable
@@ -346,33 +338,28 @@
       }
       
       const menuEntregados = document.getElementById("menuProyectosEntregados");
-      if (menuEntregados) {
-        menuEntregados.addEventListener("click", () => {
-          menuPanel.classList.add("hidden");
-          window.location.reload();
-        });
-      }
+      if (menuEntregados) menuEntregados.addEventListener("click", () => {
+        menuPanel.classList.add("hidden");
+        window.location.reload();
+      });
       
       const menuFichas = document.getElementById("menuFichasTecnicas");
-      if (menuFichas) {
-        menuFichas.addEventListener("click", () => {
-          menuPanel.classList.add("hidden");
-          alert("📄 Fichas Técnicas\n\nPróximamente: Generación de fichas técnicas de proyectos.");
-        });
-      }
+      if (menuFichas) menuFichas.addEventListener("click", () => {
+        menuPanel.classList.add("hidden");
+        alert("📄 Fichas Técnicas\n\nPróximamente.");
+      });
     }
 
     // Inicializar todo cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', () => {
       console.log("🚀 Iniciando página de proyectos entregados...");
-      loadProyectos();
+      loadEntregados();
       setupMenu();
       setupNavigation();
     });
   </script>
 
-
-
+  
 
 </body>
 </html>
