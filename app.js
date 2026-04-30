@@ -465,14 +465,13 @@ if (btnMenu && menuPanel) {
         window.location.href = "entregados.html";
       });
     }
-
-
+   
   // Opción: Fichas Técnicas
   const menuFichasTecnicas = document.getElementById("menuFichasTecnicas");
   if (menuFichasTecnicas) {
     menuFichasTecnicas.addEventListener("click", () => {
-      menuPanel.style.display = "none";
-      alert("📄 Fichas Técnicas\n\nPróximamente.");
+      menuPanel.classList.add("hidden");
+      window.location.href = "fichas.html";
     });
   }
 }
