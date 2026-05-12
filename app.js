@@ -1,4 +1,4 @@
-// app.js - Versión UI Mejorada (DG Cooperación) v11.0 abril 2026
+// app.js - Versión UI Mejorada (DG Cooperación) v12.0 mayo 2026
 
 const LS_KEY = "dg_proyectos_v2";
 
@@ -34,6 +34,7 @@ let proyectos = [];
 let normatecaDocs = [];
 let investigaciones = [];
 let capacitaciones = [];
+let acciones = [];
 
 const PAISES_CON_SUBTIPO = ["Japón", "Chile", "Estados Unidos", "Noruega"];
 const CAMPO_SUBTIPO = "Tipo de proyecto";
@@ -100,6 +101,20 @@ async function loadCapacitacionesFromJsonUrl() {
   }
 }
 
+async function loadAccionesFromJsonUrl() {
+  try {
+    const url = "https://raw.githubusercontent.com/DanonninoPlus/DGCIDCIENCIA/main/acciones.json";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("No se pudo cargar acciones.json");
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch (err) {
+    console.warn("Error cargando Acciones:", err);
+    return [];
+  }
+}
+
+
 function loadFromStorage() {
   const raw = localStorage.getItem(LS_KEY);
   return raw ? JSON.parse(raw) : [];
@@ -128,6 +143,8 @@ async function init() {
   normatecaDocs = await loadnormatecaFromJsonUrl();
   investigaciones = await loadInvestigacionFromJsonUrl();
   capacitaciones = await loadCapacitacionesFromJsonUrl();
+  acciones = await loadAccionesFromJsonUrl();
+    console.log(`✅ ${acciones.length} acciones cargadas.`);
 
   renderList();
   updateStats();
@@ -572,7 +589,10 @@ if (btnMenu && menuPanel) {
       if (projectListSection) projectListSection.classList.add("hidden");
       if (accionesSection) accionesSection.classList.remove("hidden");
       if (statsSection) statsSection.classList.add("hidden");
+      // 👇 Llama a renderAcciones
+      renderAcciones();
     });
+    
   }
 
   // GESTIÓN: SUBTABS
@@ -837,6 +857,325 @@ function importJSON() {
   };
   fileInput.click();
 }
+
+
+
+/* ============================================================
+   🔵 11. RENDER ACCIONES (similar a renderList)
+   ============================================================*/
+function renderAcciones() {
+  const accionesSection = document.getElementById("accionesSection");
+  if (!accionesSection) return;
+
+  // Filtrar acciones (si hay filtros, puedes agregarlos después)
+  let filtered = acciones;
+
+  if (filtered.length === 0) {
+    accionesSection.innerHTML = `
+      <div class="bg-surface-container-low rounded-2xl p-8 text-center">
+        <span class="material-symbols-outlined text-6xl text-outline mb-3">inbox</span>
+        <h3 class="font-headline font-bold text-xl text-primary mb-2">No hay acciones registradas</h3>
+        <p class="text-on-surface-variant text-sm">Las acciones aparecerán aquí.</p>
+      </div>
+    `;
+    return;
+  }
+
+  // Agrupar por continente
+  const grupos = {};
+  const conteoContinente = {};
+  const conteoPais = {};
+
+  filtered.forEach(a => {
+    const c = (a.Continente || "Sin Continente").trim();
+    const pais = (a.Pais || "Sin País").trim();
+    conteoContinente[c] = (conteoContinente[c] || 0) + 1;
+    const clavePais = `${c}|${pais}`;
+    conteoPais[clavePais] = (conteoPais[clavePais] || 0) + 1;
+
+    if (!grupos[c]) grupos[c] = {};
+    if (PAISES_CON_SUBTIPO.includes(pais)) {
+      const subtipo = a[CAMPO_SUBTIPO] || "General";
+      if (!grupos[c][pais]) grupos[c][pais] = {};
+      if (!grupos[c][pais][subtipo]) grupos[c][pais][subtipo] = [];
+      grupos[c][pais][subtipo].push(a);
+    } else {
+      if (!grupos[c][pais]) grupos[c][pais] = [];
+      grupos[c][pais].push(a);
+    }
+  });
+
+  // Calcular total de acciones
+  const totalAcciones = filtered.length;
+
+  // Generar HTML del encabezado
+  let html = `
+    <!-- Stats Overview (Asymmetric UI Pattern) -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="md:col-span-2 bg-white rounded-xl p-4 shadow-sm border border-indigo-50 flex items-center gap-4 overflow-hidden relative">
+        <div class="flex-1 z-10">
+          <p class="text-xs font-bold text-primary uppercase tracking-wider mb-1">Resumen</p>
+          <h2 class="text-2xl font-bold text-on-surface mb-2 leading-tight">Acciones</h2>
+          <p class="text-sm text-on-surface-variant">Sección destinada a las acciones puntuales de cooperación.</p>
+        </div>
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+          <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern height="40" id="pattern_circles" patternUnits="userSpaceOnUse" width="40" x="0" y="0">
+                <circle cx="20" cy="20" fill="#24389c" r="1"></circle>
+              </pattern>
+            </defs>
+            <rect fill="url(#pattern_circles)" height="100%" width="100%"></rect>
+          </svg>
+        </div>
+        <div class="w-48 h-48 rounded-full bg-gradient-to-br from-primary/20 to-transparent absolute -right-12 -top-12 blur-2xl"></div>
+      </div>
+      <div class="bg-indigo-600 rounded-xl p-4 text-white shadow-xl flex flex-col justify-between">
+        <span class="material-symbols-outlined text-4xl opacity-50">analytics</span>
+        <div>
+          <p class="text-4xl font-bold">${totalAcciones}</p>
+          <p class="text-xs font-semibold uppercase opacity-80">Acciones Totales</p>
+        </div>
+      </div>
+    </section>
+  `;
+
+  // Iconos por continente
+  const continenteIconos = {
+    "AMÉRICA": "public",
+    "AMERICA": "public",
+    "EUROPA": "travel_explore",
+    "ÁFRICA": "map",
+    "AFRICA": "map",
+    "ASIA": "map",
+    "OCEANÍA": "map"
+  };
+
+  Object.keys(grupos).sort().forEach(continente => {
+    const icono = continenteIconos[continente.toUpperCase()] || "public";
+    const count = conteoContinente[continente] || 0;
+
+    html += `
+      <div class="rounded-2xl overflow-hidden bg-surface-container-low transition-all duration-300 mb-4">
+        <div class="p-5 flex items-center justify-between cursor-pointer border-l-4 border-secondary bg-surface-container-low continente-btn">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 flex items-center justify-center bg-secondary-fixed rounded-xl text-secondary">
+              <span class="material-symbols-outlined">${icono}</span>
+            </div>
+            <div>
+              <h2 class="font-headline font-bold text-lg text-primary tracking-tight">${escapeHtml(continente)}</h2>
+              <p class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-widest">${count} Acciones</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-outline-variant transition-transform continente-icon">expand_more</span>
+        </div>
+        <div class="continente-panel hidden bg-surface-container p-2 space-y-2"></div>
+      </div>
+    `;
+  });
+
+  accionesSection.innerHTML = html;
+
+  // Agregar los países y acciones a cada continente
+  const continentesDivs = accionesSection.querySelectorAll('.rounded-2xl');
+  let index = 0;
+
+  Object.keys(grupos).sort().forEach(continente => {
+    const contDiv = continentesDivs[index];
+    const panel = contDiv.querySelector('.continente-panel');
+    const btn = contDiv.querySelector('.continente-btn');
+    const icon = contDiv.querySelector('.continente-icon');
+
+    btn.addEventListener('click', () => {
+      panel.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    });
+
+    // Agregar países
+    Object.keys(grupos[continente]).sort().forEach(pais => {
+      const dataPais = grupos[continente][pais];
+      const countPais = conteoPais[`${continente}|${pais}`] || 0;
+      const tieneSubtipos = PAISES_CON_SUBTIPO.includes(pais) && !Array.isArray(dataPais);
+
+      const paisDiv = document.createElement('div');
+      paisDiv.className = 'mb-3';
+
+      if (!tieneSubtipos && Array.isArray(dataPais)) {
+        paisDiv.innerHTML = `
+          <div class="bg-surface-container-lowest rounded-xl overflow-hidden diplomatic-shadow">
+            <div class="p-4 flex items-center justify-between cursor-pointer pais-btn">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-6 overflow-hidden rounded shadow-sm">
+                  <img class="w-full h-full object-cover flag-img" data-pais="${escapeHtml(pais)}" src="" alt="Bandera de ${escapeHtml(pais)}">
+                </div>
+                <span class="font-semibold text-primary">${escapeHtml(pais)}</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[10px] font-black tracking-tighter">${countPais} ACC</span>
+                <span class="material-symbols-outlined text-outline-variant pais-icon transition-transform">expand_more</span>
+              </div>
+            </div>
+            <div class="pais-panel hidden bg-surface-container-low p-3 space-y-3"></div>
+          </div>
+        `;
+        const paisPanel = paisDiv.querySelector('.pais-panel');
+        const paisBtn = paisDiv.querySelector('.pais-btn');
+        const paisIcon = paisDiv.querySelector('.pais-icon');
+        paisBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          paisPanel.classList.toggle('hidden');
+          paisIcon.classList.toggle('rotate-180');
+        });
+        dataPais.forEach(a => {
+          paisPanel.appendChild(renderActionCard(a));
+        });
+      } else if (tieneSubtipos) {
+        paisDiv.innerHTML = `
+          <div class="bg-surface-container-lowest rounded-xl overflow-hidden diplomatic-shadow">
+            <div class="p-4 flex items-center justify-between cursor-pointer pais-btn">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-6 overflow-hidden rounded shadow-sm">
+                  <img class="w-full h-full object-cover flag-img" data-pais="${escapeHtml(pais)}" src="" alt="Bandera de ${escapeHtml(pais)}">
+                </div>
+                <span class="font-semibold text-primary">${escapeHtml(pais)}</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[10px] font-black tracking-tighter">${countPais} ACC</span>
+                <span class="material-symbols-outlined text-outline-variant pais-icon transition-transform">expand_more</span>
+              </div>
+            </div>
+            <div class="pais-panel hidden bg-surface-container-low p-3 space-y-3"></div>
+          </div>
+        `;
+        const paisPanel = paisDiv.querySelector('.pais-panel');
+        const paisBtn = paisDiv.querySelector('.pais-btn');
+        const paisIcon = paisDiv.querySelector('.pais-icon');
+        paisBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          paisPanel.classList.toggle('hidden');
+          paisIcon.classList.toggle('rotate-180');
+        });
+        Object.keys(dataPais).sort().forEach(subtipo => {
+          const subDiv = document.createElement('div');
+          subDiv.className = 'space-y-2 mb-3';
+          subDiv.innerHTML = `
+            <div class="flex items-center gap-2 px-2 pb-1">
+              <span class="material-symbols-outlined text-secondary scale-75">account_balance</span>
+              <span class="text-[10px] font-black uppercase tracking-[0.2em] text-outline">${escapeHtml(subtipo)}</span>
+            </div>
+            <div class="space-y-2"></div>
+          `;
+          const subContent = subDiv.querySelector('div:last-child');
+          dataPais[subtipo].forEach(a => {
+            subContent.appendChild(renderActionCard(a));
+          });
+          paisPanel.appendChild(subDiv);
+        });
+      }
+      panel.appendChild(paisDiv);
+    });
+    index++;
+  });
+
+  // Cargar banderas
+  loadFlags();
+}
+
+/* ============================================================
+   🔵 12. TARJETA DE ACCIÓN (similar a renderProjectCard)
+   ============================================================*/
+function renderActionCard(a) {
+  const statusColors = {
+    'Planeación': 'bg-orange-500 text-white',
+    'Ejecución': 'bg-green-600 text-white',
+    'Finalizado': 'bg-gray-400 text-white'
+  };
+  const colorClass = statusColors[a.status] || 'bg-gray-400 text-white';
+
+  const card = document.createElement("div");
+  card.className = "bg-surface-container-lowest rounded-xl border border-secondary/10 overflow-hidden mb-3";
+  card.innerHTML = `
+    <div class="p-4 flex items-center justify-between cursor-pointer action-btn hover:bg-surface-container/50 transition-colors">
+      <h3 class="font-headline font-bold text-sm text-primary">${escapeHtml(a.Nombredelproyecto)}</h3>
+      <span class="material-symbols-outlined text-outline-variant action-icon transition-transform">expand_more</span>
+    </div>
+    <div class="action-panel hidden p-5 space-y-6 border-t border-surface-container">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-surface-container-low p-3 rounded-lg flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary text-sm">calendar_today</span>
+          <div>
+            <p class="text-[9px] uppercase tracking-widest text-outline font-bold">Inicio</p>
+            <p class="text-xs font-semibold text-primary">${a.Fechadeinicio || '---'}</p>
+          </div>
+        </div>
+        <div class="bg-surface-container-low p-3 rounded-lg flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary text-sm">event_available</span>
+          <div>
+            <p class="text-[9px] uppercase tracking-widest text-outline font-bold">Término</p>
+            <p class="text-xs font-semibold text-primary">${a.Fechadetermino || '---'}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex gap-4">
+        <div class="w-1 bg-secondary rounded-full"></div>
+        <div class="flex-1">
+          <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">Objetivo Estratégico</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed">${escapeHtml(a.Objetivo || 'Sin objetivo definido.')}</p>
+        </div>
+      </div>
+      
+      ${a.Estados && a.Estados.length ? `
+      <div>
+        <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Estados de la República</h4>
+        <div class="space-y-1.5">
+          ${a.Estados.map(e => `<div class="flex items-center gap-2"><span class="text-secondary text-sm">•</span><span class="text-sm text-on-surface-variant font-medium">${escapeHtml(e)}</span></div>`).join("")}
+        </div>
+      </div>
+      ` : '<div class="hidden"></div>'}
+      
+      ${a.notas ? `
+      <div class="bg-surface-container-high/50 p-4 rounded-xl border-l-4 border-outline-variant">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="material-symbols-outlined text-outline text-xs">sticky_note_2</span>
+          <span class="text-[9px] font-black uppercase tracking-widest text-outline">Observaciones Técnicas</span>
+        </div>
+        <p class="text-[11px] italic text-on-surface-variant">${escapeHtml(a.notas)}</p>
+      </div>
+      ` : ""}
+      
+      <div class="flex items-center justify-between pt-2 border-t border-surface-container">
+        <span class="px-3 py-1 ${colorClass} text-[10px] font-black rounded-full uppercase tracking-widest">${a.status}</span>
+        <button data-id="${a.id}" class="btn-download-action text-secondary text-xs font-bold flex items-center gap-1">
+          Descargar Ficha
+          <span class="material-symbols-outlined text-sm">download</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  const actionBtn = card.querySelector(".action-btn");
+  const actionPanel = card.querySelector(".action-panel");
+  const actionIcon = card.querySelector(".action-icon");
+
+  actionBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    actionPanel.classList.toggle("hidden");
+    actionIcon.classList.toggle("rotate-180");
+  });
+
+  const downloadBtn = card.querySelector(".btn-download-action");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      alert(`📄 Preparando ficha de la acción: ${a.Nombredelproyecto}\n\nPróximamente podrás descargar la ficha completa en PDF.`);
+    });
+  }
+
+  return card;
+}
+
+
 
 // Iniciar la aplicación
 init();
